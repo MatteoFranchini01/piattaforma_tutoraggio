@@ -1,7 +1,23 @@
 import Navbar from "./Components/navbar";
 import Card from "./Components/card";
-import {Component} from "react";
+import {Component, useEffect, useState} from "react";
 
+import data from "bootstrap/js/src/dom/data";
+
+
+function App() {
+    const [backendData, setBackendData] = useState([{}])
+
+    useEffect(() => {
+        fetch("/api").then(
+            response => response.json()
+        ).then(
+            data => {
+                setBackendData(data)
+            }
+        )
+    }, []);
+}
 class App extends Component {
     subjects = {
         /*da leggere dal databse*/
