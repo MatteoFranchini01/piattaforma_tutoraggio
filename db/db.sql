@@ -31,11 +31,13 @@ create table MATERIE
     ID       INTEGER auto_increment,
     NOME     CHARACTER,
     TUTOR_ID INTEGER,
+    PREZZO   INTEGER,
     constraint MATERIE_PK
         primary key (ID),
     constraint MATERIE_TUTOR_ID_TUTOR_FK
         foreign key (TUTOR_ID) references TUTOR
 );
+
 
 create table RUOLI
 (
