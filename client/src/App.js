@@ -5,7 +5,7 @@ import {Component, useEffect, useState} from "react";
 import data from "bootstrap/js/src/dom/data";
 
 
-function App() {
+function App_fun() {
     const [backendData, setBackendData] = useState([{}])
 
     useEffect(() => {
@@ -42,12 +42,21 @@ class App extends Component {
                     <div className='row'>
                         {this.subjects.cards.map((card, index) => (
                             <Card
-                            key={card.id}
-                            nome={card.nome}
-                            prezzo={card.prezzo}
+                                key={card.id}
+                                nome={card.nome}
+                                prezzo={card.prezzo}
                             />
                         ))}
                     </div>
+                </div>
+                <div>
+                    {(typeof backendData.users === 'undefined') ? (
+                        <p>Loading...</p>
+                    ) : (
+                        backendData.users.map((user, index) => (
+                            <p key={i}>{user}</p>
+                        ))
+                    )}
                 </div>
             </>
         );
