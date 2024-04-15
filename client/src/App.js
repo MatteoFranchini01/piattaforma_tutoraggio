@@ -1,10 +1,6 @@
 import Navbar from "./Components/navbar";
 import Card from "./Components/card";
 import {Component, useEffect, useState} from "react";
-import axios from 'axios';
-
-import data from "bootstrap/js/src/dom/data";
-
 
 class App extends Component {
     constructor(props) {
