@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="modifica tabella MATERIE con aggiunta campo prezzo">
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="Configurazione server http">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/db.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,8 +61,8 @@
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
-      "mysql",
-      "h2"
+      "h2",
+      "mysql"
     ]
   }
 }]]></component>
@@ -124,7 +116,7 @@
       <workItem from="1713039527116" duration="352000" />
       <workItem from="1713039894681" duration="478000" />
       <workItem from="1713040672614" duration="6152000" />
-      <workItem from="1713186905366" duration="5924000" />
+      <workItem from="1713186905366" duration="8062000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -198,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713191117340</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Configurazione server http">
+      <option name="closed" value="true" />
+      <created>1713193929155</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713193929155</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +236,7 @@
     <MESSAGE value="Integrazione client/server riuscita... chiusura della branch" />
     <MESSAGE value="server come classe" />
     <MESSAGE value="modifica tabella MATERIE con aggiunta campo prezzo" />
-    <option name="LAST_COMMIT_MESSAGE" value="modifica tabella MATERIE con aggiunta campo prezzo" />
+    <MESSAGE value="Configurazione server http" />
+    <option name="LAST_COMMIT_MESSAGE" value="Configurazione server http" />
   </component>
 </project>
