@@ -1,73 +1,67 @@
-create table DISCENTE
+create table Discente
 (
-    ID          INTEGER   not null,
-    NOME        CHARACTER not null,
-    COGNOME     CHARACTER not null,
-    ID_DISCENTE INTEGER auto_increment,
-    constraint DISCENTE_PK
-        primary key (ID_DISCENTE),
-    constraint DISCENTE_UTENTI_ID_FK
-        foreign key (ID) references UTENTI
+    ID_DISCENTE int auto_increment
+        primary key,
+    NOME        char not null,
+    COGNOME     char not null,
+    ID          int  null,
+    constraint Discente_Utenti_ID_fk
+        foreign key (ID) references Utenti (ID)
 );
 
-create table LEZIONI
+create table Lezioni
 (
-    ID_LEZ      INTEGER auto_increment,
-    ID_TUTOR    INTEGER,
-    ID_DISCENTE INTEGER,
-    ID_MATERIA  INTEGER not null,
-    constraint LEZIONI_PK
-        primary key (ID_LEZ),
-    constraint LEZIONI_DISCENTE_ID_DISCENTE_FK
-        foreign key (ID_DISCENTE) references DISCENTE,
-    constraint LEZIONI_MATERIE_ID_FK
-        foreign key (ID_MATERIA) references MATERIE,
-    constraint LEZIONI_TUTOR_ID_TUTOR_FK
-        foreign key (ID_TUTOR) references TUTOR
+    ID_LEZ      int auto_increment
+        primary key,
+    ID_TUTOR    int null,
+    ID_DISCENTE int null,
+    ID_MATERIA  int null,
+    constraint Lezioni_Discente_ID_DISCENTE_fk
+        foreign key (ID_DISCENTE) references Discente (ID_DISCENTE),
+    constraint Lezioni_Materie_ID_fk
+        foreign key (ID_MATERIA) references Materie (ID),
+    constraint Lezioni_Tutor_ID_TUTOR_fk
+        foreign key (ID_TUTOR) references Tutor (ID_TUTOR)
 );
 
-create table MATERIE
+create table Materie
 (
-    ID       INTEGER auto_increment,
-    NOME     CHARACTER,
-    TUTOR_ID INTEGER,
-    PREZZO   INTEGER,
-    constraint MATERIE_PK
-        primary key (ID),
-    constraint MATERIE_TUTOR_ID_TUTOR_FK
-        foreign key (TUTOR_ID) references TUTOR
+    ID       int auto_increment
+        primary key,
+    NOME     char not null,
+    TUTOR_ID int  null,
+    PREZZO   int  null,
+    constraint Materie_Tutor_ID_TUTOR_fk
+        foreign key (TUTOR_ID) references Tutor (ID_TUTOR)
 );
-
 
 create table RUOLI
 (
-    ID    INTEGER not null,
-    RUOLO INTEGER,
-    constraint RUOLI_PK
-        primary key (ID)
+    ID         int  not null
+        primary key,
+    RUOLO_DESC char not null
 );
 
-create table TUTOR
+create table Tutor
 (
-    ID       INTEGER,
-    NOME     CHARACTER,
-    COGNOME  CHARACTER,
-    LUOGO    CHARACTER,
-    ID_TUTOR INTEGER not null,
-    constraint TUTOR_PK
-        primary key (ID_TUTOR),
-    constraint TUTOR_UTENTI_ID_FK
-        foreign key (ID) references UTENTI
+    ID       int  null,
+    NOME     char null,
+    COGNOME  char null,
+    LUOGO    char null,
+    ID_TUTOR int  not null
+        primary key,
+    constraint Tutor_Utenti_ID_fk
+        foreign key (ID) references Utenti (ID)
 );
 
-create table UTENTI
+create table Utenti
 (
-    ID        INTEGER auto_increment,
-    NOME      CHARACTER not null,
-    PWD       CHARACTER not null,
-    PRIVILEGI INTEGER   not null,
-    constraint PRIMARY_KEY
-        primary key (ID),
-    constraint UTENTI_RUOLI_ID_FK
-        foreign key (PRIVILEGI) references RUOLI
+    ID        int auto_increment
+        primary key,
+    NOME      char not null,
+    COGNOME   char not null,
+    PRIVILEGI int  not null,
+    constraint Utenti_RUOLI_ID_fk
+        foreign key (PRIVILEGI) references RUOLI (ID)
 );
+
