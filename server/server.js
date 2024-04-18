@@ -56,7 +56,51 @@ function add_materia(materia) {
     connection.end();
 }
 
+// funzione per aggiungere utenti
 
+function add_user(utente) {
+    connection.connect(
+        console.log("Connected...")
+    )
+
+    let queryString = 'INSERT INTO UTENTI (NOME, COGNOME, PRIVILEGI) VALUE (?, ?, ?)';
+    const values = [utente.nome, utente.cognome, utente.privilegi];
+
+    connection.query(queryString, function (err, result, fields) {
+        if (err) throw err;
+        console.log("Number of records inserted: ", result.affectedRows);
+    });
+
+    connection.end();
+}
+
+// funzione per trovare un utente
+
+function find_user(user_to_find) {
+    connection.connect(
+        console.log("Connected...")
+    )
+
+    let queryString = 'SELECT * FROM UTENTI JOIN RUOLI ON PRIVILEGI = ID WHERE UTENTI.NOME = ? AND UTENTI.COGNOME = ?'
+
+    const user = {};
+
+    connection.query(queryString, [user_to_find.nome, user_to_find.cognome], function (err, result, fields) {
+        if (err) throw err;
+
+        console.log("Query executed: ", result);
+
+        for (let i in result) {
+            user.id = result[i].ID;
+            user.nome = result[i].NOME;
+            user.cognome = result[i].COGNOME;
+            user.ruolo = result[i].RUOLO_DESC;
+        }
+    });
+
+    connection.end();
+    return result;
+}
 
 const createServer = (routes) => {
     const server = http.createServer((req, res) => {
@@ -95,6 +139,24 @@ const routes = [
             let materia = req.body;
             add_materia(materia);
             res.end("Materia added to db");
+        }
+    },
+    {
+        method: 'POST',
+        path: '/add_user',
+        handler: (req, res) => {
+            let user = req.body;
+            add_user(user);
+            res.end("User added to db");
+        }
+    },
+    {
+        method: 'POST',
+        path: '/find_user',
+        handler: (req, res) => {
+            let user_to_find = req.body;
+            let user = find_user(user_to_find);
+            res.end(JSON.stringify(user));
         }
     }
 ];
