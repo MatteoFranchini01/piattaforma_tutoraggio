@@ -2,8 +2,8 @@ create table Discente
 (
     ID_DISCENTE int auto_increment
         primary key,
-    NOME        char not null,
-    COGNOME     char not null,
+    NOME        varchar(200) not null,
+    COGNOME     varchar(200) not null,
     ID          int  null,
     constraint Discente_Utenti_ID_fk
         foreign key (ID) references Utenti (ID)
@@ -28,7 +28,7 @@ create table Materie
 (
     ID       int auto_increment
         primary key,
-    NOME     char not null,
+    NOME     varchar(200) not null,
     TUTOR_ID int  null,
     PREZZO   int  null,
     constraint Materie_Tutor_ID_TUTOR_fk
@@ -39,8 +39,10 @@ create table RUOLI
 (
     ID         int  not null
         primary key,
-    RUOLO_DESC char not null
+    RUOLO_DESC varchar(200) not null
 );
+
+INSERT INTO RUOLI (ID, RUOLO_DESC) VALUES (1, 'root'), (2, 'tutor'), (3, 'user');
 
 create table Tutor
 (
