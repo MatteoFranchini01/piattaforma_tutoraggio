@@ -1065,7 +1065,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Charset>utf8mb4</Charset>
     </collation>
     <schema id="288" parent="1" name="db_piattaforma">
-      <LastIntrospectionLocalTimestamp>2024-04-18.20:51:45</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-04-18.21:14:49</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="289" parent="1" name="information_schema">
@@ -1228,7 +1228,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>1</Position>
     </column>
     <column id="325" parent="300" name="NOME">
-      <DasType>char(1)|0s</DasType>
+      <DasType>varchar(200)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>

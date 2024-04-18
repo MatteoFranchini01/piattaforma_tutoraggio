@@ -169,7 +169,7 @@
     <schema id="162" parent="2" name="INFORMATION_SCHEMA"/>
     <schema id="163" parent="2" name="PUBLIC">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-04-16.10:33:03</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-04-18.21:11:45</LastIntrospectionLocalTimestamp>
     </schema>
     <table id="164" parent="163" name="DISCENTE"/>
     <table id="165" parent="163" name="LEZIONI"/>
@@ -294,11 +294,11 @@
       <Position>1</Position>
       <SequenceInline>1</SequenceInline>
       <SequenceDasType>INTEGER|0s</SequenceDasType>
-      <SequenceSequenceIdentity>1(1)</SequenceSequenceIdentity>
+      <SequenceSequenceIdentity>1(2)</SequenceSequenceIdentity>
       <SequenceStartValue>1</SequenceStartValue>
     </column>
     <column id="191" parent="166" name="NOME">
-      <DasType>CHARACTER|0s</DasType>
+      <DasType>CHARACTER VARYING|0s</DasType>
       <Position>2</Position>
     </column>
     <column id="192" parent="166" name="TUTOR_ID">
@@ -316,7 +316,7 @@
       <RefKeyName>TUTOR_PK</RefKeyName>
       <RefTableName>TUTOR</RefTableName>
     </foreign-key>
-    <index id="195" parent="166" name="PRIMARY_KEY_E">
+    <index id="195" parent="166" name="PRIMARY_KEY_E9">
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>

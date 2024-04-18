@@ -10,20 +10,28 @@ let connection = mysql.createConnection({
 
 connection.connect();
 
-let queryString = 'SELECT * FROM UTENTI';
+let queryString = 'SELECT * FROM Materie';
 
-connection.query(queryString, function (err, result, filed) {
+const cards = [];
+
+connection.query(queryString, function (err, result, fields) {
     if (err) throw err;
 
     console.log("Executed query: ", result);
-
     for (let i in result) {
-        console.log(result[i]);
+        const temp = {
+            id: result[i].ID,
+            nome: result[i].NOME,
+            prezzo: result[i].PREZZO,
+        };
+
+        cards.push(temp);
     }
 })
 
 connection.end();
 
+/*
 const cards = [
     {id: 0, nome: "Matematica", prezzo: 20},
     {id: 1, nome: "Fisica", prezzo: 25},
@@ -34,6 +42,7 @@ const cards = [
     {id: 6, nome: "Statistica e probabilità", prezzo: 25},
     {id: 7, nome: "Telecomunicazioni", prezzo: 15},
 ];
+*/
 
 const createServer = (routes) => {
     const server = http.createServer((req, res) => {

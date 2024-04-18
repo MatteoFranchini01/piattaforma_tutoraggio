@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="Modificato file db.sql">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="Collegamento con DB ok">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5d0a766b-8a12-42c4-8a9d-553cf9182583.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5d0a766b-8a12-42c4-8a9d-553cf9182583.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/97f89897-8f61-4e12-8cce-94b2409ccf39.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/97f89897-8f61-4e12-8cce-94b2409ccf39.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/db.trace.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +85,7 @@
       <recent name="$PROJECT_DIR$/client" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.npm start client">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -135,7 +134,7 @@
       <workItem from="1713039894681" duration="478000" />
       <workItem from="1713040672614" duration="6152000" />
       <workItem from="1713186905366" duration="12654000" />
-      <workItem from="1713273158757" duration="4860000" />
+      <workItem from="1713273158757" duration="6569000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -233,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713273114488</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Collegamento con DB ok">
+      <option name="closed" value="true" />
+      <created>1713474620534</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713474620535</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +281,7 @@
     <MESSAGE value="Configurazione server http" />
     <MESSAGE value="Ultime modifiche" />
     <MESSAGE value="Modificato file db.sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modificato file db.sql" />
+    <MESSAGE value="Collegamento con DB ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="Collegamento con DB ok" />
   </component>
 </project>
