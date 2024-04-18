@@ -4,12 +4,228 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="Collegamento con DB ok">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5d0a766b-8a12-42c4-8a9d-553cf9182583.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5d0a766b-8a12-42c4-8a9d-553cf9182583.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/97f89897-8f61-4e12-8cce-94b2409ccf39.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/97f89897-8f61-4e12-8cce-94b2409ccf39.xml" afterDir="false" />
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="creata una funzione per la creazione delle card">
+      <change afterPath="$PROJECT_DIR$/server/node_modules/denque/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/denque/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/denque/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/denque/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/denque/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/denque/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/generate-function/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/generate-function/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/generate-function/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/generate-function/example.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/generate-function/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/generate-function/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/generate-function/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/is-property/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/is-property/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/is-property/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/is-property/is-property.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/is-property/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/long/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/long/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/long/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/long/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/long/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/long/umd/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/long/umd/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/long/umd/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/License" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/auth_41.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/auth_plugins/caching_sha2_password.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/auth_plugins/caching_sha2_password.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/auth_plugins/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/auth_plugins/mysql_clear_password.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/auth_plugins/mysql_native_password.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/auth_plugins/sha256_password.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/auth_switch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/binlog_dump.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/change_user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/client_handshake.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/close_statement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/command.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/execute.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/ping.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/prepare.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/query.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/quit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/register_slave.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/commands/server_handshake.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/compressed_protocol.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/connection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/connection_config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/charset_encodings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/charsets.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/commands.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/cursor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/encoding_charset.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/errors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/field_flags.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/server_status.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/session_track.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/ssl_profiles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/constants/types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packet_parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/auth_next_factor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/auth_switch_request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/auth_switch_request_more_data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/auth_switch_response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/binary_row.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/binlog_dump.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/binlog_query_statusvars.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/change_user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/close_statement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/column_definition.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/execute.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/handshake.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/handshake_response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/packet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/prepare_statement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/prepared_statement_header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/query.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/register_slave.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/resultset_header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/ssl_request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/packets/text_row.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/parsers/binary_parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/parsers/parser_cache.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/parsers/string.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/parsers/text_parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/pool.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/pool_cluster.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/pool_config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/pool_connection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/results_stream.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/lib/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/.github/dependabot.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/.idea/iconv-lite.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/Changelog.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/dbcs-codec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/dbcs-data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/internal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/sbcs-codec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/sbcs-data-generated.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/sbcs-data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/tables/big5-added.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/tables/cp936.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/tables/cp949.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/tables/cp950.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/tables/eucjp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/tables/gb18030-ranges.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/tables/gbk-added.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/tables/shiftjis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/utf16.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/utf32.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/encodings/utf7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/lib/bom-handling.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/lib/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/lib/streams.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/iconv-lite/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/index-cjs.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/index-cjs.d.ts.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/index-cjs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/index-cjs.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/index.d.ts.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/index.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/index.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/index.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/cjs/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/mjs/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/mjs/index.d.ts.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/mjs/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/mjs/index.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/mjs/index.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/mjs/index.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/dist/mjs/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/lru-cache/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/sqlstring/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/sqlstring/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/sqlstring/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/sqlstring/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/sqlstring/lib/SqlString.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/node_modules/sqlstring/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/promise.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/promise.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/info.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/Auth.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/Connection.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/Pool.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/PoolCluster.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/Server.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/constants/CharsetToEncoding.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/constants/Charsets.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/constants/Types.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/constants/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/parsers/ParserCache.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/parsers/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/parsers/typeCast.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/packets/Field.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/packets/FieldPacket.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/packets/OkPacket.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/packets/ProcedurePacket.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/packets/ResultSetHeader.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/packets/RowDataPacket.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/packets/params/ErrorPacketParams.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/packets/params/OkPacketParams.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/sequences/ExecutableBase.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/sequences/Prepare.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/sequences/QueryableBase.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/sequences/Sequence.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/sequences/promise/ExecutableBase.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mysql2/typings/mysql/lib/protocol/sequences/promise/QueryableBase.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/named-placeholders/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/named-placeholders/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/named-placeholders/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/named-placeholders/node_modules/lru-cache/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/named-placeholders/node_modules/lru-cache/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/named-placeholders/node_modules/lru-cache/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/named-placeholders/node_modules/lru-cache/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/named-placeholders/node_modules/lru-cache/index.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/named-placeholders/node_modules/lru-cache/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/named-placeholders/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/.jshintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/AUTHORS" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/lib/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/lib/seq-queue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/seq-queue/test/seq-queue-test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/db.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +350,7 @@
       <workItem from="1713039894681" duration="478000" />
       <workItem from="1713040672614" duration="6152000" />
       <workItem from="1713186905366" duration="12654000" />
-      <workItem from="1713273158757" duration="6569000" />
+      <workItem from="1713273158757" duration="8424000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -240,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713474620535</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="si riescono ad aggiornare le card direttamente leggendo sul db">
+      <option name="closed" value="true" />
+      <created>1713476284551</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713476284551</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +506,8 @@
     <MESSAGE value="Ultime modifiche" />
     <MESSAGE value="Modificato file db.sql" />
     <MESSAGE value="Collegamento con DB ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="Collegamento con DB ok" />
+    <MESSAGE value="si riescono ad aggiornare le card direttamente leggendo sul db" />
+    <MESSAGE value="creata una funzione per la creazione delle card" />
+    <option name="LAST_COMMIT_MESSAGE" value="creata una funzione per la creazione delle card" />
   </component>
 </project>

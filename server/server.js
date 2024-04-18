@@ -1,5 +1,6 @@
 const http = require('http');
 let mysql = require('mysql2');
+const bodyParser = require('body-parser');
 
 let connection = mysql.createConnection({
     host: 'localhost',
@@ -8,41 +9,52 @@ let connection = mysql.createConnection({
     database: 'db_piattaforma',
 })
 
-connection.connect();
+//TODO: c'è un problema nel senso che se si aggiunge una card al db e si refresha la pagina crasha tutto
+function create_cards(callback) {
+    connection.connect(
+        console.log("Connected...")
+    );
 
-let queryString = 'SELECT * FROM Materie';
+    let queryString = 'SELECT * FROM Materie';
 
-const cards = [];
+    const cards = [];
 
-connection.query(queryString, function (err, result, fields) {
-    if (err) throw err;
+    connection.query(queryString, function (err, result, fields) {
+        if (err) throw err;
 
-    console.log("Executed query: ", result);
-    for (let i in result) {
-        const temp = {
-            id: result[i].ID,
-            nome: result[i].NOME,
-            prezzo: result[i].PREZZO,
-        };
+        console.log("Executed query: ", result);
+        for (let i in result) {
+            const temp = {
+                id: result[i].ID,
+                nome: result[i].NOME,
+                prezzo: result[i].PREZZO,
+            };
 
-        cards.push(temp);
-    }
-})
+            cards.push(temp);
+        }
 
-connection.end();
+        callback(cards);
+    });
 
-/*
-const cards = [
-    {id: 0, nome: "Matematica", prezzo: 20},
-    {id: 1, nome: "Fisica", prezzo: 25},
-    {id: 2, nome: "Chimica", prezzo: 25},
-    {id: 3, nome: "Algebra e geometria", prezzo: 20},
-    {id: 4, nome: "Algoritmi e strutture dati", prezzo: 20},
-    {id: 5, nome: "FCA", prezzo: 35},
-    {id: 6, nome: "Statistica e probabilità", prezzo: 25},
-    {id: 7, nome: "Telecomunicazioni", prezzo: 15},
-];
-*/
+    connection.end();
+}
+
+// funzione per aggiungere una materia al db
+function add_materia(materia) {
+    connection.connect(
+        console.log("Connected...")
+    )
+
+    let queryString = 'INSERT INTO MATERIE (NOME, TUTOR_ID, PREZZO) VALUES (?, ?, ?)';
+    const values = [materia.nome, materia.tutor, materia.prezzo];
+
+    connection.query(queryString, function (err, result, fields) {
+        if (err) throw err;
+        console.log("Number of records inserted: ", result.affectedRows);
+    });
+
+    connection.end();
+}
 
 const createServer = (routes) => {
     const server = http.createServer((req, res) => {
@@ -68,10 +80,21 @@ const routes = [
         method: 'GET',
         path: '/cards',
         handler: (req, res) => {
-            res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify(cards));
+            create_cards((cards) => {
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify(cards));
+            });
         }
     },
+    {
+        method: 'POST',
+        path: '/add_materia',
+        hndler: (req, res) => {
+            let materia = req.body;
+            add_materia(materia);
+            res.end("Materia added to db");
+        }
+    }
 ];
 
 createServer(routes);
