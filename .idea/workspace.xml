@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="Ultime modifiche">
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="Modificato file db.sql">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/97f89897-8f61-4e12-8cce-94b2409ccf39.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/97f89897-8f61-4e12-8cce-94b2409ccf39.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,12 +27,12 @@
     &quot;assignee&quot;: &quot;MatteoFranchini01&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MatteoFranchini01/piattaforma_tutoraggio.git",
-    "accountId": "b636ac6c-6265-4e0e-96cd-1275bd85af2b"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MatteoFranchini01/piattaforma_tutoraggio.git&quot;,
+    &quot;accountId&quot;: &quot;b636ac6c-6265-4e0e-96cd-1275bd85af2b&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -52,6 +57,7 @@
     "nodejs_package_manager_path": "npm",
     "npm.npm start client.executor": "Run",
     "npm.npm start.executor": "Run",
+    "npm.start.executor": "Run",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/matteofranchini/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
@@ -80,7 +86,7 @@
       <recent name="$PROJECT_DIR$/client" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.npm start client">
+  <component name="RunManager" selected="npm.start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -94,6 +100,21 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -113,7 +134,8 @@
       <workItem from="1713039527116" duration="352000" />
       <workItem from="1713039894681" duration="478000" />
       <workItem from="1713040672614" duration="6152000" />
-      <workItem from="1713186905366" duration="11137000" />
+      <workItem from="1713186905366" duration="12654000" />
+      <workItem from="1713273158757" duration="4860000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -203,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713258896756</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Modificato file db.sql">
+      <option name="closed" value="true" />
+      <created>1713273114488</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713273114488</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +273,7 @@
     <MESSAGE value="modifica tabella MATERIE con aggiunta campo prezzo" />
     <MESSAGE value="Configurazione server http" />
     <MESSAGE value="Ultime modifiche" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ultime modifiche" />
+    <MESSAGE value="Modificato file db.sql" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modificato file db.sql" />
   </component>
 </project>

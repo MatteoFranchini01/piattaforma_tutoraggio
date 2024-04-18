@@ -5,92 +5,160 @@
       <DefaultCasing>mixed/mixed</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
-      <Grants>|root||root|localhost|ALLOW_NONEXISTENT_DEFINER|G
+      <Grants>|root||matteo|localhost|ALLOW_NONEXISTENT_DEFINER|G
+|root||root|localhost|ALLOW_NONEXISTENT_DEFINER|G
+|root||matteo|localhost|ALTER|G
 |root||root|localhost|ALTER|G
+|root||matteo|localhost|ALTER ROUTINE|G
 |root||root|localhost|ALTER ROUTINE|G
+|root||matteo|localhost|APPLICATION_PASSWORD_ADMIN|G
 |root||root|localhost|APPLICATION_PASSWORD_ADMIN|G
+|root||matteo|localhost|AUDIT_ABORT_EXEMPT|G
 |root||mysql.infoschema|localhost|AUDIT_ABORT_EXEMPT|G
 |root||mysql.session|localhost|AUDIT_ABORT_EXEMPT|G
 |root||mysql.sys|localhost|AUDIT_ABORT_EXEMPT|G
 |root||root|localhost|AUDIT_ABORT_EXEMPT|G
+|root||matteo|localhost|AUDIT_ADMIN|G
 |root||root|localhost|AUDIT_ADMIN|G
+|root||matteo|localhost|AUTHENTICATION_POLICY_ADMIN|G
 |root||mysql.session|localhost|AUTHENTICATION_POLICY_ADMIN|G
 |root||root|localhost|AUTHENTICATION_POLICY_ADMIN|G
+|root||matteo|localhost|BACKUP_ADMIN|G
 |root||mysql.session|localhost|BACKUP_ADMIN|G
 |root||root|localhost|BACKUP_ADMIN|G
+|root||matteo|localhost|BINLOG_ADMIN|G
 |root||root|localhost|BINLOG_ADMIN|G
+|root||matteo|localhost|BINLOG_ENCRYPTION_ADMIN|G
 |root||root|localhost|BINLOG_ENCRYPTION_ADMIN|G
+|root||matteo|localhost|CLONE_ADMIN|G
 |root||mysql.session|localhost|CLONE_ADMIN|G
 |root||root|localhost|CLONE_ADMIN|G
+|root||matteo|localhost|CONNECTION_ADMIN|G
 |root||mysql.session|localhost|CONNECTION_ADMIN|G
 |root||root|localhost|CONNECTION_ADMIN|G
+|root||matteo|localhost|CREATE|G
 |root||root|localhost|CREATE|G
+|root||matteo|localhost|CREATE ROLE|G
 |root||root|localhost|CREATE ROLE|G
+|root||matteo|localhost|CREATE ROUTINE|G
 |root||root|localhost|CREATE ROUTINE|G
+|root||matteo|localhost|CREATE TABLESPACE|G
 |root||root|localhost|CREATE TABLESPACE|G
+|root||matteo|localhost|CREATE TEMPORARY TABLES|G
 |root||root|localhost|CREATE TEMPORARY TABLES|G
+|root||matteo|localhost|CREATE USER|G
 |root||root|localhost|CREATE USER|G
+|root||matteo|localhost|CREATE VIEW|G
 |root||root|localhost|CREATE VIEW|G
+|root||matteo|localhost|DELETE|G
 |root||root|localhost|DELETE|G
+|root||matteo|localhost|DROP|G
 |root||root|localhost|DROP|G
+|root||matteo|localhost|DROP ROLE|G
 |root||root|localhost|DROP ROLE|G
+|root||matteo|localhost|ENCRYPTION_KEY_ADMIN|G
 |root||root|localhost|ENCRYPTION_KEY_ADMIN|G
+|root||matteo|localhost|EVENT|G
 |root||root|localhost|EVENT|G
+|root||matteo|localhost|EXECUTE|G
 |root||root|localhost|EXECUTE|G
+|root||matteo|localhost|FILE|G
 |root||root|localhost|FILE|G
+|root||matteo|localhost|FIREWALL_EXEMPT|G
 |root||mysql.infoschema|localhost|FIREWALL_EXEMPT|G
 |root||mysql.session|localhost|FIREWALL_EXEMPT|G
 |root||mysql.sys|localhost|FIREWALL_EXEMPT|G
 |root||root|localhost|FIREWALL_EXEMPT|G
+|root||matteo|localhost|FLUSH_OPTIMIZER_COSTS|G
 |root||root|localhost|FLUSH_OPTIMIZER_COSTS|G
+|root||matteo|localhost|FLUSH_STATUS|G
 |root||root|localhost|FLUSH_STATUS|G
+|root||matteo|localhost|FLUSH_TABLES|G
 |root||root|localhost|FLUSH_TABLES|G
+|root||matteo|localhost|FLUSH_USER_RESOURCES|G
 |root||root|localhost|FLUSH_USER_RESOURCES|G
+|root||matteo|localhost|GROUP_REPLICATION_ADMIN|G
 |root||root|localhost|GROUP_REPLICATION_ADMIN|G
+|root||matteo|localhost|GROUP_REPLICATION_STREAM|G
 |root||root|localhost|GROUP_REPLICATION_STREAM|G
+|root||matteo|localhost|INDEX|G
 |root||root|localhost|INDEX|G
+|root||matteo|localhost|INNODB_REDO_LOG_ARCHIVE|G
 |root||root|localhost|INNODB_REDO_LOG_ARCHIVE|G
+|root||matteo|localhost|INNODB_REDO_LOG_ENABLE|G
 |root||root|localhost|INNODB_REDO_LOG_ENABLE|G
+|root||matteo|localhost|INSERT|G
 |root||root|localhost|INSERT|G
+|root||matteo|localhost|LOCK TABLES|G
 |root||root|localhost|LOCK TABLES|G
+|root||matteo|localhost|PASSWORDLESS_USER_ADMIN|G
 |root||root|localhost|PASSWORDLESS_USER_ADMIN|G
+|root||matteo|localhost|PERSIST_RO_VARIABLES_ADMIN|G
 |root||mysql.session|localhost|PERSIST_RO_VARIABLES_ADMIN|G
 |root||root|localhost|PERSIST_RO_VARIABLES_ADMIN|G
+|root||matteo|localhost|PROCESS|G
 |root||root|localhost|PROCESS|G
+|root||matteo|localhost|REFERENCES|G
 |root||root|localhost|REFERENCES|G
+|root||matteo|localhost|RELOAD|G
 |root||root|localhost|RELOAD|G
+|root||matteo|localhost|REPLICATION CLIENT|G
 |root||root|localhost|REPLICATION CLIENT|G
+|root||matteo|localhost|REPLICATION SLAVE|G
 |root||root|localhost|REPLICATION SLAVE|G
+|root||matteo|localhost|REPLICATION_APPLIER|G
 |root||root|localhost|REPLICATION_APPLIER|G
+|root||matteo|localhost|REPLICATION_SLAVE_ADMIN|G
 |root||root|localhost|REPLICATION_SLAVE_ADMIN|G
+|root||matteo|localhost|RESOURCE_GROUP_ADMIN|G
 |root||root|localhost|RESOURCE_GROUP_ADMIN|G
+|root||matteo|localhost|RESOURCE_GROUP_USER|G
 |root||root|localhost|RESOURCE_GROUP_USER|G
+|root||matteo|localhost|ROLE_ADMIN|G
 |root||root|localhost|ROLE_ADMIN|G
+|root||matteo|localhost|SELECT|G
 |root||mysql.infoschema|localhost|SELECT|G
 |root||root|localhost|SELECT|G
+|root||matteo|localhost|SENSITIVE_VARIABLES_OBSERVER|G
 |root||root|localhost|SENSITIVE_VARIABLES_OBSERVER|G
+|root||matteo|localhost|SERVICE_CONNECTION_ADMIN|G
 |root||root|localhost|SERVICE_CONNECTION_ADMIN|G
+|root||matteo|localhost|SESSION_VARIABLES_ADMIN|G
 |root||mysql.session|localhost|SESSION_VARIABLES_ADMIN|G
 |root||root|localhost|SESSION_VARIABLES_ADMIN|G
+|root||matteo|localhost|SET_ANY_DEFINER|G
 |root||root|localhost|SET_ANY_DEFINER|G
+|root||matteo|localhost|SHOW DATABASES|G
 |root||root|localhost|SHOW DATABASES|G
+|root||matteo|localhost|SHOW VIEW|G
 |root||root|localhost|SHOW VIEW|G
+|root||matteo|localhost|SHOW_ROUTINE|G
 |root||root|localhost|SHOW_ROUTINE|G
+|root||matteo|localhost|SHUTDOWN|G
 |root||mysql.session|localhost|SHUTDOWN|G
 |root||root|localhost|SHUTDOWN|G
+|root||matteo|localhost|SUPER|G
 |root||mysql.session|localhost|SUPER|G
 |root||root|localhost|SUPER|G
+|root||matteo|localhost|SYSTEM_USER|G
 |root||mysql.infoschema|localhost|SYSTEM_USER|G
 |root||mysql.session|localhost|SYSTEM_USER|G
 |root||mysql.sys|localhost|SYSTEM_USER|G
 |root||root|localhost|SYSTEM_USER|G
+|root||matteo|localhost|SYSTEM_VARIABLES_ADMIN|G
 |root||mysql.session|localhost|SYSTEM_VARIABLES_ADMIN|G
 |root||root|localhost|SYSTEM_VARIABLES_ADMIN|G
+|root||matteo|localhost|TABLE_ENCRYPTION_ADMIN|G
 |root||root|localhost|TABLE_ENCRYPTION_ADMIN|G
+|root||matteo|localhost|TELEMETRY_LOG_ADMIN|G
 |root||root|localhost|TELEMETRY_LOG_ADMIN|G
+|root||matteo|localhost|TRANSACTION_GTID_TAG|G
 |root||root|localhost|TRANSACTION_GTID_TAG|G
+|root||matteo|localhost|TRIGGER|G
 |root||root|localhost|TRIGGER|G
+|root||matteo|localhost|UPDATE|G
 |root||root|localhost|UPDATE|G
+|root||matteo|localhost|XA_RECOVER_ADMIN|G
 |root||root|localhost|XA_RECOVER_ADMIN|G
 |root||root|localhost|grant option|G
 performance_schema|schema||mysql.session|localhost|SELECT|G
@@ -997,7 +1065,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Charset>utf8mb4</Charset>
     </collation>
     <schema id="288" parent="1" name="db_piattaforma">
-      <LastIntrospectionLocalTimestamp>2024-04-16.13:09:16</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-04-18.20:51:45</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="289" parent="1" name="information_schema">
@@ -1012,277 +1080,281 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <schema id="292" parent="1" name="sys">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <user id="293" parent="1" name="mysql.infoschema">
+    <user id="293" parent="1" name="matteo">
+      <Host>localhost</Host>
+      <Plugin>caching_sha2_password</Plugin>
+    </user>
+    <user id="294" parent="1" name="mysql.infoschema">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="294" parent="1" name="mysql.session">
+    <user id="295" parent="1" name="mysql.session">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="295" parent="1" name="mysql.sys">
+    <user id="296" parent="1" name="mysql.sys">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="296" parent="1" name="root">
+    <user id="297" parent="1" name="root">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <table id="297" parent="288" name="Discente">
+    <table id="298" parent="288" name="Discente">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="298" parent="288" name="Lezioni">
+    <table id="299" parent="288" name="Lezioni">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="299" parent="288" name="Materie">
+    <table id="300" parent="288" name="Materie">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="300" parent="288" name="RUOLI">
+    <table id="301" parent="288" name="RUOLI">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="301" parent="288" name="Tutor">
+    <table id="302" parent="288" name="Tutor">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="302" parent="288" name="Utenti">
+    <table id="303" parent="288" name="Utenti">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="303" parent="297" name="ID_DISCENTE">
+    <column id="304" parent="298" name="ID_DISCENTE">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="304" parent="297" name="NOME">
+    <column id="305" parent="298" name="NOME">
       <DasType>char(1)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="305" parent="297" name="COGNOME">
+    <column id="306" parent="298" name="COGNOME">
       <DasType>char(1)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="306" parent="297" name="ID">
+    <column id="307" parent="298" name="ID">
       <DasType>int|0s</DasType>
       <Position>4</Position>
     </column>
-    <foreign-key id="307" parent="297" name="Discente_Utenti_ID_fk">
+    <foreign-key id="308" parent="298" name="Discente_Utenti_ID_fk">
       <ColNames>ID</ColNames>
       <RefColNames>ID</RefColNames>
       <RefTableName>Utenti</RefTableName>
     </foreign-key>
-    <index id="308" parent="297" name="PRIMARY">
+    <index id="309" parent="298" name="PRIMARY">
       <ColNames>ID_DISCENTE</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="309" parent="297" name="Discente_Utenti_ID_fk">
+    <index id="310" parent="298" name="Discente_Utenti_ID_fk">
       <ColNames>ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="310" parent="297" name="PRIMARY">
+    <key id="311" parent="298" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="311" parent="298" name="ID_LEZ">
+    <column id="312" parent="299" name="ID_LEZ">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="312" parent="298" name="ID_TUTOR">
+    <column id="313" parent="299" name="ID_TUTOR">
       <DasType>int|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="313" parent="298" name="ID_DISCENTE">
+    <column id="314" parent="299" name="ID_DISCENTE">
       <DasType>int|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="314" parent="298" name="ID_MATERIA">
+    <column id="315" parent="299" name="ID_MATERIA">
       <DasType>int|0s</DasType>
       <Position>4</Position>
     </column>
-    <foreign-key id="315" parent="298" name="Lezioni_Tutor_ID_TUTOR_fk">
+    <foreign-key id="316" parent="299" name="Lezioni_Tutor_ID_TUTOR_fk">
       <ColNames>ID_TUTOR</ColNames>
       <RefColNames>ID_TUTOR</RefColNames>
       <RefTableName>Tutor</RefTableName>
     </foreign-key>
-    <foreign-key id="316" parent="298" name="Lezioni_Discente_ID_DISCENTE_fk">
+    <foreign-key id="317" parent="299" name="Lezioni_Discente_ID_DISCENTE_fk">
       <ColNames>ID_DISCENTE</ColNames>
       <RefColNames>ID_DISCENTE</RefColNames>
       <RefTableName>Discente</RefTableName>
     </foreign-key>
-    <foreign-key id="317" parent="298" name="Lezioni_Materie_ID_fk">
+    <foreign-key id="318" parent="299" name="Lezioni_Materie_ID_fk">
       <ColNames>ID_MATERIA</ColNames>
       <RefColNames>ID</RefColNames>
       <RefTableName>Materie</RefTableName>
     </foreign-key>
-    <index id="318" parent="298" name="PRIMARY">
+    <index id="319" parent="299" name="PRIMARY">
       <ColNames>ID_LEZ</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="319" parent="298" name="Lezioni_Tutor_ID_TUTOR_fk">
+    <index id="320" parent="299" name="Lezioni_Tutor_ID_TUTOR_fk">
       <ColNames>ID_TUTOR</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="320" parent="298" name="Lezioni_Discente_ID_DISCENTE_fk">
+    <index id="321" parent="299" name="Lezioni_Discente_ID_DISCENTE_fk">
       <ColNames>ID_DISCENTE</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="321" parent="298" name="Lezioni_Materie_ID_fk">
+    <index id="322" parent="299" name="Lezioni_Materie_ID_fk">
       <ColNames>ID_MATERIA</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="322" parent="298" name="PRIMARY">
+    <key id="323" parent="299" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="323" parent="299" name="ID">
+    <column id="324" parent="300" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="324" parent="299" name="NOME">
+    <column id="325" parent="300" name="NOME">
       <DasType>char(1)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="325" parent="299" name="TUTOR_ID">
+    <column id="326" parent="300" name="TUTOR_ID">
       <DasType>int|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="326" parent="299" name="PREZZO">
+    <column id="327" parent="300" name="PREZZO">
       <DasType>int|0s</DasType>
       <Position>4</Position>
     </column>
-    <foreign-key id="327" parent="299" name="Materie_Tutor_ID_TUTOR_fk">
+    <foreign-key id="328" parent="300" name="Materie_Tutor_ID_TUTOR_fk">
       <ColNames>TUTOR_ID</ColNames>
       <RefColNames>ID_TUTOR</RefColNames>
       <RefTableName>Tutor</RefTableName>
     </foreign-key>
-    <index id="328" parent="299" name="PRIMARY">
+    <index id="329" parent="300" name="PRIMARY">
       <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="329" parent="299" name="Materie_Tutor_ID_TUTOR_fk">
+    <index id="330" parent="300" name="Materie_Tutor_ID_TUTOR_fk">
       <ColNames>TUTOR_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="330" parent="299" name="PRIMARY">
+    <key id="331" parent="300" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="331" parent="300" name="ID">
+    <column id="332" parent="301" name="ID">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="332" parent="300" name="RUOLO_DESC">
+    <column id="333" parent="301" name="RUOLO_DESC">
       <DasType>char(1)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <index id="333" parent="300" name="PRIMARY">
+    <index id="334" parent="301" name="PRIMARY">
       <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="334" parent="300" name="PRIMARY">
+    <key id="335" parent="301" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="335" parent="301" name="ID">
+    <column id="336" parent="302" name="ID">
       <DasType>int|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="336" parent="301" name="NOME">
+    <column id="337" parent="302" name="NOME">
       <DasType>char(1)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="337" parent="301" name="COGNOME">
+    <column id="338" parent="302" name="COGNOME">
       <DasType>char(1)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="338" parent="301" name="LUOGO">
+    <column id="339" parent="302" name="LUOGO">
       <DasType>char(1)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="339" parent="301" name="ID_TUTOR">
+    <column id="340" parent="302" name="ID_TUTOR">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <foreign-key id="340" parent="301" name="Tutor_Utenti_ID_fk">
+    <foreign-key id="341" parent="302" name="Tutor_Utenti_ID_fk">
       <ColNames>ID</ColNames>
       <RefColNames>ID</RefColNames>
       <RefTableName>Utenti</RefTableName>
     </foreign-key>
-    <index id="341" parent="301" name="PRIMARY">
+    <index id="342" parent="302" name="PRIMARY">
       <ColNames>ID_TUTOR</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="342" parent="301" name="Tutor_Utenti_ID_fk">
+    <index id="343" parent="302" name="Tutor_Utenti_ID_fk">
       <ColNames>ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="343" parent="301" name="PRIMARY">
+    <key id="344" parent="302" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="344" parent="302" name="ID">
+    <column id="345" parent="303" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="345" parent="302" name="NOME">
+    <column id="346" parent="303" name="NOME">
       <DasType>char(1)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="346" parent="302" name="COGNOME">
+    <column id="347" parent="303" name="COGNOME">
       <DasType>char(1)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="347" parent="302" name="PRIVILEGI">
+    <column id="348" parent="303" name="PRIVILEGI">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <foreign-key id="348" parent="302" name="Utenti_RUOLI_ID_fk">
+    <foreign-key id="349" parent="303" name="Utenti_RUOLI_ID_fk">
       <ColNames>PRIVILEGI</ColNames>
       <RefColNames>ID</RefColNames>
       <RefTableName>RUOLI</RefTableName>
     </foreign-key>
-    <index id="349" parent="302" name="PRIMARY">
+    <index id="350" parent="303" name="PRIMARY">
       <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="350" parent="302" name="Utenti_RUOLI_ID_fk">
+    <index id="351" parent="303" name="Utenti_RUOLI_ID_fk">
       <ColNames>PRIVILEGI</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="351" parent="302" name="PRIMARY">
+    <key id="352" parent="303" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

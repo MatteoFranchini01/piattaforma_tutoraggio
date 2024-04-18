@@ -1,25 +1,28 @@
 const http = require('http');
-let mysql = require('mysql');
+let mysql = require('mysql2');
 
 let connection = mysql.createConnection({
-    host: 'dbc:h2:/Users/matteofranchini/Documents/GitHub/piattaforma_tutoraggio/db',
-    database: 'h2',
-});
+    host: 'localhost',
+    user: 'matteo',
+    password: 'password',
+    database: 'db_piattaforma',
+})
 
 connection.connect();
 
-let queryString = 'SELECT * FROM RUOLI';
+let queryString = 'SELECT * FROM UTENTI';
 
-connection.query(queryString, function (err, result) {
-    if (err) {
-        throw err;
-    }
+connection.query(queryString, function (err, result, filed) {
+    if (err) throw err;
+
+    console.log("Executed query: ", result);
 
     for (let i in result) {
         console.log(result[i]);
     }
 })
 
+connection.end();
 
 const cards = [
     {id: 0, nome: "Matematica", prezzo: 20},
@@ -63,4 +66,3 @@ const routes = [
 ];
 
 createServer(routes);
-

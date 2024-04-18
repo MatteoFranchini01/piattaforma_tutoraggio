@@ -24,7 +24,7 @@
       </database-info>
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
+      <user-name>matteo</user-name>
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
