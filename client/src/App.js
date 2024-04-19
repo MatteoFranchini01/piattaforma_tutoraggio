@@ -10,19 +10,18 @@ class App extends Component {
         };
     }
 
+    /*
     async componentDidMount() {
         const response = await fetch('/cards');
         const data = await response.json();
         this.setState({ cards: data });
-    }
+    }*/
 
     render() {
         return (
             <>
                 <Navbar/>
                 <div className='container'>
-                    <h1>Title</h1>
-                    <hr/>
                     <div className='row'>
                         {this.state.cards.map((card, index) => (
                             <Card
