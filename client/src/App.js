@@ -1,6 +1,9 @@
-import Navbar from "./Components/navbar";
-import Card from "./Components/card";
-import {Component, useEffect, useState} from "react";
+import React, { Component, useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import MainTemplate from "./components/mainLayout/template/mainTemplate";
+import Home from "./components/home/home.js";
+import Header from "./components/mainLayout/header/header";
+import Footer from "./components/mainLayout/footer/footer";
 
 class App extends Component {
     constructor(props) {
@@ -10,13 +13,38 @@ class App extends Component {
         };
     }
 
+    render() {
+        return(
+            <>
+                <MainTemplate >
+                    <Home />
+                </MainTemplate>
+            </>
+        );
+    }
+
+    /*
+    * render() {
+
+      return (
+         <BrowserRouter>
+            <MainTemplate>
+               <Routes>
+                   <Route exact path='/' component={Home}/>
+               </Routes>
+            </MainTemplate>
+         </BrowserRouter>
+      );
+   }
+   * */
+
     /*
     async componentDidMount() {
         const response = await fetch('/cards');
         const data = await response.json();
         this.setState({ cards: data });
     }*/
-
+    /*
     render() {
         return (
             <>
@@ -34,7 +62,7 @@ class App extends Component {
                 </div>
             </>
         );
-    }
+    }*/
 }
 
 export default App;
