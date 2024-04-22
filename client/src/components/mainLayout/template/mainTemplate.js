@@ -7,11 +7,11 @@ export default class MainTemplate extends React.Component{
     }
     render(){
         return(
-            <div>
+            <>
                 <Header/>
                 {this.props.children}
                 <Footer/>
-            </div>
+            </>
         );
     }
 }

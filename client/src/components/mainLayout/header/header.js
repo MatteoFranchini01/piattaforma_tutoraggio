@@ -1,5 +1,8 @@
 import React from "react";
-export default class Header extends React.Component{
+import headerCss from "../../../css/header.css";
+import logo from "../../../images/logo.png";
+
+class Header extends React.Component{
     constructor(props){
         super(props);
     }
@@ -7,7 +10,10 @@ export default class Header extends React.Component{
         return (
             <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{backgroundColor: "#ECEFF1", position:"fixed", width:"100%"}}>
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Piattaforma tutoraggio</a>
+                    <a className="navbar-brand" href="#">
+                        <img src={logo} className="logo-image m-lg-3"></img>
+                        Piattaforma tutoraggio
+                    </a>
                     <div className="vr"></div>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul className="navbar-nav me-auto mb-3 mb-lg-0 p-lg-1">
@@ -31,10 +37,14 @@ export default class Header extends React.Component{
                                 </ul>
                             </li>
                         </ul>
-                        <button className="btn btn-outline-primary" type="submit">Login</button>
+                        <form action="#">
+                            <button className="btn btn-outline-primary" type="button">Login</button>
+                        </form>
                     </div>
                 </div>
             </nav>
         );
     }
 }
+
+export default Header;

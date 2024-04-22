@@ -7,7 +7,7 @@ export default class Footer extends React.Component{
         return(
                 <footer
                     className="text-center text-lg-start text-dark"
-                    style={{backgroundColor: "#ECEFF1", width:"100%"}}
+                    style={{backgroundColor: "#ECEFF1"}}
                 >
                 <section className="" style={{backgroundColor: "#ECEFF1"}}>
                     <div className="container text-center text-md-start">
@@ -71,7 +71,7 @@ export default class Footer extends React.Component{
                                     style={{width: "60px", backgroundColor: "#7c4dff", height: "2px"}}
                                 />
                                 <p><i className="fas fa-home mr-3"></i> Parma, Italia</p>
-                                <p><i className="fas fa-envelope mr-3"></i> info@mail.com</p>
+                                <p><i className="fas fa-envelope mr-3"></i> info@mails.com</p>
                                 <p><i className="fas fa-phone mr-3"></i> + 39 333 748 1384 </p>
                                 <p><i className="fas fa-print mr-3"></i> + 39 335 213 3249 </p>
                             </div>
@@ -82,10 +82,7 @@ export default class Footer extends React.Component{
                     className="text-center p-3"
                     style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}
                 >
-                    © 2020 Copyright:
-                    <a className="text-dark" href="https://mdbootstrap.com/"
-                    >MDBootstrap.com</a
-                    >
+                    © 2024 Copyright
                 </div>
                 </footer>
         );

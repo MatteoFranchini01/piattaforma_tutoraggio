@@ -1,0 +1,50 @@
+.main-container{
+    height: auto;
+    padding: 100px 50px 0 50px;
+}
+
+.presentation{
+    height: auto;
+    width: 100%;
+
+}
+
+.box{
+    width: 100%;
+    padding-top: 100px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    display: inline-block;
+    vertical-align: top;
+}
+.presentation-box {
+    height: 500px;
+    width: 50%;
+}
+
+.image-box {
+    height: 500px;
+    width: 50%;
+}
+
+.title{
+    padding-top: 10px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.presentation-paragraph{
+    padding-top: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.subject-title{
+    padding-top: 50px;
+    text-align: center;
+}
+
+.layout-cards{
+    padding: 50px 20% 50px 20%;
+    display: flex;
+}
