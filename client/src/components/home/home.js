@@ -1,6 +1,8 @@
 import React from "react";
 import homeCss from "../../css/home.css"
 import Card from "../mainLayout/template/card"
+import mainImg from "../../images/home.png"
+import HowToStartCard from "../mainLayout/template/howToStartCard";
 
 export default class Home extends React.Component{
     constructor(props){
@@ -8,8 +10,8 @@ export default class Home extends React.Component{
     }
     render(){
         return(
-            <div className="main-container">
-                <div className="presentation">
+            <>
+                <section className="presentation">
                     <div className="box presentation-box">
                         <h2 className="title">Piattaforma tutoraggio</h2>
                         <p className="presentation-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -20,23 +22,51 @@ export default class Home extends React.Component{
                             quam lectus venenatis dui, a dictum elit elit at augue. Donec eget cursus eros.</p>
                     </div>
                     <div className="box image-box">
-                        <p style={{textAlign: "center"}}>logo</p>
+                        <img alt="mainImg_logo" src={mainImg}></img>
                     </div>
-                </div>
-                <div className="varie">
+                </section>
 
-                </div>
-                <div className="cards">
-                    <h2 className="subject-title">le materie richieste</h2>
-                    <div className="layout-cards">
-                        <Card></Card>
-                        <Card></Card>
-                        <Card></Card>
-                        <Card></Card>
+                <section className="section section-primary howToStartSection">
+                    <div className="section-content">
+                        <div className="container white-color">
+                            <div className="row mb-3">
+                                <div className="col-12">
+                                    <h2 className="h2-title">come iniziare</h2>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <HowToStartCard
+                                    number={1}
+                                    what={"cosa fare"}
+                                    how={"come farlo"}
+                                />
 
+                                <HowToStartCard
+                                    number={2}
+                                    what={"cosa fare"}
+                                    how={"come farlo"}
+                                />
+                                <HowToStartCard
+                                    number={3}
+                                    what={"cosa fare"}
+                                    how={"come farlo"}
+                                />
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </section>
+
+                <section className="cards">
+                    <h2 className="h2-title">le materie richieste</h2>
+                    <div className="row p-5">
+                        <Card></Card>
+                        <Card></Card>
+                        <Card></Card>
+                        <Card></Card>
+                        <Card></Card>
+                    </div>
+                </section>
+            </>
         );
     }
 }

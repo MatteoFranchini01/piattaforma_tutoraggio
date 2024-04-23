@@ -3,28 +3,31 @@
     padding: 100px 50px 0 50px;
 }
 
+.varie{
+    height: 1000px;
+}
+
 .presentation{
     height: auto;
     width: 100%;
-
+    padding: 100px 50px 0 50px;
 }
 
 .box{
     width: 100%;
     padding-top: 100px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
     display: inline-block;
     vertical-align: top;
 }
 .presentation-box {
-    height: 500px;
-    width: 50%;
+    height: auto;
+    width: 60%;
 }
 
 .image-box {
-    height: 500px;
-    width: 50%;
+    padding: 0;
+    height: auto;
+    width: 40%;
 }
 
 .title{
@@ -39,7 +42,7 @@
     padding-right: 10%;
 }
 
-.subject-title{
+.h2-title{
     padding-top: 50px;
     text-align: center;
 }
@@ -47,4 +50,15 @@
 .layout-cards{
     padding: 50px 20% 50px 20%;
     display: flex;
+}
+
+.numbers{
+    font-size: 40px;
+    font-weight: bold;
+    color: #52D3C7;
+}
+
+.howToStartSection{
+
+    background-color: rgba(152, 173, 254, 10%);
 }
