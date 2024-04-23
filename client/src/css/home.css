@@ -3,31 +3,33 @@
     padding: 100px 50px 0 50px;
 }
 
-.varie{
-    height: 1000px;
-}
-
 .presentation{
     height: auto;
     width: 100%;
-    padding: 100px 50px 0 50px;
+    padding: 150px 50px 150px 50px;
 }
 
 .box{
     width: 100%;
-    padding-top: 100px;
+    padding-top: 75px;
     display: inline-block;
     vertical-align: top;
 }
 .presentation-box {
-    height: auto;
-    width: 60%;
+    height: 500px;
+    width: 70%;
 }
 
 .image-box {
+    height: 500px;
+    width: 500px;
+}
+
+.image-box img{
     padding: 0;
-    height: auto;
-    width: 40%;
+    width: 100%;
+    height: 100%;
+
 }
 
 .title{
@@ -55,10 +57,20 @@
 .numbers{
     font-size: 40px;
     font-weight: bold;
-    color: #52D3C7;
+    color: rgba(152, 173, 254);
 }
 
 .howToStartSection{
-
     background-color: rgba(152, 173, 254, 10%);
+    z-index: 1;
+}
+
+section{
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
 }

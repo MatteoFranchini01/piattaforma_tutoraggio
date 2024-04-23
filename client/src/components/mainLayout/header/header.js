@@ -8,7 +8,7 @@ class Header extends React.Component{
     }
     render(){
         return (
-            <nav className="navbar navbar-expand-lg" style={{backgroundColor: "rgba(244, 244, 244)", position:"fixed", width:"100%"}}>
+            <nav className="navbar navbar-expand-lg" style={{backgroundColor: "rgba(244, 244, 244)", position:"fixed", width:"100%", zIndex:"100"}}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <img src={logo} className="logo-image m-lg-3"></img>

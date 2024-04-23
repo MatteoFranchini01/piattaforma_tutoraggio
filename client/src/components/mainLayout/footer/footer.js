@@ -7,9 +7,8 @@ export default class Footer extends React.Component{
         return(
                 <footer
                     className="text-center text-lg-start text-dark"
-                    style={{backgroundColor: "#ECEFF1"}}
                 >
-                <section className="" style={{backgroundColor: "#ECEFF1"}}>
+                <section className="" style={{backgroundColor: "rgba(244, 244, 244)"}}>
                     <div className="container text-center text-md-start">
                         <div className="row pt-4">
                             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
