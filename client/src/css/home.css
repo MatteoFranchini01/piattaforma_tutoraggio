@@ -4,9 +4,9 @@
 }
 
 .presentation{
-    height: auto;
+    height: 750px;
     width: 100%;
-    padding: 150px 50px 150px 50px;
+    padding: 150px 50px 125px 50px;
 }
 
 .box{
@@ -74,4 +74,14 @@ section{
 .row{
     display: flex;
     justify-content: center;
+}
+
+.questions{
+    padding-left: 100px;
+    padding-right: 100px;
+    justify-content: center;
+}
+
+.accordion{
+    padding-top: 50px;
 }

@@ -3,6 +3,7 @@ import homeCss from "../../css/home.css"
 import Card from "../mainLayout/template/card"
 import mainImg from "../../images/home.png"
 import HowToStartCard from "../mainLayout/template/howToStartCard";
+import Accordion from "../mainLayout/template/accordion";
 
 export default class Home extends React.Component{
     constructor(props){
@@ -66,7 +67,17 @@ export default class Home extends React.Component{
                         <Card></Card>
                     </div>
                 </section>
+
+                <section className="questions">
+                    <h2 className="h2-title">le domande frequenti</h2>
+                    <div className="accordion" id="accordionExample">
+                        <Accordion id={1} title={"Domanda 1"} answer={"risposta 1"} />
+                        <Accordion id={2} title={"Domanda 2"} answer={"risposta 2"} />
+                        <Accordion id={3} title={"Domanda 3"} answer={"risposta 3"} />
+                        <Accordion id={4} title={"Domanda 4"} answer={"risposta 4"} />
+                    </div>
+                </section>
             </>
-        );
+    );
     }
-}
+    }
