@@ -17,10 +17,11 @@
 }
 .presentation-box {
     height: 500px;
-    width: 70%;
+    width: 60%;
 }
 
 .image-box {
+    padding: 0;
     height: 500px;
     width: 500px;
 }
