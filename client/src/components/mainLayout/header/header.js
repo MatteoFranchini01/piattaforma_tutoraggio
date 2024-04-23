@@ -1,6 +1,6 @@
 import React from "react";
 import headerCss from "../../../css/header.css";
-import logo from "../../../images/logo.png";
+import logo from "../../../images/webSiteLogo.png";
 
 class Header extends React.Component{
     constructor(props){
