@@ -4,9 +4,9 @@
 }
 
 .presentation{
-    height: 750px;
+    height: auto;
     width: 100%;
-    padding: 150px 50px 125px 50px;
+    padding-top: 150px;
 }
 
 .box{
@@ -15,6 +15,7 @@
     display: inline-block;
     vertical-align: top;
 }
+
 .presentation-box {
     height: 500px;
     width: 60%;
@@ -67,8 +68,11 @@
 }
 
 section{
-    padding-top: 50px;
-    padding-bottom: 100px;
+    padding: 25px 50px 50px 25px;
+}
+
+.cards{
+    padding: 25px 50px 25px 25px;
 }
 
 .row{
@@ -77,11 +81,75 @@ section{
 }
 
 .questions{
-    padding-left: 100px;
-    padding-right: 100px;
+    align-items: center;
     justify-content: center;
 }
 
 .accordion{
+    width: 800px;
     padding-top: 50px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.basic{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.first{
+    background-color: rgba(152, 173, 254, 20%);
+    width: 50%;
+    height: 100px;
+    margin: 50px;
+    border-radius: 10px;
+}
+
+.second-box{
+    height: 200px;
+    width: 24%;
+    margin-left: 25%;
+    background-color: rgba(105, 181, 174, 20%);
+    border-radius: 10px;
+}
+
+.third-box{
+    height: 200px;
+    width: 24%;
+    margin-right: 25%;
+    background-color: rgba(234, 127, 124, 20%);
+    border-radius: 10px;
+}
+
+.statistics{
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 120px;
+    width: 60%;
+    border: 1px solid #dedede;
+    box-shadow: 10px 10px 5px #dedede;
+
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.numberOfSubjects, .numberOfTeachers, .numberOfStudents{
+    text-align: center;
+    padding-left: 10px;
+    padding-top: 10px;
+    justify-content: center;
+    width: 30%;
+    align-self: center;
 }

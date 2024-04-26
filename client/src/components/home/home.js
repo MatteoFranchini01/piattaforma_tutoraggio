@@ -10,7 +10,7 @@ export default class Home extends React.Component{
         super(props);
     }
     render(){
-        return(
+        return (
             <>
                 <section className="presentation">
                     <div className="box presentation-box">
@@ -25,6 +25,37 @@ export default class Home extends React.Component{
                     <div className="box image-box">
                         <img alt="mainImg_logo" src={mainImg}></img>
                     </div>
+                    <div className="statistics">
+                        <div className="numberOfSubjects">
+                            <h4>#</h4>
+                            <p>Materie disponibili</p>
+                        </div>
+                        <div className="numberOfTeachers">
+                            <h4>#</h4>
+                            <p>Insegnanti disponibili</p>
+                        </div>
+                        <div className="numberOfStudents">
+                            <h4>#</h4>
+                            <p>Studenti iscritti</p>
+                        </div>
+
+
+                    </div>
+                </section>
+
+                <section className="basic">
+                    <h2 className="h2-title">come funziona</h2>
+                    <div className="first">
+                        <p> FIRST </p>
+                    </div>
+                    <div className="box-container">
+                        <div className="box second-box">
+                            <p>prova 3</p>
+                        </div>
+                        <div className="box third-box">
+                            <p>prova 2</p>
+                        </div>
+                    </div>
                 </section>
 
                 <section className="section section-primary howToStartSection">
@@ -38,19 +69,19 @@ export default class Home extends React.Component{
                             <div className="row">
                                 <HowToStartCard
                                     number={1}
-                                    what={"cosa fare"}
-                                    how={"come farlo"}
+                                    what={"Iscriviti!"}
+                                    how={"Clicca sul pulsante in alto a destra nella pagina per iscriverti al nostro sito! Sia nel caso tu sia uno studente, sia nel caso tu voglia diventare insegnante."}
                                 />
 
                                 <HowToStartCard
                                     number={2}
-                                    what={"cosa fare"}
-                                    how={"come farlo"}
+                                    what={"Scegli la materia e scopri tutti gli insegnanti!"}
+                                    how={"Una volta effettuato l'accesso al sito, scegli la materia che vuoi potenziare e scopri tutti i migliori insegnanti."}
                                 />
                                 <HowToStartCard
                                     number={3}
-                                    what={"cosa fare"}
-                                    how={"come farlo"}
+                                    what={"Prenota un orario e via!"}
+                                    how={"Scegli il giorno e l'orario che preferisci in base alle tue esigenze e alla disponibilità dell'insegnate. Dopodichè sarai pronto per la lezione!"}
                                 />
                             </div>
                         </div>
@@ -71,13 +102,13 @@ export default class Home extends React.Component{
                 <section className="questions">
                     <h2 className="h2-title">le domande frequenti</h2>
                     <div className="accordion" id="accordionExample">
-                        <Accordion id={1} title={"Domanda 1"} answer={"risposta 1"} />
-                        <Accordion id={2} title={"Domanda 2"} answer={"risposta 2"} />
-                        <Accordion id={3} title={"Domanda 3"} answer={"risposta 3"} />
-                        <Accordion id={4} title={"Domanda 4"} answer={"risposta 4"} />
+                        <Accordion id={1} title={"Domanda 1"} answer={"risposta 1"}/>
+                        <Accordion id={2} title={"Domanda 2"} answer={"risposta 2"}/>
+                        <Accordion id={3} title={"Domanda 3"} answer={"risposta 3"}/>
+                        <Accordion id={4} title={"Domanda 4"} answer={"risposta 4"}/>
                     </div>
                 </section>
             </>
-    );
+        );
     }
-    }
+}
