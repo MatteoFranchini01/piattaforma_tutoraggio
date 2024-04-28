@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="paragrafi home page">
-      <change afterPath="$PROJECT_DIR$/client/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/home/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/mainLayout/footer/footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/mainLayout/footer/footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/home.css" afterDir="false" />
-    </list>
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="paragrafi home page" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +153,7 @@
       <workItem from="1714141626530" duration="11182000" />
       <workItem from="1714298173584" duration="6262000" />
       <workItem from="1714304612990" duration="658000" />
-      <workItem from="1714319630614" duration="2790000" />
+      <workItem from="1714319630614" duration="3470000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -373,7 +363,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714305247224</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="paragrafi home page">
+      <option name="closed" value="true" />
+      <created>1714322454115</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1714322454115</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
