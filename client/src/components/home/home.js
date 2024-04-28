@@ -27,15 +27,15 @@ export default class Home extends React.Component{
                     </div>
                     <div className="statistics">
                         <div className="numberOfSubjects">
-                            <h4>#</h4>
+                            <h4 className="statisticsTitle">#</h4>
                             <p>Materie disponibili</p>
                         </div>
                         <div className="numberOfTeachers">
-                            <h4>#</h4>
+                            <h4 className="statisticsTitle">#</h4>
                             <p>Insegnanti disponibili</p>
                         </div>
                         <div className="numberOfStudents">
-                            <h4>#</h4>
+                            <h4 className="statisticsTitle">#</h4>
                             <p>Studenti iscritti</p>
                         </div>
 
@@ -46,14 +46,24 @@ export default class Home extends React.Component{
                 <section className="basic">
                     <h2 className="h2-title">come funziona</h2>
                     <div className="first">
-                        <p> FIRST </p>
+                        <h4 className="basic-titles online"> Ripetizioni individuali online</h4>
+                        <p className="basic-paragraph"> Le ripetizioni online individuali offrono un'apprendimento personalizzato, flessibile e interattivo.
+                            Gli studenti ricevono attenzione individuale dagli insegnanti, possono pianificare le lezioni secondo i propri orari e utilizzare strumenti tecnologici avanzati per un apprendimento coinvolgente.
+                            Questo approccio mirato massimizza il potenziale degli studenti e migliora i risultati accademici in modo efficiente. </p>
                     </div>
                     <div className="box-container">
                         <div className="box second-box">
-                            <p>prova 3</p>
+                            <h4 className="basic-titles grade"> Per ogni scuola ed età</h4>
+                            <p className="basic-paragraph">Il nostro servizio di ripetizioni online è adatto a ogni scuola ed età.
+                                <br/>Con insegnanti qualificati, offriamo supporto personalizzato per garantire il successo accademico di ogni studente.</p>
                         </div>
                         <div className="box third-box">
-                            <p>prova 2</p>
+                            <h4 className="basic-titles teachers"> Gli insegnanti</h4>
+                            <p className="basic-paragraph">I nostri insegnanti sono professionisti qualificati
+                                e appassionati, selezionati con cura per garantire un'eccellente esperienza di
+                                apprendimento online.
+                                Con competenza e pazienza, aiuteranno gli studenti a raggiungere i propri
+                                obiettivi accademici.</p>
                         </div>
                     </div>
                 </section>

@@ -31,7 +31,6 @@
     padding: 0;
     width: 100%;
     height: 100%;
-
 }
 
 .title{
@@ -111,13 +110,15 @@ section{
 .first{
     background-color: rgba(152, 173, 254, 20%);
     width: 50%;
-    height: 100px;
+    height: auto;
     margin: 50px;
     border-radius: 10px;
 }
 
 .second-box{
-    height: 200px;
+    padding-top: 0;
+    height: auto;
+    min-height: 250px;
     width: 24%;
     margin-left: 25%;
     background-color: rgba(105, 181, 174, 20%);
@@ -125,7 +126,9 @@ section{
 }
 
 .third-box{
-    height: 200px;
+    padding-top: 0;
+    height: auto;
+    min-height: 250px;
     width: 24%;
     margin-right: 25%;
     background-color: rgba(234, 127, 124, 20%);
@@ -152,4 +155,34 @@ section{
     justify-content: center;
     width: 30%;
     align-self: center;
+}
+
+.statisticsTitle{
+    font-size: 40px;
+    color: rgb(105, 181, 174);
+}
+
+.basic-titles{
+    padding: 30px 30px 15px;
+    margin: 0;
+}
+
+.basic-paragraph{
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    margin: 0;
+
+}
+
+.teachers{
+    color: rgba(234, 127, 124);
+}
+
+.grade{
+    color: rgb(105, 181, 174);
+}
+
+.online{
+    color: rgb(152, 173, 254);
 }
