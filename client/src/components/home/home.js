@@ -14,13 +14,15 @@ export default class Home extends React.Component{
             <>
                 <section className="presentation">
                     <div className="box presentation-box">
-                        <h2 className="title">Piattaforma tutoraggio</h2>
-                        <p className="presentation-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Aenean consectetur venenatis maximus. Nunc lobortis blandit quam, nec efficitur massa
-                            accumsan quis. Cras iaculis lacinia nisl vitae tincidunt. Aliquam hendrerit, tellus laoreet
-                            consectetur dignissim, mauris nulla ultricies elit, ut interdum orci erat a orci. Donec
-                            accumsan condimentum nulla sed pellentesque. Cras facilisis, tellus quis commodo suscipit,
-                            quam lectus venenatis dui, a dictum elit elit at augue. Donec eget cursus eros.</p>
+                        <h2 className="title">Impara qualsiasi cosa ovunque tu sia!</h2>
+                        <p className="presentation-paragraph">
+                            #..nome..# è qui per accompagnare ogni studente nel raggiungimento dei propri obiettivi scolastici.
+                            Grazie al nostro servizio di ripetizioni online, potrai prendere lezioni private da qualsiasi parte del mondo!
+                            <br/> <br/>
+                            <i className="fa fa-check" aria-hidden="true"> Ripetizioni private online</i> <br/>
+                            <i className="fa fa-check" aria-hidden="true"> Insegnanti qualificati</i> <br/>
+                            <i className="fa fa-check" aria-hidden="true"> Tantissime materie tra cui scegliere</i>
+                        </p>
                     </div>
                     <div className="box image-box">
                         <img alt="mainImg_logo" src={mainImg}></img>
@@ -61,7 +63,7 @@ export default class Home extends React.Component{
                             <h4 className="basic-titles teachers"> Gli insegnanti</h4>
                             <p className="basic-paragraph">I nostri insegnanti sono professionisti qualificati
                                 e appassionati, selezionati con cura per garantire un'eccellente esperienza di
-                                apprendimento online.
+                                apprendimento online. <br/>
                                 Con competenza e pazienza, aiuteranno gli studenti a raggiungere i propri
                                 obiettivi accademici.</p>
                         </div>
