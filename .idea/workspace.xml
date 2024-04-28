@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="layout home page">
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="paragrafi home page">
+      <change afterPath="$PROJECT_DIR$/client/public/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/home/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/mainLayout/footer/footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/mainLayout/footer/footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/home.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,11 +95,11 @@
       <recent name="$PROJECT_DIR$/src/Components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/public" />
       <recent name="$PROJECT_DIR$/client/src/components/mainLayout/template" />
       <recent name="$PROJECT_DIR$/client/src/images" />
       <recent name="$PROJECT_DIR$/client/src/utils" />
       <recent name="$PROJECT_DIR$/client/src/components/mainLayout" />
-      <recent name="$PROJECT_DIR$/client/src/css" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start client">
@@ -158,7 +162,8 @@
       <workItem from="1713973850479" duration="1837000" />
       <workItem from="1714141626530" duration="11182000" />
       <workItem from="1714298173584" duration="6262000" />
-      <workItem from="1714304612990" duration="618000" />
+      <workItem from="1714304612990" duration="658000" />
+      <workItem from="1714319630614" duration="2790000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -360,7 +365,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714302688601</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="paragrafi home page">
+      <option name="closed" value="true" />
+      <created>1714305247224</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1714305247224</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,6 +422,7 @@
     <MESSAGE value="modifica file db.sql" />
     <MESSAGE value="modifica struttura base sito e riorganizzazione cartelle" />
     <MESSAGE value="layout home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="layout home page" />
+    <MESSAGE value="paragrafi home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="paragrafi home page" />
   </component>
 </project>

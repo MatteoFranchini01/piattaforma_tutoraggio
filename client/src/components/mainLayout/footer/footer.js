@@ -12,7 +12,7 @@ export default class Footer extends React.Component{
                     <div className="container text-center text-md-start">
                         <div className="row pt-4">
                             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                                <h6 className="text-uppercase fw-bold">Piattaforma tutoraggio</h6>
+                                <h6 className="text-uppercase fw-bold">KnowHow</h6>
                                 <hr
                                     className="mb-4 mt-0 d-inline-block mx-auto"
                                     style={{width:" 60px", backgroundColor: "#7c4dff", height: "2px"}}
@@ -69,10 +69,10 @@ export default class Footer extends React.Component{
                                     className="mb-4 mt-0 d-inline-block mx-auto"
                                     style={{width: "60px", backgroundColor: "#7c4dff", height: "2px"}}
                                 />
-                                <p><i className="fas fa-home mr-3"></i> Parma, Italia</p>
-                                <p><i className="fas fa-envelope mr-3"></i> info@mails.com</p>
-                                <p><i className="fas fa-phone mr-3"></i> + 39 333 748 1384 </p>
-                                <p><i className="fas fa-print mr-3"></i> + 39 335 213 3249 </p>
+                                <p><i className="fa fa-map-marker" aria-hidden="true"></i> Parma, Italia</p>
+                                <p><i className="fa fa-address-card" aria-hidden="true"></i> info@mails.com</p>
+                                <p><i className="fa fa-phone" aria-hidden="true"></i> + 39 333 748 1384 </p>
+                                <p><i className="fa fa-phone" aria-hidden="true"></i> + 39 335 213 3249 </p>
                             </div>
                         </div>
                     </div>

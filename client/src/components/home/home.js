@@ -14,9 +14,9 @@ export default class Home extends React.Component{
             <>
                 <section className="presentation">
                     <div className="box presentation-box">
-                        <h2 className="title">Impara qualsiasi cosa ovunque tu sia!</h2>
+                        <h2 className="title">KnowHow: il tuo partner nell'apprendimento!</h2>
                         <p className="presentation-paragraph">
-                            #..nome..# è qui per accompagnare ogni studente nel raggiungimento dei propri obiettivi scolastici.
+                            KnowHow è qui per accompagnare ogni studente nel raggiungimento dei propri obiettivi scolastici.
                             Grazie al nostro servizio di ripetizioni online, potrai prendere lezioni private da qualsiasi parte del mondo!
                             <br/> <br/>
                             <i className="fa fa-check" aria-hidden="true"> Ripetizioni private online</i> <br/>

@@ -12,7 +12,7 @@ class Header extends React.Component{
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <img src={logo} className="logo-image m-lg-3"></img>
-                        Piattaforma tutoraggio
+                        KnowHow
                     </a>
                     <div className="vr"></div>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
