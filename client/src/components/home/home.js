@@ -123,10 +123,10 @@ export default class Home extends React.Component{
                 <section className="questions">
                     <h2 className="h2-title">Le domande frequenti</h2>
                     <div className="accordion" id="accordionExample">
-                        <Accordion id={1} title={"Domanda 1"} answer={"risposta 1"}/>
-                        <Accordion id={2} title={"Domanda 2"} answer={"risposta 2"}/>
-                        <Accordion id={3} title={"Domanda 3"} answer={"risposta 3"}/>
-                        <Accordion id={4} title={"Domanda 4"} answer={"risposta 4"}/>
+                        <Accordion id={1} title={"Cos'è KnowHow?"} answer={"risposta 1"}/>
+                        <Accordion id={2} title={"A chi è adatto il nostro servizio?"} answer={"risposta 2"}/>
+                        <Accordion id={3} title={"Perché scegliere le ripetizioni online?"} answer={"risposta 3"}/>
+                        <Accordion id={4} title={"Quanto costa una lezione?"} answer={"risposta 4"}/>
                     </div>
                 </section>
             </>
