@@ -204,3 +204,7 @@ i{
     margin: 0 auto;
 }
 
+.tab {
+    display: inline-block;
+    margin-left: 20px;
+}

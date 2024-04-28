@@ -21,9 +21,12 @@ export default class Home extends React.Component{
                             Grazie al nostro servizio di ripetizioni online, potrai prendere lezioni private da
                             qualsiasi parte del mondo!
                             <br/> <br/>
-                            <i className="fa fa-check" aria-hidden="true"> Ripetizioni private online</i> <br/>
-                            <i className="fa fa-check" aria-hidden="true"> Insegnanti qualificati</i> <br/>
-                            <i className="fa fa-check" aria-hidden="true"> Tantissime materie tra cui scegliere</i>
+                            <i className="fa fa-check" aria-hidden="true"><span className="tab"></span>Ripetizioni private
+                                online</i> <br/>
+                            <i className="fa fa-check" aria-hidden="true"><span className="tab"></span>Insegnanti
+                                qualificati</i> <br/>
+                            <i className="fa fa-check" aria-hidden="true"><span className="tab"></span>Tantissime
+                                materie tra cui scegliere</i>
                         </p>
                     </div>
                     <div className="box image-box">

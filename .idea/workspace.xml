@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="paragrafi home page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/home/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/home.css" afterDir="false" />
     </list>
@@ -158,7 +159,7 @@
       <workItem from="1714298173584" duration="6262000" />
       <workItem from="1714304612990" duration="658000" />
       <workItem from="1714319630614" duration="3470000" />
-      <workItem from="1714328930419" duration="2140000" />
+      <workItem from="1714328930419" duration="2392000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -384,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714333218543</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="paragrafi home page">
+      <option name="closed" value="true" />
+      <created>1714335650436</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1714335650436</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
