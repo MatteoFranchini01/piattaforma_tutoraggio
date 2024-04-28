@@ -6,7 +6,7 @@
 .presentation{
     height: auto;
     width: 100%;
-    padding-top: 10%;
+    padding-top: 8%;
 }
 
 .box{
@@ -37,6 +37,7 @@
     padding-top: 10px;
     padding-left: 10%;
     padding-right: 10%;
+    color: rgb(50, 50, 100);
 }
 
 .presentation-paragraph{
@@ -46,8 +47,9 @@
 }
 
 .h2-title{
-    padding-top: 50px;
+    padding-top: 25px;
     text-align: center;
+    color: rgb(50, 50, 100);
 }
 
 .layout-cards{
@@ -196,3 +198,9 @@ section{
 i{
     padding: 10px;
 }
+
+.centered-hr{
+    width: 80%;
+    margin: 0 auto;
+}
+
