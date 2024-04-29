@@ -5,11 +5,12 @@ import mainImg from "../../images/home.png"
 import HowToStartCard from "../mainLayout/template/howToStartCard";
 import Accordion from "../mainLayout/template/accordion";
 
-export default class Home extends React.Component{
+/*export default class Home extends React.Component{
     constructor(props){
         super(props);
     }
-    render(){
+    render(){*/
+export default function Home() {
         return (
             <>
                 <section className="presentation">
@@ -131,5 +132,5 @@ export default class Home extends React.Component{
                 </section>
             </>
         );
-    }
+    //}
 }

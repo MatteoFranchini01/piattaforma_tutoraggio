@@ -1,6 +1,7 @@
 import React from "react";
 import headerCss from "../../../css/header.css";
 import logo from "../../../images/webSiteLogo.png";
+import {Link} from "react-router-dom";
 
 class Header extends React.Component{
     constructor(props){
@@ -8,38 +9,36 @@ class Header extends React.Component{
     }
     render(){
         return (
-            <nav className="navbar navbar-expand-lg" style={{backgroundColor: "rgba(244, 244, 244)", position:"fixed", width:"100%", zIndex:"100"}}>
+            <nav className="navbar fixed-top navbar-expand-lg">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
-                        <img src={logo} className="logo-image m-lg-3"></img>
+                    <Link className="navbar-brand" to="/">
+                        <img alt="logo" src={logo} className="logo-image m-lg-3"></img>
                         KnowHow
-                    </a>
+                    </Link>
                     <div className="vr"></div>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul className="navbar-nav me-auto mb-3 mb-lg-0 p-lg-1">
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Home</a>
+                                <Link className="nav-link" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Il nostro obiettivo</a>
+                                <Link className="nav-link" to="#">Il nostro obiettivo</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Prezzi</a>
+                                <Link className="nav-link" to="#">Prezzi</Link>
                             </li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown"
                                    aria-expanded="false">
                                     Diventare insegnante
-                                </a>
+                                </Link>
                                 <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Requisiti</a></li>
-                                    <li><a className="dropdown-item" href="#">Invia richiesta</a></li>
+                                    <li><Link className="dropdown-item" to="#">Requisiti</Link></li>
+                                    <li><Link className="dropdown-item" to="#">Invia richiesta</Link></li>
                                 </ul>
                             </li>
                         </ul>
-                        <form action="#">
-                            <button className="btn btn-outline-primary" type="button">Login</button>
-                        </form>
+                        <Link className="loginLink" to="/login"> Login </Link>
                     </div>
                 </div>
             </nav>
