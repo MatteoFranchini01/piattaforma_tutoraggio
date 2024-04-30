@@ -49,7 +49,7 @@ create table Tutor
     ID       int  null,
     NOME     char null,
     COGNOME  char null,
-    LUOGO    char null,
+    MAIL     char null,
     ID_TUTOR int  not null
         primary key,
     constraint Tutor_Utenti_ID_fk
