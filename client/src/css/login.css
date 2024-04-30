@@ -11,7 +11,7 @@
 
 .overlay_container{
     background-color: white;
-    position: fixed;
+    position: relative;
     top: 0;
     right: 0;
     bottom: 0;
@@ -20,5 +20,60 @@
     z-index: 10;
     padding: 30px;
     width: 25%;
-    height: 50%;
+    height: 700px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+
+}
+
+.login-title{
+    text-align: center;
+    color: rgb(50, 50, 100);
+    padding: 0;
+}
+
+.btn-login{
+    border: 1px solid rgb(50, 50, 100);
+    border-radius: 100px;
+    background-color: rgb(50, 50, 100);
+    color: white;
+
+    width: 50%;
+
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10%;
+    position: relative;
+}
+
+.btn-login:active{
+    background-color: white;
+    color: rgb(50, 50, 100);
+}
+
+.txt{
+    margin-top: 20%;
+    position: relative;
+}
+
+.pwd{
+    margin-top: 10%;
+    position: relative;
+}
+
+.pwdForgotten{
+    color: rgb(50, 50, 100);
+    position: relative;
+    text-align: center;
+    width: 50%;
+}
+
+.input{
+    padding-bottom: 10%;
+}
+
+.centeredLink{
+    text-align: center;
+    justify-content: center;
 }

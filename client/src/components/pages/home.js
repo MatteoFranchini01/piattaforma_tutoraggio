@@ -18,7 +18,7 @@ export default function Home() {
                         <h2 className="title">KnowHow: il tuo partner nell'apprendimento!</h2>
                         <p className="presentation-paragraph">
                             KnowHow è qui per accompagnare ogni studente nel raggiungimento dei propri obiettivi
-                            scolastici.
+                            scolastici. <br/>
                             Grazie al nostro servizio di ripetizioni online, potrai prendere lezioni private da
                             qualsiasi parte del mondo!
                             <br/> <br/>
