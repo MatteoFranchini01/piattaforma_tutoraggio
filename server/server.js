@@ -99,7 +99,73 @@ function find_user(user_to_find) {
     });
 
     connection.end();
-    return result;
+    return user;
+}
+
+function count_tutor() {
+    connection.connect(
+        console.log("Connected")
+    )
+
+    let tutor_num = 0;
+
+    let queryString = 'SELECT COUNT(*) FROM TUTOR';
+
+    connection.query(queryString, function (err, result, fields) {
+        if (err) throw err;
+
+        console.log("Query executed: ", result);
+
+        tutor_num = result;
+    });
+
+    connection.end();
+
+    return tutor_num;
+}
+
+function count_user() {
+    connection.connect(
+        console.log("Connected")
+    )
+
+    let user_count = 0;
+
+    let queryString = 'SELECT COUNT(*) FROM UTENTI';
+
+    connection.query(queryString, function (err, result, fields) {
+        if (err) throw err;
+
+        console.log("Query executed: ", result);
+
+        user_count = result;
+    });
+
+    connection.end()
+
+    return user_count;
+}
+
+function count_materie() {
+    connection.connect(
+        console.log("Connected")
+    )
+
+    let materie_count = 0;
+
+    let queryString = 'SELECT COUNT(*) FROM MATERIE';
+
+    connection.query(queryString, function (err, result, fields) {
+        if (err) throw err;
+
+        console.log("Query executed: ", result);
+
+        materie_count = result;
+    });
+
+    connection.end()
+
+    return materie_count;
 }
 
 const createServer = (routes) => {
@@ -130,6 +196,33 @@ const routes = [
                 res.setHeader('Content-Type', 'application/json');
                 res.end(JSON.stringify(cards));
             });
+        }
+    },
+    {
+        method: 'GET',
+        path: '/count_tutor',
+        handler: (req, res) => {
+            let result = count_tutor();
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(result));
+        }
+    },
+    {
+        method: 'GET',
+        path: '/count_user',
+        handler: (req, res) => {
+            let result = count_user();
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(result));
+        }
+    },
+    {
+        method: 'GET',
+        path: '/count_materie',
+        handler: (req, res) => {
+            let result = count_materie();
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(result));
         }
     },
     {
