@@ -3,12 +3,14 @@ import headerCss from "../../../css/header.css";
 import logo from "../../../images/webSiteLogo.png";
 import {Link} from "react-router-dom";
 
-class Header extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return (
+import Login from "../../pages/login";
+import Subscribe from "../../pages/subscribe";
+
+function Header (){
+    const [isLoginOverlayOpen, setIsLoginOverlayOpen] = React.useState(false);
+    const [isSubscribeOverlayOpen, setIsSubscribeOverlayOpen] = React.useState(false);
+
+    return (
             <nav className="navbar fixed-top navbar-expand-lg">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">
@@ -28,8 +30,9 @@ class Header extends React.Component{
                                 <Link className="nav-link" to="#">Prezzi</Link>
                             </li>
                             <li className="nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown"
-                                   aria-expanded="false">
+                                <Link className="nav-link dropdown-toggle" to="#" role="button"
+                                      data-bs-toggle="dropdown"
+                                      aria-expanded="false">
                                     Diventare insegnante
                                 </Link>
                                 <ul className="dropdown-menu">
@@ -38,12 +41,16 @@ class Header extends React.Component{
                                 </ul>
                             </li>
                         </ul>
-                        <Link className="loginLink" to="/login"> Login </Link>
+                        <button className="loginBtn" onClick={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}> Accedi</button>
+                        <Login isOpen={isLoginOverlayOpen} onClose={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}/>
+                        <button className="subscribeBtn" onClick={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}> Iscriviti</button>
+                        <Subscribe isOpen={isSubscribeOverlayOpen} onClose={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}/>
+
+
                     </div>
                 </div>
             </nav>
-        );
-    }
+    );
 }
 
 export default Header;

@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="paragrafi home page">
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="login page">
+      <change afterPath="$PROJECT_DIR$/client/src/components/pages/subscribe.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/subscribe.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5d0a766b-8a12-42c4-8a9d-553cf9182583.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5d0a766b-8a12-42c4-8a9d-553cf9182583.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/97f89897-8f61-4e12-8cce-94b2409ccf39.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/97f89897-8f61-4e12-8cce-94b2409ccf39.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
@@ -16,7 +23,10 @@
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/6.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/pages/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/pages/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/login.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -169,7 +179,12 @@
       <workItem from="1714304612990" duration="658000" />
       <workItem from="1714319630614" duration="3470000" />
       <workItem from="1714328930419" duration="3059000" />
-      <workItem from="1714382987316" duration="11176000" />
+      <workItem from="1714382987316" duration="11215000" />
+      <workItem from="1714481850717" duration="493000" />
+      <workItem from="1714482350219" duration="540000" />
+      <workItem from="1714482898380" duration="34000" />
+      <workItem from="1714482936487" duration="666000" />
+      <workItem from="1714483681663" duration="6990000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -427,7 +442,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714391543703</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="login page">
+      <option name="closed" value="true" />
+      <created>1714397572668</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1714397572668</updated>
+    </task>
+    <task id="LOCAL-00034" summary="login page">
+      <option name="closed" value="true" />
+      <created>1714397578067</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1714397578067</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,6 +508,7 @@
     <MESSAGE value="modifica struttura base sito e riorganizzazione cartelle" />
     <MESSAGE value="layout home page" />
     <MESSAGE value="paragrafi home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="paragrafi home page" />
+    <MESSAGE value="login page" />
+    <option name="LAST_COMMIT_MESSAGE" value="login page" />
   </component>
 </project>
