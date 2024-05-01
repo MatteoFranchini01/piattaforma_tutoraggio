@@ -28,12 +28,14 @@
 .subscribe-title{
     color: rgb(50, 50, 100);
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .select-type{
     align-items: center;
     justify-content: space-between;
     display: flex;
+    margin-bottom: 20px;
 }
 
 .selectable-button {
@@ -57,4 +59,32 @@
 
 .selectable-button.selected:hover {
     background-color: rgb(50,50,150);
+}
+
+.txt, .mail{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.pwd{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-submit, .proceed{
+    border: 1px solid rgb(50, 50, 100);
+    border-radius: 100px;
+    background-color: rgb(50, 50, 100);
+    color: white;
+
+    width: 50%;
+
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10%;
+    position: relative;
+}
+
+.btn-submit:active, .proceed:active{
+    background-color: rgb(50, 50, 150);
 }
