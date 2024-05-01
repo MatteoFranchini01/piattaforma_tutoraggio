@@ -20,7 +20,7 @@
     z-index: 10;
     padding: 30px;
     width: 25%;
-    height: 700px;
+    height: fit-content;
     align-items: center;
     justify-content: center;
     border-radius: 20px;

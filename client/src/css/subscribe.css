@@ -20,7 +20,41 @@
     z-index: 10;
     padding: 30px;
     width: 25%;
-    height: 50%;
+    height: fit-content;
     align-items: center;
     border-radius: 20px;
+}
+
+.subscribe-title{
+    color: rgb(50, 50, 100);
+    text-align: center;
+}
+
+.select-type{
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.selectable-button {
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 5px;
+    width: 40%;
+}
+
+.selectable-button:hover {
+    background-color: #e6e6e6;
+}
+
+.selectable-button.selected {
+    background-color: rgb(50,50,100);
+    color: #fff;
+}
+
+.selectable-button.selected:hover {
+    background-color: rgb(50,50,150);
 }
