@@ -7,5 +7,34 @@
         <node kind="database" negative="1" />
       </scope>
     </mapping>
+    <mapping uuid="d1a617d2-c81d-4f3a-a7dc-d9554c910dec" name="root@localhost Mapping">
+      <data-sources db="7e9d4ab0-a78c-457b-affc-5541cd7c4f28" ddl="d0eb3407-5404-4ef7-bf4c-5d7be38eff26" />
+      <scope>
+        <node kind="database" negative="1" />
+      </scope>
+    </mapping>
+    <mapping uuid="6a90e6fc-fac6-4484-b712-a03564a4037c" name="@localhost Mapping [2]">
+      <data-sources db="d1e3fff9-55d3-47b1-b7e7-4cd9ec048760" ddl="9456c0aa-0cc4-4440-b53a-235093f70a50" />
+      <scope>
+        <node kind="database" negative="1" />
+      </scope>
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="9456c0aa-0cc4-4440-b53a-235093f70a50" />
+          <option name="name" value="@localhost (DDL)" />
+          <option name="dbmsName" value="MYSQL" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$" />
+            </array>
+          </option>
+          <option name="outLayout" value="File per object by schema.groovy" />
+        </State>
+      </list>
+    </option>
   </component>
 </project>

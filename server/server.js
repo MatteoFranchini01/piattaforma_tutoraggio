@@ -1,6 +1,7 @@
 const http = require('http');
 let mysql = require('mysql2');
 const bodyParser = require('body-parser');
+const crypto = require('crypto');
 
 let connection = mysql.createConnection({
     host: 'localhost',
@@ -8,6 +9,13 @@ let connection = mysql.createConnection({
     password: 'password',
     database: 'db_piattaforma',
 })
+
+function hashPassword(password) {
+    const hash = crypto.createHash('sha256');
+    hash.update(password);
+    const value = hash.digest('hex');
+    return value;
+}
 
 //TODO: c'è un problema nel senso che se si aggiunge una card al db e si refresha la pagina crasha tutto
 function create_cards(callback) {
@@ -63,10 +71,12 @@ function add_user(utente) {
         console.log("Connected...")
     )
 
-    let queryString = 'INSERT INTO UTENTI (NOME, COGNOME, PRIVILEGI) VALUE (?, ?, ?)';
-    const values = [utente.nome, utente.cognome, utente.privilegi];
+    let queryString = 'INSERT INTO UTENTI (NOME, COGNOME, PASSWORD, PRIVILEGI) VALUE (?, ?, ?, ?)';
 
-    connection.query(queryString, function (err, result, fields) {
+    const hashedPassord = hashPassword(utente.password);
+    const values = [utente.nome, utente.cognome, hashedPassord, utente.privilegi];
+
+    connection.query(queryString, values, (err, result, fields) => {
         if (err) throw err;
         console.log("Number of records inserted: ", result.affectedRows);
     });
