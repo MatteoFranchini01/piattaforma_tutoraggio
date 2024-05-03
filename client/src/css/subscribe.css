@@ -88,3 +88,7 @@
 .btn-submit:active, .proceed:active{
     background-color: rgb(50, 50, 150);
 }
+
+.error-paragraph-subscribe{
+    color: red;
+}
