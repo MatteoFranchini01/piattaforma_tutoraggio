@@ -1,17 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import homeCss from "../../css/home.css"
 import Card from "../mainLayout/template/card"
 import mainImg from "../../images/home.png"
 import HowToStartCard from "../mainLayout/template/howToStartCard";
 import Accordion from "../mainLayout/template/accordion";
 
-/*export default class Home extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){*/
 export default function Home() {
-        return (
+    const [numberOfSubject]  = useState(0);
+    const [numberOfTeachers] = useState(0);
+    const [numberOfStudents] = useState(0);
+
+    return (
             <>
                 <section className="presentation">
                     <div className="box presentation-box">
@@ -35,19 +34,17 @@ export default function Home() {
                     </div>
                     <div className="statistics">
                         <div className="numberOfSubjects">
-                            <h4 className="statisticsTitle">#</h4>
+                            <h4 className="statisticsTitle">{numberOfSubject}</h4>
                             <p>Materie disponibili</p>
                         </div>
                         <div className="numberOfTeachers">
-                            <h4 className="statisticsTitle">#</h4>
+                            <h4 className="statisticsTitle">{numberOfTeachers}</h4>
                             <p>Insegnanti disponibili</p>
                         </div>
                         <div className="numberOfStudents">
-                            <h4 className="statisticsTitle">#</h4>
+                            <h4 className="statisticsTitle">{numberOfStudents}</h4>
                             <p>Studenti iscritti</p>
                         </div>
-
-
                     </div>
                 </section>
                 <hr className="centered-hr"/>
@@ -112,7 +109,8 @@ export default function Home() {
                 </section>
                 <section className="cards">
                     <h2 className="h2-title">Le materie richieste</h2>
-                    <div className="row p-5">
+                    <div className="row cards">
+                        <Card></Card>
                         <Card></Card>
                         <Card></Card>
                         <Card></Card>
@@ -124,13 +122,12 @@ export default function Home() {
                 <section className="questions">
                     <h2 className="h2-title">Le domande frequenti</h2>
                     <div className="accordion" id="accordionExample">
-                        <Accordion id={1} title={"Cos'è KnowHow?"} answer={"risposta 1"}/>
-                        <Accordion id={2} title={"A chi è adatto il nostro servizio?"} answer={"risposta 2"}/>
-                        <Accordion id={3} title={"Perché scegliere le ripetizioni online?"} answer={"risposta 3"}/>
-                        <Accordion id={4} title={"Quanto costa una lezione?"} answer={"risposta 4"}/>
+                        <Accordion id={1} title={"Cos'è KnowHow?"} answer={"KnowHow è una piattaforma online dedicata alle ripetizioni, che mette in contatto studenti con insegnanti qualificati in diverse materie. Offriamo un ambiente virtuale sicuro e interattivo dove gli studenti possono ricevere supporto personalizzato per migliorare le proprie competenze accademiche."}/>
+                        <Accordion id={2} title={"A chi è adatto il nostro servizio?"} answer={"Il nostro servizio è adatto a studenti di tutte le età e livelli di istruzione, dalle elementari all'università. Sia che tu stia cercando un aiuto supplementare per superare un esame, migliorare le tue competenze in una materia specifica o approfondire la tua comprensione generale, le nostre ripetizioni online possono essere personalizzate per soddisfare le tue esigenze."}/>
+                        <Accordion id={3} title={"Perché scegliere le ripetizioni online?"} answer={"Le ripetizioni online offrono una serie di vantaggi rispetto alle lezioni tradizionali in presenza. Innanzitutto, offrono flessibilità di orario, consentendo agli studenti di pianificare le lezioni in base ai propri impegni. Inoltre, eliminano la necessità di spostamenti, risparmiando tempo e denaro. Le ripetizioni online offrono anche un'ampia gamma di insegnanti qualificati, consentendo agli studenti di trovare l'insegnante che meglio si adatta alle proprie esigenze e stili di apprendimento. Infine, grazie agli strumenti tecnologici disponibili, le ripetizioni online possono essere altrettanto efficaci delle lezioni in presenza, fornendo un'esperienza di apprendimento interattiva e coinvolgente."}/>
+                        <Accordion id={4} title={"Quanto costa una lezione?"} answer={"Il costo di una lezione può variare in base all'insegnante e alla materia. Ogni insegnante su KnowHow ha la libertà di fissare il proprio costo in modo indipendente, tenendo conto del proprio livello di esperienza, delle qualifiche e della domanda di mercato. Tuttavia, possiamo garantire che offriamo tariffe competitive e trasparenti, consentendo agli studenti di trovare le ripetizioni che si adattano al loro budget. Per conoscere i costi specifici, ti consigliamo di esplorare i profili degli insegnanti sulla nostra piattaforma o di contattarci direttamente per ulteriori informazioni."}/>
                     </div>
                 </section>
             </>
         );
-    //}
 }

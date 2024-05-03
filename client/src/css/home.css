@@ -209,3 +209,8 @@ i{
     display: inline-block;
     margin-left: 20px;
 }
+
+.cards{
+    padding-left: 10%;
+    padding-right: 10%;
+}
