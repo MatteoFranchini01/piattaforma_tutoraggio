@@ -34,6 +34,8 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
             setError("")
         }
         validateEmail(email);
+
+        console.log('Subscribe credentials: ', selectedType ,name, surname, username, email, password);
     }
 
     const validateEmail = (email) => {
@@ -43,6 +45,8 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         } else setEmailError("")
         return null;
     }
+
+
 
     return (
         <>
