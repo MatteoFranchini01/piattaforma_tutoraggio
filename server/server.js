@@ -178,6 +178,32 @@ function count_materie() {
     return materie_count;
 }
 
+function check_auth(user_to_check) {
+    connection.connect(
+        console.log("Connected")
+    )
+
+    let hashedPassord = hashPassword(user_to_check.password);
+
+    let queryString = 'SELECT PASSWORD FROM UTENTI WHERE NOME = ? AND COGNOME = ?';
+
+    let auth = false;
+
+    connection.query(queryString, [user_to_check.nome, user_to_check.cognome], function (err, result, fields) {
+        if (err) throw err;
+
+        console.log("Query executed: ", result);
+
+        if (result == hashedPassord) {
+            auth = true;
+        }
+    })
+
+    connection.end();
+
+    return auth;
+}
+
 const createServer = (routes) => {
     const server = http.createServer((req, res) => {
         let route = routes.find((r) => r.path === req.url && r.method === req.method);
@@ -260,6 +286,15 @@ const routes = [
             let user_to_find = req.body;
             let user = find_user(user_to_find);
             res.end(JSON.stringify(user));
+        }
+    },
+    {
+        method: 'GET',
+        path: '/verify_auth',
+        handler: (req, res) => {
+            let result = check_auth();
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(result));
         }
     }
 ];
