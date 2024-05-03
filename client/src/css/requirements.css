@@ -1,0 +1,75 @@
+.main{
+    height: auto;
+}
+
+.presentation-teachers{
+    height: auto;
+    width: 100%;
+    padding: 8% 50px 0;
+
+}
+
+.boxing{
+    width: 100%;
+    padding-top: 75px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.presentation-box{
+    border: solid white 1px;
+    width: 60%;
+}
+
+.image-box{
+    border: solid white 1px;
+    width: 400px;
+    height: 400px;
+    padding-top: 75px;
+    margin: 0;
+}
+
+
+.main-title{
+    padding-top: 10px;
+    color: rgb(50, 50, 100);
+    text-align: left;
+}
+
+.paragraph{
+    padding-top: 20px;
+    padding-right: 10px;
+}
+
+i{
+    padding-top: 10px;
+}
+
+.requirements{
+    padding-top: 0;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.btn-primary{
+    margin: 20px;
+    --bs-btn-bg: rgb(50, 50, 100);
+}
+
+.buttons{
+    align-items: center;
+    text-align: center;
+}
+
+.button{
+    padding: 5px 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 2px solid rgb(50, 50, 100);
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(50, 50, 100);
+}

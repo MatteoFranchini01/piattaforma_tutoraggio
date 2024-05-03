@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="javascript login.js e subscribe.js">
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="migliorie pagina home.js">
+      <change afterPath="$PROJECT_DIR$/client/src/components/mainLayout/template/collapseParagraph.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/pages/requirements.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/requirements.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/images/teacher_logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
@@ -13,8 +17,10 @@
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/pages/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/pages/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +183,7 @@
       <workItem from="1714566978390" duration="5610000" />
       <workItem from="1714635300849" duration="285000" />
       <workItem from="1714716397570" duration="1259000" />
-      <workItem from="1714743810021" duration="6136000" />
+      <workItem from="1714743810021" duration="14267000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -507,7 +513,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714749375478</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="migliorie pagina home.js">
+      <option name="closed" value="true" />
+      <created>1714751517685</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1714751517685</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,6 +595,7 @@
     <MESSAGE value="login/subscribe page" />
     <MESSAGE value="subscribe page" />
     <MESSAGE value="javascript login.js e subscribe.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="javascript login.js e subscribe.js" />
+    <MESSAGE value="migliorie pagina home.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="migliorie pagina home.js" />
   </component>
 </project>

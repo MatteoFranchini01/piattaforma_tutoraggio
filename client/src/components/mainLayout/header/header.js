@@ -36,7 +36,7 @@ function Header (){
                                     Diventare insegnante
                                 </Link>
                                 <ul className="dropdown-menu">
-                                    <li><Link className="dropdown-item" to="#">Requisiti</Link></li>
+                                    <li><Link className="dropdown-item" to="/requirements">Requisiti</Link></li>
                                     <li><Link className="dropdown-item" to="#">Invia richiesta</Link></li>
                                 </ul>
                             </li>
