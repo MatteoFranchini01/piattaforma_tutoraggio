@@ -12,6 +12,7 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState("");
     const [emailError, setEmailError] = useState("");
+    const [passwordStrength, setPasswordStrength] = useState("");
 
     useEffect(() => {
         const buttons = document.querySelectorAll('.selectable-button');
@@ -33,6 +34,7 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         } else {
             setError("")
         }
+        checkPasswordStrength(password)
         validateEmail(email);
 
         console.log('Subscribe credentials: ', selectedType ,name, surname, username, email, password);
@@ -41,11 +43,50 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
     const validateEmail = (email) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!regex.test(email)) {
-            setEmailError('Invalid email format');
+            setEmailError('Formato non valido.');
         } else setEmailError("")
         return null;
     }
 
+    function checkPasswordStrength(password) {
+        // Initialize variables
+        let strength = 0;
+        let tips = "";
+
+        // Check password length
+        if (password.length < 8) {
+            tips += "La password è troppo corta. ";
+        } else {
+            strength += 1;
+        }
+
+        // Check for numbers
+        if (password.match(/\d/)) {
+            strength += 1;
+        } else {
+            tips += "Inserisci almeno un numero. ";
+        }
+
+        // Check for special characters
+        if (password.match(/[^a-zA-Z\d]/)) {
+            strength += 1;
+        } else {
+            tips += "Inserisci almeno un carattere speciale. ";
+        }
+
+        const pwdLabel = document.getElementById("pwdStrength");
+        // Return results
+        if (strength < 2) {
+            pwdLabel.style.color = "red";
+            setPasswordStrength("Oh no, troppo facile da indovinare! " + tips);
+        } else if (strength === 2) {
+            pwdLabel.style.color = "orange";
+            setPasswordStrength("Abbastanza difficile, ma manca ancora qualcosina! " + tips);
+        } else if (strength === 3) {
+            pwdLabel.style.color = "green";
+            setPasswordStrength("Password difficile. Ottima scelta!" + tips);
+        }
+    }
 
 
     return (
@@ -68,6 +109,7 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
                                 {emailError && <p className="error-paragraph-subscribe">{emailError}</p>}
                                 <input type="text" className="form-control username" placeholder="Username" value={username} onChange={(event) => setUsername(event.target.value)}/>
                                 <input type="password" className="form-control pwd" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                <p id="pwdStrength" className="error-paragraph-subscribe-pwd">{passwordStrength}</p>
                             </div>
                             {error && <p className="error-paragraph-subscribe">{error}</p>}
 

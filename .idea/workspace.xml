@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="migliorie pagina home.js">
-      <change afterPath="$PROJECT_DIR$/client/src/components/mainLayout/template/collapseParagraph.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/pages/requirements.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/css/requirements.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/images/teacher_logo.png" afterDir="false" />
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="requirements.js&#10;requirements.css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/pages/subscribe.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/pages/subscribe.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +36,9 @@
     &quot;accountId&quot;: &quot;8b938dfc-6b15-4e3a-a41c-9b96a483bad0&quot;
   }
 }</component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/client/package.json" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -63,31 +53,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/deborabini/Documents/GitHub/piattaforma_tutoraggio",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.npm start client.executor": "Run",
-    "npm.npm start.executor": "Run",
-    "npm.start.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/deborabini/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/deborabini/Documents/GitHub/piattaforma_tutoraggio&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.npm start client.executor&quot;: &quot;Run&quot;,
+    &quot;npm.npm start.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/deborabini/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "h2",
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;h2&quot;,
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -184,6 +174,7 @@
       <workItem from="1714635300849" duration="285000" />
       <workItem from="1714716397570" duration="1259000" />
       <workItem from="1714743810021" duration="14267000" />
+      <workItem from="1714851552323" duration="1714000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
