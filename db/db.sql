@@ -60,10 +60,10 @@ create table Utenti
 (
     ID        int auto_increment
         primary key,
-    NOME      char not null,
-    COGNOME   char not null,
-    PRIVILEGI int  not null,
+    NOME      char       not null,
+    COGNOME   char       not null,
+    PASSWORD  varchar(1) null,
+    PRIVILEGI int        not null,
     constraint Utenti_RUOLI_ID_fk
         foreign key (PRIVILEGI) references RUOLI (ID)
 );
-
