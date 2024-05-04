@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="aggiunta funzione per hashare la pwd e aggiunto campo tabella utenti per salvare la password" />
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="migliorie pagina home.js">
+      <change afterPath="$PROJECT_DIR$/client/src/components/mainLayout/template/collapseParagraph.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/pages/requirements.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/requirements.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/images/teacher_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/mainLayout/header/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,16 +43,12 @@
     &quot;assignee&quot;: &quot;MatteoFranchini01&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MatteoFranchini01/piattaforma_tutoraggio.git",
-    "accountId": "b636ac6c-6265-4e0e-96cd-1275bd85af2b"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MatteoFranchini01/piattaforma_tutoraggio.git&quot;,
+    &quot;accountId&quot;: &quot;8b938dfc-6b15-4e3a-a41c-9b96a483bad0&quot;
   }
-}]]></component>
-  <component name="MigrationScriptOptions">
-    <option name="ignoreImplicitObjects" value="true" />
-    <option name="ignoreSourceCode" value="false" />
-  </component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -65,13 +78,12 @@
     "npm.npm start.executor": "Run",
     "npm.start.executor": "Run",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/matteofranchini/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "/Users/deborabini/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "h2",
-      "mariadb",
       "mysql"
     ]
   }
@@ -160,8 +172,18 @@
       <workItem from="1714304612990" duration="658000" />
       <workItem from="1714319630614" duration="3470000" />
       <workItem from="1714328930419" duration="3059000" />
-      <workItem from="1714382987316" duration="11176000" />
-      <workItem from="1714486894616" duration="3466000" />
+      <workItem from="1714382987316" duration="11215000" />
+      <workItem from="1714481850717" duration="493000" />
+      <workItem from="1714482350219" duration="540000" />
+      <workItem from="1714482898380" duration="34000" />
+      <workItem from="1714482936487" duration="666000" />
+      <workItem from="1714483681663" duration="15738000" />
+      <workItem from="1714508074782" duration="100000" />
+      <workItem from="1714551893438" duration="2103000" />
+      <workItem from="1714566978390" duration="5610000" />
+      <workItem from="1714635300849" duration="285000" />
+      <workItem from="1714716397570" duration="1259000" />
+      <workItem from="1714743810021" duration="14267000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -419,37 +441,108 @@
       <option name="project" value="LOCAL" />
       <updated>1714391543703</updated>
     </task>
-    <task id="LOCAL-00033" summary="cambiato campo luogo con campo email">
+    <task id="LOCAL-00033" summary="login page">
       <option name="closed" value="true" />
-      <created>1714463169744</created>
+      <created>1714397572668</created>
       <option name="number" value="00033" />
       <option name="presentableId" value="LOCAL-00033" />
       <option name="project" value="LOCAL" />
-      <updated>1714463169744</updated>
+      <updated>1714397572668</updated>
     </task>
-    <task id="LOCAL-00034" summary="create funzioni per il conteggio">
+    <task id="LOCAL-00034" summary="login page">
       <option name="closed" value="true" />
-      <created>1714483705728</created>
+      <created>1714397578067</created>
       <option name="number" value="00034" />
       <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
-      <updated>1714483705729</updated>
+      <updated>1714397578067</updated>
     </task>
-    <task id="LOCAL-00035" summary="aggiunta funzione per hashare la pwd e aggiunto campo tabella utenti per salvare la password">
+    <task id="LOCAL-00035" summary="login/subscribe page">
       <option name="closed" value="true" />
-      <created>1714638442401</created>
+      <created>1714490723985</created>
       <option name="number" value="00035" />
       <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
-      <updated>1714638442402</updated>
+      <updated>1714490723985</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="login/subscribe page">
+      <option name="closed" value="true" />
+      <created>1714490739824</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1714490739824</updated>
+    </task>
+    <task id="LOCAL-00037" summary="login/subscribe page">
+      <option name="closed" value="true" />
+      <created>1714506933218</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1714506933218</updated>
+    </task>
+    <task id="LOCAL-00038" summary="login/subscribe page">
+      <option name="closed" value="true" />
+      <created>1714554302067</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1714554302067</updated>
+    </task>
+    <task id="LOCAL-00039" summary="subscribe page">
+      <option name="closed" value="true" />
+      <created>1714575384712</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1714575384712</updated>
+    </task>
+    <task id="LOCAL-00040" summary="javascript login.js e subscribe.js">
+      <option name="closed" value="true" />
+      <created>1714749120287</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1714749120287</updated>
+    </task>
+    <task id="LOCAL-00041" summary="javascript login.js e subscribe.js">
+      <option name="closed" value="true" />
+      <created>1714749375478</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1714749375478</updated>
+    </task>
+    <task id="LOCAL-00042" summary="migliorie pagina home.js">
+      <option name="closed" value="true" />
+      <created>1714751517685</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1714751517685</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -460,10 +553,15 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="inizio_server" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
+                </map>
+              </option>
+              <option name="HIGHLIGHTERS">
+                <map>
+                  <entry key="MY_COMMITS" value="false" />
                 </map>
               </option>
             </State>
@@ -493,9 +591,11 @@
     <MESSAGE value="modifica struttura base sito e riorganizzazione cartelle" />
     <MESSAGE value="layout home page" />
     <MESSAGE value="paragrafi home page" />
-    <MESSAGE value="cambiato campo luogo con campo email" />
-    <MESSAGE value="create funzioni per il conteggio" />
-    <MESSAGE value="aggiunta funzione per hashare la pwd e aggiunto campo tabella utenti per salvare la password" />
-    <option name="LAST_COMMIT_MESSAGE" value="aggiunta funzione per hashare la pwd e aggiunto campo tabella utenti per salvare la password" />
+    <MESSAGE value="login page" />
+    <MESSAGE value="login/subscribe page" />
+    <MESSAGE value="subscribe page" />
+    <MESSAGE value="javascript login.js e subscribe.js" />
+    <MESSAGE value="migliorie pagina home.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="migliorie pagina home.js" />
   </component>
 </project>
