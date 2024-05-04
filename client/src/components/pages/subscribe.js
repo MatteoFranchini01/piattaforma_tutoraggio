@@ -88,7 +88,6 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         }
     }
 
-
     return (
         <>
             {

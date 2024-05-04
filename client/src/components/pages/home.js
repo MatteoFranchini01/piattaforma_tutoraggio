@@ -10,6 +10,9 @@ export default function Home() {
     const [numberOfTeachers] = useState(0);
     const [numberOfStudents] = useState(0);
 
+    const numberOfComponents = 6;
+    const componentsArray = Array.from({ length: numberOfComponents }, (_, i) => i);
+
     return (
             <>
                 <section className="presentation">
@@ -110,12 +113,9 @@ export default function Home() {
                 <section className="cards">
                     <h2 className="h2-title">Le materie richieste</h2>
                     <div className="row cards">
-                        <Card></Card>
-                        <Card></Card>
-                        <Card></Card>
-                        <Card></Card>
-                        <Card></Card>
-                        <Card></Card>
+                        {componentsArray.map((index) => (
+                            <Card key={index} />
+                        ))}
                     </div>
                 </section>
                 <hr className="centered-hr"/>
