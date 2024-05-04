@@ -1,0 +1,47 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql:8.3.0
+    restart: always
+    environment:
+      - MYSQL_PASSWORD=root
+      - MYSQL_DB=know_how_db
+    ports:
+      - 3306:3306
+    networks:
+      - shared-network
+    volumes:
+      - ./mysql-db:var/lib/mysql/data
+
+  server:
+    container_name: server_know_how
+    restart: unless-stopped
+    image: server-know-how-prod:1.0.0
+    build:
+      context: server
+      target: production
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - shared-network
+    depends_on:
+      - mysql
+
+  client:
+    container_name: client_know_how
+    restart: unless-stopped
+    image: client-know-how-prod:1.0.0
+    build:
+      context: server
+      target: production
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8081
+    networks:
+      - shared-network
+    depends_on:
+      - server
+
+networks:
+  shared-network:

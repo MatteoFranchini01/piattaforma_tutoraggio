@@ -5,9 +5,9 @@ const crypto = require('crypto');
 
 let connection = mysql.createConnection({
     host: 'localhost',
-    user: 'matteo',
-    password: 'password',
-    database: 'db_piattaforma',
+    user: 'root',
+    password: 'root',
+    database: 'know_how_db',
 })
 
 function hashPassword(password) {
