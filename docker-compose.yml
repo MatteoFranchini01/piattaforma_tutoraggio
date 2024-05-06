@@ -3,15 +3,17 @@ services:
   mysql:
     image: mysql:8.3.0
     restart: always
+    cap_add:
+      - SYS_NICE
     environment:
-      - MYSQL_PASSWORD=root
-      - MYSQL_DB=know_how_db
+      - MYSQL_ROOT_PASSWORD=Matteo01
+      - MYSQL_DATABASE=know_how_db
     ports:
-      - 3306:3306
+      - "3306:3306"
     networks:
       - shared-network
     volumes:
-      - ./mysql-db:var/lib/mysql/data
+      - ./mysql:/var/lib/mysql
 
   server:
     container_name: server_know_how
@@ -22,7 +24,7 @@ services:
       target: production
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - "8080:8080"
     networks:
       - shared-network
     depends_on:
@@ -37,7 +39,7 @@ services:
       target: production
       dockerfile: Dockerfile
     ports:
-      - 8080:8081
+      - "3000:3000"
     networks:
       - shared-network
     depends_on:
@@ -45,3 +47,4 @@ services:
 
 networks:
   shared-network:
+    driver: bridge

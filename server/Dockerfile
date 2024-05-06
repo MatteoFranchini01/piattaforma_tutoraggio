@@ -11,7 +11,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npm start build
 
-CMD ["sh", "-c", "npm run start"]
+CMD ["sh", "-c", "npm run dev"]
 

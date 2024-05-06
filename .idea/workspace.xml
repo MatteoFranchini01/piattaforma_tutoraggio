@@ -4,10 +4,184 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="Creata funzione per la verifica dell'autenticazione">
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="migliorie pagina home.js">
+      <change afterPath="$PROJECT_DIR$/client/build/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/build/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/build/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#ib_16384_0.dblwr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#ib_16384_1.dblwr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo11_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo12_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo13_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo14_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo15_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo16_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo17_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo18_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo19_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo20_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo21_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo22_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo23_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo24_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo25_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo26_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo27_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo28_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo29_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo30_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo31_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo32_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo33_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo34_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo35_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo36_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo37_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo38_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo39_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/#innodb_redo/#ib_redo40_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/auto.cnf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/binlog.000001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/binlog.000002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/binlog.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/ca-key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/ca.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/client-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/client-key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/ib_buffer_pool" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/ibdata1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/mysql.ibd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/mysql.sock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/mysql/general_log.CSM" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/mysql/general_log.CSV" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/mysql/general_log_215.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/mysql/slow_log.CSM" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/mysql/slow_log.CSV" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/mysql/slow_log_216.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/accounts_147.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/binary_log_trans_191.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/cond_instances_82.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/data_lock_waits_163.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/data_locks_162.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/error_log_83.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_errors_su_141.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_errors_su_142.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_errors_su_143.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_errors_su_144.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_errors_su_145.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_stages_cu_113.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_stages_hi_114.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_stages_hi_115.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_stages_su_116.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_stages_su_117.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_stages_su_118.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_stages_su_119.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_stages_su_120.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_121.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_122.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_123.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_124.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_125.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_126.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_127.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_128.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_129.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_130.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_131.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_statement_132.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_transacti_133.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_transacti_134.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_transacti_135.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_transacti_136.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_transacti_137.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_transacti_138.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_transacti_139.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_transacti_140.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_waits_cur_84.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_waits_his_85.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_waits_his_86.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_waits_sum_87.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_waits_sum_88.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_waits_sum_89.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_waits_sum_90.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_waits_sum_91.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/events_waits_sum_92.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/file_instances_93.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/file_summary_by__94.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/file_summary_by__95.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/global_status_183.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/global_variables_186.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/host_cache_96.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/hosts_148.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/keyring_componen_193.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/keyring_keys_154.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/log_status_176.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/memory_summary_b_156.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/memory_summary_b_157.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/memory_summary_b_158.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/memory_summary_b_159.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/memory_summary_g_155.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/metadata_locks_161.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/mutex_instances_97.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/objects_summary__98.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/performance_time_99.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/persisted_variab_189.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/prepared_stateme_177.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/processlist_100.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_appl_167.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_appl_168.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_appl_169.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_appl_170.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_appl_172.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_appl_173.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_asyn_174.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_asyn_175.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_conn_164.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_conn_166.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_grou_165.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/replication_grou_171.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/rwlock_instances_101.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/session_account__153.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/session_connect__152.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/session_status_184.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/session_variable_187.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/setup_actors_102.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/setup_consumers_103.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/setup_instrument_104.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/setup_meters_105.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/setup_metrics_106.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/setup_objects_107.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/setup_threads_108.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/socket_instances_149.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/socket_summary_b_150.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/socket_summary_b_151.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/status_by_accoun_179.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/status_by_host_180.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/status_by_thread_181.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/status_by_user_182.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/table_handles_160.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/table_io_waits_s_109.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/table_io_waits_s_110.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/table_lock_waits_111.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/threads_112.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/tls_channel_stat_192.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/user_defined_fun_190.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/user_variables_b_178.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/users_146.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/variables_by_thr_185.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/performance_schema/variables_info_188.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/private_key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/public_key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/server-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/server-key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/sys/sys_config.ibd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/undo_001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/undo_002" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/client/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/server/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,16 +204,12 @@
     &quot;assignee&quot;: &quot;MatteoFranchini01&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/MatteoFranchini01/piattaforma_tutoraggio.git&quot;,
-    &quot;accountId&quot;: &quot;b636ac6c-6265-4e0e-96cd-1275bd85af2b&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MatteoFranchini01/piattaforma_tutoraggio.git",
+    "accountId": "b636ac6c-6265-4e0e-96cd-1275bd85af2b"
   }
-}</component>
-  <component name="MigrationScriptOptions">
-    <option name="ignoreImplicitObjects" value="true" />
-    <option name="ignoreSourceCode" value="false" />
-  </component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -54,32 +224,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;prova__con__docker&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/deborabini/Documents/GitHub/piattaforma_tutoraggio&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.npm start client.executor&quot;: &quot;Run&quot;,
-    &quot;npm.npm start.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/matteofranchini/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "prova__con__docker",
+    "last_opened_file_path": "/Users/deborabini/Documents/GitHub/piattaforma_tutoraggio",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.npm start client.executor": "Run",
+    "npm.npm start.executor": "Run",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/deborabini/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;h2&quot;,
-      &quot;mariadb&quot;,
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2",
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -101,8 +271,18 @@
       <recent name="$PROJECT_DIR$/client/src/components/mainLayout" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.build">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/client/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="npm start client" type="js.build_tools.npm">
@@ -127,6 +307,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -164,10 +345,19 @@
       <workItem from="1714304612990" duration="658000" />
       <workItem from="1714319630614" duration="3470000" />
       <workItem from="1714328930419" duration="3059000" />
-      <workItem from="1714382987316" duration="11176000" />
-      <workItem from="1714486894616" duration="3466000" />
-      <workItem from="1714764763039" duration="1841000" />
-      <workItem from="1714808565847" duration="2508000" />
+      <workItem from="1714382987316" duration="11215000" />
+      <workItem from="1714481850717" duration="493000" />
+      <workItem from="1714482350219" duration="540000" />
+      <workItem from="1714482898380" duration="34000" />
+      <workItem from="1714482936487" duration="666000" />
+      <workItem from="1714483681663" duration="15738000" />
+      <workItem from="1714508074782" duration="100000" />
+      <workItem from="1714551893438" duration="2103000" />
+      <workItem from="1714566978390" duration="5610000" />
+      <workItem from="1714635300849" duration="285000" />
+      <workItem from="1714716397570" duration="1259000" />
+      <workItem from="1714743810021" duration="14267000" />
+      <workItem from="1714982015933" duration="7579000" />
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -425,39 +615,87 @@
       <option name="project" value="LOCAL" />
       <updated>1714391543703</updated>
     </task>
-    <task id="LOCAL-00033" summary="cambiato campo luogo con campo email">
+    <task id="LOCAL-00033" summary="login page">
       <option name="closed" value="true" />
-      <created>1714463169744</created>
+      <created>1714397572668</created>
       <option name="number" value="00033" />
       <option name="presentableId" value="LOCAL-00033" />
       <option name="project" value="LOCAL" />
-      <updated>1714463169744</updated>
+      <updated>1714397572668</updated>
     </task>
-    <task id="LOCAL-00034" summary="create funzioni per il conteggio">
+    <task id="LOCAL-00034" summary="login page">
       <option name="closed" value="true" />
-      <created>1714483705728</created>
+      <created>1714397578067</created>
       <option name="number" value="00034" />
       <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
-      <updated>1714483705729</updated>
+      <updated>1714397578067</updated>
     </task>
-    <task id="LOCAL-00035" summary="aggiunta funzione per hashare la pwd e aggiunto campo tabella utenti per salvare la password">
+    <task id="LOCAL-00035" summary="login/subscribe page">
       <option name="closed" value="true" />
-      <created>1714638442401</created>
+      <created>1714490723985</created>
       <option name="number" value="00035" />
       <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
-      <updated>1714638442402</updated>
+      <updated>1714490723985</updated>
     </task>
-    <task id="LOCAL-00036" summary="Creata funzione per la verifica dell'autenticazione">
+    <task id="LOCAL-00036" summary="login/subscribe page">
       <option name="closed" value="true" />
-      <created>1714765844902</created>
+      <created>1714490739824</created>
       <option name="number" value="00036" />
       <option name="presentableId" value="LOCAL-00036" />
       <option name="project" value="LOCAL" />
-      <updated>1714765844902</updated>
+      <updated>1714490739824</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="login/subscribe page">
+      <option name="closed" value="true" />
+      <created>1714506933218</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1714506933218</updated>
+    </task>
+    <task id="LOCAL-00038" summary="login/subscribe page">
+      <option name="closed" value="true" />
+      <created>1714554302067</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1714554302067</updated>
+    </task>
+    <task id="LOCAL-00039" summary="subscribe page">
+      <option name="closed" value="true" />
+      <created>1714575384712</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1714575384712</updated>
+    </task>
+    <task id="LOCAL-00040" summary="javascript login.js e subscribe.js">
+      <option name="closed" value="true" />
+      <created>1714749120287</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1714749120287</updated>
+    </task>
+    <task id="LOCAL-00041" summary="javascript login.js e subscribe.js">
+      <option name="closed" value="true" />
+      <created>1714749375478</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1714749375478</updated>
+    </task>
+    <task id="LOCAL-00042" summary="migliorie pagina home.js">
+      <option name="closed" value="true" />
+      <created>1714751517685</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1714751517685</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,6 +733,11 @@
                   </entry>
                 </map>
               </option>
+              <option name="HIGHLIGHTERS">
+                <map>
+                  <entry key="MY_COMMITS" value="false" />
+                </map>
+              </option>
             </State>
           </value>
         </entry>
@@ -522,10 +765,11 @@
     <MESSAGE value="modifica struttura base sito e riorganizzazione cartelle" />
     <MESSAGE value="layout home page" />
     <MESSAGE value="paragrafi home page" />
-    <MESSAGE value="cambiato campo luogo con campo email" />
-    <MESSAGE value="create funzioni per il conteggio" />
-    <MESSAGE value="aggiunta funzione per hashare la pwd e aggiunto campo tabella utenti per salvare la password" />
-    <MESSAGE value="Creata funzione per la verifica dell'autenticazione" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creata funzione per la verifica dell'autenticazione" />
+    <MESSAGE value="login page" />
+    <MESSAGE value="login/subscribe page" />
+    <MESSAGE value="subscribe page" />
+    <MESSAGE value="javascript login.js e subscribe.js" />
+    <MESSAGE value="migliorie pagina home.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="migliorie pagina home.js" />
   </component>
 </project>

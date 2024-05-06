@@ -3,12 +3,19 @@ let mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 
-let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
+/*
+const connection = mysql.createConnection({
+    host: 'mysql',
+    port: 3306,
     database: 'know_how_db',
-})
+    user: 'root',
+    password: 'Matteo01'
+});
+
+connection.connect((err) => {
+    if (err) throw err;
+    console.log('Connected to the MySQL server.');
+});
 
 function hashPassword(password) {
     const hash = crypto.createHash('sha256');
@@ -300,3 +307,4 @@ const routes = [
 ];
 
 createServer(routes);
+ */
