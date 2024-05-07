@@ -1,7 +1,7 @@
 import React from "react";
-import headerCss from "../../../css/header.css";
+import "../../../css/header.css";
 import logo from "../../../images/webSiteLogo.png";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 import Login from "../../pages/login";
 import Subscribe from "../../pages/subscribe";
@@ -9,6 +9,7 @@ import Subscribe from "../../pages/subscribe";
 function Header (){
     const [isLoginOverlayOpen, setIsLoginOverlayOpen] = React.useState(false);
     const [isSubscribeOverlayOpen, setIsSubscribeOverlayOpen] = React.useState(false);
+    const location = useLocation();
 
     return (
             <nav className="navbar fixed-top navbar-expand-lg">
@@ -20,16 +21,16 @@ function Header (){
                     <div className="vr"></div>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul className="navbar-nav me-auto mb-3 mb-lg-0 p-lg-1">
-                            <li className="nav-item">
+                            <li className={`nav-item ${location.pathname === '/'? 'active' : ''}`}>
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className={`nav-item ${location.pathname === '/il-nostro-obiettivo'? 'active' : ''}`}>
                                 <Link className="nav-link" to="#">Il nostro obiettivo</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className={`nav-item ${location.pathname === '/prezzi'? 'active' : ''}`}>
                                 <Link className="nav-link" to="#">Prezzi</Link>
                             </li>
-                            <li className="nav-item dropdown">
+                            <li className={`nav-item dropdown ${location.pathname === '/requirements'? 'active' : ''}`}>
                                 <Link className="nav-link dropdown-toggle" to="#" role="button"
                                       data-bs-toggle="dropdown"
                                       aria-expanded="false">
@@ -41,10 +42,12 @@ function Header (){
                                 </ul>
                             </li>
                         </ul>
-                        <button className="loginBtn" onClick={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}> Accedi</button>
-                        <Login isOpen={isLoginOverlayOpen} onClose={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}/>
-                        <button className="subscribeBtn" onClick={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}> Iscriviti</button>
-                        <Subscribe isOpen={isSubscribeOverlayOpen} onClose={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}/>
+                        <div className="login-subscribe buttons">
+                            <button className="loginBtn" onClick={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}> Accedi</button>
+                            <Login isOpen={isLoginOverlayOpen} onClose={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}/>
+                            <button className="subscribeBtn" onClick={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}> Iscriviti</button>
+                            <Subscribe isOpen={isSubscribeOverlayOpen} onClose={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}/>
+                        </div>
                     </div>
                 </div>
             </nav>
