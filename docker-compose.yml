@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:11.5
+    restart: always
+    environment:
+      - POSTGRESS_PASSWORD=pass123
+      - POSTGRESS_DB=know_how_db
+    ports:
+      - 5432:5432
+    networks:
+      - shared-network
+    volumes:
+      - ./postgres-db:/var/lib/postgresql/data
+
+  server:
+    container_name: server_know_how
+    restart: unless-stopped
+    image: server-know-how-prod:1.0.0
+    build: ./server/
+    ports:
+      - 3000:3000
+    networks:
+      - shared-network
+    depends_on:
+      - postgres
+
+  client:
+    container_name: client_know_how
+    restart: unless-stopped
+    image: client-know-how-prod:1.0.0
+    build: ./client/
+    ports:
+      - 8080:8080
+    networks:
+      - shared-network
+    depends_on:
+      - server
+
+networks:
+  shared-network:
