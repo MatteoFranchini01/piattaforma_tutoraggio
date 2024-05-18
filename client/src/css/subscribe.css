@@ -1,0 +1,94 @@
+.overlay_background{
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.overlay_container{
+    background-color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 10;
+    padding: 30px;
+    width: 25%;
+    height: fit-content;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.subscribe-title{
+    color: rgb(50, 50, 100);
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.select-type{
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.selectable-button {
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 5px;
+    width: 40%;
+}
+
+.selectable-button:hover {
+    background-color: #e6e6e6;
+}
+
+.selectable-button.selected {
+    background-color: rgb(50,50,100);
+    color: #fff;
+}
+
+.selectable-button.selected:hover {
+    background-color: rgb(50,50,150);
+}
+
+.txt, .mail{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.pwd{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-submit, .proceed{
+    border: 1px solid rgb(50, 50, 100);
+    border-radius: 100px;
+    background-color: rgb(50, 50, 100);
+    color: white;
+
+    width: 50%;
+
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10%;
+    position: relative;
+}
+
+.btn-submit:active, .proceed:active{
+    background-color: rgb(50, 50, 150);
+}
+
+.error-paragraph-subscribe{
+    color: red;
+}
