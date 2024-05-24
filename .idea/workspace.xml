@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="migliorie pagina home.js">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-db/base/13067/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-db/base/13067/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-db/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/postgres-db/global/pg_control" afterDir="false" />
@@ -12,6 +13,20 @@
       <change beforePath="$PROJECT_DIR$/postgres-db/pg_stat/db_0.stat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-db/pg_stat/db_13067.stat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/postgres-db/pg_stat/global.stat" beforeDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/client/src/components/mainLayout/template/teacherCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/pages/teachers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/teachers.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack_" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/pages/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/pages/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/pages/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/pages/login.js" afterDir="false" />
+>>>>>>> e0bf98b129303dc866bbc465e1a7178e6b7cd966
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +52,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/MatteoFranchini01/piattaforma_tutoraggio.git&quot;,
-    &quot;accountId&quot;: &quot;b636ac6c-6265-4e0e-96cd-1275bd85af2b&quot;
+    &quot;accountId&quot;: &quot;8b938dfc-6b15-4e3a-a41c-9b96a483bad0&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -216,8 +231,13 @@
       <workItem from="1715786612346" duration="421000" />
       <workItem from="1715787460677" duration="3772000" />
       <workItem from="1715887227067" duration="86000" />
+<<<<<<< HEAD
       <workItem from="1716284033216" duration="12738000" />
       <workItem from="1716559099088" duration="493000" />
+=======
+      <workItem from="1716219684966" duration="1599000" />
+      <workItem from="1716556048685" duration="3518000" />
+>>>>>>> e0bf98b129303dc866bbc465e1a7178e6b7cd966
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />

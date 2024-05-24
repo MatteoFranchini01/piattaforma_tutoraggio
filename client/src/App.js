@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import MainTemplate from "./components/mainLayout/template/mainTemplate";
 import Home from "./components/pages/home.js";
 import Requirements from "./components/pages/requirements.js";
+import Teachers from "./components/pages/teachers.js";
 
 function App(){
     /*constructor(props) {
@@ -19,6 +20,7 @@ function App(){
                     <Routes>
                         <Route path="/" element={<Home/>}/>
                         <Route path="/requirements" element={<Requirements/>}/>
+                        <Route path="/teachers" element={<Teachers/>}/> {/* path="/teachers/:id" per passare l'ID della materia*/}
                     </Routes>
                 </MainTemplate>
             </>
