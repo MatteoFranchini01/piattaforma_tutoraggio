@@ -1,20 +1,18 @@
 const http = require('http');
-let mysql = require('mysql2');
+const { Pool } = require('pg');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 
-/*
-const connection = mysql.createConnection({
-    host: 'mysql',
-    port: 3306,
+const pool = new Pool({
+    host: 'postgres',
+    port: 5432,
     database: 'know_how_db',
-    user: 'root',
-    password: 'Matteo01'
+    user: 'postgres',
+    password: 'pass123'
 });
 
-connection.connect((err) => {
-    if (err) throw err;
-    console.log('Connected to the MySQL server.');
+pool.on('connect', () => {
+    console.log('Connected to the PostgreSQL server.');
 });
 
 function hashPassword(password) {
@@ -26,23 +24,19 @@ function hashPassword(password) {
 
 //TODO: c'è un problema nel senso che se si aggiunge una card al db e si refresha la pagina crasha tutto
 function create_cards(callback) {
-    connection.connect(
-        console.log("Connected...")
-    );
-
     let queryString = 'SELECT * FROM Materie';
 
     const cards = [];
 
-    connection.query(queryString, function (err, result, fields) {
+    pool.query(queryString, function (err, result) {
         if (err) throw err;
 
-        console.log("Executed query: ", result);
-        for (let i in result) {
+        console.log("Executed query: ", result.rows);
+        for (let i in result.rows) {
             const temp = {
-                id: result[i].ID,
-                nome: result[i].NOME,
-                prezzo: result[i].PREZZO,
+                id: result.rows[i].ID,
+                nome: result.rows[i].NOME,
+                prezzo: result.rows[i].PREZZO,
             };
 
             cards.push(temp);
@@ -51,162 +45,119 @@ function create_cards(callback) {
         callback(cards);
     });
 
-    connection.end();
+    pool.end();
 }
 
 // funzione per aggiungere una materia al db
 function add_materia(materia) {
-    connection.connect(
-        console.log("Connected...")
-    )
-
-    let queryString = 'INSERT INTO MATERIE (NOME, TUTOR_ID, PREZZO) VALUES (?, ?, ?)';
+    let queryString = 'INSERT INTO MATERIE (NOME, TUTOR_ID, PREZZO) VALUES ($1, $2, $3)';
     const values = [materia.nome, materia.tutor, materia.prezzo];
 
-    connection.query(queryString, function (err, result, fields) {
+    pool.query(queryString, values, (err, result) => {
         if (err) throw err;
-        console.log("Number of records inserted: ", result.affectedRows);
+        console.log("Number of records inserted: ", result.rowCount);
     });
 
-    connection.end();
+    pool.end();
 }
 
 // funzione per aggiungere utenti
 
 function add_user(utente) {
-    connection.connect(
-        console.log("Connected...")
-    )
-
-    let queryString = 'INSERT INTO UTENTI (NOME, COGNOME, PASSWORD, PRIVILEGI) VALUE (?, ?, ?, ?)';
-
     const hashedPassord = hashPassword(utente.password);
+    let queryString = 'INSERT INTO UTENTI (NOME, COGNOME, PASSWORD, PRIVILEGI) VALUES ($1, $2, $3, $4)';
     const values = [utente.nome, utente.cognome, hashedPassord, utente.privilegi];
 
-    connection.query(queryString, values, (err, result, fields) => {
+    pool.query(queryString, values, (err, result) => {
         if (err) throw err;
-        console.log("Number of records inserted: ", result.affectedRows);
+        console.log("Number of records inserted: ", result.rowCount);
     });
 
-    connection.end();
+    pool.end();
 }
 
 // funzione per trovare un utente
 
 function find_user(user_to_find) {
-    connection.connect(
-        console.log("Connected...")
-    )
-
-    let queryString = 'SELECT * FROM UTENTI JOIN RUOLI ON PRIVILEGI = ID WHERE UTENTI.NOME = ? AND UTENTI.COGNOME = ?'
+    let queryString = 'SELECT * FROM UTENTI JOIN RUOLI ON PRIVILEGI = ID WHERE UTENTI.NOME = $1 AND UTENTI.COGNOME = $2';
 
     const user = {};
 
-    connection.query(queryString, [user_to_find.nome, user_to_find.cognome], function (err, result, fields) {
+    pool.query(queryString, [user_to_find.nome, user_to_find.cognome], function (err, result) {
         if (err) throw err;
 
-        console.log("Query executed: ", result);
+        console.log("Query executed: ", result.rows);
 
-        for (let i in result) {
-            user.id = result[i].ID;
-            user.nome = result[i].NOME;
-            user.cognome = result[i].COGNOME;
-            user.ruolo = result[i].RUOLO_DESC;
+        for (let i in result.rows) {
+            user.id = result.rows[i].ID;
+            user.nome = result.rows[i].NOME;
+            user.cognome = result.rows[i].COGNOME;
+            user.ruolo = result.rows[i].RUOLO_DESC;
         }
     });
 
-    connection.end();
+    pool.end();
     return user;
 }
 
 function count_tutor() {
-    connection.connect(
-        console.log("Connected")
-    )
-
-    let tutor_num = 0;
-
     let queryString = 'SELECT COUNT(*) FROM TUTOR';
 
-    connection.query(queryString, function (err, result, fields) {
+    pool.query(queryString, function (err, result) {
         if (err) throw err;
 
-        console.log("Query executed: ", result);
+        console.log("Query executed: ", result.rows[0].count);
 
-        tutor_num = result;
+        return result.rows[0].count;
     });
 
-    connection.end();
-
-    return tutor_num;
+    pool.end();
 }
 
 function count_user() {
-    connection.connect(
-        console.log("Connected")
-    )
-
-    let user_count = 0;
-
     let queryString = 'SELECT COUNT(*) FROM UTENTI';
 
-    connection.query(queryString, function (err, result, fields) {
+    pool.query(queryString, function (err, result) {
         if (err) throw err;
 
-        console.log("Query executed: ", result);
+        console.log("Query executed: ", result.rows[0].count);
 
-        user_count = result;
+        return result.rows[0].count;
     });
 
-    connection.end()
-
-    return user_count;
+    pool.end()
 }
 
 function count_materie() {
-    connection.connect(
-        console.log("Connected")
-    )
-
-    let materie_count = 0;
-
     let queryString = 'SELECT COUNT(*) FROM MATERIE';
 
-    connection.query(queryString, function (err, result, fields) {
+    pool.query(queryString, function (err, result) {
         if (err) throw err;
 
-        console.log("Query executed: ", result);
+        console.log("Query executed: ", result.rows[0].count);
 
-        materie_count = result;
+        return result.rows[0].count;
     });
 
-    connection.end()
-
-    return materie_count;
+    pool.end()
 }
 
 function check_auth(user_to_check) {
-    connection.connect(
-        console.log("Connected")
-    )
-
-    let hashedPassord = hashPassword(user_to_check.password);
-
-    let queryString = 'SELECT PASSWORD FROM UTENTI WHERE NOME = ? AND COGNOME = ?';
+    let queryString = 'SELECT PASSWORD FROM UTENTI WHERE NOME = $1 AND COGNOME = $2';
 
     let auth = false;
 
-    connection.query(queryString, [user_to_check.nome, user_to_check.cognome], function (err, result, fields) {
+    pool.query(queryString, [user_to_check.nome, user_to_check.cognome], function (err, result) {
         if (err) throw err;
 
-        console.log("Query executed: ", result);
+        console.log("Query executed: ", result.rows);
 
-        if (result == hashedPassord) {
+        if (result.rows[0].password == user_to_check.password) {
             auth = true;
         }
     })
 
-    connection.end();
+    pool.end();
 
     return auth;
 }
@@ -271,7 +222,7 @@ const routes = [
     {
         method: 'POST',
         path: '/add_materia',
-        hndler: (req, res) => {
+        handler: (req, res) => {
             let materia = req.body;
             add_materia(materia);
             res.end("Materia added to db");
@@ -307,4 +258,3 @@ const routes = [
 ];
 
 createServer(routes);
- */
