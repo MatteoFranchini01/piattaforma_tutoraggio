@@ -10,7 +10,6 @@ export default function Home() {
     const [numberOfTeachers] = useState(0);
     const [numberOfStudents] = useState(0);
 
-    // per creazione dinamica del numero di cards delle materie
     const numberOfComponents = 6;
     const componentsArray = Array.from({ length: numberOfComponents }, (_, i) => i);
 

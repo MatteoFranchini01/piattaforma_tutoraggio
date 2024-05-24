@@ -21,7 +21,6 @@ export default function LoginOverlay ({isOpen, onClose}) {
             setPasswordError("");
         }
 
-        //TODO: da cancellare, serve solo per controllare se funziona l'inserimento - input
         console.log('Login details: ', username, password);
     }
 
