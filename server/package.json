@@ -17,7 +17,8 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.9.6",
     "pg": "^8.11.5",
-    "react-router-dom": "^6.23.0"
+    "react-router-dom": "^6.23.0",
+    "cors": "latest"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

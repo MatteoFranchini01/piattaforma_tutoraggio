@@ -11,13 +11,24 @@ export default function Home() {
     const [numberOfStudents] = useState(0);
 
     //TODO: Fixare questa roba qui 
-    const [numberOfSubject, setNumberOfSubject] = useState(null);
+    const [numberOfSubject, setNumberOfSubject] = useState(0);
 
     useEffect(() => {
+        console.log('Starting API call'); // Log per verificare l'inizio della chiamata API
         fetch('http://localhost:3000/count_materie')
-            .then(response => response.json())
-            .then(data => setNumberOfSubject(data.count))
-            .catch(error => console.error(error));
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response received:', data); // Log per verificare la struttura della risposta
+                setNumberOfSubject(data.count); // Accedere al campo 'count' della risposta
+            })
+            .catch(error => {
+                console.error('There was an error fetching the data:', error); // Log in caso di errore
+            });
     }, []);
 
     const numberOfComponents = 6;
