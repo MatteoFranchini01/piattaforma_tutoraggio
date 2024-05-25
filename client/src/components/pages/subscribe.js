@@ -4,6 +4,8 @@ import button from "bootstrap/js/src/button";
 
 export default function SubscribeOverlay ({isOpen, onClose}) {
 
+    //TODO: inserire il necessario all'interno del db
+    
     const [selectedType, setSelectedType] = useState('');
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');

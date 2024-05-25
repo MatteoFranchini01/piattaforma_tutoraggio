@@ -79,6 +79,8 @@ export default function Home() {
             });
     }, []);
 
+    //TODO lasciare numero fisso e creare pagine menù se ci fossero più card
+
     const numberOfComponents = 6;
     const componentsArray = Array.from({ length: numberOfComponents }, (_, i) => i);
 

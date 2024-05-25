@@ -21,6 +21,8 @@ export default function LoginOverlay ({isOpen, onClose}) {
             setPasswordError("");
         }
 
+        //TODO: gestire la connessione al db per la verifica della pwd
+
         console.log('Login details: ', username, password);
     }
 
