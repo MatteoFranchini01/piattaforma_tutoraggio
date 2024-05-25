@@ -154,7 +154,17 @@ function check_auth(user_to_check, callback) {
     });
 }
 
-//TODO: implementare funzione per il riconoscimento di utenti duplicati
+
+// Funzione per user duplicati
+
+function check_multiple_username(username_to_check, callback) {
+    let queryString = 'SELECT COUNT(*) FROM UTENTI WHERE USERNAME = $1';
+    pool.query(queryString, [username_to_check], (err, result) => {
+        if (err) throw err;
+        let count = result.rows[0].count;
+        callback(count === 1);
+    });
+}
 
 // Middleware
 app.use(cors());
@@ -240,6 +250,13 @@ app.get('/verify_auth', (req, res) => {
         res.json(result);
     });
 });
+
+app.get('/check_multiple_user', (req, res) => {
+    let user_to_check = req.query;
+    check_multiple_username(user_to_check, result => {
+        res.json(result)
+    });
+})
 
 // Avvio del server
 app.listen(port, () => {
