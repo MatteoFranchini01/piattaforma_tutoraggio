@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="migliorie pagina home.js">
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -29,6 +30,19 @@
       <change beforePath="$PROJECT_DIR$/client/src/components/pages/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/pages/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/pages/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/pages/login.js" afterDir="false" />
 >>>>>>> e0bf98b129303dc866bbc465e1a7178e6b7cd966
+=======
+    <list default="true" id="676d56c5-34e5-40ea-87d9-006992ac3b76" name="Changes" comment="teachers.js">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack_" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/10.pack_" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack_" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/6.pack" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,8 +252,13 @@
       <workItem from="1716559099088" duration="493000" />
 =======
       <workItem from="1716219684966" duration="1599000" />
+<<<<<<< Updated upstream
       <workItem from="1716556048685" duration="3518000" />
 >>>>>>> e0bf98b129303dc866bbc465e1a7178e6b7cd966
+=======
+      <workItem from="1716556048685" duration="3759000" />
+      <workItem from="1716560121996" duration="449000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="13/04">
       <option name="closed" value="true" />
@@ -577,7 +596,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714751517685</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="teachers.js">
+      <option name="closed" value="true" />
+      <created>1716559629573</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1716559629573</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,6 +679,7 @@
     <MESSAGE value="subscribe page" />
     <MESSAGE value="javascript login.js e subscribe.js" />
     <MESSAGE value="migliorie pagina home.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="migliorie pagina home.js" />
+    <MESSAGE value="teachers.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="teachers.js" />
   </component>
 </project>
