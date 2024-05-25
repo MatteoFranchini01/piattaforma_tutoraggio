@@ -7,12 +7,60 @@ import Accordion from "../mainLayout/template/accordion";
 import axios from "axios";
 
 export default function Home() {
-    const [numberOfTeachers] = useState(0);
-    const [numberOfStudents] = useState(0);
 
-    //TODO: Fixare questa roba qui 
+    // Numero di studenti nel DB
+
+    const [numberOfStudents, setNumberOfStudents] = useState(0);
+
+    // Chiamata API per il conteggio dei tutor
+
+    useEffect(() => {
+        console.log('Starting API call');
+        fetch('http://localhost:3000/count_students')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response received', data);
+                setNumberOfStudents(data.count);
+            })
+            .catch(error => {
+                console.error('There was an error fetching the data:', error);
+            });
+    }, []);
+
+    // Numero di inseggnanti nel DB
+
+    const [numberOfTeachers, setNumberOfTeachers] = useState(0);
+
+    // Chiamata API per il conteggio dei tutor
+
+    useEffect(() => {
+        console.log('Starting API call');
+        fetch('http://localhost:3000/count_tutor')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response received', data);
+                setNumberOfTeachers(data.count);
+            })
+            .catch(error => {
+                console.error('There was an error fetching the data:', error);
+            });
+    }, []);
+
+    // Numbero di materie nel DB
+
     const [numberOfSubject, setNumberOfSubject] = useState(0);
 
+    // Chiamata API per il conteggio delle materie
     useEffect(() => {
         console.log('Starting API call'); // Log per verificare l'inizio della chiamata API
         fetch('http://localhost:3000/count_materie')

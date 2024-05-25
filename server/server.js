@@ -124,6 +124,21 @@ function count_materie() {
     });
 }
 
+// Funzione per contare gli studenti
+function count_student() {
+    let queryString = 'SELECT COUNT(*) FROM UTENTI WHERE PRIVILEGI = 2';
+    return new Promise((resolve, reject) => {
+        pool.query(queryString, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                console.log("Query executed: ", result.rows[0].count);
+                resolve(result.rows[0].count);
+            }
+        });
+    });
+}
+
 // Funzione per verificare l'autenticazione
 function check_auth(user_to_check, callback) {
     let queryString = 'SELECT PASSWORD FROM UTENTI WHERE NOME = $1 AND COGNOME = $2';
@@ -162,6 +177,18 @@ app.get('/count_user', (req, res) => {
     count_user()
         .then(result => {
             console.log("Numero utenti: ", result);
+            res.json({ count: result });
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ error: 'Errore durante la query' });
+        });
+});
+
+app.get('/count_students', (req, res) => {
+    count_student()
+        .then(result => {
+            console.log("Numero studenti: ", result);
             res.json({ count: result });
         })
         .catch(err => {
