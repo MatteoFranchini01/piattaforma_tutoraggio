@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   postgres:
-    image: postgres:11.5
+    image: postgres:latest
     restart: always
     environment:
       - POSTGRESS_PASSWORD=pass123
