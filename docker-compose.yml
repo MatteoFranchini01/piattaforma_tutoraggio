@@ -4,6 +4,7 @@ services:
     image: postgres:latest
     restart: always
     environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
       - POSTGRESS_PASSWORD=pass123
       - POSTGRESS_DB=know_how_db
     ports:
