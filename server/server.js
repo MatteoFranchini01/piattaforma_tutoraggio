@@ -141,14 +141,20 @@ function count_student() {
 
 // Funzione per verificare l'autenticazione
 function check_auth(user_to_check, callback) {
-    let queryString = 'SELECT PASSWORD FROM UTENTI WHERE NOME = $1 AND COGNOME = $2';
-    pool.query(queryString, [user_to_check.nome, user_to_check.cognome], (err, result) => {
+    let queryString = 'SELECT PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
+    pool.query(queryString, [user_to_check.username], (err, result) => {
         if (err) throw err;
-        console.log("Query executed: ", result.rows);
-        const auth = result.rows.length > 0 && result.rows[0].password === user_to_check.password;
-        callback(auth);
+        let user_to_check_hash_pwd = hashPassword(user_to_check.password);
+        if (result.rows.length > 0 && result.rows[0].password === user_to_check_hash_pwd) {
+            const auth =  result.rows[0].privilegi;
+            callback({ authenticated: true, privilegi: auth });
+        } else {
+            callback({ authenticated: false, privilegi: -1 });
+        }
     });
 }
+
+//TODO: implementare funzione per il riconoscimento di utenti duplicati
 
 // Middleware
 app.use(cors());
@@ -229,7 +235,7 @@ app.post('/find_user', (req, res) => {
 });
 
 app.get('/verify_auth', (req, res) => {
-    let user_to_check = req.query;
+    let user_to_check = { username: req.query.username, password: req.query.password };
     check_auth(user_to_check, result => {
         res.json(result);
     });

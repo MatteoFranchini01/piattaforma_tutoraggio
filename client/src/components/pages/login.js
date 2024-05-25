@@ -21,9 +21,36 @@ export default function LoginOverlay ({isOpen, onClose}) {
             setPasswordError("");
         }
 
-        //TODO: gestire la connessione al db per la verifica della pwd
+        //TODO: controllare funzionamento e vedere come implementare lato frontend l'evento
 
-        console.log('Login details: ', username, password);
+        if (username && password) {
+            const user_to_check = {username, password};
+            fetch(`http://localhost:3000/verify_auth?username=${user_to_check.username}&password=${user_to_check.password}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.authenticated) {
+                        console.log('User logged in');
+                        switch (data.privilegi){
+                            case 1:
+                                console.log('Root privilege');
+                                break;
+                            case 2:
+                                console.log('Tutor privilege');
+                                break;
+                            case 3:
+                                console.log('User privilege');
+                                break;
+                            default:
+                                console.log('Errore nei permessi');
+                                break;
+                        }
+
+                    } else {
+                        console.log('User NOT logged in');
+                    }
+                })
+                .catch(error => console.error('Errore durante la chiamata API:', error));
+        }
     }
 
     return(
