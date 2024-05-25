@@ -11,9 +11,9 @@
 13066||10|c|G
 13066||10|C|G
 13066||10|T|G</Grants>
-      <IntrospectionStateNumber>569</IntrospectionStateNumber>
+      <IntrospectionStateNumber>576</IntrospectionStateNumber>
       <ServerVersion>11.5</ServerVersion>
-      <StartupTime>1716060801</StartupTime>
+      <StartupTime>1716584533</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1430,17 +1430,38 @@ true posixrules
 12771||10|C|G
 12771||-9223372036854775808|U|G
 12771||10|U|G</Grants>
-      <IntrospectionStateNumber>569</IntrospectionStateNumber>
+      <IntrospectionStateNumber>576</IntrospectionStateNumber>
       <ObjectId>13067</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
-    <role id="3" parent="1" name="pg_signal_backend">
-      <ObjectId>4200</ObjectId>
+    <role id="3" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
     </role>
-    <role id="4" parent="1" name="pg_read_server_files">
+    <role id="4" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <RoleGrants>3374
+3375
+3377</RoleGrants>
+    </role>
+    <role id="5" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+    </role>
+    <role id="6" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+    </role>
+    <role id="7" parent="1" name="pg_read_server_files">
       <ObjectId>4569</ObjectId>
     </role>
-    <role id="5" parent="1" name="postgres">
+    <role id="8" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+    </role>
+    <role id="9" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+    </role>
+    <role id="10" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+    </role>
+    <role id="11" parent="1" name="postgres">
       <BypassRls>1</BypassRls>
       <CanLogin>1</CanLogin>
       <CreateDb>1</CreateDb>
@@ -1448,27 +1469,6 @@ true posixrules
       <ObjectId>10</ObjectId>
       <Replication>1</Replication>
       <SuperRole>1</SuperRole>
-    </role>
-    <role id="6" parent="1" name="pg_write_server_files">
-      <ObjectId>4570</ObjectId>
-    </role>
-    <role id="7" parent="1" name="pg_execute_server_program">
-      <ObjectId>4571</ObjectId>
-    </role>
-    <role id="8" parent="1" name="pg_read_all_stats">
-      <ObjectId>3375</ObjectId>
-    </role>
-    <role id="9" parent="1" name="pg_monitor">
-      <ObjectId>3373</ObjectId>
-      <RoleGrants>3374
-3375
-3377</RoleGrants>
-    </role>
-    <role id="10" parent="1" name="pg_read_all_settings">
-      <ObjectId>3374</ObjectId>
-    </role>
-    <role id="11" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
     </role>
     <tablespace id="12" parent="1" name="pg_default">
       <ObjectId>1663</ObjectId>
@@ -4783,11 +4783,403 @@ true posixrules
     <schema id="253" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>569</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-05-18.19:37:53</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>576</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-05-24.21:07:08</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>360</StateNumber>
       <OwnerName>postgres</OwnerName>
     </schema>
+    <sequence id="254" parent="253" name="discente_id_discente_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>16424</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>573</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="255" parent="253" name="lezioni_id_lez_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>16450</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>575</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="256" parent="253" name="materie_id_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>16437</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>574</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="257" parent="253" name="ruoli_id_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>16384</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>569</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="258" parent="253" name="tutor_id_tutor_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>16408</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>572</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="259" parent="253" name="utenti_id_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>16392</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>571</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="260" parent="253" name="discente">
+      <ObjectId>16426</ObjectId>
+      <StateNumber>573</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="261" parent="253" name="lezioni">
+      <ObjectId>16452</ObjectId>
+      <StateNumber>575</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="262" parent="253" name="materie">
+      <ObjectId>16439</ObjectId>
+      <StateNumber>574</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="263" parent="253" name="ruoli">
+      <ObjectId>16386</ObjectId>
+      <StateNumber>571</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="264" parent="253" name="tutor">
+      <ObjectId>16410</ObjectId>
+      <StateNumber>572</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="265" parent="253" name="utenti">
+      <ObjectId>16394</ObjectId>
+      <StateNumber>571</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="266" parent="260" name="id_discente">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;discente_id_discente_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>573</StateNumber>
+      <SequenceId>16424</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="267" parent="260" name="nome">
+      <DasType>varchar(200)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>573</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="268" parent="260" name="cognome">
+      <DasType>varchar(200)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>573</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="269" parent="260" name="id">
+      <DasType>integer|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>573</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="270" parent="260" name="discente_utenti_id_fk">
+      <ColNames>id</ColNames>
+      <ObjectId>16432</ObjectId>
+      <StateNumber>573</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16394</RefTableId>
+    </foreign-key>
+    <index id="271" parent="260" name="discente_pkey">
+      <ColNames>id_discente</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16430</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>573</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="272" parent="260" name="discente_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16431</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>573</StateNumber>
+      <UnderlyingIndexId>16430</UnderlyingIndexId>
+    </key>
+    <column id="273" parent="261" name="id_lez">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;lezioni_id_lez_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>575</StateNumber>
+      <SequenceId>16450</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="274" parent="261" name="id_tutor">
+      <DasType>integer|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>575</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="275" parent="261" name="id_discente">
+      <DasType>integer|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>575</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="276" parent="261" name="id_materia">
+      <DasType>integer|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>575</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="277" parent="261" name="lezioni_tutor_id_tutor_fk">
+      <ColNames>id_tutor</ColNames>
+      <ObjectId>16468</ObjectId>
+      <StateNumber>575</StateNumber>
+      <RefKeyColPositions>5</RefKeyColPositions>
+      <RefTableId>16410</RefTableId>
+    </foreign-key>
+    <foreign-key id="278" parent="261" name="lezioni_discente_id_discente_fk">
+      <ColNames>id_discente</ColNames>
+      <ObjectId>16458</ObjectId>
+      <StateNumber>575</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16426</RefTableId>
+    </foreign-key>
+    <foreign-key id="279" parent="261" name="lezioni_materie_id_fk">
+      <ColNames>id_materia</ColNames>
+      <ObjectId>16463</ObjectId>
+      <StateNumber>575</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16439</RefTableId>
+    </foreign-key>
+    <index id="280" parent="261" name="lezioni_pkey">
+      <ColNames>id_lez</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16456</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>575</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="281" parent="261" name="lezioni_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16457</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>575</StateNumber>
+      <UnderlyingIndexId>16456</UnderlyingIndexId>
+    </key>
+    <column id="282" parent="262" name="id">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;materie_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>574</StateNumber>
+      <SequenceId>16437</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="283" parent="262" name="nome">
+      <DasType>varchar(200)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>574</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="284" parent="262" name="tutor_id">
+      <DasType>integer|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>574</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="285" parent="262" name="prezzo">
+      <DasType>integer|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>574</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="286" parent="262" name="materie_tutor_id_tutor_fk">
+      <ColNames>tutor_id</ColNames>
+      <ObjectId>16445</ObjectId>
+      <StateNumber>574</StateNumber>
+      <RefKeyColPositions>5</RefKeyColPositions>
+      <RefTableId>16410</RefTableId>
+    </foreign-key>
+    <index id="287" parent="262" name="materie_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16443</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>574</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="288" parent="262" name="materie_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16444</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>574</StateNumber>
+      <UnderlyingIndexId>16443</UnderlyingIndexId>
+    </key>
+    <column id="289" parent="263" name="id">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;ruoli_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>569</StateNumber>
+      <SequenceId>16384</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="290" parent="263" name="ruolo_desc">
+      <DasType>varchar(200)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>569</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="291" parent="263" name="ruoli_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16390</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>569</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="292" parent="263" name="ruoli_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16391</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>569</StateNumber>
+      <UnderlyingIndexId>16390</UnderlyingIndexId>
+    </key>
+    <column id="293" parent="264" name="id">
+      <DasType>integer|0s</DasType>
+      <Position>1</Position>
+      <StateNumber>572</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="294" parent="264" name="nome">
+      <DasType>varchar(200)|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>572</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="295" parent="264" name="cognome">
+      <DasType>varchar(200)|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>572</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="296" parent="264" name="mail">
+      <DasType>varchar(200)|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>572</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="297" parent="264" name="id_tutor">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;tutor_id_tutor_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>572</StateNumber>
+      <SequenceId>16408</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="298" parent="264" name="tutor_utenti_id_fk">
+      <ColNames>id</ColNames>
+      <ObjectId>16419</ObjectId>
+      <StateNumber>572</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16394</RefTableId>
+    </foreign-key>
+    <index id="299" parent="264" name="tutor_pkey">
+      <ColNames>id_tutor</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16417</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>572</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="300" parent="264" name="tutor_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16418</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>572</StateNumber>
+      <UnderlyingIndexId>16417</UnderlyingIndexId>
+    </key>
+    <column id="301" parent="265" name="id">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;utenti_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>571</StateNumber>
+      <SequenceId>16392</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="302" parent="265" name="nome">
+      <DasType>varchar(200)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>571</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="303" parent="265" name="cognome">
+      <DasType>varchar(200)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>571</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="304" parent="265" name="password">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>571</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="305" parent="265" name="privilegi">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>571</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="306" parent="265" name="utenti_ruoli_id_fk">
+      <ColNames>privilegi</ColNames>
+      <ObjectId>16403</ObjectId>
+      <StateNumber>571</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16386</RefTableId>
+    </foreign-key>
+    <index id="307" parent="265" name="utenti_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16401</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>571</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="308" parent="265" name="utenti_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16402</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>571</StateNumber>
+      <UnderlyingIndexId>16401</UnderlyingIndexId>
+    </key>
   </database-model>
 </dataSource>

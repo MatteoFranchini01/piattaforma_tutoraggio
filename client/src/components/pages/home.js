@@ -1,14 +1,24 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import homeCss from "../../css/home.css"
 import Card from "../mainLayout/template/card"
 import mainImg from "../../images/home.png"
 import HowToStartCard from "../mainLayout/template/howToStartCard";
 import Accordion from "../mainLayout/template/accordion";
+import axios from "axios";
 
 export default function Home() {
-    const [numberOfSubject]  = useState(0);
     const [numberOfTeachers] = useState(0);
     const [numberOfStudents] = useState(0);
+
+    //TODO: Fixare questa roba qui 
+    const [numberOfSubject, setNumberOfSubject] = useState(null);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/count_materie')
+            .then(response => response.json())
+            .then(data => setNumberOfSubject(data.count))
+            .catch(error => console.error(error));
+    }, []);
 
     const numberOfComponents = 6;
     const componentsArray = Array.from({ length: numberOfComponents }, (_, i) => i);

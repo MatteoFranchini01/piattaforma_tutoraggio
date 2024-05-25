@@ -6,7 +6,7 @@ const crypto = require('crypto');
 const pool = new Pool({
     host: 'postgres',
     port: 5432,
-    database: 'know_how_db',
+    database: 'postgres',
     user: 'postgres',
     password: 'pass123'
 });
@@ -44,8 +44,6 @@ function create_cards(callback) {
 
         callback(cards);
     });
-
-    pool.end();
 }
 
 // funzione per aggiungere una materia al db
@@ -57,8 +55,6 @@ function add_materia(materia) {
         if (err) throw err;
         console.log("Number of records inserted: ", result.rowCount);
     });
-
-    pool.end();
 }
 
 // funzione per aggiungere utenti
@@ -72,8 +68,6 @@ function add_user(utente) {
         if (err) throw err;
         console.log("Number of records inserted: ", result.rowCount);
     });
-
-    pool.end();
 }
 
 // funzione per trovare un utente
@@ -95,51 +89,51 @@ function find_user(user_to_find) {
             user.ruolo = result.rows[i].RUOLO_DESC;
         }
     });
-
-    pool.end();
-    return user;
 }
 
 function count_tutor() {
     let queryString = 'SELECT COUNT(*) FROM TUTOR';
 
-    pool.query(queryString, function (err, result) {
-        if (err) throw err;
-
-        console.log("Query executed: ", result.rows[0].count);
-
-        return result.rows[0].count;
+    return new Promise((resolve, reject) => {
+        pool.query(queryString, function (err, result) {
+            if (err) {
+                reject(err);
+            } else {
+                console.log("Query executed: ", result.rows[0].count);
+                resolve(result.rows[0].count);
+            }
+        });
     });
-
-    pool.end();
 }
 
 function count_user() {
     let queryString = 'SELECT COUNT(*) FROM UTENTI';
 
-    pool.query(queryString, function (err, result) {
-        if (err) throw err;
-
-        console.log("Query executed: ", result.rows[0].count);
-
-        return result.rows[0].count;
+    return new Promise((resolve, reject) => {
+        pool.query(queryString, function (err, result) {
+            if (err) {
+                reject(err);
+            } else {
+                console.log("Query executed: ", result.rows[0].count);
+                resolve(result.rows[0].count);
+            }
+        });
     });
-
-    pool.end()
 }
 
 function count_materie() {
     let queryString = 'SELECT COUNT(*) FROM MATERIE';
 
-    pool.query(queryString, function (err, result) {
-        if (err) throw err;
-
-        console.log("Query executed: ", result.rows[0].count);
-
-        return result.rows[0].count;
+    return new Promise((resolve, reject) => {
+        pool.query(queryString, function (err, result) {
+            if (err) {
+                reject(err);
+            } else {
+                console.log("Query executed: ", result.rows[0].count);
+                resolve(result.rows[0].count);
+            }
+        });
     });
-
-    pool.end()
 }
 
 function check_auth(user_to_check) {
@@ -155,9 +149,7 @@ function check_auth(user_to_check) {
         if (result.rows[0].password == user_to_check.password) {
             auth = true;
         }
-    })
-
-    pool.end();
+    });
 
     return auth;
 }
@@ -179,6 +171,12 @@ const createServer = (routes) => {
     server.listen(port, () => {
         console.log(`Server started on port ${port}`);
     });
+
+    // Chiusura del pool di connessioni dopo la chiusura del server
+    process.on('SIGINT', () => {
+        pool.end();
+        server.close();
+    });
 };
 
 const routes = [
@@ -196,27 +194,48 @@ const routes = [
         method: 'GET',
         path: '/count_tutor',
         handler: (req, res) => {
-            let result = count_tutor();
-            res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify(result));
+            count_tutor()
+                .then(result => {
+                    console.log("Numero tutor: ", result);
+                    res.setHeader('Content-Type', 'application/json');
+                    res.end(JSON.stringify({ count: result }));
+                })
+                .catch(err => {
+                    console.error(err);
+                    res.status(500).json({ error: 'Errore durante la query' });
+                });
         }
     },
-    {
-        method: 'GET',
+    {method: 'GET',
         path: '/count_user',
         handler: (req, res) => {
-            let result = count_user();
-            res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify(result));
+            count_user()
+                .then(result => {
+                    console.log("Numero utenti: ", result);
+                    res.setHeader('Content-Type', 'application/json');
+                    res.end(JSON.stringify({ count: result }));
+                })
+                .catch(err => {
+                    console.error(err);
+                    res.status(500).json({ error: 'Errore durante la query' });
+                });
         }
     },
     {
         method: 'GET',
         path: '/count_materie',
         handler: (req, res) => {
-            let result = count_materie();
-            res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify(result));
+            count_materie()
+                .then(result => {
+                    console.log("Numero materie: ", result);
+                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ count: result }));
+                })
+                .catch(err => {
+                    console.error(err);
+                    res.writeHead(500, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ error: 'Errore durante la query' }));
+                });
         }
     },
     {
