@@ -30,17 +30,33 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         };
     }, [isOpen]);
 
-    const onClickHandler = (event) => {
-        fetch(`http://localhost:3000/check_multiple_user?username=${username}`)
-            .then(response => response.json())
-            .then(data => {
-                let multiple_user_check = data.result;
-            })
+    async function checkUsername(username) {
+        let multiple_user_check = false;
 
-        //TODO: da provare il funzionamento
+        try {
+            const response = await fetch(`http://localhost:3000/check_multiple_user?username=${username}`);
+            const data = await response.json();
+            multiple_user_check = data.result;
+            console.log("Richiesta completata, con esisto: ", multiple_user_check);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+
+        return multiple_user_check;
+    }
+
+    const onClickHandler = async (event) => {
+        const multiple_user_check = await checkUsername(username);
+
+        //TODO: la funzione sotto va bene, però ci sono degli errori nell'inserimento dei dati
+        // e il controllo della password va inserito prima di inviare la richiesta al server
+        
+        //TODO: capire il funzionamento di selectedType
+
+        console.log("Multiple user ", multiple_user_check);
         if (selectedType === '' || name === '' || surname === '' || email === '' || username === '' || password === '') {
             setError("Compilare tutti i campi!")
-        } else if (!multiple_user_check) {
+        } else if (multiple_user_check) {
             setError("Scegliere un nuovo username")
         } else {
             setError("")
@@ -59,7 +75,7 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         checkPasswordStrength(password)
         validateEmail(email);
 
-        console.log('Subscribe credentials: ', selectedType ,name, surname, username, email, password);
+        console.log('Subscribe credentials: ', selectedType, name, surname, username, email, password);
     }
 
     const validateEmail = (email) => {

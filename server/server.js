@@ -253,6 +253,7 @@ app.get('/verify_auth', (req, res) => {
 app.get('/check_multiple_user', (req, res) => {
     let user_to_check = req.query;
     check_multiple_username(user_to_check, result => {
+        console.log("Esito: ", result);
         res.json(result)
     });
 })
