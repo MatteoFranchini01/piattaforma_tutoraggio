@@ -154,7 +154,6 @@ function check_auth(user_to_check, callback) {
     });
 }
 
-
 // Funzione per user duplicati
 
 function check_multiple_username(username_to_check, callback) {

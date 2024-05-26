@@ -31,11 +31,31 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
     }, [isOpen]);
 
     const onClickHandler = (event) => {
+        fetch(`http://localhost:3000/check_multiple_user?username=${username}`)
+            .then(response => response.json())
+            .then(data => {
+                let multiple_user_check = data.result;
+            })
+
+        //TODO: da provare il funzionamento
         if (selectedType === '' || name === '' || surname === '' || email === '' || username === '' || password === '') {
             setError("Compilare tutti i campi!")
+        } else if (!multiple_user_check) {
+            setError("Scegliere un nuovo username")
         } else {
             setError("")
+            const user_to_add = {selectedType, name, surname, email, username, password};
+            fetch('http://localhost:3000/add_user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user_to_add),
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))
         }
+
         checkPasswordStrength(password)
         validateEmail(email);
 
