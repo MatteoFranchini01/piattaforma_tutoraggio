@@ -103,7 +103,7 @@ export default function Home() {
                                 materie tra cui scegliere</i>
                         </p>
                     </div>
-                    <div className="box image-box">
+                    <div className="box image-box-main">
                         <img alt="mainImg_logo" src={mainImg}></img>
                     </div>
                     <div className="statistics">

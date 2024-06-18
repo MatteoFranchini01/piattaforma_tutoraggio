@@ -2,7 +2,7 @@ version: '3.9'
 services:
   postgres:
     image: postgres:latest
-    platform: linux/amd64
+    platform: linux/arm64
     restart: always
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
@@ -13,7 +13,7 @@ services:
     networks:
       - shared-network
     volumes:
-      - ./postgres-db:/var/lib/postgresql/data
+      - ./postgres-db:/var/postgresql@14/data
 
   server:
     container_name: server_know_how

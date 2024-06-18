@@ -17,8 +17,8 @@ export default function Requirements() {
                             <i className="fa fa-check" aria-hidden="true"><span className="tab"></span>Un posto sicuro per te e per i tuoi studenti</i><br/>
                         </p>
                     </div>
-                    <div className="boxing image-box">
-                        <img className="teacherImg" src={teacherImg} alt="teacher_logo"/>
+                    <div className="boxing image-box-teachers">
+                        <img src={teacherImg} alt="teacher_logo"/>
                     </div>
                 </section>
                 <section className="requirements">
