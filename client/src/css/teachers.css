@@ -1,8 +1,44 @@
-.main-content{
-    padding-top: 15%;
+.main-content {
+    display: flex;
+    flex-direction: row; /* Allinea i figli orizzontalmente */
+    align-items: flex-start; /* Allinea i box in alto */
+    height: auto; /* Facoltativo: per assicurarti che il contenitore si adatti all'altezza del contenuto */
+    width: 100%; /* Assicurati che il contenitore occupi tutta la larghezza disponibile */
+    padding-top: 8%;
 }
 
-.teachers-information{
-    height: 1000px;
-    padding-left: 5%;
+.teachers-information {
+    height: auto;
+    padding-left: 2%;
+    padding-right: 2%;
+    flex: 1;
+}
+
+.filters {
+    height: 100%;
+    flex-basis: 25%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.box {
+    padding-top: 75px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.vr-teach{
+    margin-bottom: 2%;
+}
+
+.form-select {
+    width: 50%; /* Imposta la larghezza del select */
+    max-width: 200px; /* Imposta una larghezza massima, facoltativa */
+    padding: 10px; /* Facoltativo: aggiungi padding per migliorare l'aspetto */
+    box-sizing: border-box;
+    margin-left: 50px;
 }
