@@ -4,7 +4,7 @@
     align-items: flex-start; /* Allinea i box in alto */
     height: auto; /* Facoltativo: per assicurarti che il contenitore si adatti all'altezza del contenuto */
     width: 100%; /* Assicurati che il contenitore occupi tutta la larghezza disponibile */
-    padding-top: 8%;
+    padding-top: 5%;
 }
 
 .teachers-information {
@@ -32,13 +32,50 @@
 }
 
 .vr-teach{
+    margin-top: 4%;
     margin-bottom: 2%;
 }
 
 .form-select {
-    width: 50%; /* Imposta la larghezza del select */
-    max-width: 200px; /* Imposta una larghezza massima, facoltativa */
-    padding: 10px; /* Facoltativo: aggiungi padding per migliorare l'aspetto */
+    width: 50%;
+    max-width: 200px;
+    padding: 20px;
     box-sizing: border-box;
+    margin-left: 50px;
+}
+
+.form-control{
+    width: 50%;
+    max-width: 200px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-left: 50px;
+    margin-bottom: 25px;
+}
+
+.title-teachers-filters{
+    padding: 0 50px 20px 50px;
+}
+
+.form-label{
+    width: 50%;
+    margin-top: 30px;
+    box-sizing: border-box;
+    margin-left: 50px;
+}
+
+.form-range{
+    width: 30%;
+    margin-top: 30px;
+    box-sizing: border-box;
+    transform: scale(0.7);
+}
+
+.price{
+    padding-top: 20px;
+    margin-left: 50px;
+}
+
+.find{
     margin-left: 50px;
 }
