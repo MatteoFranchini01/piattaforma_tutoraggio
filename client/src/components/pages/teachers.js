@@ -3,7 +3,7 @@ import "../../css/teachers.css";
 import TeachersCard from "../mainLayout/template/teachersCard";
 
 //TODO a questa funzione deve arrivare l'ID della materia, in modo da sapere quali sono e quanti sono gli insegnanti che fanno quella materia
-export default function Teacher() {
+export default function Teachers() {
     const [numberOfTeachers, setNumberOfTeachers] = useState(6);
     const [componentsArray, setComponentsArray] = useState([]);
     const [price, setPrice] = useState(50);
