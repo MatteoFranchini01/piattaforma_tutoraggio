@@ -1,0 +1,129 @@
+:root {
+    --rating: 0; /* default value */
+}
+
+.main-page-tutor{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: auto;
+    width: 100%;
+    padding-top: 5%;
+}
+
+.tutor-presentation{
+    height: 100%;
+    flex-basis: 35%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.tutor-info{
+    height: auto;
+    padding-left: 2%;
+    padding-right: 2%;
+    flex: 1;
+}
+
+.tutor-competences, .tutor-languages, .tutor-reservation{
+    height: auto;
+    margin-bottom: 4%;
+}
+
+
+.box{
+    padding-top: 75px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.tutor-details{
+    width: 70%;
+    height: 500px;
+    border: rgb(50, 50, 100) solid 1px;
+    border-radius: 10px;
+    margin-left: 25%;
+    justify-content: center;
+    text-align: center;
+}
+
+.tutor-img{
+    margin-top: 15%;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+.tutor-name{
+    margin-top: 20px;
+}
+
+.tutor-price{
+    padding-top: 20px;
+}
+
+
+.ratings i{
+    color:#cecece;
+    font-size:20px;
+}
+
+.rating-color{
+    color:#fbc634 !important;
+}
+
+.tutor-rating{
+    justify-content: center;
+    text-align: center;
+    padding-top: 15px;
+
+}
+
+.tutor-rating-value{
+    padding-top: 10px;
+}
+
+.tutor-title{
+    padding-left: 10%;
+    padding-bottom: 10px;
+}
+
+.tutor-title-languages, .tutor-title-reservation{
+    padding-left: 10%;
+    padding-right: 10px;
+    padding-top: 20px;
+}
+
+
+.tutor-competences-list, .tutor-languages-list{
+    padding-left: 15%;
+}
+
+.tutor-competences-item, .tutor-languages-item{
+    padding-left: 20px;
+    padding-top: 15px;
+}
+
+.tutor-reservation-table{
+    margin: 5% 10%;
+
+}
+
+thead{
+    text-align: center;
+}
+
+th{
+    width: 100px;
+}
+
+td a{
+    width:100%;
+    line-height:40px;
+    display:inline-block;
+    vertical-align:middle;
+}

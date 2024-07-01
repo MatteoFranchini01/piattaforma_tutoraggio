@@ -1,9 +1,9 @@
 .main-content {
     display: flex;
-    flex-direction: row; /* Allinea i figli orizzontalmente */
-    align-items: flex-start; /* Allinea i box in alto */
-    height: auto; /* Facoltativo: per assicurarti che il contenitore si adatti all'altezza del contenuto */
-    width: 100%; /* Assicurati che il contenitore occupi tutta la larghezza disponibile */
+    flex-direction: row;
+    align-items: flex-start;
+    height: auto;
+    width: 100%;
     padding-top: 5%;
 }
 
