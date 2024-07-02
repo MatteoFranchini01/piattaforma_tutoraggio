@@ -2,19 +2,26 @@ import "../../css/tutor.css"
 import React from "react";
 import Img from "./1.jpg"
 import Table from "../mainLayout/template/table"
+import ConfirmPrenotation from "./confirmPrenotation";
 
+
+// TODO Alla funzione deve essere passato l''ID del tutor per fare la lettura del database
 export default function Tutor() {
+    const [isConfirmPrenotationOverlayOpen, setIsConfirmPrenotationOverlayOpen] = React.useState(false);
+    const [selectedTime, setSelectedTime] = React.useState('');
+    const [selectedDay, setSelectedDay] = React.useState('');
 
+    //TODO Matteo leggere le informazioni relative al tutor
     const tutorName = "Nome Tutor"
     const tutorSurname = "Cognome Tutor"
-    {/*numeri random*/}
     const tutorPrice = 15
-    const tutorRating = 4; {/* da arrotondare al numero intero più vicino perchè altrimenti non colora le stelline*/}
+    const tutorRating = 4;
     const numberOfReviews = 27
     const listOfCompetences = ["Diploma di liceo scientifico", "Laurea in Fisica", "Master di I livello in Fisica Teorica"]
     const listOfLanguages = ["Italiano", "Inglese", "Spagnolo"]
 
-    const schedule = [
+    //TODO Matteo: leggere la tabella delle disponibilità relative al tutor in questione
+    const availability = [
         { time: '08:00', day: 'lun' },
         { time: '10:00', day: 'mar' },
         { time: '11:00', day: 'gio' },
@@ -23,11 +30,24 @@ export default function Tutor() {
         { time: '16:00', day: 'gio' },
     ];
 
+    //TODO Matteo: leggere tabella delle lezioni prenotate
+    const bookedUp = [
+        { time: '19:00', day: 'sab' },
+        { time: '10:00', day: 'mar' }
+    ]
+
+    const handleBookButtonClicked = (time, day) => {
+        setIsConfirmPrenotationOverlayOpen(!isConfirmPrenotationOverlayOpen)
+        setSelectedTime(time);
+        setSelectedDay(day);
+        console.log("click");
+    };
+
 
     return (
         <>
             <div className="main-page-tutor">
-                <div className="box tutor-presentation">
+                <div className="box tutor-box tutor-presentation">
                     <div className="tutor-details">
                         <img src={Img} alt="Tutor" className="tutor-img"/>
                         <h5 className="tutor-name">{tutorName}</h5>
@@ -46,7 +66,7 @@ export default function Tutor() {
                         <p className="tutor-price">Prezzo di una lezione: <b>{tutorPrice}.00 €/h</b></p>
                     </div>
                 </div>
-                <div className="box tutor-info">
+                <div className="box tutor-box tutor-info">
                     <div className="tutor-competences">
                         <h4 className="tutor-title">Competenze</h4>
                         <ul className="tutor-competences-list">
@@ -68,7 +88,12 @@ export default function Tutor() {
                     <div className="tutor-reservation">
                         <h4 className="tutor-title-reservation">Disponibilità e prenotazione</h4>
                         <div className="tutor-reservation-table">
-                            <Table schedule={schedule}/>
+                            <Table schedule={availability} bookedUp={bookedUp} onBookButtonClicked={handleBookButtonClicked}/>
+                            <ConfirmPrenotation isOpen={isConfirmPrenotationOverlayOpen}
+                                                onClose={() => setIsConfirmPrenotationOverlayOpen(!isConfirmPrenotationOverlayOpen)}
+                                                selectedTime={selectedTime}
+                                                selectedDay={selectedDay}
+                            />
                         </div>
                     </div>
                 </div>

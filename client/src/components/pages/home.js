@@ -32,7 +32,7 @@ export default function Home() {
             });
     }, []);
 
-    // Numero di inseggnanti nel DB
+    // Numero di insegnanti nel DB
 
     const [numberOfTeachers, setNumberOfTeachers] = useState(0);
 
@@ -87,7 +87,7 @@ export default function Home() {
     return (
             <>
                 <section className="presentation">
-                    <div className="box presentation-box">
+                    <div className="box home-box presentation-box">
                         <h2 className="title">KnowHow: il tuo partner nell'apprendimento!</h2>
                         <p className="presentation-paragraph">
                             KnowHow è qui per accompagnare ogni studente nel raggiungimento dei propri obiettivi
@@ -103,7 +103,7 @@ export default function Home() {
                                 materie tra cui scegliere</i>
                         </p>
                     </div>
-                    <div className="box image-box-main">
+                    <div className="box home-box image-box-main">
                         <img alt="mainImg_logo" src={mainImg}></img>
                     </div>
                     <div className="statistics">
@@ -135,14 +135,14 @@ export default function Home() {
                             accademici in modo efficiente. </p>
                     </div>
                     <div className="box-container">
-                        <div className="box second-box">
+                        <div className="box how-to second-box">
                             <h4 className="basic-titles grade"> Per ogni scuola ed età</h4>
                             <p className="basic-paragraph">Il nostro servizio di ripetizioni online è adatto a ogni
                                 scuola ed età.
                                 <br/>Con insegnanti qualificati, offriamo supporto personalizzato per garantire il
                                 successo accademico di ogni studente.</p>
                         </div>
-                        <div className="box third-box">
+                        <div className="box how-to third-box">
                             <h4 className="basic-titles teachers"> Gli insegnanti</h4>
                             <p className="basic-paragraph">I nostri insegnanti sono professionisti qualificati
                                 e appassionati, selezionati con cura per garantire un'eccellente esperienza di

@@ -11,7 +11,7 @@
     padding-right: 50px;
 }
 
-.box{
+.how-to{
     width: 100%;
     padding-top: 75px;
     display: inline-block;
@@ -210,4 +210,10 @@ i{
 .cards{
     padding-left: 10%;
     padding-right: 10%;
+}
+
+.home-box{
+    padding-top: 75px;
+    display: inline-block;
+    vertical-align: top;
 }

@@ -35,7 +35,7 @@
 }
 
 
-.box{
+.tutor-box{
     padding-top: 75px;
     display: inline-block;
     vertical-align: top;
@@ -126,4 +126,13 @@ td a{
     line-height:40px;
     display:inline-block;
     vertical-align:middle;
+}
+
+.bookButton{
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-indent: -9999px;
+    border: none;
 }

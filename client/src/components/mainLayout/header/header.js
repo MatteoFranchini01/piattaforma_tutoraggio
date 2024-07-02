@@ -43,9 +43,9 @@ function Header (){
                             </li>
                         </ul>
                         <div className="login-subscribe buttons">
-                            <button className="loginBtn" onClick={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}> Accedi</button>
+                            <button className="loginBtn" onClick={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}>Accedi</button>
                             <Login isOpen={isLoginOverlayOpen} onClose={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}/>
-                            <button className="subscribeBtn" onClick={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}> Iscriviti</button>
+                            <button className="subscribeBtn" onClick={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}>Iscriviti</button>
                             <Subscribe isOpen={isSubscribeOverlayOpen} onClose={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}/>
                         </div>
                     </div>

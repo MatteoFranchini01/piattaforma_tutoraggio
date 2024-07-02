@@ -22,7 +22,7 @@ export default function Teachers() {
     return (
         <>
             <div className="main-content">
-                <div className="box filters">
+                <div className="box teach-box filters">
                     <h3 className="title-teachers-filters">Personalizza la tua ricerca!</h3>
 
                     <input className="form-control" type="text" placeholder="Default input"
@@ -51,7 +51,7 @@ export default function Teachers() {
                     <button className="btn btn-primary find" type="submit">Cerca</button>
                 </div>
                 <div className="vr vr-teach"></div>
-                <div className="box row teachers-information">
+                <div className="box teach-box row teachers-information">
                     {componentsArray.map((index) => (
                         <TeachersCard key={index}/>
                     ))}
