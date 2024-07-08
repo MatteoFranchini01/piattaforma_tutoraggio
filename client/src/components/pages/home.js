@@ -56,7 +56,7 @@ export default function Home() {
             });
     }, []);
 
-    // Numbero di materie nel DB
+    // Numero di materie nel DB
 
     const [numberOfSubject, setNumberOfSubject] = useState(0);
 
@@ -79,9 +79,10 @@ export default function Home() {
             });
     }, []);
 
-    //TODO lasciare numero fisso e creare pagine menù se ci fossero più card
+    //TODO debby lasciare numero fisso e creare pagine menù se ci fossero più card
 
-    const numberOfComponents = 6;
+    // il numero delle componenti è pari al numero delle materie
+    const numberOfComponents = numberOfSubject;
     const componentsArray = Array.from({ length: numberOfComponents }, (_, i) => i);
 
     return (
