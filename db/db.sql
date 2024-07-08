@@ -43,15 +43,52 @@ CREATE TABLE Materie
     CONSTRAINT Materie_Tutor_ID_TUTOR_fk FOREIGN KEY (TUTOR_ID) REFERENCES Tutor (ID_TUTOR)
 );
 
-CREATE TABLE Lezioni
+create table lezioni
 (
-    ID_LEZ SERIAL PRIMARY KEY,
-    ID_TUTOR INT NULL,
-    ID_DISCENTE INT NULL,
-    ID_MATERIA INT NULL,
-    CONSTRAINT Lezioni_Discente_ID_DISCENTE_fk FOREIGN KEY (ID_DISCENTE) REFERENCES Discente (ID_DISCENTE),
-    CONSTRAINT Lezioni_Materie_ID_fk FOREIGN KEY (ID_MATERIA) REFERENCES Materie (ID),
-    CONSTRAINT Lezioni_Tutor_ID_TUTOR_fk FOREIGN KEY (ID_TUTOR) REFERENCES Tutor (ID_TUTOR)
+    id_lez      serial
+        primary key,
+    id_tutor    integer
+        constraint lezioni_tutor_id_tutor_fk
+        references tutor,
+    id_discente integer
+        constraint lezioni_discente_id_discente_fk
+        references discente,
+    id_materia  integer
+        constraint lezioni_materie_id_fk
+        references materie,
+    id_fascia   integer
+        constraint lezioni_fasce_orarie_id_fk
+        references fasce_orarie
+);
+
+
+create table fasce_orarie
+(
+    id            integer not null
+        constraint fasce_orarie_pk
+        primary key,
+    fascia_oraria varchar
+);
+
+create table lingue
+(
+    id     integer not null
+        constraint lingue_parlate_pk
+            primary key,
+    lingua varchar
+);
+
+create table competenze_linguistiche
+(
+    id        integer not null
+        constraint competenze_linguistiche_pk
+            primary key,
+    id_lingua integer
+        constraint competenze_linguistiche_lingue_id_fk
+            references lingue,
+    id_tutor  integer
+        constraint competenze_linguistiche_tutor_id_tutor_fk
+            references tutor
 );
 
 INSERT INTO Utenti (ID, USERNAME, PASSWORD, PRIVILEGI) VALUES (1, 'matteo', '2414', 2);
@@ -60,3 +97,18 @@ INSERT INTO Tutor (ID, NOME, COGNOME, MAIL, ID_TUTOR) VALUES (1, 'matteo', 'fran
 
 INSERT INTO Materie (ID, NOME, TUTOR_ID, PREZZO) VALUES (1, 'mate', 1, 10);
 INSERT INTO Materie (ID, NOME, TUTOR_ID, PREZZO) VALUES (2, 'pippo', 1, 20);
+
+INSERT INTO fasce_orarie (ID, FASCIA_ORARIA) VALUES (1, '08:00 - 09:00');
+INSERT INTO fasce_orarie (ID, FASCIA_ORARIA) VALUES (2, '09:00 - 10:00');
+INSERT INTO fasce_orarie (ID, FASCIA_ORARIA) VALUES (3, '10:00 - 11:00');
+INSERT INTO fasce_orarie (ID, FASCIA_ORARIA) VALUES (4, '11:00 - 12:00');
+INSERT INTO fasce_orarie (ID, FASCIA_ORARIA) VALUES (5, '14:00 - 15:00');
+INSERT INTO fasce_orarie (ID, FASCIA_ORARIA) VALUES (6, '15:00 - 16:00');
+INSERT INTO fasce_orarie (ID, FASCIA_ORARIA) VALUES (7, '16:00 - 17:00');
+INSERT INTO fasce_orarie (ID, FASCIA_ORARIA) VALUES (8, '17:00 - 18:00');
+INSERT INTO fasce_orarie (ID, FASCIA_ORARIA) VALUES (9, '18:00 - 19:00');
+INSERT INTO fasce_orarie (ID, FASCIA_ORARIA) VALUES (10, '21:00 - 22:00');
+
+INSERT INTO lingue (ID, LINGUA) VALUES (1, 'italiano');
+INSERT INTO lingue (ID, LINGUA) VALUES (2, 'inglese');
+INSERT INTO lingue (ID, LINGUA) VALUES (3, 'spagnolo');
