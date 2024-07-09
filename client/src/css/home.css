@@ -217,3 +217,8 @@ i{
     display: inline-block;
     vertical-align: top;
 }
+
+.page-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
