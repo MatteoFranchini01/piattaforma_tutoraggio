@@ -83,7 +83,7 @@ export default function Home() {
     // il numero delle componenti è pari al numero delle materie
     //const numberOfComponents = numberOfSubject; in teoria non serve
     // TODO Matteo: riempi l'array con le materie presenti nel database (prese solo una volta)
-    // e il prezzo minimo di ognuna
+    //  e il prezzo minimo di ognuna
     const subjectNames = [
         { name: "Mathematics", price: 10.99 },
         { name: "Science", price: 9.99 },
