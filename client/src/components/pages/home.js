@@ -100,9 +100,8 @@ export default function Home() {
 
     // gestione della paginazione
 
-    const CardsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1); // current page number
-    const [cardsPerPage, setCardsPerPage] = useState(CardsPerPage); // number of cards per page
+    const [cardsPerPage] = useState(6); // number of cards per page
     const totalPages = Math.ceil(subjectsArray.length / cardsPerPage); // total number of pages
     const startIndex = (currentPage - 1) * cardsPerPage; // start index of the current page
     const endIndex = startIndex + cardsPerPage; // end index of the current page
