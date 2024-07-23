@@ -20,21 +20,53 @@ export default function Tutor() {
     const listOfCompetences = ["Diploma di liceo scientifico", "Laurea in Fisica", "Master di I livello in Fisica Teorica"]
     const listOfLanguages = ["Italiano", "Inglese", "Spagnolo"]
 
-    //TODO Matteo: leggere la tabella delle disponibilità relative al tutor in questione
-    const availability = [
+    let availability = [];
+
+    function getLezioniByTutor(tutorName) {
+        const url = `/tutors/${tutorName}/lezioni`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                availability = data.map(item => ({
+                    time: item.FASCIA_ORARIA,
+                    day: item.GIORNO
+                }));
+                console.log(availability);
+            })
+            .catch(error => {
+                console.error('Error fetching data', error);
+            });
+    }
+    //TODO: Matteo, bisogna verificare il funzionamento e capire come gestire l'ID Tutor e dove prenderlo
+    /*const availability = [
         { time: '08:00', day: 'lun' },
         { time: '10:00', day: 'mar' },
         { time: '11:00', day: 'gio' },
         { time: '18:00', day: 'mer' },
         { time: '19:00', day: 'sab' },
         { time: '16:00', day: 'gio' },
-    ];
+    ];*/
 
-    //TODO Matteo: leggere tabella delle lezioni prenotate
-    const bookedUp = [
+    let bookedUp = [];
+    function getLezioniByTutor(tutorName) {
+        const url = `/tutors/${tutorName}/lezioni`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                bookedUp = data.map(item => ({
+                    time: item.FASCIA_ORARIA,
+                    day: item.GIORNO
+                }));
+                console.log(bookedUp);
+            })
+            .catch(error => {
+                console.error('Error fetching data', error);
+            });
+    }
+    /*const bookedUp = [
         { time: '19:00', day: 'sab' },
         { time: '10:00', day: 'mar' }
-    ]
+    ]*/
 
     const handleBookButtonClicked = (time, day) => {
         setIsConfirmPrenotationOverlayOpen(!isConfirmPrenotationOverlayOpen)

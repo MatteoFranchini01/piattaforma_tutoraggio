@@ -11,10 +11,12 @@ export default function Home() {
 
     const [numberOfStudents, setNumberOfStudents] = useState(0);
 
+    const [subjectNames, setSubjectNames] = useState([]);
+
     // Chiamata API per il conteggio degli studenti
 
     useEffect(() => {
-        console.log('Starting API call');
+        console.log('Starting API call count students');
         fetch('http://localhost:3000/count_students')
             .then(response => {
                 if (!response.ok) {
@@ -38,7 +40,7 @@ export default function Home() {
     // Chiamata API per il conteggio dei tutor
 
     useEffect(() => {
-        console.log('Starting API call');
+        console.log('Starting API call cont tutor');
         fetch('http://localhost:3000/count_tutor')
             .then(response => {
                 if (!response.ok) {
@@ -61,7 +63,7 @@ export default function Home() {
 
     // Chiamata API per il conteggio delle materie
     useEffect(() => {
-        console.log('Starting API call'); // Log per verificare l'inizio della chiamata API
+        console.log('Starting API call count materie'); // Log per verificare l'inizio della chiamata API
         fetch('http://localhost:3000/count_materie')
             .then(response => {
                 if (!response.ok) {
@@ -82,9 +84,25 @@ export default function Home() {
 
     // il numero delle componenti è pari al numero delle materie
     //const numberOfComponents = numberOfSubject; in teoria non serve
+
+    useEffect(() => {
+        console.log('Starting API call cards');
+
+        useEffect(() => {
+            fetch('http://localhost:3000/cards')
+                .then(response => response.json())
+                .then(data => {
+                    setSubjectNames(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }, []);
+
+
     // TODO Matteo: riempi l'array con le materie presenti nel database (prese solo una volta)
     //  e il prezzo minimo di ognuna
-    const subjectNames = [
+    /*const subjectNames = [
         { name: "Mathematics", price: 10.99 },
         { name: "Science", price: 9.99 },
         { name: "History", price: 12.99 },
@@ -96,7 +114,9 @@ export default function Home() {
         { name: "Geography", price: 9.99 },
         { name: "French", price: 8.99 }
     ];
+    */
     const subjectsArray = Array.from(subjectNames);
+    console.log('Subjects to display', subjectsArray);
 
     // gestione della paginazione
 
@@ -251,4 +271,4 @@ export default function Home() {
             </section>
         </>
     );
-}
+})}

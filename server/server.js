@@ -35,12 +35,11 @@ function create_cards(callback) {
         console.log("Executed query: ", result.rows);
         result.rows.forEach(row => {
             cards.push({
-                id: row.ID,
-                nome: row.NOME,
-                prezzo: row.PREZZO,
+                NOME: row.NOME,
+                PREZZO: row.PREZZO,
             });
         });
-        callback(cards);
+        callback(null, cards);
     });
 }
 
@@ -166,16 +165,57 @@ function check_multiple_username(username_to_check, callback) {
     });
 }
 
+function check_res(id_tutor, callback) {
+    let queryString = 'SELECT FASCE_ORARIE.FASCIA_ORARIA, FASCE_ORARIE.GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON FASCE_ORARIE.ID = LEZIONI.ID_FASCIA WHERE ID_TUTOR = $1';
+    pool.query(queryString, [id_tutor], (err, result) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, result.rows)
+        }
+    })
+}
+
+function check_booked(id_tutor, callback) {
+    let queryString = 'SELECT FASCE_ORARIE.FASCIA_ORARIA, FASCE_ORARIE.GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON FASCE_ORARIE.ID = LEZIONI.ID_FASCIA WHERE ID_TUTOR = $1 AND ID_DISCENTE IS NOT NULL'
+    pool.query(queryString, [id_tutor], (err, result) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, result.rows)
+        }
+    })
+}
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 // Rotte
+app.get('/tutors/:id_tutor/lezioni', (req, res) => {
+    let id_tutor = req.params.id_tutor;
+    check_res(id_tutor, lezioni => {
+        res.json(lezioni);
+    })
+});
+
+app.get('/tutors/:id_tutor/prenotate', (req, res) => {
+    let id_tutor = req.params.id_tutor;
+    check_res(id_tutor, lezioni => {
+        res.json(lezioni);
+    })
+})
+
 app.get('/cards', (req, res) => {
-    create_cards(cards => {
+    create_cards((err, cards) => {
+        if (err) {
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
         res.json(cards);
     });
 });
+
 
 app.get('/count_tutor', (req, res) => {
     count_tutor()
