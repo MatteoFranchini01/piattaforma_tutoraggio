@@ -201,7 +201,7 @@ app.get('/tutors/:id_tutor/lezioni', (req, res) => {
 
 app.get('/tutors/:id_tutor/prenotate', (req, res) => {
     let id_tutor = req.params.id_tutor;
-    check_res(id_tutor, lezioni => {
+    check_booked(id_tutor, lezioni => {
         res.json(lezioni);
     })
 })
