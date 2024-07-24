@@ -92,7 +92,12 @@ export default function Home() {
             fetch('http://localhost:3000/cards')
                 .then(response => response.json())
                 .then(data => {
-                    setSubjectNames(data);
+                    const temp = data.map(item => ({
+                        name: item.NOME,
+                        price: item.PREZZO,
+                    }));
+                    setSubjectNames(temp);
+                    console.log(temp);
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
