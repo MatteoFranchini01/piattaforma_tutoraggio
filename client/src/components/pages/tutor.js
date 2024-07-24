@@ -22,6 +22,11 @@ export default function Tutor() {
     const listOfCompetences = ["Diploma di liceo scientifico", "Laurea in Fisica", "Master di I livello in Fisica Teorica"]
     const listOfLanguages = ["Italiano", "Inglese", "Spagnolo"]
 
+    React.useEffect(() => {
+        getLezioniByTutor(tutorName);
+        getPrenotazioniByTutor(tutorName);
+    }, [tutorName]);
+
     function getLezioniByTutor(tutorName) {
         const url = `/tutors/${tutorName}/lezioni`;
         fetch(url)
