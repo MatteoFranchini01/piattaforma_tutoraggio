@@ -48,8 +48,8 @@ export default function Tutor() {
     ];*/
 
     let bookedUp = [];
-    function getLezioniByTutor(tutorName) {
-        const url = `/tutors/${tutorName}/lezioni`;
+    function getPrenotazioniByTutor(tutorName) {
+        const url = `/tutors/${tutorName}/prenotate`;
         fetch(url)
             .then(response => response.json())
             .then(data => {
