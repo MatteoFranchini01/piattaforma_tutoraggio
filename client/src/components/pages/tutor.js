@@ -10,6 +10,8 @@ export default function Tutor() {
     const [isConfirmPrenotationOverlayOpen, setIsConfirmPrenotationOverlayOpen] = React.useState(false);
     const [selectedTime, setSelectedTime] = React.useState('');
     const [selectedDay, setSelectedDay] = React.useState('');
+    const [availability, setAvailability] = useState([]);
+    const [bookedUp, setBookedUp] = useState([]);
 
     //TODO Matteo leggere le informazioni relative al tutor
     const tutorName = "Nome Tutor"
@@ -20,18 +22,17 @@ export default function Tutor() {
     const listOfCompetences = ["Diploma di liceo scientifico", "Laurea in Fisica", "Master di I livello in Fisica Teorica"]
     const listOfLanguages = ["Italiano", "Inglese", "Spagnolo"]
 
-    let availability = [];
-
     function getLezioniByTutor(tutorName) {
         const url = `/tutors/${tutorName}/lezioni`;
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                availability = data.map(item => ({
+                const availabilityData = data.map(item => ({
                     time: item.FASCIA_ORARIA,
                     day: item.GIORNO
                 }));
-                console.log(availability);
+                setAvailability(availabilityData);
+                console.log(availabilityData);
             })
             .catch(error => {
                 console.error('Error fetching data', error);
@@ -47,17 +48,17 @@ export default function Tutor() {
         { time: '16:00', day: 'gio' },
     ];*/
 
-    let bookedUp = [];
     function getPrenotazioniByTutor(tutorName) {
         const url = `/tutors/${tutorName}/prenotate`;
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                bookedUp = data.map(item => ({
+                const bookedUpData = data.map(item => ({
                     time: item.FASCIA_ORARIA,
                     day: item.GIORNO
                 }));
-                console.log(bookedUp);
+                setBookedUp(bookedUpData);
+                console.log(bookedUpData);
             })
             .catch(error => {
                 console.error('Error fetching data', error);
