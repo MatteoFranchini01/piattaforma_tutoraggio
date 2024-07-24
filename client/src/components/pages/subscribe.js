@@ -93,7 +93,7 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
 
         // Check password length
         if (password.length < 8) {
-            tips += "La password è troppo corta. ";
+            tips += "La password è troppo corta.\n ";
         } else {
             strength += 1;
         }
@@ -102,21 +102,21 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         if (password.match(/\d/)) {
             strength += 1;
         } else {
-            tips += "Inserisci almeno un numero. ";
+            tips += "Inserisci almeno un numero.\n ";
         }
 
         // Check for special characters
         if (password.match(/[^a-zA-Z\d]/)) {
             strength += 1;
         } else {
-            tips += "Inserisci almeno un carattere speciale. ";
+            tips += "Inserisci almeno un carattere speciale. \n";
         }
 
         const pwdLabel = document.getElementById("pwdStrength");
         // Return results
         if (strength < 2) {
             pwdLabel.style.color = "red";
-            setPasswordStrength("Oh no, troppo facile da indovinare! " + tips);
+            setPasswordStrength("Oh no, troppo facile da indovinare! \n" + tips);
         } else if (strength === 2) {
             pwdLabel.style.color = "orange";
             setPasswordStrength("Abbastanza difficile, ma manca ancora qualcosina! " + tips);
@@ -150,21 +150,12 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
                             </div>
                             {error && <p className="error-paragraph-subscribe">{error}</p>}
 
-                            <div id="selected-value">
-                                {selectedType === 'teacher' && (
-                                    <div className="input-group">
-                                        <input type="file" className="form-control" id="inputGroupFile04"
-                                               aria-describedby="inputGroupFileAddon04" aria-label="Upload"/>
-                                    </div>
-                                )}
-                            </div>
                             {(selectedType === 'student' || selectedType==='') && (
                                 <button className="btn-submit" type="button" value="Submit" onClick={onClickHandler}>Iscriviti</button>
                             )}
                             {selectedType === 'teacher' && (
                                 <button className="proceed" type="button" value="proceed" onClick={onClickHandler}> Candidati </button>
-                            )
-                            }
+                            )}
                         </div>
                     </div>
                 ) : null

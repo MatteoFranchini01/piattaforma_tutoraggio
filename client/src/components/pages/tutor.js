@@ -5,15 +5,14 @@ import Table from "../mainLayout/template/table"
 import ConfirmPrenotation from "./confirmPrenotation";
 
 
-// TODO Alla funzione deve essere passato l''ID del tutor per fare la lettura del database
-export default function Tutor() {
+export default function Tutor({tutor_id}) {
     const [isConfirmPrenotationOverlayOpen, setIsConfirmPrenotationOverlayOpen] = React.useState(false);
     const [selectedTime, setSelectedTime] = React.useState('');
     const [selectedDay, setSelectedDay] = React.useState('');
     const [availability, setAvailability] = React.useState([]);
     const [bookedUp, setBookedUp] = React.useState([]);
 
-    //TODO Matteo leggere le informazioni relative al tutor
+    //TODO Matteo: leggere le informazioni relative al tutor
     const tutorName = "Nome Tutor"
     const tutorSurname = "Cognome Tutor"
     const tutorPrice = 15

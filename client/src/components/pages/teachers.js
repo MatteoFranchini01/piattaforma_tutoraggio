@@ -2,13 +2,11 @@ import React, {useEffect, useState} from "react";
 import "../../css/teachers.css";
 import TeachersCard from "../mainLayout/template/teachersCard";
 
-//TODO a questa funzione deve arrivare l'ID della materia, in modo da sapere quali sono e quanti sono gli insegnanti che fanno quella materia
-export default function Teachers() {
+export default function Teachers({subject_id}) {
     const [numberOfTeachers, setNumberOfTeachers] = useState(6);
     const [componentsArray, setComponentsArray] = useState([]);
     const [price, setPrice] = useState(50);
-
-    var subjectSelected = "Materia Selezionata"
+    const [subjectSelected, setSubjectSelected] = useState("Materia selezionata");
 
     useEffect(() => {
         const componentsArray = Array.from({ length: numberOfTeachers }, (_, i) => i);
@@ -19,17 +17,19 @@ export default function Teachers() {
         setPrice(event.target.value);
     };
 
+    //TODO Matteo: elenco tutor che insegnano quella materia e il nome della materia da mettere in subjectSelected
+
     return (
         <>
             <div className="main-content">
                 <div className="box teach-box filters">
                     <h3 className="title-teachers-filters">Personalizza la tua ricerca!</h3>
 
-                    <input className="form-control" type="text" placeholder="Default input"
+                    <input className="form-control teachers-form-control" type="text" placeholder="Default input"
                            aria-label="default input example" readOnly value={subjectSelected}
-                           onChange={handlePriceChange}/>
+                           />
 
-                    <select className="form-select levels">
+                    <select className="form-select levels form-select-teacher">
                         <option selected>Scegli il livello</option>
                         <option value="tutti">Tutti i livelli</option>
                         <option value="elementari">Elementari</option>
@@ -53,7 +53,7 @@ export default function Teachers() {
                 <div className="vr vr-teach"></div>
                 <div className="box teach-box row teachers-information">
                     {componentsArray.map((index) => (
-                        <TeachersCard key={index}/>
+                        <TeachersCard key={index} id={"teacher_id"} teacherName={"test_nome"} subjectName={"nome_materia"} rating={"rating_stelline"} />
                     ))}
                 </div>
             </div>

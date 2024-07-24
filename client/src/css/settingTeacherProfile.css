@@ -1,0 +1,60 @@
+.settings{
+    height: auto;
+    padding: 100px 100px 0 100px;
+}
+
+.settings-border{
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    height: auto;
+    border: 1px solid rgb(50, 50, 100);
+    border-radius: 5%;
+    padding-bottom: 25px;
+}
+
+.settings-h3{
+    padding-top: 75px;
+    color: rgb(50, 50, 100);
+    padding-left: 10%;
+}
+
+.form-settings{
+    padding-top: 25px;
+    padding-left: 12%;
+    padding-bottom: 25px;
+}
+
+.paragraph-label{
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.certificates, .languages{
+    margin-bottom: 20px;
+}
+
+.box{
+    display: inline-block;
+    vertical-align: top;
+    justify-content: space-between;
+}
+
+.image-subscribe-box{
+    padding-top: 10px;
+    padding-left: 25px;
+}
+
+.sub-img{
+    width: 250px;
+    height: 250px;
+}
+
+.text-area, .select-image, .certificates, .languages{
+    max-width: 400px;
+}
+
+.divWithBtn{
+    text-align: center;
+}

@@ -28,13 +28,14 @@ function hashPassword(password) {
 
 // Funzione per creare le carte
 function create_cards(callback) {
-    let queryString = 'SELECT NOME, PREZZO FROM Materie';
+    let queryString = 'SELECT DISTINCT ID, NOME, PREZZO FROM Materie';
     const cards = [];
     pool.query(queryString, (err, result) => {
         if (err) throw err;
         console.log("Executed query: ", result.rows);
         result.rows.forEach(row => {
             cards.push({
+                id: row.id,
                 nome: row.nome,
                 prezzo: row.prezzo,
             });
@@ -55,9 +56,9 @@ function add_materia(materia) {
 
 // Funzione per aggiungere utenti
 function add_user(utente) {
-    const hashedPassord = hashPassword(utente.password);
+    const hashedPassword = hashPassword(utente.password);
     let queryString = 'INSERT INTO UTENTI (NOME, COGNOME, PASSWORD, PRIVILEGI) VALUES ($1, $2, $3, $4)';
-    const values = [utente.nome, utente.cognome, hashedPassord, utente.privilegi];
+    const values = [utente.nome, utente.cognome, hashedPassword, utente.privilegi];
     pool.query(queryString, values, (err, result) => {
         if (err) throw err;
         console.log("Number of records inserted: ", result.rowCount);
@@ -298,6 +299,7 @@ app.get('/check_multiple_user', (req, res) => {
         res.json(result)
     });
 })
+
 
 // Avvio del server
 app.listen(port, () => {

@@ -87,6 +87,7 @@ export default function Home() {
                 .then(response => response.json())
                 .then(data => {
                     const temp = data.map(item => ({
+                        id: item.id,
                         name: item.nome,
                         price: item.prezzo,
                     }));
@@ -213,8 +214,9 @@ export default function Home() {
             <section className="cards" id="cards-container">
                 <h2 className="h2-title">Le materie richieste</h2>
                 <div className="row cards">
+                    <Card key={0} id={0} name={"test_nome"} price={"test_price"}/>
                     {currentPageCards.map((subject, index) => (
-                        <Card key={index} name={subject.name} price={subject.price}/>
+                        <Card key={index} id={subject.id} name={subject.name} price={subject.price}/>
                     ))}
                 </div>
             </section>

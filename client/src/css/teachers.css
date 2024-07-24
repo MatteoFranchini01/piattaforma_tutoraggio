@@ -26,7 +26,7 @@
 }
 
 .teach-box {
-    padding-top: 75px;
+    padding-top: 100px;
     display: inline-block;
     vertical-align: top;
 }
@@ -36,7 +36,7 @@
     margin-bottom: 2%;
 }
 
-.form-select {
+.form-select-teacher {
     width: 50%;
     max-width: 200px;
     padding: 20px;
@@ -44,7 +44,7 @@
     margin-left: 50px;
 }
 
-.form-control{
+.teachers-form-control{
     width: 50%;
     max-width: 200px;
     padding: 20px;

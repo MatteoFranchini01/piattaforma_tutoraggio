@@ -1,4 +1,5 @@
 import {Component} from "react";
+import {Link} from "react-router-dom";
 
 class Card extends Component{
     constructor(props) {
@@ -12,7 +13,7 @@ class Card extends Component{
                     <div className="card-body">
                         <h5 className="card-title" style={{margin: 0}}>{this.props.name}</h5>
                         <p className="card-text" style={{paddingTop: '20px', margin: 0}}>Da €{this.props.price}</p>
-                        <a href="#" className="btn btn-primary">Cerca insegnanti</a>
+                        <Link to={`/teachers/${this.props.id}`}><a className="btn btn-primary">Cerca insegnanti</a></Link>
                     </div>
                 </div>
             </div>
