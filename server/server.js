@@ -28,15 +28,15 @@ function hashPassword(password) {
 
 // Funzione per creare le carte
 function create_cards(callback) {
-    let queryString = 'SELECT * FROM Materie';
+    let queryString = 'SELECT NOME, PREZZO FROM Materie';
     const cards = [];
     pool.query(queryString, (err, result) => {
         if (err) throw err;
         console.log("Executed query: ", result.rows);
         result.rows.forEach(row => {
             cards.push({
-                NOME: row.NOME,
-                PREZZO: row.PREZZO,
+                nome: row.nome,
+                prezzo: row.prezzo,
             });
         });
         callback(null, cards);

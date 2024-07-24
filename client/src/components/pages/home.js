@@ -40,7 +40,7 @@ export default function Home() {
     // Chiamata API per il conteggio dei tutor
 
     useEffect(() => {
-        console.log('Starting API call cont tutor');
+        console.log('Starting API call count tutor');
         fetch('http://localhost:3000/count_tutor')
             .then(response => {
                 if (!response.ok) {
@@ -80,21 +80,15 @@ export default function Home() {
             });
     }, []);
 
-    //TODO debby lasciare numero fisso e creare pagine menù se ci fossero più card
-
-    // il numero delle componenti è pari al numero delle materie
-    //const numberOfComponents = numberOfSubject; in teoria non serve
 
     useEffect(() => {
         console.log('Starting API call cards');
-
-        useEffect(() => {
             fetch('http://localhost:3000/cards')
                 .then(response => response.json())
                 .then(data => {
                     const temp = data.map(item => ({
-                        name: item.NOME,
-                        price: item.PREZZO,
+                        name: item.nome,
+                        price: item.prezzo,
                     }));
                     setSubjectNames(temp);
                     console.log(temp);
@@ -102,24 +96,9 @@ export default function Home() {
                 .catch(error => {
                     console.error('Error fetching data:', error);
                 });
-        }, []);
+            }, []);
 
 
-    // TODO Matteo: riempi l'array con le materie presenti nel database (prese solo una volta)
-    //  e il prezzo minimo di ognuna
-    /*const subjectNames = [
-        { name: "Mathematics", price: 10.99 },
-        { name: "Science", price: 9.99 },
-        { name: "History", price: 12.99 },
-        { name: "English", price: 8.99 },
-        { name: "Computer Science", price: 14.99 },
-        { name: "Physics", price: 11.99 },
-        { name: "Biology", price: 10.99 },
-        { name: "Chemistry", price: 12.99 },
-        { name: "Geography", price: 9.99 },
-        { name: "French", price: 8.99 }
-    ];
-    */
     const subjectsArray = Array.from(subjectNames);
     console.log('Subjects to display', subjectsArray);
 
@@ -276,4 +255,4 @@ export default function Home() {
             </section>
         </>
     );
-})}
+}
