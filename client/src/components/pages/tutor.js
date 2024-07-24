@@ -10,8 +10,8 @@ export default function Tutor() {
     const [isConfirmPrenotationOverlayOpen, setIsConfirmPrenotationOverlayOpen] = React.useState(false);
     const [selectedTime, setSelectedTime] = React.useState('');
     const [selectedDay, setSelectedDay] = React.useState('');
-    const [availability, setAvailability] = useState([]);
-    const [bookedUp, setBookedUp] = useState([]);
+    const [availability, setAvailability] = React.useState([]);
+    const [bookedUp, setBookedUp] = React.useState([]);
 
     //TODO Matteo leggere le informazioni relative al tutor
     const tutorName = "Nome Tutor"
