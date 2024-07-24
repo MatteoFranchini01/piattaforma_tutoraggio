@@ -91,7 +91,6 @@ export default function Home() {
                         price: item.prezzo,
                     }));
                     setSubjectNames(temp);
-                    console.log(temp);
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
