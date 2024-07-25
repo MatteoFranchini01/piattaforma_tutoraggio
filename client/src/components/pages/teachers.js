@@ -2,11 +2,12 @@ import React, {useEffect, useState} from "react";
 import "../../css/teachers.css";
 import TeachersCard from "../mainLayout/template/teachersCard";
 
-export default function Teachers({subject_id}) {
+export default function Teachers({subject_name}) {
     const [numberOfTeachers, setNumberOfTeachers] = useState(6);
     const [componentsArray, setComponentsArray] = useState([]);
     const [price, setPrice] = useState(50);
     const [subjectSelected, setSubjectSelected] = useState("Materia selezionata");
+    const [array_tutor, setArrayTutor] = React.useState([]);
 
     useEffect(() => {
         const componentsArray = Array.from({ length: numberOfTeachers }, (_, i) => i);
@@ -17,7 +18,24 @@ export default function Teachers({subject_id}) {
         setPrice(event.target.value);
     };
 
-    //TODO Matteo: elenco tutor che insegnano quella materia e il nome della materia da mettere in subjectSelected
+    React.useEffect(() => {
+        getTutorPerMateria(subject_name);
+    }, [subject_name]);
+
+    function getTutorPerMateria(subject_name) {
+        const url = `/teachers/${subject_name}/tutor`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const temp = data.map(item => ({
+                    rating: item.rating,
+                    id_tutor: item.id,
+                    tutor_nome: item.nome,
+                    tutor_cognome: item.cognome,
+                }));
+                setArrayTutor(temp);
+            });
+    }
 
     return (
         <>

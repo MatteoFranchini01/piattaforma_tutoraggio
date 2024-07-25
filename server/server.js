@@ -188,11 +188,30 @@ function check_booked(id_tutor, callback) {
     })
 }
 
+function tutor_per_materia(nome_materia, callback) {
+    let queryString = 'SELECT TUTOR.RATING, TUTOR.ID_TUTOR, TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN MATERIE ON MATERIE.TUTOR_ID = TUTOR.ID_TUTOR WHERE MATERIE.NOME = $1';
+    pool.query(queryString, [nome_materia], (err, result) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, result.rows)
+        }
+    })
+}
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 // Rotte
+app.get('/teachers/:nome_materia/tutor', (req, res) => {
+    let nome_materia = req.params.nome_materia;
+    tutor_per_materia(nome_materia, result => {
+        res.json(result);
+    })
+});
+
+
 app.get('/tutors/:id_tutor/lezioni', (req, res) => {
     let id_tutor = req.params.id_tutor;
     check_res(id_tutor, lezioni => {
