@@ -92,6 +92,28 @@ create table competenze_linguistiche
             references tutor
 );
 
+create table competenze_istr
+(
+    id       integer not null
+        constraint competenze_istr_pk
+            primary key,
+    id_tutor integer
+        constraint competenze_istr_tutor_id_tutor_fk
+            references tutor,
+    id_istr  integer
+        constraint competenze_istr_istruzione_id_fk
+            references istruzione
+);
+
+create table istruzione
+(
+    id                 integer not null
+        constraint istruzione_pk
+            primary key,
+    livello_istruzione varchar
+);
+
+
 INSERT INTO Utenti (ID, USERNAME, PASSWORD, PRIVILEGI) VALUES (1, 'matteo', '2414', 2);
 
 INSERT INTO Tutor (ID, NOME, COGNOME, MAIL, ID_TUTOR) VALUES (1, 'matteo', 'franchini', '', 1);

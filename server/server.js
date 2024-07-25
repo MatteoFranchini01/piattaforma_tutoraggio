@@ -199,11 +199,37 @@ function tutor_per_materia(nome_materia, callback) {
     })
 }
 
+function info_tutor(id_tutor, nome_materia, callback) {
+    let queryString = 'SELECT T.NOME, T.COGNOME, M.PREZZO, T.RATING, L.LINGUA, I.LIVELLO_ISTRUZIONE FROM TUTOR AS T' +
+        'JOIN MATERIE AS M ON M.TUTOR_ID = T.ID_TUTOR' +
+        'JOIN COMPETENZE_LINGUISTICHE AS CL ON CL.ID_TUTOR = T.ID_TUTOR' +
+        'JOIN LINGUE AS L ON CL.ID_LINGUA = L.ID' +
+        'JOIN COMPETENZE_ISTR AS CI ON CI.ID_TUTOR ON T.ID_TUTOR' +
+        'JOIN ISTRUZIONE AS I ON CI.ID_ISTR = I.ID' +
+        'WHERE T.ID_TUTOR = $1 AND M.NOME = $2';
+    pool.query(queryString, [id_tutor, nome_materia], (err, result) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, result.rows)
+        }
+    })
+}
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 // Rotte
+app.get('tutors/:nome_materia/:id_tutor', (req, res) => {
+    let nome_materia = req.params.nome_materia;
+    let id_tutor = req.params.id_tutor;
+
+    info_tutor(id_tutor, nome_materia, result => {
+        res.json(result);
+    })
+});
+
 app.get('/teachers/:nome_materia/tutor', (req, res) => {
     let nome_materia = req.params.nome_materia;
     tutor_per_materia(nome_materia, result => {

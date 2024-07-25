@@ -11,6 +11,33 @@ export default function Tutor({tutor_id}) {
     const [selectedDay, setSelectedDay] = React.useState('');
     const [availability, setAvailability] = React.useState([]);
     const [bookedUp, setBookedUp] = React.useState([]);
+    const [info, setInfo] = React.useState([]);
+
+    //TODO debby: passare a questa funzione anche il nome della materia
+
+    React.useEffect(() => {
+
+    })
+
+    function getInfoTutor(tutor_id, nome_materia) {
+        const url = `/tutors/${nome_materia}/${id_tutor}`;
+        fetch(url)
+            .then(response => response.jeons())
+            .then(data => {
+                const temp = data.map(item => ({
+                    nome: item.nome,
+                    cognome: item.cognome,
+                    prezzo: item.prezzo,
+                    rating: item.rating,
+                    lingua: item.lingua,
+                    livello_istruzione: item.livello_istruzione,
+                }));
+                setInfo(temp);
+            })
+            .catch(error => {
+                console.error('Error fetching data', error);
+            });
+    }
 
     //TODO Matteo: leggere le informazioni relative al tutor
     const tutorName = "Nome Tutor"
@@ -26,8 +53,8 @@ export default function Tutor({tutor_id}) {
         getPrenotazioniByTutor(tutorName);
     }, [tutorName]);
 
-    function getLezioniByTutor(tutorName) {
-        const url = `/tutors/${tutorName}/lezioni`;
+    function getLezioniByTutor(tutor_id) {
+        const url = `/tutors/${tutor_id}/lezioni`;
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -42,18 +69,9 @@ export default function Tutor({tutor_id}) {
                 console.error('Error fetching data', error);
             });
     }
-    //TODO: Matteo, bisogna verificare il funzionamento e capire come gestire l'ID Tutor e dove prenderlo
-    /*const availability = [
-        { time: '08:00', day: 'lun' },
-        { time: '10:00', day: 'mar' },
-        { time: '11:00', day: 'gio' },
-        { time: '18:00', day: 'mer' },
-        { time: '19:00', day: 'sab' },
-        { time: '16:00', day: 'gio' },
-    ];*/
 
-    function getPrenotazioniByTutor(tutorName) {
-        const url = `/tutors/${tutorName}/prenotate`;
+    function getPrenotazioniByTutor(tutor_id) {
+        const url = `/tutors/${tutor_id}/prenotate`;
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -68,10 +86,6 @@ export default function Tutor({tutor_id}) {
                 console.error('Error fetching data', error);
             });
     }
-    /*const bookedUp = [
-        { time: '19:00', day: 'sab' },
-        { time: '10:00', day: 'mar' }
-    ]*/
 
     const handleBookButtonClicked = (time, day) => {
         setIsConfirmPrenotationOverlayOpen(!isConfirmPrenotationOverlayOpen)
