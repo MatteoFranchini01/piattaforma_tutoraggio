@@ -8,15 +8,15 @@ import Tutor from "./components/pages/tutor.js";
 import SettingTeacherProfile from "./components/pages/settingTeacherProfile";
 
 function App(){
-    const params = useParams();
+    //const params = useParams();
     return(
         <>
             <MainTemplate>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/requirements" element={<Requirements/>}/>
-                    <Route path="/teachers/:subject_name" element={<Teachers subject_name={params.subject_name}/>}/>
-                    <Route path="/tutor/:tutor_id" element={<Tutor tutor_id={params.tutor_id}/>}/>
+                    <Route path="/teachers/:only_subject_name" element={<Teachers/>}/>
+                    <Route path="/tutor/:tutor_id" element={<Tutor/>}/>
                     <Route path="/settingTeacherProfile" element={<SettingTeacherProfile/>}/>
                 </Routes>
             </MainTemplate>

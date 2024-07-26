@@ -3,9 +3,9 @@ import React from "react";
 import Img from "./1.jpg"
 import Table from "../mainLayout/template/table"
 import ConfirmPrenotation from "./confirmPrenotation";
+import {useParams} from "react-router-dom";
 
-
-export default function Tutor({tutor_id}) {
+export default function Tutor() {
     const [isConfirmPrenotationOverlayOpen, setIsConfirmPrenotationOverlayOpen] = React.useState(false);
     const [selectedTime, setSelectedTime] = React.useState('');
     const [selectedDay, setSelectedDay] = React.useState('');
@@ -19,10 +19,10 @@ export default function Tutor({tutor_id}) {
 
     })
 
-    function getInfoTutor(tutor_id, nome_materia) {
-        const url = `/tutors/${nome_materia}/${id_tutor}`;
+    function getInfoTutor(tutor_id, subject_name) {
+        const url = `/tutors/${subject_name}/${tutor_id}`;
         fetch(url)
-            .then(response => response.jeons())
+            .then(response => response.json())
             .then(data => {
                 const temp = data.map(item => ({
                     nome: item.nome,

@@ -189,13 +189,19 @@ function check_booked(id_tutor, callback) {
 }
 
 function tutor_per_materia(nome_materia, callback) {
-    let queryString = 'SELECT TUTOR.RATING, TUTOR.ID_TUTOR, TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN MATERIE ON MATERIE.TUTOR_ID = TUTOR.ID_TUTOR WHERE MATERIE.NOME = $1';
+    let queryString = 'SELECT TUTOR.ID_TUTOR, TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN MATERIE ON MATERIE.TUTOR_ID = TUTOR.ID_TUTOR WHERE MATERIE.NOME = $1';
+    const tutor = [];
     pool.query(queryString, [nome_materia], (err, result) => {
-        if (err) {
-            callback(err, null);
-        } else {
-            callback(null, result.rows)
-        }
+        if (err) throw err;
+        console.log("Executed query: ", result.rows);
+        result.rows.forEach(row => {
+            tutor.push({
+                id: row.id_tutor, //??? -> come è possibile che non trovi il campo id_tutor?
+                nome: row.nome,
+                cognome: row.cognome,
+            });
+        });
+        callback(null, tutor);
     })
 }
 
@@ -221,17 +227,17 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Rotte
-app.get('tutors/:nome_materia/:id_tutor', (req, res) => {
+app.get('tutors/:subject_name/:id_tutor', (req, res) => {
     let nome_materia = req.params.subject_name;
     let id_tutor = req.params.id_tutor;
 
-    info_tutor(id_tutor, nome_materia, result => {
+    info_tutor(id_tutor, nome_materia,result => {
         res.json(result);
     })
 });
 
-app.get('/teachers/:nome_materia/tutor', (req, res) => {
-    let nome_materia = req.params.subject_name;
+app.get('/teachers/:only_subject_name', (req, res) => {
+    let nome_materia = req.params.only_subject_name;
     tutor_per_materia(nome_materia, result => {
         res.json(result);
     })
