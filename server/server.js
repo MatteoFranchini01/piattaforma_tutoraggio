@@ -167,36 +167,49 @@ function check_multiple_username(username_to_check, callback) {
 }
 
 function check_res(id_tutor, callback) {
-    let queryString = 'SELECT FASCE_ORARIE.FASCIA_ORARIA, FASCE_ORARIE.GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON FASCE_ORARIE.ID = LEZIONI.ID_FASCIA WHERE ID_TUTOR = $1';
+    let queryString = 'SELECT FASCE_ORARIE.FASCIA_ORARIA as "fascia", FASCE_ORARIE.GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON FASCE_ORARIE.ID = LEZIONI.ID_FASCIA WHERE ID_TUTOR = $1';
+    const res = [];
     pool.query(queryString, [id_tutor], (err, result) => {
-        if (err) {
-            callback(err, null);
-        } else {
-            callback(null, result.rows)
-        }
+        if (err) throw err;
+        console.log("Executed query: ", result.rows);
+        result.rows.forEach(row => {
+            res.push({
+                fascia: row.fascia,
+                giorno: row.giorno,
+            })
+        })
     })
 }
+
+
 
 function check_booked(id_tutor, callback) {
-    let queryString = 'SELECT FASCE_ORARIE.FASCIA_ORARIA, FASCE_ORARIE.GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON FASCE_ORARIE.ID = LEZIONI.ID_FASCIA WHERE ID_TUTOR = $1 AND ID_DISCENTE IS NOT NULL'
+    let queryString = 'SELECT FASCE_ORARIE.FASCIA_ORARIA as "fascia", FASCE_ORARIE.GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON FASCE_ORARIE.ID = LEZIONI.ID_FASCIA WHERE ID_TUTOR = $1 AND ID_DISCENTE IS NOT NULL'
+    const fasce_orarie = [];
     pool.query(queryString, [id_tutor], (err, result) => {
-        if (err) {
-            callback(err, null);
-        } else {
-            callback(null, result.rows)
-        }
+        if (err) throw err;
+        console.log("Executed query: ", result.rows);
+        result.rows.forEach(row => {
+            fasce_orarie.push({
+                fascia: row.fascia,
+                giorno: row.giorno,
+            });
+        });
+        callback(null, fasce_orarie);
     })
 }
 
+
+
 function tutor_per_materia(nome_materia, callback) {
-    let queryString = 'SELECT TUTOR.ID_TUTOR, TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN MATERIE ON MATERIE.TUTOR_ID = TUTOR.ID_TUTOR WHERE MATERIE.NOME = $1';
+    let queryString = 'SELECT TUTOR.ID_TUTOR as "id", TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN MATERIE ON MATERIE.TUTOR_ID = TUTOR.ID_TUTOR WHERE MATERIE.NOME = $1';
     const tutor = [];
     pool.query(queryString, [nome_materia], (err, result) => {
         if (err) throw err;
         console.log("Executed query: ", result.rows);
         result.rows.forEach(row => {
             tutor.push({
-                id: row.id_tutor, //??? -> come è possibile che non trovi il campo id_tutor?
+                id: row.id,
                 nome: row.nome,
                 cognome: row.cognome,
             });
@@ -206,19 +219,27 @@ function tutor_per_materia(nome_materia, callback) {
 }
 
 function info_tutor(id_tutor, nome_materia, callback) {
-    let queryString = 'SELECT T.NOME, T.COGNOME, M.PREZZO, T.RATING, L.LINGUA, I.LIVELLO_ISTRUZIONE FROM TUTOR AS T' +
+    let queryString = 'SELECT T.NOME, T.COGNOME, M.PREZZO, T.RATING, L.LINGUA, I.LIVELLO_ISTRUZIONE AS "livello" FROM TUTOR AS T' +
         'JOIN MATERIE AS M ON M.TUTOR_ID = T.ID_TUTOR' +
         'JOIN COMPETENZE_LINGUISTICHE AS CL ON CL.ID_TUTOR = T.ID_TUTOR' +
         'JOIN LINGUE AS L ON CL.ID_LINGUA = L.ID' +
         'JOIN COMPETENZE_ISTR AS CI ON CI.ID_TUTOR ON T.ID_TUTOR' +
         'JOIN ISTRUZIONE AS I ON CI.ID_ISTR = I.ID' +
         'WHERE T.ID_TUTOR = $1 AND M.NOME = $2';
+    const info = [];
     pool.query(queryString, [id_tutor, nome_materia], (err, result) => {
-        if (err) {
-            callback(err, null);
-        } else {
-            callback(null, result.rows)
-        }
+        if (err) throw err;
+        console.log("Executed query: ", result.row);
+        result.row.forEach(row => {
+            info.push({
+                nome: row.nome,
+                cognome: row.cognome,
+                prezzo: row.prezzo,
+                rating: row.rating,
+                lingua: row.lingua,
+                livello: row.livello,
+            })
+        })
     })
 }
 
@@ -227,32 +248,32 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Rotte
-app.get('tutors/:subject_name/:id_tutor', (req, res) => {
-    let nome_materia = req.params.subject_name;
-    let id_tutor = req.params.id_tutor;
+app.get('tutors/:subject/:id', (req, res) => {
+    let nome_materia = req.params.subject;
+    let id_tutor = req.params.id;
 
     info_tutor(id_tutor, nome_materia,result => {
         res.json(result);
     })
 });
 
-app.get('/teachers/:only_subject_name', (req, res) => {
-    let nome_materia = req.params.only_subject_name;
+app.get('/teachers/:subject', (req, res) => {
+    let nome_materia = req.params.subject;
     tutor_per_materia(nome_materia, result => {
         res.json(result);
     })
 });
 
 
-app.get('/tutors/:id_tutor/lezioni', (req, res) => {
-    let id_tutor = req.params.id_tutor;
+app.get('/tutors/:id/lezioni', (req, res) => {
+    let id_tutor = req.params.id;
     check_res(id_tutor, lezioni => {
         res.json(lezioni);
     })
 });
 
-app.get('/tutors/:id_tutor/prenotate', (req, res) => {
-    let id_tutor = req.params.id_tutor;
+app.get('/tutors/:id/prenotate', (req, res) => {
+    let id_tutor = req.params.id;
     check_booked(id_tutor, lezioni => {
         res.json(lezioni);
     })
