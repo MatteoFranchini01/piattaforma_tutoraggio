@@ -218,6 +218,11 @@ function tutor_per_materia(nome_materia, callback) {
     })
 }
 
+//TODO Matteo -> ERRORE QUERY
+/*
+* 2024-07-26 17:32:06.463 UTC [32] ERROR:  syntax error at or near "MATERIE" at character 111
+postgres-1       |
+* 2024-07-26 17:32:06.463 UTC [32] STATEMENT:  SELECT T.NOME, T.COGNOME, M.PREZZO, T.RATING, L.LINGUA, I.LIVELLO_ISTRUZIONE AS "livello" FROM TUTOR AS TJOIN MATERIE AS M ON M.TUTOR_ID = T.ID_TUTORJOIN COMPETENZE_LINGUISTICHE AS CL ON CL.ID_TUTOR = T.ID_TUTORJOIN LINGUE AS L ON CL.ID_LINGUA = L.IDJOIN COMPETENZE_ISTR AS CI ON CI.ID_TUTOR ON T.ID_TUTORJOIN ISTRUZIONE AS I ON CI.ID_ISTR = I.IDWHERE T.ID_TUTOR = $1 AND M.NOME = $2*/
 function info_tutor(id_tutor, nome_materia, callback) {
     let queryString = 'SELECT T.NOME, T.COGNOME, M.PREZZO, T.RATING, L.LINGUA, I.LIVELLO_ISTRUZIONE AS "livello" FROM TUTOR AS T' +
         'JOIN MATERIE AS M ON M.TUTOR_ID = T.ID_TUTOR' +
@@ -229,17 +234,19 @@ function info_tutor(id_tutor, nome_materia, callback) {
     const info = [];
     pool.query(queryString, [id_tutor, nome_materia], (err, result) => {
         if (err) throw err;
-        console.log("Executed query: ", result.row);
-        result.row.forEach(row => {
+        console.log("Executed query: ", result.rows);
+        result.rows.forEach(row => {
             info.push({
                 nome: row.nome,
                 cognome: row.cognome,
                 prezzo: row.prezzo,
-                rating: row.rating,
+                //rating: row.rating,
                 lingua: row.lingua,
                 livello: row.livello,
             })
-        })
+        });
+        console.log(info);
+        callback(null, info)
     })
 }
 
@@ -248,31 +255,31 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Rotte
-app.get('tutors/:subject/:id', (req, res) => {
+app.get('/teachers/:subject/:id', (req, res) => {
     let nome_materia = req.params.subject;
     let id_tutor = req.params.id;
 
-    info_tutor(id_tutor, nome_materia,result => {
+    info_tutor(id_tutor, nome_materia,(err, result) => {
         res.json(result);
     })
 });
 
 app.get('/teachers/:subject', (req, res) => {
     let nome_materia = req.params.subject;
-    tutor_per_materia(nome_materia, result => {
+    tutor_per_materia(nome_materia, (err, result) => {
         res.json(result);
     })
 });
 
 
-app.get('/tutors/:id/lezioni', (req, res) => {
+app.get('/teachers/:id/lezioni', (req, res) => {
     let id_tutor = req.params.id;
     check_res(id_tutor, lezioni => {
         res.json(lezioni);
     })
 });
 
-app.get('/tutors/:id/prenotate', (req, res) => {
+app.get('/teachers/:id/prenotate', (req, res) => {
     let id_tutor = req.params.id;
     check_booked(id_tutor, lezioni => {
         res.json(lezioni);

@@ -19,7 +19,7 @@ export default class TeachersCard extends Component {
                             <h6 className="card-title" style={{textAlign: "center"}}>{this.props.teacherName}</h6>
                             <p className="card-text" style={{textAlign: "center"}}>{this.props.subjectName}</p>
                             <p className="card-text"> </p>
-                            <Link to={`/tutor/${this.props.id}`}><a className="btn btn-primary">Visita
+                            <Link to={`/teachers/${this.props.subjectName}/${this.props.id}`}><a className="btn btn-primary">Visita
                                 profilo</a></Link>
                         </div>
                     </div>

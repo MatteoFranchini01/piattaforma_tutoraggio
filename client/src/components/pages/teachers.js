@@ -4,7 +4,7 @@ import TeachersCard from "../mainLayout/template/teachersCard";
 import {useParams} from "react-router-dom";
 
 export default function Teachers() {
-    const only_subject_name = useParams().only_subject_name;
+    const subject_name = useParams().subject_name;
     const [price, setPrice] = useState(50);
     const [subjectSelected, setSubjectSelected] = useState("Materia selezionata");
     const [arrayTutor, setArrayTutor] = React.useState([]);
@@ -14,14 +14,12 @@ export default function Teachers() {
     };
 
     useEffect(() => {
-        console.log(only_subject_name); //corretto
-        setSubjectSelected(only_subject_name)
+        setSubjectSelected(subject_name)
         getTutorPerMateria();
-    }, [only_subject_name]);
+    }, [subject_name]);
 
     function getTutorPerMateria() {
-        const url = `http://localhost:3000/teachers/${only_subject_name}`;
-        console.log(url) //corretto
+        const url = `http://localhost:3000/teachers/${subject_name}`;
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -73,7 +71,7 @@ export default function Teachers() {
                 <div className="vr vr-teach"></div>
                 <div className="box teach-box row teachers-information">
                     {arrayTutor.map((teacher, index) => (
-                        <TeachersCard key={index} id={teacher.tutor_id} teacherName={teacher.tutor_nome} subjectName={teacher.tutor_cognome} rating={0} />
+                        <TeachersCard key={index} id={teacher.tutor_id} teacherName={teacher.tutor_nome + teacher.tutor_cognome} subjectName={subject_name} rating={0} />
                     ))}
                 </div>
             </div>

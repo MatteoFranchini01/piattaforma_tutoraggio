@@ -6,21 +6,21 @@ import ConfirmPrenotation from "./confirmPrenotation";
 import {useParams} from "react-router-dom";
 
 export default function Tutor() {
+    const tutor_id = useParams().tutor_id;
+    const subject_name = useParams().subject_name;
     const [isConfirmPrenotationOverlayOpen, setIsConfirmPrenotationOverlayOpen] = React.useState(false);
     const [selectedTime, setSelectedTime] = React.useState('');
     const [selectedDay, setSelectedDay] = React.useState('');
     const [availability, setAvailability] = React.useState([]);
     const [bookedUp, setBookedUp] = React.useState([]);
-    const [info, setInfo] = React.useState([]);
-
-    //TODO debby: passare a questa funzione anche il nome della materia
+    const [tutorInfo, setTutorInfo] = React.useState([]);
 
     React.useEffect(() => {
-
+        getInfoTutor()
     })
 
-    function getInfoTutor(tutor_id, subject_name) {
-        const url = `/tutors/${subject_name}/${tutor_id}`;
+    function getInfoTutor() {
+        const url = `http://localhost:3000/teachers/${subject_name}/${tutor_id}`;
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -28,11 +28,11 @@ export default function Tutor() {
                     nome: item.nome,
                     cognome: item.cognome,
                     prezzo: item.prezzo,
-                    rating: item.rating,
+                    //rating: item.rating,
                     lingua: item.lingua,
                     livello_istruzione: item.livello_istruzione,
                 }));
-                setInfo(temp);
+                setTutorInfo(temp);
             })
             .catch(error => {
                 console.error('Error fetching data', error);
@@ -40,21 +40,22 @@ export default function Tutor() {
     }
 
     //TODO Matteo: leggere le informazioni relative al tutor
-    const tutorName = "Nome Tutor"
-    const tutorSurname = "Cognome Tutor"
-    const tutorPrice = 15
+    const tutorName = tutorInfo.nome
+    const tutorSurname = tutorInfo.cognome
+    const tutorPrice = tutorInfo.prezzo
     const tutorRating = 4;
     const numberOfReviews = 27
-    const listOfCompetences = ["Diploma di liceo scientifico", "Laurea in Fisica", "Master di I livello in Fisica Teorica"]
-    const listOfLanguages = ["Italiano", "Inglese", "Spagnolo"]
+    const competences = tutorInfo.livello_istruzione
+    const language = tutorInfo.lingua
 
+    /*
     React.useEffect(() => {
         getLezioniByTutor(tutorName);
         getPrenotazioniByTutor(tutorName);
     }, [tutorName]);
 
     function getLezioniByTutor(tutor_id) {
-        const url = `/tutors/${tutor_id}/lezioni`;
+        const url = `/teachers/${tutor_id}/lezioni`;
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -71,7 +72,7 @@ export default function Tutor() {
     }
 
     function getPrenotazioniByTutor(tutor_id) {
-        const url = `/tutors/${tutor_id}/prenotate`;
+        const url = `/teachers/${tutor_id}/prenotate`;
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -86,6 +87,8 @@ export default function Tutor() {
                 console.error('Error fetching data', error);
             });
     }
+    */
+
 
     const handleBookButtonClicked = (time, day) => {
         setIsConfirmPrenotationOverlayOpen(!isConfirmPrenotationOverlayOpen)
@@ -120,20 +123,12 @@ export default function Tutor() {
                 <div className="box tutor-box tutor-info">
                     <div className="tutor-competences">
                         <h4 className="tutor-title">Competenze</h4>
-                        <ul className="tutor-competences-list">
-                            {listOfCompetences.map((competence, index) => (
-                                <li className="tutor-competences-item" key={index}>{competence}</li>
-                            ))}
-                        </ul>
+                        <p className="tutor-competences-item">{competences}</p>
                     </div>
                     <hr className="centered-hr"/>
                     <div className="tutor-languages">
                         <h4 className="tutor-title-languages">Lingue</h4>
-                        <ul className="tutor-languages-list">
-                            {listOfLanguages.map((language, index) => (
-                                <li className="tutor-languages-item" key={index}>{language}</li>
-                            ))}
-                        </ul>
+                        <p className="tutor-languages-item">{language}</p>
                     </div>
                     <hr className="centered-hr"/>
                     <div className="tutor-reservation">
