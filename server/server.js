@@ -222,7 +222,7 @@ app.use(bodyParser.json());
 
 // Rotte
 app.get('tutors/:nome_materia/:id_tutor', (req, res) => {
-    let nome_materia = req.params.nome_materia;
+    let nome_materia = req.params.subject_name;
     let id_tutor = req.params.id_tutor;
 
     info_tutor(id_tutor, nome_materia, result => {
@@ -231,7 +231,7 @@ app.get('tutors/:nome_materia/:id_tutor', (req, res) => {
 });
 
 app.get('/teachers/:nome_materia/tutor', (req, res) => {
-    let nome_materia = req.params.nome_materia;
+    let nome_materia = req.params.subject_name;
     tutor_per_materia(nome_materia, result => {
         res.json(result);
     })
