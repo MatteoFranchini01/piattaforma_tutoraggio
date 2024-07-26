@@ -115,8 +115,10 @@ create table istruzione
 
 
 INSERT INTO Utenti (ID, USERNAME, PASSWORD, PRIVILEGI) VALUES (1, 'matteo', '2414', 2);
+INSERT INTO Utenti (ID, USERNAME, PASSWORD, PRIVILEGI) VALUES (2, 'debora', '2414', 2);
 
 INSERT INTO Tutor (ID, NOME, COGNOME, MAIL, ID_TUTOR) VALUES (1, 'matteo', 'franchini', '', 1);
+INSERT INTO Tutor (ID, NOME, COGNOME, MAIL, ID_TUTOR) VALUES (2, 'debora', 'bini', '', 2);
 
 INSERT INTO Materie (ID, NOME, TUTOR_ID, PREZZO) VALUES (1, 'mate', 1, 10);
 INSERT INTO Materie (ID, NOME, TUTOR_ID, PREZZO) VALUES (2, 'pippo', 1, 20);
@@ -179,3 +181,13 @@ INSERT INTO fasce_orarie (ID, FASCIA_ORARIA, GIORNO) VALUES (50, '21:00', 'ven')
 INSERT INTO lingue (ID, LINGUA) VALUES (1, 'italiano');
 INSERT INTO lingue (ID, LINGUA) VALUES (2, 'inglese');
 INSERT INTO lingue (ID, LINGUA) VALUES (3, 'spagnolo');
+
+INSERT INTO istruzione (ID, LIVELLO_ISTRUZIONE) VALUES (1, 'diploma');
+INSERT INTO istruzione (ID, LIVELLO_ISTRUZIONE) VALUES (2, 'laurea trienalle');
+INSERT INTO istruzione (ID, LIVELLO_ISTRUZIONE) VALUES (3, 'laurea magistrale');
+
+INSERT INTO competenze_linguistiche (ID, ID_LINGUA, ID_TUTOR) VALUES (1, 1, 2);
+INSERT INTO competenze_linguistiche (ID, ID_LINGUA, ID_TUTOR) VALUES (1, 2, 3);
+
+INSERT INTO competenze_istr (ID, ID_TUTOR, ID_ISTR) VALUES (1, 1, 3);
+INSERT INTO competenze_istr (ID, ID_TUTOR, ID_ISTR) VALUES (2, 2, 1);
