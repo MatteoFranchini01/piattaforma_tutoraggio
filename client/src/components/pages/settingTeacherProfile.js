@@ -4,20 +4,6 @@ import React from "react";
 import img from "../../images/teacher_logo.png"
 import SelectDaysTable from "../mainLayout/template/SelectDaysTable";
 
-/*
-*   nome
-*   cognome
-*   email
-*   username
-*   password
-*   img
-*   competenze
-*   lingue
-*   selezione giorni e orari disponibili
-*
-*
-* */
-
 export default function SettingTeacherProfile() {
 
     //contiene gli orari attualmente selezionati

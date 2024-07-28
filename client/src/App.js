@@ -6,6 +6,7 @@ import Requirements from "./components/pages/requirements.js";
 import Teachers from "./components/pages/teachers.js";
 import Tutor from "./components/pages/tutor.js";
 import SettingTeacherProfile from "./components/pages/settingTeacherProfile";
+import RegistrationConfirmed from "./components/pages/registrationConfirmed";
 
 function App(){
     return(
@@ -17,6 +18,7 @@ function App(){
                     <Route path="/teachers/:subject_name" element={<Teachers/>}/>
                     <Route path="/teachers/:subject_name/:tutor_id" element={<Tutor/>}/>
                     <Route path="/settingTeacherProfile" element={<SettingTeacherProfile/>}/>
+                    <Route path="/registrationConfirmed" element={<RegistrationConfirmed/>}/>
                 </Routes>
             </MainTemplate>
         </>

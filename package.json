@@ -5,6 +5,16 @@
     "cors": "^2.8.5",
     "react-bootstrap": "^2.10.2",
     "react-hook-form": "^7.51.3",
+    "react-router-dom": "^6.25.1",
     "vue": "^2.7.16"
-  }
+  },
+  "name": "piattaforma_tutoraggio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
