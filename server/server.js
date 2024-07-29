@@ -28,16 +28,16 @@ function hashPassword(password) {
 
 // Funzione per creare le carte
 function create_cards(callback) {
-    let queryString = 'SELECT DISTINCT ID, NOME, PREZZO FROM Materie';
+    let queryString = 'SELECT ID_MATERIA, NOME_MATERIA, MIN(tm.prezzo) FROM Materie AS m JOIN Tutor_materie AS tm ON m.ID_MATERIA=tm.FK_MATERIA GROUP BY m.ID_MATERIA, m.NOME_MATERIA';
     const cards = [];
     pool.query(queryString, (err, result) => {
         if (err) throw err;
         console.log("Executed query: ", result.rows);
         result.rows.forEach(row => {
             cards.push({
-                id: row.id,
-                nome: row.nome,
-                prezzo: row.prezzo,
+                id: row.id_materia,
+                nome: row.nome_materia,
+                prezzo: row.min,
             });
         });
         callback(null, cards);
@@ -46,8 +46,8 @@ function create_cards(callback) {
 
 // Funzione per aggiungere una materia al db
 function add_materia(materia) {
-    let queryString = 'INSERT INTO MATERIE (NOME, TUTOR_ID, PREZZO) VALUES ($1, $2, $3)';
-    const values = [materia.nome, materia.tutor, materia.prezzo];
+    let queryString = 'INSERT INTO MATERIE (NOME_MATERIA) VALUES ($1)';
+    const values = [materia.nome];
     pool.query(queryString, values, (err, result) => {
         if (err) throw err;
         console.log("Number of records inserted: ", result.rowCount);
@@ -67,11 +67,11 @@ function add_user(utente) {
 
 // Funzione per trovare un utente
 function find_user(user_to_find, callback) {
-    let queryString = 'SELECT * FROM UTENTI JOIN RUOLI ON PRIVILEGI = ID WHERE UTENTI.NOME = $1 AND UTENTI.COGNOME = $2';
+    let queryString = 'SELECT NOME, COGNOME, ID_UTENTE, RUOLO_DESC FROM UTENTI JOIN RUOLI ON PRIVILEGI = ID_RUOLO WHERE UTENTI.NOME = $1 AND UTENTI.COGNOME = $2';
     pool.query(queryString, [user_to_find.nome, user_to_find.cognome], (err, result) => {
         if (err) throw err;
         const user = result.rows.map(row => ({
-            id: row.ID,
+            id: row.ID_UTENTE,
             nome: row.NOME,
             cognome: row.COGNOME,
             ruolo: row.RUOLO_DESC,
@@ -127,7 +127,7 @@ function count_materie() {
 
 // Funzione per contare gli studenti
 function count_student() {
-    let queryString = 'SELECT COUNT(*) FROM UTENTI WHERE PRIVILEGI = 2';
+    let queryString = 'SELECT COUNT(*) FROM UTENTI WHERE PRIVILEGI = 3';
     return new Promise((resolve, reject) => {
         pool.query(queryString, (err, result) => {
             if (err) {
@@ -167,7 +167,7 @@ function check_multiple_username(username_to_check, callback) {
 }
 
 function check_res(id_tutor, callback) {
-    let queryString = 'SELECT FASCE_ORARIE.FASCIA_ORARIA as "fascia", FASCE_ORARIE.GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON FASCE_ORARIE.ID = LEZIONI.ID_FASCIA WHERE ID_TUTOR = $1';
+    let queryString = 'SELECT FASCE_ORARIE.FASCIA_ORARIA as "fascia", FASCE_ORARIE.GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON ID_FASCIA_ORARIA = FK_FASCIA_ORARIA WHERE FK_TUTOR = $1';
     const res = [];
     pool.query(queryString, [id_tutor], (err, result) => {
         if (err) throw err;
@@ -181,10 +181,8 @@ function check_res(id_tutor, callback) {
     })
 }
 
-
-
 function check_booked(id_tutor, callback) {
-    let queryString = 'SELECT FASCE_ORARIE.FASCIA_ORARIA as "fascia", FASCE_ORARIE.GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON FASCE_ORARIE.ID = LEZIONI.ID_FASCIA WHERE ID_TUTOR = $1 AND ID_DISCENTE IS NOT NULL'
+    let queryString = 'SELECT FASCIA_ORARIA as "fascia", GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON ID_FASCIA_ORARIA = FK_FASCIA_ORARIA WHERE FK_TUTOR = $1 AND FK_DISCENTE IS NOT NULL'
     const fasce_orarie = [];
     pool.query(queryString, [id_tutor], (err, result) => {
         if (err) throw err;
@@ -199,17 +197,15 @@ function check_booked(id_tutor, callback) {
     })
 }
 
-
-
 function tutor_per_materia(nome_materia, callback) {
-    let queryString = 'SELECT TUTOR.ID_TUTOR as "id", TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN MATERIE ON MATERIE.TUTOR_ID = TUTOR.ID_TUTOR WHERE MATERIE.NOME = $1';
+    let queryString = 'SELECT TUTOR.ID_TUTOR, TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN TUTOR_MATERIE ON TUTOR.ID_TUTOR=TUTOR_MATERIE.FK_TUTOR JOIN MATERIE ON TUTOR_MATERIE.FK_MATERIA=MATERIE.ID_MATERIA WHERE NOME_MATERIA=$1';
     const tutor = [];
     pool.query(queryString, [nome_materia], (err, result) => {
         if (err) throw err;
         console.log("Executed query: ", result.rows);
         result.rows.forEach(row => {
             tutor.push({
-                id: row.id,
+                id: row.id_tutor,
                 nome: row.nome,
                 cognome: row.cognome,
             });
@@ -218,19 +214,8 @@ function tutor_per_materia(nome_materia, callback) {
     })
 }
 
-//TODO Matteo -> ERRORE QUERY
-/*
-* 2024-07-26 17:32:06.463 UTC [32] ERROR:  syntax error at or near "MATERIE" at character 111
-postgres-1       |
-* 2024-07-26 17:32:06.463 UTC [32] STATEMENT:  SELECT T.NOME, T.COGNOME, M.PREZZO, T.RATING, L.LINGUA, I.LIVELLO_ISTRUZIONE AS "livello" FROM TUTOR AS TJOIN MATERIE AS M ON M.TUTOR_ID = T.ID_TUTORJOIN COMPETENZE_LINGUISTICHE AS CL ON CL.ID_TUTOR = T.ID_TUTORJOIN LINGUE AS L ON CL.ID_LINGUA = L.IDJOIN COMPETENZE_ISTR AS CI ON CI.ID_TUTOR ON T.ID_TUTORJOIN ISTRUZIONE AS I ON CI.ID_ISTR = I.IDWHERE T.ID_TUTOR = $1 AND M.NOME = $2*/
 function info_tutor(id_tutor, nome_materia, callback) {
-    let queryString = 'SELECT T.NOME, T.COGNOME, M.PREZZO, T.RATING, L.LINGUA, I.LIVELLO_ISTRUZIONE AS "livello" FROM TUTOR AS T' +
-        'JOIN MATERIE AS M ON M.TUTOR_ID = T.ID_TUTOR' +
-        'JOIN COMPETENZE_LINGUISTICHE AS CL ON CL.ID_TUTOR = T.ID_TUTOR' +
-        'JOIN LINGUE AS L ON CL.ID_LINGUA = L.ID' +
-        'JOIN COMPETENZE_ISTR AS CI ON CI.ID_TUTOR ON T.ID_TUTOR' +
-        'JOIN ISTRUZIONE AS I ON CI.ID_ISTR = I.ID' +
-        'WHERE T.ID_TUTOR = $1 AND M.NOME = $2';
+    let queryString = 'SELECT NOME, COGNOME, NOME_LINGUA, LIVELLO_ISTRUZIONE AS "livello", PREZZO FROM TUTOR AS T JOIN COMPETENZE_LINGUISTICHE AS CL ON T.ID_TUTOR=CL.FK_TUTOR JOIN LINGUE AS L ON CL.FK_LINGUA=L.ID_LINGUA JOIN COMPETENZE_ISTR AS CI ON T.ID_TUTOR=CI.FK_TUTOR JOIN ISTRUZIONE AS I ON I.ID_ISTRUZIONE=CI.FK_ISTRUZIONE JOIN TUTOR_MATERIE AS TM ON T.ID_TUTOR=TM.FK_TUTOR JOIN MATERIE AS M ON TM.FK_MATERIA=M.ID_MATERIA WHERE T.ID_TUTOR=$1 AND M.NOME_MATERIA=$2';
     const info = [];
     pool.query(queryString, [id_tutor, nome_materia], (err, result) => {
         if (err) throw err;
@@ -241,11 +226,10 @@ function info_tutor(id_tutor, nome_materia, callback) {
                 cognome: row.cognome,
                 prezzo: row.prezzo,
                 //rating: row.rating,
-                lingua: row.lingua,
+                lingua: row.nome_lingua,
                 livello: row.livello,
             })
         });
-        console.log(info);
         callback(null, info)
     })
 }

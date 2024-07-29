@@ -43,7 +43,7 @@
 
 .tutor-details{
     width: 70%;
-    height: 500px;
+    height: auto;
     border: rgb(50, 50, 100) solid 1px;
     border-radius: 10px;
     margin-left: 25%;
@@ -62,8 +62,13 @@
     margin-top: 20px;
 }
 
-.tutor-price{
+.tutor-subject{
     padding-top: 20px;
+}
+
+.tutor-price{
+    padding-top: 2px;
+    padding-bottom: 20px;
 }
 
 
@@ -92,25 +97,21 @@
     padding-bottom: 10px;
 }
 
-.tutor-title-languages, .tutor-title-reservation{
+.tutor-title-reservation, .tutor-title-bio{
     padding-left: 10%;
     padding-right: 10px;
     padding-top: 20px;
 }
 
 
-.tutor-competences-list, .tutor-languages-list{
-    padding-left: 15%;
-}
-
-.tutor-competences-item, .tutor-languages-item{
-    padding-left: 20px;
-    padding-top: 15px;
+.tutor-competences-item, .tutor-languages-item, .tutor-bio{
+    padding-left: 12%;
+    padding-top: 10px;
+    padding-right: 150px;
 }
 
 .tutor-reservation-table{
     margin: 5% 10%;
-
 }
 
 thead{

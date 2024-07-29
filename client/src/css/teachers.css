@@ -29,6 +29,7 @@
     padding-top: 100px;
     display: inline-block;
     vertical-align: top;
+    justify-content: normal;
 }
 
 .vr-teach{
@@ -36,13 +37,6 @@
     margin-bottom: 2%;
 }
 
-.form-select-teacher {
-    width: 50%;
-    max-width: 200px;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-left: 50px;
-}
 
 .teachers-form-control{
     width: 50%;

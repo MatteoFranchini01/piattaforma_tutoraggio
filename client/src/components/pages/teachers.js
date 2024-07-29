@@ -36,7 +36,7 @@ export default function Teachers() {
             });
         }
 
-
+    //TODO Matteo: al click del bottone gestire la ricerca filtrata
     return (
         <>
             <div className="main-content">
@@ -46,14 +46,6 @@ export default function Teachers() {
                     <input className="form-control teachers-form-control" type="text" placeholder="Default input"
                            aria-label="default input example" readOnly value={subjectSelected}
                            />
-
-                    <select className="form-select levels form-select-teacher">
-                        <option selected>Scegli il livello</option>
-                        <option value="tutti">Tutti i livelli</option>
-                        <option value="elementari">Elementari</option>
-                        <option value="medie">Scuola secondaria</option>
-                        <option value="superiori">Scuola superiore</option>
-                    </select>
 
                     <label htmlFor="customRange1" className="form-label">
                         Scegli il prezzo massimo: {price}.00€
@@ -69,9 +61,9 @@ export default function Teachers() {
                     <button className="btn btn-primary find" type="submit">Cerca</button>
                 </div>
                 <div className="vr vr-teach"></div>
-                <div className="box teach-box row teachers-information">
+                <div className="teach-box row teachers-information">
                     {arrayTutor.map((teacher, index) => (
-                        <TeachersCard key={index} id={teacher.tutor_id} teacherName={teacher.tutor_nome + teacher.tutor_cognome} subjectName={subject_name} rating={0} />
+                        <TeachersCard key={index} id={teacher.tutor_id} teacherName={teacher.tutor_nome + " " + teacher.tutor_cognome} subjectName={subject_name} rating={0} />
                     ))}
                 </div>
             </div>

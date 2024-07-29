@@ -68,7 +68,6 @@ export default function LoginOverlay ({isOpen, onClose}) {
                             {passwordError && <p className="error-paragraph">{passwordError}</p>}
                         </div>
                         <div className="centeredLink">
-                            <a className="pwdForgotten" href="#">Hai dimenticato la password?</a>
                             <button className="btn-login" type="button" value="Submit" onClick={onClickHandler}>Accedi</button>
                         </div>
                     </div>
