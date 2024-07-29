@@ -14,6 +14,9 @@ export default function SettingTeacherProfile() {
         console.log(selectedDays);
     }
 
+    //TODO: una volta memorizzato il tutor chiamare
+    // redirect("/registrationConfirmed")
+
 
     {/* TODO Matteo: le informazioni qui sono da unire a quelle inserite nella pagina di subscribe per confermare la registrazione */}
     return(

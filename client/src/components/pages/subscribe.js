@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "../../css/subscribe.css";
 import button from "bootstrap/js/src/button";
+import {redirect} from "react-router-dom";
 
 export default function SubscribeOverlay ({isOpen, onClose}) {
 
@@ -76,6 +77,7 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         validateEmail(email);
 
         console.log('Subscribe credentials: ', selectedType, name, surname, username, email, password);
+        //TODO trovare il modo di passare queste credenziali alla pagina dopo
     }
 
     const validateEmail = (email) => {

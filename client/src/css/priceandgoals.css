@@ -1,0 +1,88 @@
+.main-container-price-goals{
+    padding-top: 150px;
+    padding-bottom: 150px;
+    height: auto;
+}
+
+
+.basic-paragraph-prices-goals{
+    padding-top: 20px;
+    padding-right: 10px;
+}
+
+.h2-title-price-goals{
+    padding-top: 25px;
+    padding-bottom: 40px;
+    text-align: center;
+    color: rgb(50, 50, 100);
+}
+
+.price-goals {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.first-box-price{
+    background-color: rgba(152, 173, 254, 20%);
+    padding-top: 0;
+    height: auto;
+    min-height: 400px;
+    width: 350px;
+    border-radius: 10px;
+    font-size: 12px;
+    align-items: center;
+    margin-left: 5%;
+}
+
+.second-box-price{
+    padding-top: 0;
+    height: auto;
+    min-height: 400px;
+    width: 350px;
+    background-color: rgba(105, 181, 174, 20%);
+    border-radius: 10px;
+    font-size: 12px;
+    align-items: center;
+}
+
+.third-box-price{
+    padding-top: 0;
+    height: auto;
+    min-height: 400px;
+    width: 350px;
+    background-color: rgba(234, 127, 124, 20%);
+    border-radius: 10px;
+    font-size: 12px;
+    align-items: center;
+    margin-right: 5%;
+}
+
+
+.uno, .due, .tre{
+    padding: 30px 30px 15px;
+    margin: 0;
+}
+
+.basic-paragraph-prices-goals{
+    justify-content: center;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    margin: 0;
+
+}
+
+.tre{
+    color: rgba(234, 127, 124);
+}
+
+.due{
+    color: rgb(105, 181, 174);
+}
+
+.uno{
+    color: rgb(152, 173, 254);
+}
+

@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import "../../css/login.css";
+import {useNavigate} from "react-router-dom";
+import {redirect} from "react-router-dom";
 
 export default function LoginOverlay ({isOpen, onClose}) {
     const [username, setUsername] = useState("");
@@ -44,7 +46,8 @@ export default function LoginOverlay ({isOpen, onClose}) {
                                 console.log('Errore nei permessi');
                                 break;
                         }
-
+                        //TODO Matteo: quando lo tesi, se l'autenticazione va a buon fine controlla che il redirect funzioni
+                        redirect("/")
                     } else {
                         console.log('User NOT logged in');
                     }
@@ -68,7 +71,7 @@ export default function LoginOverlay ({isOpen, onClose}) {
                             {passwordError && <p className="error-paragraph">{passwordError}</p>}
                         </div>
                         <div className="centeredLink">
-                            <button className="btn-login" type="button" value="Submit" onClick={onClickHandler}>Accedi</button>
+                            <button className="btn-login-2" type="button" value="Submit" onClick={onClickHandler}>Accedi</button>
                         </div>
                     </div>
                 </div>

@@ -21,31 +21,22 @@ function Header (){
                     <div className="vr"></div>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul className="navbar-nav me-auto mb-3 mb-lg-0 p-lg-1">
-                            <li className={`nav-item ${location.pathname === '/'? 'active' : ''}`}>
+                            <li className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}>
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
-                            <li className={`nav-item ${location.pathname === '/il-nostro-obiettivo'? 'active' : ''}`}>
-                                <Link className="nav-link" to="#">Il nostro obiettivo</Link>
+                            <li className={`nav-item ${location.pathname === '/prezzieobiettivi' ? 'active' : ''}`}>
+                                <Link className="nav-link" to="/prezzieobiettivi">Prezzi & Obiettivi</Link>
                             </li>
-                            <li className={`nav-item ${location.pathname === '/prezzi'? 'active' : ''}`}>
-                                <Link className="nav-link" to="#">Prezzi</Link>
-                            </li>
-                            <li className={`nav-item dropdown ${location.pathname === '/requirements'? 'active' : ''}`}>
-                                <Link className="nav-link dropdown-toggle" to="#" role="button"
-                                      data-bs-toggle="dropdown"
-                                      aria-expanded="false">
-                                    Diventare insegnante
-                                </Link>
-                                <ul className="dropdown-menu">
-                                    <li><Link className="dropdown-item" to="/requirements">Requisiti</Link></li>
-                                    <li><Link className="dropdown-item" to="#">Invia richiesta</Link></li>
-                                </ul>
+                            <li className={`nav-item ${location.pathname === '/requirements' ? 'active' : ''}`}>
+                                <Link className="nav-link" to="/requirements">Diventare insegnante</Link>
                             </li>
                         </ul>
                         <div className="login-subscribe buttons">
-                            <button className="loginBtn" onClick={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}>Accedi</button>
-                            <Login isOpen={isLoginOverlayOpen} onClose={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}/>
+                            <button className="loginBtn"
+                                    onClick={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}>Accedi
+                            </button>
                             <button className="subscribeBtn" onClick={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}>Iscriviti</button>
+                            <Login isOpen={isLoginOverlayOpen} onClose={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}/>
                             <Subscribe isOpen={isSubscribeOverlayOpen} onClose={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}/>
                         </div>
                     </div>

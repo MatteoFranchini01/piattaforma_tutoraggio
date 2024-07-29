@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 export default class Footer extends React.Component{
     constructor(props){
         super(props);
@@ -18,59 +19,38 @@ export default class Footer extends React.Component{
                                     style={{width:" 60px", backgroundColor: "#7c4dff", height: "2px"}}
                                 />
                                 <p>
-                                    Descrizione.<br/>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    KnowHow è una piattaforma progettata per facilitare il contatto tra studenti che necessitano di supporto
+                                    scolastico o accademico e tutor qualificati in una vasta gamma di materie.
                                 </p>
                             </div>
+
 
                             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                                <h6 className="text-uppercase fw-bold">Products</h6>
-                                <hr
-                                    className="mb-4 mt-0 d-inline-block mx-auto"
-                                    style={{width:" 60px", backgroundColor: "#7c4dff", height: "2px"}}
-                                />
-                                <p>
-                                    <a href="#!" className="text-dark">Link1</a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-dark">Link2</a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-dark">Link3</a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-dark">Link4</a>
-                                </p>
-                            </div>
-
-                            <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                                 <h6 className="text-uppercase fw-bold">Link utili</h6>
                                 <hr
                                     className="mb-4 mt-0 d-inline-block mx-auto"
-                                    style={{width:" 60px", backgroundColor: "#7c4dff", height: "2px"}}
+                                    style={{width: " 60px", backgroundColor: "#7c4dff", height: "2px"}}
                                 />
                                 <p>
-                                    <a href="#!" className="text-dark">Il tuo account</a>
+                                    <Link to="/" className="text-dark">Home</Link>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-dark">Diventare insegnate</a>
+                                    <Link to="/prezzieobiettivi" className="text-dark">Prezzi e obiettivi</Link>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-dark">Il nostro obiettivo</a>
+                                    <Link to="/requirements" className="text-dark">Diventare insegnate</Link>
                                 </p>
-                                <p>
-                                    <a href="#!" className="text-dark">Prezzi</a>
-                                </p>
+
                             </div>
 
-                            <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                                 <h6 className="text-uppercase fw-bold">Contatti</h6>
                                 <hr
                                     className="mb-4 mt-0 d-inline-block mx-auto"
                                     style={{width: "60px", backgroundColor: "#7c4dff", height: "2px"}}
                                 />
                                 <p><i className="fa fa-map-marker" aria-hidden="true"></i> Parma, Italia</p>
-                                <p><i className="fa fa-address-card" aria-hidden="true"></i> info@mails.com</p>
+                                <p><i className="fa fa-address-card" aria-hidden="true"></i> infoknowhow@mails.com</p>
                                 <p><i className="fa fa-phone" aria-hidden="true"></i> + 39 333 748 1384 </p>
                                 <p><i className="fa fa-phone" aria-hidden="true"></i> + 39 335 213 3249 </p>
                             </div>
