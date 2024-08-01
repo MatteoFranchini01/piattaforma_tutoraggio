@@ -74,43 +74,46 @@ function add_materia(materia) {
 }
 
 // Funzione per aggiungere utenti
-function add_user(utente) {
+
+async function add_user(utente) {
     const hashedPassword = hashPassword(utente.password);
     let auth = 0;
+
     if (utente.selectedType === 'student') {
         auth = 3;
     } else if (utente.selectedType === 'teacher') {
         auth = 2;
     }
-    let queryString = 'INSERT INTO UTENTI (USERNAME, PASSWORD, PRIVILEGI) VALUES ($1, $2, $3)';
-    const values = [utente.username, hashedPassword, auth];
-    pool.query(queryString, values, (err, result) => {
-        if (err) throw err;
-        console.log("Number of records inserted: ", result.rowCount);
-    });
+    console.log("Auth: ", auth);
 
-    queryString = 'SELECT ID FROM UTENTI WHERE USERNAME = $1';
-    pool.query(queryString, utente.username, (err, result) => {
-        if (err) throw err;
-        let id = result.rows[0].id;
-    })
+    try {
+        // inserimento nella tabella utenti
+        const queryStringUtenti = 'INSERT INTO UTENTI (USERNAME, PASSWORD, PRIVILEGI) VALUES ($1, $2, $3) RETURNING id_utente';
+        const valuesUtenti = [utente.username, hashedPassword, auth];
+        const resultUtenti = await pool.query(queryStringUtenti, valuesUtenti);
+        const userId = resultUtenti.rows[0].id_utente;
 
-    if (auth === 3) {
-        queryString = 'INSERT INTO DISCENTE (NOME, COGNOME, MAIL, FK_UTENTE) VALUES ($1, $2, $3, $4)';
-        const values = [utente.name, utente.surname, utente.email, id];
-        pool.query(queryString, values, (err, result) => {
-            if (err) throw err;
-            console.log("Student inserted successfully");
-        })}
-    else if (auth === 2) {
-        queryString = 'INSERT INTO TUTOR (FK_TUTOR, NOME, COGNOME, MAIL) VALUES ($1, $2, $3, $4)';
-        const values = [utente.name, utente.surname, utente.email, id];
-        pool.query(queryString, values, (err, result) => {
-            if (err) throw err;
+        console.log("Inserted user with ID: ", userId);
+
+        // inserimento nella tabella discente o tutor
+
+        if (auth === 3) {
+            const queryStringDiscente = 'INSERT INTO DISCENTE (NOME, COGNOME, MAIL, FK_UTENTE) VALUES ($1, $2, $3, $4)';
+            const valuesDiscente = [utente.name, utente.surname, utente.email, userId];
+            await pool.query(queryStringDiscente, valuesDiscente);
+            console.log("Studente inserted successfully");
+        } else if (auth === 2) {
+            const queryStringTutor = 'INSERT INTO TUTOR (FK_TUTOR, NOME, COGNOME, MAIL) VALUES ($1, $2, $3, $4)';
+            const valuesTutor = [userId, utente.nome, utente.surname, utente.email];
+            await pool.query(queryStringTutor, valuesTutor);
             console.log("Tutor inserted successfully");
-        })
+        }
+    } catch (err) {
+        console.error("Error inserting user:", err);
+        throw err;
     }
 }
+
 
 // Funzione per trovare un utente
 function find_user(user_to_find, callback) {
