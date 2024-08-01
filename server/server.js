@@ -1,5 +1,8 @@
-
 const express = require('express');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const req = require('express/lib/request');
+
 const { Pool } = require('pg');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -7,6 +10,22 @@ const crypto = require('crypto');
 
 const app = express();
 const port = process.env.PORT || 3000;
+app.use(cookieParser());
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUnitialized: false,
+    cookie: {
+        secure: false,
+        maxAge: 1000 * 60 * 60 * 24
+    }
+}))
+app.use(bodyParser.json());
+app.use(cors({
+    origin: "http://localhost:8080",
+    method: ["POST", "GET"],
+    credentials: true,
+}));
 
 const pool = new Pool({
     host: 'postgres',
@@ -57,12 +76,40 @@ function add_materia(materia) {
 // Funzione per aggiungere utenti
 function add_user(utente) {
     const hashedPassword = hashPassword(utente.password);
-    let queryString = 'INSERT INTO UTENTI (NOME, COGNOME, PASSWORD, PRIVILEGI) VALUES ($1, $2, $3, $4)';
-    const values = [utente.nome, utente.cognome, hashedPassword, utente.privilegi];
+    let auth = 0;
+    if (utente.selectedType === 'student') {
+        auth = 3;
+    } else if (utente.selectedType === 'teacher') {
+        auth = 2;
+    }
+    let queryString = 'INSERT INTO UTENTI (USERNAME, PASSWORD, PRIVILEGI) VALUES ($1, $2, $3)';
+    const values = [utente.username, hashedPassword, auth];
     pool.query(queryString, values, (err, result) => {
         if (err) throw err;
         console.log("Number of records inserted: ", result.rowCount);
     });
+
+    queryString = 'SELECT ID FROM UTENTI WHERE USERNAME = $1';
+    pool.query(queryString, utente.username, (err, result) => {
+        if (err) throw err;
+        let id = result.rows[0].id;
+    })
+
+    if (auth === 3) {
+        queryString = 'INSERT INTO DISCENTE (NOME, COGNOME, MAIL, FK_UTENTE) VALUES ($1, $2, $3, $4)';
+        const values = [utente.name, utente.surname, utente.email, id];
+        pool.query(queryString, values, (err, result) => {
+            if (err) throw err;
+            console.log("Student inserted successfully");
+        })}
+    else if (auth === 2) {
+        queryString = 'INSERT INTO TUTOR (FK_TUTOR, NOME, COGNOME, MAIL) VALUES ($1, $2, $3, $4)';
+        const values = [utente.name, utente.surname, utente.email, id];
+        pool.query(queryString, values, (err, result) => {
+            if (err) throw err;
+            console.log("Tutor inserted successfully");
+        })
+    }
 }
 
 // Funzione per trovare un utente
@@ -142,11 +189,13 @@ function count_student() {
 
 // Funzione per verificare l'autenticazione
 function check_auth(user_to_check, callback) {
-    let queryString = 'SELECT PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
+    let queryString = 'SELECT USERNAME, PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
     pool.query(queryString, [user_to_check.username], (err, result) => {
         if (err) throw err;
         let user_to_check_hash_pwd = hashPassword(user_to_check.password);
         if (result.rows.length > 0 && result.rows[0].password === user_to_check_hash_pwd) {
+            req.session.username = result.rows[0].username;
+            console.log(req.session.username);
             const auth =  result.rows[0].privilegi;
             callback({ authenticated: true, privilegi: auth });
         } else {
@@ -239,6 +288,15 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Rotte
+
+// rotta per la gestione della sessione
+app.get('/check_login_session', (req, res) => {
+    if (req.session.username) {
+        return res.json({valid: true, username: req.session.username});
+    } else {
+        return res.json({valid: false});
+    }
+})
 app.get('/teachers/:subject/:id', (req, res) => {
     let nome_materia = req.params.subject;
     let id_tutor = req.params.id;
@@ -337,6 +395,7 @@ app.post('/add_materia', (req, res) => {
 
 app.post('/add_user', (req, res) => {
     let user = req.body;
+    console.log(user);
     add_user(user);
     res.send("User added to db");
 });

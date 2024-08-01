@@ -51,8 +51,6 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
 
         //TODO: la funzione sotto va bene, però ci sono degli errori nell'inserimento dei dati
         // e il controllo della password va inserito prima di inviare la richiesta al server
-        
-        //TODO: capire il funzionamento di selectedType
 
         console.log("Multiple user ", multiple_user_check);
         if (selectedType === '' || name === '' || surname === '' || email === '' || username === '' || password === '') {
@@ -60,24 +58,24 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         } else if (multiple_user_check) {
             setError("Scegliere un nuovo username")
         } else {
+            checkPasswordStrength(password)
+            validateEmail(email);
             setError("")
             const user_to_add = {selectedType, name, surname, email, username, password};
+            console.log(user_to_add);
             fetch('http://localhost:3000/add_user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(user_to_add),
+                crediantials: 'include'
             })
                 .then(response => response.json())
                 .then(data => console.log(data))
         }
 
-        checkPasswordStrength(password)
-        validateEmail(email);
-
         console.log('Subscribe credentials: ', selectedType, name, surname, username, email, password);
-        //TODO trovare il modo di passare queste credenziali alla pagina dopo
     }
 
     const validateEmail = (email) => {

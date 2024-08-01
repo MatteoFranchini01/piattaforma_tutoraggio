@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../../css/login.css";
 import {useNavigate} from "react-router-dom";
 import {redirect} from "react-router-dom";
+import axios from "axios";
 
 export default function LoginOverlay ({isOpen, onClose}) {
     const [username, setUsername] = useState("");
@@ -9,6 +10,7 @@ export default function LoginOverlay ({isOpen, onClose}) {
     const [usernameError, setUsernameError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
+    axios.defaults.withCredentials = true;
     const onClickHandler = (event) => {
         // questa funzione stampa a console i valori inseriti dall'utente
         if(username === ""){
