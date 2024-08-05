@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "connect-pg-simple": "^9.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.19.2",
@@ -20,6 +21,7 @@
     "h2": "^0.3.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.6",
+    "node": "^20.16.0",
     "pg": "^8.11.5",
     "react-router-dom": "^6.23.0"
   },

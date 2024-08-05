@@ -1,4 +1,4 @@
-FROM node:14 AS Production
+FROM node:21.7.3 AS Production
 
 ENV NODE_ENV=production
 
@@ -14,4 +14,3 @@ COPY . .
 RUN npm run build
 
 CMD ["sh", "-c", "npm run start"]
-

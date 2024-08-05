@@ -7,25 +7,11 @@ const { Pool } = require('pg');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const crypto = require('crypto');
+const pgSession = require('connect-pg-simple')(session);
 
 const app = express();
 const port = process.env.PORT || 3000;
-app.use(cookieParser());
-app.use(session({
-    secret: 'secret',
-    resave: false,
-    saveUnitialized: false,
-    cookie: {
-        secure: false,
-        maxAge: 1000 * 60 * 60 * 24
-    }
-}))
-app.use(bodyParser.json());
-app.use(cors({
-    origin: "http://localhost:8080",
-    method: ["POST", "GET"],
-    credentials: true,
-}));
+
 
 const pool = new Pool({
     host: 'postgres',
@@ -194,15 +180,22 @@ function count_student() {
 function check_auth(user_to_check, callback) {
     let queryString = 'SELECT USERNAME, PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
     pool.query(queryString, [user_to_check.username], (err, result) => {
-        if (err) throw err;
-        let user_to_check_hash_pwd = hashPassword(user_to_check.password);
-        if (result.rows.length > 0 && result.rows[0].password === user_to_check_hash_pwd) {
-            req.session.username = result.rows[0].username;
-            console.log(req.session.username);
-            const auth =  result.rows[0].privilegi;
-            callback({ authenticated: true, privilegi: auth });
+        if (err) {
+            console.error("Error executing query", err.stack);
+            callback({ authenticated: false });
+            return;
+        }
+        console.log("Query result:", result.rows[0]);
+        if (result.rows.length > 0) {
+            const user = result.rows[0];
+            const hashedPassword = hashPassword(user_to_check.password);
+            if (user.password === hashedPassword) {
+                callback({ authenticated: true, privilegi: user.privilegi });
+            } else {
+                callback({ authenticated: false });
+            }
         } else {
-            callback({ authenticated: false, privilegi: -1 });
+            callback({ authenticated: false });
         }
     });
 }
@@ -287,19 +280,45 @@ function info_tutor(id_tutor, nome_materia, callback) {
 }
 
 // Middleware
-app.use(cors());
+
+app.use(cookieParser());
+app.use(session({
+    store: new pgSession({
+        pool: pool,
+        tableName: 'session'
+    }),
+    secret: 'secret',
+    resave: false,
+    saveUnitialized: false,
+    cookie: {
+        secure: false,
+        maxAge: 1000 * 60 * 60 * 24,
+        httpOnly: true,
+    }
+}));
 app.use(bodyParser.json());
+app.use(cors({
+    origin: "http://localhost:8080",
+    method: ["POST", "GET"],
+    credentials: true,
+}));
 
 // Rotte
 
 // rotta per la gestione della sessione
 app.get('/check_login_session', (req, res) => {
-    if (req.session.username) {
-        return res.json({valid: true, username: req.session.username});
+    console.log('Session ID:', req.sessionID);
+    console.log('Session data:', req.session);
+    if (req.session.authenticated) {
+        console.log('Session authenticated:', req.session.authenticated);
+        console.log('Session username:', req.session.username);
+        return res.json({ valid: true, username: req.session.username });
     } else {
-        return res.json({valid: false});
+        console.log('Session not authenticated or username not set');
+        return res.json({ valid: false });
     }
-})
+});
+
 app.get('/teachers/:subject/:id', (req, res) => {
     let nome_materia = req.params.subject;
     let id_tutor = req.params.id;
@@ -411,9 +430,33 @@ app.post('/find_user', (req, res) => {
 });
 
 app.get('/verify_auth', (req, res) => {
+    console.log("Received request for /verify_auth");
     let user_to_check = { username: req.query.username, password: req.query.password };
+    console.log("User to check:", user_to_check);
     check_auth(user_to_check, result => {
-        res.json(result);
+        if (result.authenticated) {
+            req.session.username = user_to_check.username;
+            req.session.authenticated = true;
+            req.session.save(err => {
+                if (err) {
+                    console.error("Error saving session:", err);
+                    return res.status(500).json({message: "Errore nel salvataggio della sessione" });
+                }
+                console.log("Session after save ID:", req.sessionID);
+                console.log("Session after save data:", req.session);
+                res.cookie('session', req.sessionID, {
+                    httpOnly: true,
+                    secure: false,
+                    domain: 'localhost',
+                    path: '/',
+                    maxAge: 1000 * 60 * 60 * 24
+                });
+                console.log("Utente autenticato");
+                res.json(result);
+            });
+        } else {
+            res.status(401).json({message: 'Utente non autenticato'});
+        }
     });
 });
 

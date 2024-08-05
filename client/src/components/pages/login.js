@@ -25,10 +25,9 @@ export default function LoginOverlay ({isOpen, onClose}) {
             setPasswordError("");
         }
 
-        //TODO: controllare funzionamento e vedere come implementare lato frontend l'evento
-
         if (username && password) {
             const user_to_check = {username, password};
+
             fetch(`http://localhost:3000/verify_auth?username=${user_to_check.username}&password=${user_to_check.password}`)
                 .then(response => response.json())
                 .then(data => {
@@ -48,8 +47,8 @@ export default function LoginOverlay ({isOpen, onClose}) {
                                 console.log('Errore nei permessi');
                                 break;
                         }
-                        //TODO Matteo: quando lo tesi, se l'autenticazione va a buon fine controlla che il redirect funzioni
-                        redirect("/")
+                        //TODO: redirect non funziona come dovrebbe
+                        redirect("/");
                     } else {
                         console.log('User NOT logged in');
                     }
