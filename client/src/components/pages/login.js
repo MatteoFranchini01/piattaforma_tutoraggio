@@ -48,7 +48,7 @@ export default function LoginOverlay ({isOpen, onClose}) {
                                 console.log('Errore nei permessi');
                                 break;
                         }
-                        //TODO Matteo: quando lo tesi, se l'autenticazione va a buon fine controlla che il redirect funzioni
+                        //TODO Matteo: quando lo testi, se l'autenticazione va a buon fine controlla che il redirect funzioni
                         redirect("/")
                     } else {
                         console.log('User NOT logged in');
@@ -57,6 +57,23 @@ export default function LoginOverlay ({isOpen, onClose}) {
                 .catch(error => console.error('Errore durante la chiamata API:', error));
         }
     }
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post("http://localhost:3000/verify_login", {username, password})
+            .then(res => {
+                if(res.data.Status === "Success"){
+                    navigate("/")
+                }
+                else{
+                    alert(res.data.Message);
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
 
     return(
         <>
@@ -73,7 +90,7 @@ export default function LoginOverlay ({isOpen, onClose}) {
                             {passwordError && <p className="error-paragraph">{passwordError}</p>}
                         </div>
                         <div className="centeredLink">
-                            <button className="btn-login-2" type="button" value="Submit" onClick={onClickHandler}>Accedi</button>
+                            <button className="btn-login-2" type="button" value="Submit" onClick={handleSubmit}>Accedi</button>
                         </div>
                     </div>
                 </div>

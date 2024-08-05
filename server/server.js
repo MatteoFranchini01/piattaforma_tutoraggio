@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken")
 const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -10,7 +11,8 @@ const crypto = require('crypto');
 
 const app = express();
 const port = process.env.PORT || 3000;
-app.use(cookieParser());
+
+/*app.use(cookieParser());
 app.use(session({
     secret: 'secret',
     resave: false,
@@ -25,6 +27,14 @@ app.use(cors({
     origin: "http://localhost:8080",
     method: ["POST", "GET"],
     credentials: true,
+}));*/
+
+app.use(express.json())
+app.use(cookieParser())
+app.use(cors({
+    origin: "http://localhost:8080",
+    method: ["POST", "GET"],
+    credentials: true
 }));
 
 const pool = new Pool({
@@ -300,6 +310,7 @@ app.get('/check_login_session', (req, res) => {
         return res.json({valid: false});
     }
 })
+
 app.get('/teachers/:subject/:id', (req, res) => {
     let nome_materia = req.params.subject;
     let id_tutor = req.params.id;
@@ -315,7 +326,6 @@ app.get('/teachers/:subject', (req, res) => {
         res.json(result);
     })
 });
-
 
 app.get('/teachers/:id/lezioni', (req, res) => {
     let id_tutor = req.params.id;
@@ -340,7 +350,6 @@ app.get('/cards', (req, res) => {
         res.json(cards);
     });
 });
-
 
 app.get('/count_tutor', (req, res) => {
     count_tutor()
@@ -416,6 +425,55 @@ app.get('/verify_auth', (req, res) => {
         res.json(result);
     });
 });
+
+
+app.post("/verify_login", (req, res) =>{
+    let cred = {username: req.body.username, password: req.body.password};
+    let q = 'SELECT USERNAME, PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
+    pool.query(q, [cred.username], (err, result) => {
+        if (err) return res.json({Message: "Server side error"});
+        let user_to_check_hash_pwd = hashPassword(cred.password);
+
+        if(result.length > 0){
+            if(result[0].password === user_to_check_hash_pwd){
+                const n = result[0].username;
+                const token = jwt.sign({n}, "our-jsonwebtoken-secret-key", {expressIn: "id"});
+                res.cookie('token', token);
+                return res.json({Status: "Success"});
+            }
+        }
+        else{
+            return res.json({Message: "User non trovato"});
+        }
+    });
+})
+
+const verifyUser = (req, res, next) =>{
+    const token = req.cookies.token;
+    if(!token){
+        return res.json({Message: "errore -> no token. Login!"})
+    }
+    else{
+        jwt.verify(token, "our-jsonwebtoken-secret-key", (err, decoded) => {
+            if(err){
+                return res.json({Message: "Authentication Error"})
+            }
+            else{
+                //req.n = decoded.username
+                next();
+            }
+        })
+    }
+}
+
+app.get("/logout", (req, res) => {
+    res.clearCookie("token");
+    return res.json({Status: "Success"})
+})
+
+app.get("/", verifyUser, (req, res) =>{
+    return res.json({Status: "Success"})
+})
 
 app.get('/check_multiple_user', (req, res) => {
     let user_to_check = req.query;

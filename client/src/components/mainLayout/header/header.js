@@ -1,15 +1,51 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "../../../css/header.css";
 import logo from "../../../images/webSiteLogo.png";
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
 import Login from "../../pages/login";
 import Subscribe from "../../pages/subscribe";
+import axios from "axios";
 
 function Header (){
     const [isLoginOverlayOpen, setIsLoginOverlayOpen] = React.useState(false);
     const [isSubscribeOverlayOpen, setIsSubscribeOverlayOpen] = React.useState(false);
     const location = useLocation();
+
+    const [auth, setAuth] = useState(false);
+    const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/")
+            .then(res => {
+                if(res.data.Status === "Success"){
+                    setAuth(true);
+                }
+                else{
+                    setMessage(res.data.Message);
+                    console.log(message)
+                }
+            })
+
+    }, []);
+
+    const navigate = useNavigate();
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+        axios.post("http://localhost:3000/logout")
+            .then(res => {
+                if(res.data.Status === "Success") {
+                    navigate("/");
+                }
+                else{
+                    alert(res.data.Message);
+                }
+
+            })
+            .catch(err => console.log(err));
+    }
+
 
     return (
             <nav className="navbar fixed-top navbar-expand-lg">
@@ -31,14 +67,30 @@ function Header (){
                                 <Link className="nav-link" to="/requirements">Diventare insegnante</Link>
                             </li>
                         </ul>
-                        <div className="login-subscribe buttons">
-                            <button className="loginBtn"
-                                    onClick={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}>Accedi
-                            </button>
-                            <button className="subscribeBtn" onClick={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}>Iscriviti</button>
-                            <Login isOpen={isLoginOverlayOpen} onClose={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}/>
-                            <Subscribe isOpen={isSubscribeOverlayOpen} onClose={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}/>
-                        </div>
+
+                        {
+                            auth ?
+                                <div className="logout button">
+                                    <button className="logoutBtn"
+                                            onClick={handleLogout}>Accedi
+                                    </button>
+
+                                </div>
+                                :
+                                <div className="login-subscribe buttons">
+                                    <button className="loginBtn"
+                                            onClick={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}>Accedi
+                                    </button>
+                                    <button className="subscribeBtn"
+                                            onClick={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}>Iscriviti
+                                    </button>
+                                    <Login isOpen={isLoginOverlayOpen}
+                                           onClose={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}/>
+                                    <Subscribe isOpen={isSubscribeOverlayOpen}
+                                               onClose={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}/>
+                                </div>
+                        }
+
                     </div>
                 </div>
             </nav>

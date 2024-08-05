@@ -2,7 +2,11 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-vue": "^2.23.1",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.1.4",
     "react-bootstrap": "^2.10.2",
     "react-hook-form": "^7.51.3",
     "react-router-dom": "^6.25.1",
@@ -16,5 +20,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": []
 }
