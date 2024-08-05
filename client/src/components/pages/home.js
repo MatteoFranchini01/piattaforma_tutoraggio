@@ -17,8 +17,9 @@ export default function Home() {
     const [username, setUsername] = useState("");
 
     //TODO: questa funzione va copiata in ogni pagina e bisogna capire come gestire tutti i casi
-    axios.defaults.withCredentials = true;
+    //axios.defaults.withCredentials = true;
 
+    /*
     useEffect(() => {
         fetch('http://localhost/check_login_session')
             .then(response => response.json())
@@ -34,7 +35,7 @@ export default function Home() {
             .catch(error => {
                 console.error(error);
             });
-    }, []);
+    }, []);*/
 
     // Chiamata API per il conteggio degli studenti
 

@@ -10,6 +10,7 @@ export default function LoginOverlay ({isOpen, onClose}) {
     const [usernameError, setUsernameError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
+    /*
     axios.defaults.withCredentials = true;
     const onClickHandler = (event) => {
         // questa funzione stampa a console i valori inseriti dall'utente
@@ -57,9 +58,11 @@ export default function LoginOverlay ({isOpen, onClose}) {
                 .catch(error => console.error('Errore durante la chiamata API:', error));
         }
     }
+    */
 
     const navigate = useNavigate();
 
+    axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post("http://localhost:3000/verify_login", {username, password})

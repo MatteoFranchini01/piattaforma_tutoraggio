@@ -34,7 +34,8 @@ app.use(cookieParser())
 app.use(cors({
     origin: "http://localhost:8080",
     method: ["POST", "GET"],
-    credentials: true
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 const pool = new Pool({
@@ -437,7 +438,7 @@ app.post("/verify_login", (req, res) =>{
         if(result.length > 0){
             if(result[0].password === user_to_check_hash_pwd){
                 const n = result[0].username;
-                const token = jwt.sign({n}, "our-jsonwebtoken-secret-key", {expressIn: "id"});
+                const token = jwt.sign({n}, "our-jsonwebtoken-secret-key", {expressIn: "1d"});
                 res.cookie('token', token);
                 return res.json({Status: "Success"});
             }
@@ -471,7 +472,7 @@ app.get("/logout", (req, res) => {
     return res.json({Status: "Success"})
 })
 
-app.get("/", verifyUser, (req, res) =>{
+app.get("/test", verifyUser, (req, res) =>{
     return res.json({Status: "Success"})
 })
 

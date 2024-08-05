@@ -11,12 +11,14 @@ function Header (){
     const [isLoginOverlayOpen, setIsLoginOverlayOpen] = React.useState(false);
     const [isSubscribeOverlayOpen, setIsSubscribeOverlayOpen] = React.useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
 
     const [auth, setAuth] = useState(false);
     const [message, setMessage] = useState("");
+    //axios.defaults.withCredentials = false;
 
     useEffect(() => {
-        axios.get("http://localhost:3000/")
+        axios.get("http://localhost:3000/test")
             .then(res => {
                 if(res.data.Status === "Success"){
                     setAuth(true);
@@ -29,7 +31,6 @@ function Header (){
 
     }, []);
 
-    const navigate = useNavigate();
 
     const handleLogout = (e) => {
         e.preventDefault();
