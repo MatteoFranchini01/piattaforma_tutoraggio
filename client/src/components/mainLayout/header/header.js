@@ -18,7 +18,7 @@ function Header (){
     //axios.defaults.withCredentials = false;
 
     useEffect(() => {
-        axios.get("http://localhost:3000/test")
+        /*axios.get("http://localhost:3000/test")
             .then(res => {
                 if(res.data.Status === "Success"){
                     setAuth(true);
@@ -27,14 +27,33 @@ function Header (){
                     setMessage(res.data.Message);
                     console.log(message)
                 }
+            })*/
+
+        fetch("http://localhost:3000/test", {
+            method: "GET",
             })
+            .then((response) => response.json())
+            .then((data) => {
+                //console.log(data);
+                if(data.Status === "Success")
+                    setAuth(true)
+                else {
+                    setMessage(data.Message)
+                    //alert(message);
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
 
     }, []);
 
 
+
+
     const handleLogout = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3000/logout")
+        /*axios.post("http://localhost:3000/logout")
             .then(res => {
                 if(res.data.Status === "Success") {
                     navigate("/");
@@ -44,7 +63,7 @@ function Header (){
                 }
 
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err));*/
     }
 
 
@@ -73,7 +92,7 @@ function Header (){
                             auth ?
                                 <div className="logout button">
                                     <button className="logoutBtn"
-                                            onClick={handleLogout}>Accedi
+                                            onClick={handleLogout}>Logout
                                     </button>
 
                                 </div>

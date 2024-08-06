@@ -32,12 +32,20 @@ app.use(cors({
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: "http://localhost:8080",
+    origin: "*",
     method: ["POST", "GET"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
+/*
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
+*/
 const pool = new Pool({
     host: 'postgres',
     port: 5432,
@@ -85,7 +93,6 @@ function add_materia(materia) {
 }
 
 // Funzione per aggiungere utenti
-
 async function add_user(utente) {
     const hashedPassword = hashPassword(utente.password);
     let auth = 0;
@@ -124,7 +131,6 @@ async function add_user(utente) {
         throw err;
     }
 }
-
 
 // Funzione per trovare un utente
 function find_user(user_to_find, callback) {
@@ -219,7 +225,6 @@ function check_auth(user_to_check, callback) {
 }
 
 // Funzione per user duplicati
-
 function check_multiple_username(username_to_check, callback) {
     let queryString = 'SELECT COUNT(*) FROM UTENTI WHERE USERNAME = $1';
     pool.query(queryString, [username_to_check], (err, result) => {
@@ -297,9 +302,64 @@ function info_tutor(id_tutor, nome_materia, callback) {
     })
 }
 
+function verify_login(given_username, given_password, callback) {
+    let q = 'SELECT USERNAME, PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
+    pool.query(q, [given_username], (err, r) => {
+        if (err) throw err //return res.json({Message: "Server side error"});
+        let user_to_check_hash_pwd = hashPassword(given_password);
+
+        if(r.rows.length > 0){
+            if(r.rows[0].password === user_to_check_hash_pwd){
+                const n = r.rows[0].username;
+                callback(null, {Status: "Success", Username: n})
+            }
+        }
+        else{
+            callback(null, {Message: "User non trovato"});
+        }
+    });
+}
+
+/*const verifyUser = (req, res, next) =>{
+    const token = req.cookies.token;
+    if(!token){
+        return res.json({Message: "errore -> no token. Login!"})
+    }
+    else{
+        jwt.verify(token, "our-jsonwebtoken-secret-key", (err, decoded) => {
+            if(err){
+                return res.json({Message: "Authentication Error"})
+            }
+            else{
+                //req.n = decoded.username
+                next();
+            }
+        })
+    }
+}*/
+
+function verifyUser(req, res, callback){
+    const token = req.cookies.token;
+    if(!token){
+        callback(null, res.json({Message: "errore -> no token. Login!"}));
+    }
+    else{
+        jwt.verify(token, "our-jsonwebtoken-secret-key", (err, decoded) => {
+            if(err){
+                callback(null, res.json({Message: "Authentication Error"}));
+            }
+            else{
+                callback(null, res.json({Status: "Success"}));
+                //req.n = decoded.username
+                //next();
+            }
+        })
+    }
+}
+
 // Middleware
-app.use(cors());
-app.use(bodyParser.json());
+//app.use(cors());
+//app.use(bodyParser.json());
 
 // Rotte
 
@@ -427,53 +487,34 @@ app.get('/verify_auth', (req, res) => {
     });
 });
 
-
 app.post("/verify_login", (req, res) =>{
-    let cred = {username: req.body.username, password: req.body.password};
-    let q = 'SELECT USERNAME, PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
-    pool.query(q, [cred.username], (err, result) => {
-        if (err) return res.json({Message: "Server side error"});
-        let user_to_check_hash_pwd = hashPassword(cred.password);
-
-        if(result.length > 0){
-            if(result[0].password === user_to_check_hash_pwd){
-                const n = result[0].username;
-                const token = jwt.sign({n}, "our-jsonwebtoken-secret-key", {expressIn: "1d"});
-                res.cookie('token', token);
-                return res.json({Status: "Success"});
+    if(req.body) {
+        verify_login(req.body.user, req.body.pwd, (err, result) => {
+            console.log(result)
+            if(result.Status === "Success"){
+                console.log("Valid auth")
+                const token = jwt.sign(result.Username, "our-jsonwebtoken-secret-key");//, {expiresIn: "1d"});
+                res.cookie('token', token)
             }
-        }
-        else{
-            return res.json({Message: "User non trovato"});
-        }
-    });
+            else
+                console.log("Errore nella creazione del token");
+            res.json(result)
+        });
+    }
+    else
+        console.log("Request Failed")
 })
 
-const verifyUser = (req, res, next) =>{
-    const token = req.cookies.token;
-    if(!token){
-        return res.json({Message: "errore -> no token. Login!"})
-    }
-    else{
-        jwt.verify(token, "our-jsonwebtoken-secret-key", (err, decoded) => {
-            if(err){
-                return res.json({Message: "Authentication Error"})
-            }
-            else{
-                //req.n = decoded.username
-                next();
-            }
-        })
-    }
-}
-
+/*
 app.get("/logout", (req, res) => {
     res.clearCookie("token");
     return res.json({Status: "Success"})
-})
+})*/
 
-app.get("/test", verifyUser, (req, res) =>{
-    return res.json({Status: "Success"})
+app.get("/test", (req, res) =>{
+    verifyUser(req, res, (err, result) =>{
+        res.json(result)
+    })
 })
 
 app.get('/check_multiple_user', (req, res) => {

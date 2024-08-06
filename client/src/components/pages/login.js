@@ -62,10 +62,10 @@ export default function LoginOverlay ({isOpen, onClose}) {
 
     const navigate = useNavigate();
 
-    axios.defaults.withCredentials = true;
+    //axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3000/verify_login", {username, password})
+        /*axios.post("", {username, password})
             .then(res => {
                 if(res.data.Status === "Success"){
                     navigate("/")
@@ -74,7 +74,41 @@ export default function LoginOverlay ({isOpen, onClose}) {
                     alert(res.data.Message);
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err));*/
+
+        console.log(username)
+        console.log(password)
+
+        const cred = {
+            user: username,
+            pwd: password,
+        }
+        /*const customHeaders = {
+            "Content-Type": "application/json",
+        }*/
+
+        console.log(JSON.stringify(cred))
+
+        fetch("http://localhost:3000/verify_login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(cred),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+
+                if(data.Status === "Success")
+                    navigate("/")
+                else
+                    alert(data.Message);
+
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
 
