@@ -1,3 +1,5 @@
+// import dei moduli necessari
+
 const jwt = require("jsonwebtoken")
 const express = require('express');
 const session = require('express-session');
@@ -9,29 +11,17 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const crypto = require('crypto');
 
+// creazione istanza applicazione Express
 const app = express();
+
+// impostazione della porta del server
 const port = process.env.PORT || 3000;
 
-/*app.use(cookieParser());
-app.use(session({
-    secret: 'secret',
-    resave: false,
-    saveUnitialized: false,
-    cookie: {
-        secure: false,
-        maxAge: 1000 * 60 * 60 * 24
-    }
-}))
-app.use(bodyParser.json());
-app.use(cors({
-    origin: "http://localhost:8080",
-    method: ["POST", "GET"],
-    credentials: true,
-}));*/
-
+// uso del middleware per parsing dei JSON e dei cookie
 app.use(express.json())
 app.use(cookieParser())
 
+// configurazione CORS
 app.use(cors({
     origin: "http://localhost:8080",
     method: ["POST", "GET"],
@@ -39,6 +29,7 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
+// configurazione della connessione al db PostgreSQL
 const pool = new Pool({
     host: 'postgres',
     port: 5432,
@@ -51,13 +42,14 @@ pool.on('connect', () => {
     console.log('Connected to the PostgreSQL server.');
 });
 
+// funzione per hashare una password usando SHA-256
 function hashPassword(password) {
     const hash = crypto.createHash('sha256');
     hash.update(password);
     return hash.digest('hex');
 }
 
-// Funzione per creare le carte
+// Funzione per creare le carte delle materie
 function create_cards(callback) {
     let queryString = 'SELECT ID_MATERIA, NOME_MATERIA, MIN(tm.prezzo) FROM Materie AS m JOIN Tutor_materie AS tm ON m.ID_MATERIA=tm.FK_MATERIA GROUP BY m.ID_MATERIA, m.NOME_MATERIA';
     const cards = [];
@@ -85,7 +77,7 @@ function add_materia(materia) {
     });
 }
 
-// Funzione per aggiungere utenti
+// Funzione asincrona per aggiungere utenti
 async function add_user(utente) {
     const hashedPassword = hashPassword(utente.password);
     let auth = 0;
@@ -200,24 +192,6 @@ function count_student() {
     });
 }
 
-// Funzione per verificare l'autenticazione
-// Matteo: in teoria non serve più perché funziona verify_login()
-function check_auth(user_to_check, callback) {
-    let queryString = 'SELECT USERNAME, PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
-    pool.query(queryString, [user_to_check.username], (err, result) => {
-        if (err) throw err;
-        let user_to_check_hash_pwd = hashPassword(user_to_check.password);
-        if (result.rows.length > 0 && result.rows[0].password === user_to_check_hash_pwd) {
-            req.session.username = result.rows[0].username;
-            console.log(req.session.username);
-            const auth =  result.rows[0].privilegi;
-            callback({ authenticated: true, privilegi: auth });
-        } else {
-            callback({ authenticated: false, privilegi: -1 });
-        }
-    });
-}
-
 // Funzione per user duplicati
 function check_multiple_username(username_to_check, callback) {
     let queryString = 'SELECT COUNT(*) FROM UTENTI WHERE USERNAME = $1';
@@ -228,6 +202,7 @@ function check_multiple_username(username_to_check, callback) {
     });
 }
 
+// funzione per controllare le fasce orarie dei tutor
 function check_res(id_tutor, callback) {
     let queryString = 'SELECT FASCE_ORARIE.FASCIA_ORARIA as "fascia", FASCE_ORARIE.GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON ID_FASCIA_ORARIA = FK_FASCIA_ORARIA WHERE FK_TUTOR = $1';
     const res = [];
@@ -243,6 +218,7 @@ function check_res(id_tutor, callback) {
     })
 }
 
+// funzione per controllare se una lezione è stata prenotata
 function check_booked(id_tutor, callback) {
     let queryString = 'SELECT FASCIA_ORARIA as "fascia", GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON ID_FASCIA_ORARIA = FK_FASCIA_ORARIA WHERE FK_TUTOR = $1 AND FK_DISCENTE IS NOT NULL'
     const fasce_orarie = [];
@@ -259,6 +235,7 @@ function check_booked(id_tutor, callback) {
     })
 }
 
+// funzione per selezionare i tutor per una materia specifica
 function tutor_per_materia(nome_materia, callback) {
     let queryString = 'SELECT TUTOR.ID_TUTOR, TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN TUTOR_MATERIE ON TUTOR.ID_TUTOR=TUTOR_MATERIE.FK_TUTOR JOIN MATERIE ON TUTOR_MATERIE.FK_MATERIA=MATERIE.ID_MATERIA WHERE NOME_MATERIA=$1';
     const tutor = [];
@@ -276,6 +253,7 @@ function tutor_per_materia(nome_materia, callback) {
     })
 }
 
+// funzione per ottenere le informazioni dei tutor
 function info_tutor(id_tutor, nome_materia, callback) {
     let queryString = 'SELECT NOME, COGNOME, NOME_LINGUA, LIVELLO_ISTRUZIONE AS "livello", PREZZO FROM TUTOR AS T JOIN COMPETENZE_LINGUISTICHE AS CL ON T.ID_TUTOR=CL.FK_TUTOR JOIN LINGUE AS L ON CL.FK_LINGUA=L.ID_LINGUA JOIN COMPETENZE_ISTR AS CI ON T.ID_TUTOR=CI.FK_TUTOR JOIN ISTRUZIONE AS I ON I.ID_ISTRUZIONE=CI.FK_ISTRUZIONE JOIN TUTOR_MATERIE AS TM ON T.ID_TUTOR=TM.FK_TUTOR JOIN MATERIE AS M ON TM.FK_MATERIA=M.ID_MATERIA WHERE T.ID_TUTOR=$1 AND M.NOME_MATERIA=$2';
     const info = [];
@@ -371,20 +349,8 @@ function select_competences(callback) {
     })
 
 }
-// Middleware
-//app.use(cors());
-//app.use(bodyParser.json());
 
 // Rotte
-
-// rotta per la gestione della sessione -> non dovrebbe più servire
-app.get('/check_login_session', (req, res) => {
-    if (req.session.username) {
-        return res.json({valid: true, username: req.session.username});
-    } else {
-        return res.json({valid: false});
-    }
-})
 
 app.get('/teachers/:subject/:id', (req, res) => {
     let nome_materia = req.params.subject;
@@ -494,14 +460,6 @@ app.post('/find_user', (req, res) => {
     });
 });
 
-//non dovrebbe più servire
-app.get('/verify_auth', (req, res) => {
-    let user_to_check = { username: req.query.username, password: req.query.password };
-    check_auth(user_to_check, result => {
-        res.json(result);
-    });
-});
-
 app.post("/verify_login", (req, res) =>{
     if(req.body) {
         verify_login(req.body.user, req.body.pwd, (err, result) => {
@@ -550,6 +508,7 @@ app.get('/competences', (req, res) => {
         res.json(result);
     })
 });
+
 // Avvio del server
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
