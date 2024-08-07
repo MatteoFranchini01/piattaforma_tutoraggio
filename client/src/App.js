@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainTemplate from "./components/mainLayout/template/mainTemplate";
 import Home from "./components/pages/home.js";
 import Requirements from "./components/pages/requirements.js";
@@ -9,11 +9,9 @@ import SettingTeacherProfile from "./components/pages/settingTeacherProfile";
 import RegistrationConfirmed from "./components/pages/registrationConfirmed";
 import PriceAndGoals from "./components/pages/priceAndGoals";
 
-
-
 function App(){
     return(
-        <>
+        <BrowserRouter>
             <MainTemplate>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
@@ -25,7 +23,7 @@ function App(){
                     <Route path="/registrationConfirmed" element={<RegistrationConfirmed/>}/>
                 </Routes>
             </MainTemplate>
-        </>
+        </BrowserRouter>
     );
 }
 

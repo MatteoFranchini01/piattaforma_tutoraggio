@@ -8,8 +8,6 @@ import {useNavigate} from "react-router-dom";
 export default function SubscribeOverlay ({isOpen, onClose}) {
     const navigate = useNavigate()
 
-    //TODO: inserire il necessario all'interno del db
-    
     const [selectedType, setSelectedType] = useState('');
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -52,9 +50,6 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
     const onClickHandler = async (event) => {
         const multiple_user_check = await checkUsername(username);
 
-        //TODO: la funzione sotto va bene, però ci sono degli errori nell'inserimento dei dati
-        // e il controllo della password va inserito prima di inviare la richiesta al server
-
         //non funziona il navigate
         //da un errore strano sulla stringa
         //però inserisce correttamente
@@ -62,10 +57,12 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         console.log("Multiple user ", multiple_user_check);
         if (selectedType === '' || name === '' || surname === '' || email === '' || username === '' || password === '') {
             setError("Compilare tutti i campi!")
-        } else if (multiple_user_check) {
+        } else if (!multiple_user_check) {
             setError("Scegliere un nuovo username")
         } else {
-            if( checkPasswordStrength(password) &&  validateEmail(email)){
+            const isPasswordValid = checkPasswordStrength(password);
+            const isEmailValid = validateEmail(email);
+            if(isPasswordValid && isEmailValid) {
                 setError("")
                 const user_to_add = {selectedType, name, surname, email, username, password};
                 console.log(user_to_add);
@@ -151,6 +148,7 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
             setPasswordStrength("Password difficile. Ottima scelta!" + tips);
             return true
         }
+        return false;
     }
 
     return (

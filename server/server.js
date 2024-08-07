@@ -194,11 +194,13 @@ function count_student() {
 
 // Funzione per user duplicati
 function check_multiple_username(username_to_check, callback) {
-    let queryString = 'SELECT COUNT(*) FROM UTENTI WHERE USERNAME = $1';
-    pool.query(queryString, [username_to_check], (err, result) => {
+    let queryString = 'SELECT count(*) as count FROM UTENTI WHERE USERNAME = $1';
+    console.log("Check multiple username - username_to_check: ", username_to_check);
+    pool.query(queryString, username_to_check, (err, result) => {
         if (err) throw err;
-        let count = result.rows[0].count;
-        callback(count === 1);
+        const count = result.rows[0].count;
+        console.log("Check multiple username - count: ", count);
+        callback(count === 0);
     });
 }
 
