@@ -38,7 +38,6 @@ export default function Home() {
     }, []);*/
 
     // Chiamata API per il conteggio degli studenti
-
     useEffect(() => {
         console.log('Starting API call count students');
         fetch('http://localhost:3000/count_students')
@@ -58,11 +57,9 @@ export default function Home() {
     }, []);
 
     // Numero di insegnanti nel DB
-
     const [numberOfTeachers, setNumberOfTeachers] = useState(0);
 
     // Chiamata API per il conteggio dei tutor
-
     useEffect(() => {
         console.log('Starting API call count tutor');
         fetch('http://localhost:3000/count_tutor')
@@ -82,7 +79,6 @@ export default function Home() {
     }, []);
 
     // Numero di materie nel DB
-
     const [numberOfSubject, setNumberOfSubject] = useState(0);
 
     // Chiamata API per il conteggio delle materie

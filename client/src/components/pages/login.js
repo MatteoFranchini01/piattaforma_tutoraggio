@@ -1,14 +1,17 @@
 import React, {useState} from "react";
 import "../../css/login.css";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {redirect} from "react-router-dom";
 import axios from "axios";
+
 
 export default function LoginOverlay ({isOpen, onClose}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [usernameError, setUsernameError] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const [loginError, setLoginError] = useState("");
+    const location = useLocation();
 
     /*
     axios.defaults.withCredentials = true;
@@ -65,50 +68,51 @@ export default function LoginOverlay ({isOpen, onClose}) {
     //axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
-        /*axios.post("", {username, password})
-            .then(res => {
-                if(res.data.Status === "Success"){
-                    navigate("/")
-                }
-                else{
-                    alert(res.data.Message);
-                }
-            })
-            .catch(err => console.log(err));*/
 
-        console.log(username)
-        console.log(password)
-
-        const cred = {
-            user: username,
-            pwd: password,
+        if(username === ""){
+            setUsernameError("Inserire il proprio username!");
+        }else {
+            setUsernameError("")
         }
-        /*const customHeaders = {
-            "Content-Type": "application/json",
-        }*/
 
-        console.log(JSON.stringify(cred))
+        if(password === ""){
+            setPasswordError("Inserire la propria password!");
+        }else {
+            setPasswordError("");
+        }
 
-        fetch("http://localhost:3000/verify_login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(cred),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
+        if (username && password) {
+            const cred = {
+                user: username,
+                pwd: password,
+            }
 
-                if(data.Status === "Success")
-                    navigate("/")
-                else
-                    alert(data.Message);
-
+            fetch("http://localhost:3000/verify_login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(cred),
+                credentials: "include",
             })
-            .catch((error) => {
-                console.error(error);
-            });
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+
+                    //OK
+                    if(data.Status === "Success"){
+                        onClose(true);
+                        //navigate("/");
+                        //location.reload();
+                    }
+                    else
+                        setLoginError(data.Message);
+
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
     }
 
 
@@ -125,6 +129,7 @@ export default function LoginOverlay ({isOpen, onClose}) {
                             {usernameError && <p className="error-paragraph">{usernameError}</p>}
                             <input type="password" className="form-control pwd" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)}/>
                             {passwordError && <p className="error-paragraph">{passwordError}</p>}
+                            {loginError && <p className="error-paragraph">Username o password errati!"</p>}
                         </div>
                         <div className="centeredLink">
                             <button className="btn-login-2" type="button" value="Submit" onClick={handleSubmit}>Accedi</button>

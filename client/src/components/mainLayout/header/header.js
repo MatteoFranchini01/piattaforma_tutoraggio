@@ -10,62 +10,58 @@ import axios from "axios";
 function Header (){
     const [isLoginOverlayOpen, setIsLoginOverlayOpen] = React.useState(false);
     const [isSubscribeOverlayOpen, setIsSubscribeOverlayOpen] = React.useState(false);
-    const location = useLocation();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [auth, setAuth] = useState(false);
-    const [message, setMessage] = useState("");
-    //axios.defaults.withCredentials = false;
 
     useEffect(() => {
-        /*axios.get("http://localhost:3000/test")
-            .then(res => {
-                if(res.data.Status === "Success"){
-                    setAuth(true);
-                }
-                else{
-                    setMessage(res.data.Message);
-                    console.log(message)
-                }
-            })*/
+        checkAuthStatus()}, []);
 
-        fetch("http://localhost:3000/test", {
-            method: "GET",
+    //questa funzione è quella da copiare per vedere se l'utente è autenticato oppure no
+    const checkAuthStatus = () => {
+            fetch("http://localhost:3000/", {
+                method: "GET",
+                credentials: "include",
             })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("Testing from client");
+                    console.log(data);
+                    if(data.Status === "Success")
+                        setAuth(true)
+                    else {
+                        setAuth(false);
+                        console.log(data.Message)
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+
+        fetch("http://localhost:3000/logout", {
+            method: "GET",
+            credentials: "include",
+        })
             .then((response) => response.json())
             .then((data) => {
-                //console.log(data);
-                if(data.Status === "Success")
-                    setAuth(true)
+                if(data.Status === "Success") {
+                    console.log("Logout effettuato correttamente");
+                }
                 else {
-                    setMessage(data.Message)
-                    //alert(message);
+                    console.log("Errore durante il logout");
                 }
             })
             .catch((error) => {
                 console.error(error);
             });
-
-    }, []);
-
-
-
-
-    const handleLogout = (e) => {
-        e.preventDefault();
-        /*axios.post("http://localhost:3000/logout")
-            .then(res => {
-                if(res.data.Status === "Success") {
-                    navigate("/");
-                }
-                else{
-                    alert(res.data.Message);
-                }
-
-            })
-            .catch(err => console.log(err));*/
+        checkAuthStatus();
+        window.location.reload();
     }
-
 
     return (
             <nav className="navbar fixed-top navbar-expand-lg">
@@ -90,11 +86,10 @@ function Header (){
 
                         {
                             auth ?
-                                <div className="logout button">
+                                <div className="logout">
                                     <button className="logoutBtn"
                                             onClick={handleLogout}>Logout
                                     </button>
-
                                 </div>
                                 :
                                 <div className="login-subscribe buttons">
@@ -104,13 +99,21 @@ function Header (){
                                     <button className="subscribeBtn"
                                             onClick={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}>Iscriviti
                                     </button>
-                                    <Login isOpen={isLoginOverlayOpen}
-                                           onClose={() => setIsLoginOverlayOpen(!isLoginOverlayOpen)}/>
-                                    <Subscribe isOpen={isSubscribeOverlayOpen}
-                                               onClose={() => setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen)}/>
+                                    <Login
+                                        isOpen={isLoginOverlayOpen}
+                                        onClose={() => {
+                                            checkAuthStatus();
+                                            setIsLoginOverlayOpen(!isLoginOverlayOpen);
+                                        }}
+                                    />
+                                    <Subscribe
+                                        isOpen={isSubscribeOverlayOpen}
+                                        onClose={() => {
+                                             setIsSubscribeOverlayOpen(!isSubscribeOverlayOpen);
+                                        }}
+                                    />
                                 </div>
                         }
-
                     </div>
                 </div>
             </nav>

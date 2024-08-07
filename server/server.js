@@ -31,21 +31,14 @@ app.use(cors({
 
 app.use(express.json())
 app.use(cookieParser())
+
 app.use(cors({
-    origin: "*",
+    origin: "http://localhost:8080",
     method: ["POST", "GET"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-/*
-app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
-*/
 const pool = new Pool({
     host: 'postgres',
     port: 5432,
@@ -208,6 +201,7 @@ function count_student() {
 }
 
 // Funzione per verificare l'autenticazione
+// Matteo: in teoria non serve più perché funziona verify_login()
 function check_auth(user_to_check, callback) {
     let queryString = 'SELECT USERNAME, PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
     pool.query(queryString, [user_to_check.username], (err, result) => {
@@ -302,10 +296,11 @@ function info_tutor(id_tutor, nome_materia, callback) {
     })
 }
 
+// Funzione per verificare l'autenticazione
 function verify_login(given_username, given_password, callback) {
     let q = 'SELECT USERNAME, PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
     pool.query(q, [given_username], (err, r) => {
-        if (err) throw err //return res.json({Message: "Server side error"});
+        if (err) throw err;
         let user_to_check_hash_pwd = hashPassword(given_password);
 
         if(r.rows.length > 0){
@@ -320,36 +315,18 @@ function verify_login(given_username, given_password, callback) {
     });
 }
 
-/*const verifyUser = (req, res, next) =>{
-    const token = req.cookies.token;
-    if(!token){
-        return res.json({Message: "errore -> no token. Login!"})
+// Funzione per vedere se la sessione è attiva
+function verifyUser(t, callback){
+    if(!t){
+        callback(null, {Message: "errore -> no token. Login!"});
     }
     else{
-        jwt.verify(token, "our-jsonwebtoken-secret-key", (err, decoded) => {
+        jwt.verify(t, "our-jsonwebtoken-secret-key", (err, decoded) => {
             if(err){
-                return res.json({Message: "Authentication Error"})
+                callback(null, {Message: "Authentication Error"});
             }
             else{
-                //req.n = decoded.username
-                next();
-            }
-        })
-    }
-}*/
-
-function verifyUser(req, res, callback){
-    const token = req.cookies.token;
-    if(!token){
-        callback(null, res.json({Message: "errore -> no token. Login!"}));
-    }
-    else{
-        jwt.verify(token, "our-jsonwebtoken-secret-key", (err, decoded) => {
-            if(err){
-                callback(null, res.json({Message: "Authentication Error"}));
-            }
-            else{
-                callback(null, res.json({Status: "Success"}));
+                callback(null, {Status: "Success"});
                 //req.n = decoded.username
                 //next();
             }
@@ -490,11 +467,10 @@ app.get('/verify_auth', (req, res) => {
 app.post("/verify_login", (req, res) =>{
     if(req.body) {
         verify_login(req.body.user, req.body.pwd, (err, result) => {
-            console.log(result)
             if(result.Status === "Success"){
                 console.log("Valid auth")
-                const token = jwt.sign(result.Username, "our-jsonwebtoken-secret-key");//, {expiresIn: "1d"});
-                res.cookie('token', token)
+                const token = jwt.sign({username: result.Username}, "our-jsonwebtoken-secret-key", {expiresIn: '1h'});
+                res.cookie('token', token);
             }
             else
                 console.log("Errore nella creazione del token");
@@ -505,14 +481,15 @@ app.post("/verify_login", (req, res) =>{
         console.log("Request Failed")
 })
 
-/*
+
 app.get("/logout", (req, res) => {
     res.clearCookie("token");
     return res.json({Status: "Success"})
-})*/
+})
 
-app.get("/test", (req, res) =>{
-    verifyUser(req, res, (err, result) =>{
+app.get('/', (req, res) =>{
+    const tok = req.cookies.token
+    verifyUser(tok, (err, result) =>{
         res.json(result)
     })
 })
