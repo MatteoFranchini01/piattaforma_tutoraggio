@@ -5,13 +5,9 @@ import {useParams} from "react-router-dom";
 
 export default function Teachers() {
     const subject_name = useParams().subject_name;
-    const [price, setPrice] = useState(50);
     const [subjectSelected, setSubjectSelected] = useState("Materia selezionata");
     const [arrayTutor, setArrayTutor] = React.useState([]);
 
-    const handlePriceChange = (event) => {
-        setPrice(event.target.value);
-    };
 
     useEffect(() => {
         setSubjectSelected(subject_name)
@@ -36,29 +32,17 @@ export default function Teachers() {
             });
         }
 
-    //TODO Matteo: al click del bottone gestire la ricerca filtrata
+
     return (
         <>
             <div className="main-content">
                 <div className="box teach-box filters">
-                    <h3 className="title-teachers-filters">Personalizza la tua ricerca!</h3>
+                    <h3 className="title-teachers-filters">Ecco i risultati della tua ricerca!</h3>
 
                     <input className="form-control teachers-form-control" type="text" placeholder="Default input"
                            aria-label="default input example" readOnly value={subjectSelected}
                            />
 
-                    <label htmlFor="customRange1" className="form-label">
-                        Scegli il prezzo massimo: {price}.00€
-                    </label>
-                    <input
-                        type="range"
-                        className="form-range"
-                        id="customRange1"
-                        value={price}
-                        onChange={handlePriceChange}
-                    />
-
-                    <button className="btn btn-primary find" type="submit">Cerca</button>
                 </div>
                 <div className="vr vr-teach"></div>
                 <div className="teach-box row teachers-information">

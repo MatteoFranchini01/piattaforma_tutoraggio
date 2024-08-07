@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from "react";
 import "../../css/subscribe.css";
 import button from "bootstrap/js/src/button";
-import {redirect} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
+
+//TODO controllare che qui funzioni tutto
 export default function SubscribeOverlay ({isOpen, onClose}) {
+    const navigate = useNavigate()
 
     //TODO: inserire il necessario all'interno del db
     
@@ -52,60 +55,81 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         //TODO: la funzione sotto va bene, però ci sono degli errori nell'inserimento dei dati
         // e il controllo della password va inserito prima di inviare la richiesta al server
 
+        //non funziona il navigate
+        //da un errore strano sulla stringa
+        //però inserisce correttamente
+        //sarebbe bello però sapere perché non naviga tra le pagine
         console.log("Multiple user ", multiple_user_check);
         if (selectedType === '' || name === '' || surname === '' || email === '' || username === '' || password === '') {
             setError("Compilare tutti i campi!")
         } else if (multiple_user_check) {
             setError("Scegliere un nuovo username")
         } else {
-            checkPasswordStrength(password)
-            validateEmail(email);
-            setError("")
-            const user_to_add = {selectedType, name, surname, email, username, password};
-            console.log(user_to_add);
-            fetch('http://localhost:3000/add_user', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(user_to_add),
-                crediantials: 'include'
-            })
-                .then(response => response.json())
-                .then(data => console.log(data))
-        }
+            if( checkPasswordStrength(password) &&  validateEmail(email)){
+                setError("")
+                const user_to_add = {selectedType, name, surname, email, username, password};
+                console.log(user_to_add);
+                fetch('http://localhost:3000/add_user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(user_to_add),
+                    credentials: 'include'
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
 
-        console.log('Subscribe credentials: ', selectedType, name, surname, username, email, password);
+                        setSelectedType("");
+                        setName("");
+                        setSurname("");
+                        setEmail("");
+                        setUsername("");
+                        setPassword("");
+
+                        if(selectedType === "student"){
+                            console.log("test");
+                            navigate("/registrationConfirmed")
+                        }
+                        else{
+                            navigate(`/settingTeacherProfile/${username}`)
+                        }
+                    })
+                    .catch(error => console.log(error))
+
+                console.log('Subscribe credentials: ', selectedType, name, surname, username, email, password);
+            }
+        }
     }
 
     const validateEmail = (email) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!regex.test(email)) {
             setEmailError('Formato non valido.');
-        } else setEmailError("")
-        return null;
+            return false
+        } else {
+            setEmailError("")
+            return true
+        }
     }
 
     function checkPasswordStrength(password) {
-        // Initialize variables
         let strength = 0;
         let tips = "";
 
-        // Check password length
         if (password.length < 8) {
             tips += "La password è troppo corta.\n ";
         } else {
             strength += 1;
         }
 
-        // Check for numbers
         if (password.match(/\d/)) {
             strength += 1;
         } else {
             tips += "Inserisci almeno un numero.\n ";
         }
 
-        // Check for special characters
         if (password.match(/[^a-zA-Z\d]/)) {
             strength += 1;
         } else {
@@ -113,16 +137,19 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         }
 
         const pwdLabel = document.getElementById("pwdStrength");
-        // Return results
+
         if (strength < 2) {
             pwdLabel.style.color = "red";
             setPasswordStrength("Oh no, troppo facile da indovinare! \n" + tips);
+            return false
         } else if (strength === 2) {
             pwdLabel.style.color = "orange";
             setPasswordStrength("Abbastanza difficile, ma manca ancora qualcosina! " + tips);
+            return false
         } else if (strength === 3) {
             pwdLabel.style.color = "green";
             setPasswordStrength("Password difficile. Ottima scelta!" + tips);
+            return true
         }
     }
 

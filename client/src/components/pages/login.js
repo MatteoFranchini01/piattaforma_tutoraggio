@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 import "../../css/login.css";
 import {useLocation, useNavigate} from "react-router-dom";
-import {redirect} from "react-router-dom";
-import axios from "axios";
 
 
 export default function LoginOverlay ({isOpen, onClose}) {
@@ -63,9 +61,6 @@ export default function LoginOverlay ({isOpen, onClose}) {
     }
     */
 
-    const navigate = useNavigate();
-
-    //axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -102,12 +97,11 @@ export default function LoginOverlay ({isOpen, onClose}) {
                     //OK
                     if(data.Status === "Success"){
                         onClose(true);
-                        //navigate("/");
-                        //location.reload();
                     }
-                    else
-                        setLoginError(data.Message);
-
+                    else {
+                        console.log(data.Status);
+                        setLoginError("Autenticazione fallita");
+                    }
                 })
                 .catch((error) => {
                     console.error(error);
@@ -129,7 +123,7 @@ export default function LoginOverlay ({isOpen, onClose}) {
                             {usernameError && <p className="error-paragraph">{usernameError}</p>}
                             <input type="password" className="form-control pwd" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)}/>
                             {passwordError && <p className="error-paragraph">{passwordError}</p>}
-                            {loginError && <p className="error-paragraph">Username o password errati!"</p>}
+                            {loginError && <p className="error-paragraph-auth">{loginError}</p>}
                         </div>
                         <div className="centeredLink">
                             <button className="btn-login-2" type="button" value="Submit" onClick={handleSubmit}>Accedi</button>

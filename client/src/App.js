@@ -21,7 +21,7 @@ function App(){
                     <Route path="/prezzieobiettivi" element={<PriceAndGoals/>}/>
                     <Route path="/teachers/:subject_name" element={<Teachers/>}/>
                     <Route path="/teachers/:subject_name/:tutor_id" element={<Tutor/>}/>
-                    <Route path="/settingTeacherProfile" element={<SettingTeacherProfile/>}/>
+                    <Route path="/settingTeacherProfile/:username" element={<SettingTeacherProfile/>}/>
                     <Route path="/registrationConfirmed" element={<RegistrationConfirmed/>}/>
                 </Routes>
             </MainTemplate>

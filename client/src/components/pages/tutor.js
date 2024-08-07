@@ -2,7 +2,6 @@ import "../../css/tutor.css";
 import React from "react";
 import Img from "./1.jpg";
 import Table from "../mainLayout/template/table";
-import ConfirmPrenotation from "./confirmPrenotation";
 import { useParams } from "react-router-dom";
 
 export default function Tutor() {
@@ -110,10 +109,6 @@ export default function Tutor() {
                         <div className="tutor-reservation-table">
                             <Table schedule={availability} bookedUp={bookedUp}
                                    onBookButtonClicked={handleBookButtonClicked}/>
-                            <ConfirmPrenotation isOpen={isConfirmPrenotationOverlayOpen}
-                                                onClose={() => setIsConfirmPrenotationOverlayOpen(!isConfirmPrenotationOverlayOpen)}
-                                                selectedTime={selectedTime}
-                                                selectedDay={selectedDay}
                             />
                         </div>
                     </div>

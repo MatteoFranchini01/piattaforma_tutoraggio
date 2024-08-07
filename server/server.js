@@ -303,14 +303,17 @@ function verify_login(given_username, given_password, callback) {
         if (err) throw err;
         let user_to_check_hash_pwd = hashPassword(given_password);
 
+        console.log(r.rows.length)
         if(r.rows.length > 0){
             if(r.rows[0].password === user_to_check_hash_pwd){
                 const n = r.rows[0].username;
                 callback(null, {Status: "Success", Username: n})
             }
+            else
+                callback(null, {Status: "Failed"});
         }
         else{
-            callback(null, {Message: "User non trovato"});
+            callback(null, {Status: "Failed"});
         }
     });
 }
@@ -334,13 +337,47 @@ function verifyUser(t, callback){
     }
 }
 
+//Funzione per leggere le lingue
+function select_languages(callback) {
+    let queryString = 'SELECT * FROM LINGUE';
+    const lang = [];
+    pool.query(queryString, (err, result) => {
+        if (err) throw err;
+        console.log("Executed query: ", result.rows);
+        result.rows.forEach(row => {
+            lang.push({
+                id: row.id_lingua,
+                nome: row.nome_lingua
+            });
+        });
+        callback(null, lang);
+    })
+}
+
+//Funzione per selezionare il livello di istruzione
+function select_competences(callback) {
+    let queryString = 'SELECT * FROM ISTRUZIONE';
+    const lang = [];
+    pool.query(queryString, (err, result) => {
+        if (err) throw err;
+        console.log("Executed query: ", result.rows);
+        result.rows.forEach(row => {
+            lang.push({
+                id: row.id_istruzione,
+                nome: row.livello_istruzione
+            });
+        });
+        callback(null, lang);
+    })
+
+}
 // Middleware
 //app.use(cors());
 //app.use(bodyParser.json());
 
 // Rotte
 
-// rotta per la gestione della sessione
+// rotta per la gestione della sessione -> non dovrebbe più servire
 app.get('/check_login_session', (req, res) => {
     if (req.session.username) {
         return res.json({valid: true, username: req.session.username});
@@ -457,6 +494,7 @@ app.post('/find_user', (req, res) => {
     });
 });
 
+//non dovrebbe più servire
 app.get('/verify_auth', (req, res) => {
     let user_to_check = { username: req.query.username, password: req.query.password };
     check_auth(user_to_check, result => {
@@ -473,14 +511,13 @@ app.post("/verify_login", (req, res) =>{
                 res.cookie('token', token);
             }
             else
-                console.log("Errore nella creazione del token");
+                console.log("Token non creato");
             res.json(result)
         });
     }
     else
         console.log("Request Failed")
 })
-
 
 app.get("/logout", (req, res) => {
     res.clearCookie("token");
@@ -502,7 +539,17 @@ app.get('/check_multiple_user', (req, res) => {
     });
 })
 
+app.get('/languages', (req, res) => {
+    select_languages((err, result) => {
+        res.json(result);
+    })
+});
 
+app.get('/competences', (req, res) => {
+    select_competences((err, result) => {
+        res.json(result);
+    })
+});
 // Avvio del server
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);

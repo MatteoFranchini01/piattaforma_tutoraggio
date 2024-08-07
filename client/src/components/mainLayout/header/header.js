@@ -26,7 +26,6 @@ function Header (){
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log("Testing from client");
                     console.log(data);
                     if(data.Status === "Success")
                         setAuth(true)

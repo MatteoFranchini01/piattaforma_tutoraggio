@@ -58,3 +58,8 @@
 .divWithBtn{
     text-align: center;
 }
+
+.error-paragraph-bio{
+    color: red;
+    padding-top: 25px;
+}
