@@ -20,8 +20,8 @@ export default function SettingTeacherProfile() {
     const [descriptionError, setDescriptionError] = useState("");
 
     //prendo id tanto è quello che ci interessa inserire all'interno di competenze_linguistiche e competenze_istr, le uniche due tabelle che vanno aggiornate sotto questo punto di vista
-    const [selectedCompetence, setSelectedCompetence] = useState("");
-    const [selectedLanguage, setSelectedLanguage] = useState("");
+    const [selectedCompetence, setSelectedCompetence] = useState("1");
+    const [selectedLanguage, setSelectedLanguage] = useState("1");
 
     useEffect(() => {
         getLanguages()
@@ -76,6 +76,9 @@ export default function SettingTeacherProfile() {
         if(description.length === 0){
             setDescriptionError("Non hai inserito una breve descrizione di te stesso! ")
         }
+        else{
+            setDescriptionError("")
+        }
     }
 
     {/* TODO Matteo: le informazioni qui sono da unire a quelle inserite nella pagina di subscribe per confermare la registrazione */}
@@ -97,7 +100,8 @@ export default function SettingTeacherProfile() {
                         </select>
                         <p className="paragraph-label"> Seleziona la lingua che padroneggi meglio e nella quale intendi
                             fare lezione:</p>
-                        <select className="form-select languages"
+                        <select
+                            className="form-select languages"
                                 aria-label="Default select example"
                                 onChange={(e) => setSelectedLanguage(e.target.value)}>
                             {arrayLang.map((lang, index) => (
