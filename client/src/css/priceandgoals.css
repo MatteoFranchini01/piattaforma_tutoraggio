@@ -33,7 +33,7 @@
     border-radius: 10px;
     font-size: 12px;
     align-items: center;
-    margin-left: 5%;
+    margin-left: 20%;
 }
 
 .second-box-price{
@@ -45,22 +45,10 @@
     border-radius: 10px;
     font-size: 12px;
     align-items: center;
+    margin-right: 20%;
 }
 
-.third-box-price{
-    padding-top: 0;
-    height: auto;
-    min-height: 400px;
-    width: 350px;
-    background-color: rgba(234, 127, 124, 20%);
-    border-radius: 10px;
-    font-size: 12px;
-    align-items: center;
-    margin-right: 5%;
-}
-
-
-.uno, .due, .tre{
+.uno, .due{
     padding: 30px 30px 15px;
     margin: 0;
 }
@@ -72,10 +60,6 @@
     padding-right: 30px;
     margin: 0;
 
-}
-
-.tre{
-    color: rgba(234, 127, 124);
 }
 
 .due{
