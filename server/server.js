@@ -195,12 +195,15 @@ function count_student() {
 // Funzione per user duplicati
 function check_multiple_username(username_to_check, callback) {
     let queryString = 'SELECT count(*) as count FROM UTENTI WHERE USERNAME = $1';
-    console.log("Check multiple username - username_to_check: ", username_to_check);
-    pool.query(queryString, username_to_check, (err, result) => {
+    console.log("Check multiple username - username_to_check: ", username_to_check.username);
+    pool.query(queryString, [username_to_check.username], (err, result) => {
         if (err) throw err;
         const count = result.rows[0].count;
         console.log("Check multiple username - count: ", count);
-        callback(count === 0);
+        if(count === "0")
+            callback(null, true);
+        else
+            callback(null, false);
     });
 }
 
@@ -317,7 +320,7 @@ function verifyUser(t, callback){
     }
 }
 
-//Funzione per leggere le lingue
+//Funzione per leggere tutte le lingue
 function select_languages(callback) {
     let queryString = 'SELECT * FROM LINGUE';
     const lang = [];
@@ -334,7 +337,7 @@ function select_languages(callback) {
     })
 }
 
-//Funzione per selezionare il livello di istruzione
+//Funzione per leggere tutti i livelli di istruzione
 function select_competences(callback) {
     let queryString = 'SELECT * FROM ISTRUZIONE';
     const lang = [];
@@ -349,7 +352,23 @@ function select_competences(callback) {
         });
         callback(null, lang);
     })
+}
 
+// Funzione per leggere tutte le materie
+function select_subject(callback) {
+    let queryString = 'SELECT * FROM MATERIE';
+    const subj = [];
+    pool.query(queryString, (err, result) => {
+        if (err) throw err;
+        console.log("Executed query: ", result.rows);
+        result.rows.forEach(row => {
+            subj.push({
+                id: row.id_materia,
+                nome: row.nome_materia
+            });
+        });
+        callback(null, subj);
+    })
 }
 
 // Rotte
@@ -493,9 +512,9 @@ app.get('/', (req, res) =>{
 
 app.get('/check_multiple_user', (req, res) => {
     let user_to_check = req.query;
-    check_multiple_username(user_to_check, result => {
+    check_multiple_username(user_to_check, (err, result) => {
         console.log("Esito: ", result);
-        res.json(result)
+        res.json({result: result})
     });
 })
 
@@ -507,6 +526,12 @@ app.get('/languages', (req, res) => {
 
 app.get('/competences', (req, res) => {
     select_competences((err, result) => {
+        res.json(result);
+    })
+});
+
+app.get('/subjects', (req, res) => {
+    select_subject((err, result) => {
         res.json(result);
     })
 });

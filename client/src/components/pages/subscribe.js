@@ -50,10 +50,6 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
     const onClickHandler = async (event) => {
         const multiple_user_check = await checkUsername(username);
 
-        //non funziona il navigate
-        //da un errore strano sulla stringa
-        //però inserisce correttamente
-        //sarebbe bello però sapere perché non naviga tra le pagine
         console.log("Multiple user ", multiple_user_check);
         if (selectedType === '' || name === '' || surname === '' || email === '' || username === '' || password === '') {
             setError("Compilare tutti i campi!")
@@ -86,8 +82,8 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
                         setPassword("");
 
                         if(selectedType === "student"){
-                            console.log("test");
-                            navigate("/registrationConfirmed")
+                            alert("Registrazione avvenuta con successo!")
+                            onClose(true)
                         }
                         else{
                             navigate(`/settingTeacherProfile/${username}`)
