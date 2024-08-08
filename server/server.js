@@ -371,6 +371,26 @@ function select_subject(callback) {
     })
 }
 
+// Funzione per cercare un id dato l'username
+function check_id_from_username(user, callback) {
+    let queryString = 'SELECT ID_TUTOR FROM TUTOR JOIN UTENTI ON ID_UTENTE=FK_UTENTE WHERE USERNAME = $1';
+
+    pool.query(queryString, [user], (err, result) => {
+        if (err) throw err;
+
+        console.log("Executed query: ", result.rows);
+        console.log("Executed query length: ", result.rows.length);
+        if(result.rows.length !== 0)
+        {
+            const id = result.rows[0].id_tutor;
+            callback(null, {id: id});
+        }
+        else
+            callback(null, {id: -1});
+
+    });
+}
+
 // Rotte
 
 app.get('/teachers/:subject/:id', (req, res) => {
@@ -532,6 +552,12 @@ app.get('/competences', (req, res) => {
 
 app.get('/subjects', (req, res) => {
     select_subject((err, result) => {
+        res.json(result);
+    })
+});
+
+app.get('/find_id/:username', (req, res) => {
+    check_id_from_username(req.params.username,(err, result) => {
         res.json(result);
     })
 });
