@@ -42,13 +42,6 @@ pool.on('connect', () => {
     console.log('Connected to the PostgreSQL server.');
 });
 
-// funzione per hashare una password usando SHA-256
-function hashPassword(password) {
-    const hash = crypto.createHash('sha256');
-    hash.update(password);
-    return hash.digest('hex');
-}
-
 // Funzione per creare le carte delle materie
 function create_cards(callback) {
     let queryString = 'SELECT ID_MATERIA, NOME_MATERIA, MIN(tm.prezzo) FROM Materie AS m JOIN Tutor_materie AS tm ON m.ID_MATERIA=tm.FK_MATERIA GROUP BY m.ID_MATERIA, m.NOME_MATERIA';
@@ -79,7 +72,6 @@ function add_materia(materia) {
 
 // Funzione asincrona per aggiungere utenti
 async function add_user(utente) {
-    const hashedPassword = hashPassword(utente.password);
     let auth = 0;
 
     if (utente.selectedType === 'student') {
@@ -92,7 +84,7 @@ async function add_user(utente) {
     try {
         // inserimento nella tabella utenti
         const queryStringUtenti = 'INSERT INTO UTENTI (USERNAME, PASSWORD, PRIVILEGI) VALUES ($1, $2, $3) RETURNING id_utente';
-        const valuesUtenti = [utente.username, hashedPassword, auth];
+        const valuesUtenti = [utente.username, utente.hashedPassword, auth];
         const resultUtenti = await pool.query(queryStringUtenti, valuesUtenti);
         const userId = resultUtenti.rows[0].id_utente;
 
@@ -284,11 +276,10 @@ function verify_login(given_username, given_password, callback) {
     let q = 'SELECT USERNAME, PASSWORD, PRIVILEGI FROM UTENTI WHERE USERNAME = $1';
     pool.query(q, [given_username], (err, r) => {
         if (err) throw err;
-        let user_to_check_hash_pwd = hashPassword(given_password);
 
         console.log(r.rows.length)
         if(r.rows.length > 0){
-            if(r.rows[0].password === user_to_check_hash_pwd){
+            if(r.rows[0].password === given_password){
                 const n = r.rows[0].username;
                 callback(null, {Status: "Success", Username: n})
             }

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "../../css/login.css";
 import {useLocation, useNavigate} from "react-router-dom";
-
+import hash from 'hash.js';
 
 export default function LoginOverlay ({isOpen, onClose}) {
     const [username, setUsername] = useState("");
@@ -11,55 +11,9 @@ export default function LoginOverlay ({isOpen, onClose}) {
     const [loginError, setLoginError] = useState("");
     const location = useLocation();
 
-    /*
-    axios.defaults.withCredentials = true;
-    const onClickHandler = (event) => {
-        // questa funzione stampa a console i valori inseriti dall'utente
-        if(username === ""){
-            setUsernameError("Inserire il proprio username!");
-        }else {
-            setUsernameError("")
-        }
-
-        if(password === ""){
-            setPasswordError("Inserire la propria password!");
-        }else {
-            setPasswordError("");
-        }
-
-        //TODO: controllare funzionamento e vedere come implementare lato frontend l'evento
-
-        if (username && password) {
-            const user_to_check = {username, password};
-            fetch(`http://localhost:3000/verify_auth?username=${user_to_check.username}&password=${user_to_check.password}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.authenticated) {
-                        console.log('User logged in');
-                        switch (data.privilegi){
-                            case 1:
-                                console.log('Root privilege');
-                                break;
-                            case 2:
-                                console.log('Tutor privilege');
-                                break;
-                            case 3:
-                                console.log('User privilege');
-                                break;
-                            default:
-                                console.log('Errore nei permessi');
-                                break;
-                        }
-                        //TODO Matteo: quando lo testi, se l'autenticazione va a buon fine controlla che il redirect funzioni
-                        redirect("/")
-                    } else {
-                        console.log('User NOT logged in');
-                    }
-                })
-                .catch(error => console.error('Errore durante la chiamata API:', error));
-        }
+    function hashPassword(password) {
+        return hash.sha256().update(password).digest('hex');
     }
-    */
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -77,9 +31,10 @@ export default function LoginOverlay ({isOpen, onClose}) {
         }
 
         if (username && password) {
+            let hashedPassword = hashPassword(password);
             const cred = {
                 user: username,
-                pwd: password,
+                pwd: hashedPassword,
             }
 
             fetch("http://localhost:3000/verify_login", {

@@ -3,6 +3,7 @@ import "../../css/subscribe.css";
 import button from "bootstrap/js/src/button";
 import {useNavigate} from "react-router-dom";
 
+import hash from 'hash.js';
 
 //TODO controllare che qui funzioni tutto
 export default function SubscribeOverlay ({isOpen, onClose}) {
@@ -60,7 +61,8 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
             const isEmailValid = validateEmail(email);
             if(isPasswordValid && isEmailValid) {
                 setError("")
-                const user_to_add = {selectedType, name, surname, email, username, password};
+                let hashedPassword = hashPassword(password);
+                const user_to_add = {selectedType, name, surname, email, username, hashedPassword};
                 console.log(user_to_add);
                 fetch('http://localhost:3000/add_user', {
                     method: 'POST',
@@ -105,6 +107,10 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
             setEmailError("")
             return true
         }
+    }
+
+    function hashPassword(password) {
+        return hash.sha256().update(password).digest('hex');
     }
 
     function checkPasswordStrength(password) {
