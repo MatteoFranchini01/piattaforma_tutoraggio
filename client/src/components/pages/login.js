@@ -10,6 +10,7 @@ export default function LoginOverlay ({isOpen, onClose}) {
     const [passwordError, setPasswordError] = useState("");
     const [loginError, setLoginError] = useState("");
     const location = useLocation();
+    const navigate = useNavigate();
 
     function hashPassword(password) {
         return hash.sha256().update(password).digest('hex');
@@ -52,6 +53,7 @@ export default function LoginOverlay ({isOpen, onClose}) {
                     //OK
                     if(data.Status === "Success"){
                         onClose(true);
+                        navigate("/")
                     }
                     else {
                         console.log(data.Status);
