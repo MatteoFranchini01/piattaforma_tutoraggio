@@ -5,6 +5,7 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 
 import Login from "../../pages/login";
 import Subscribe from "../../pages/subscribe";
+import axios from "axios";
 
 function Header (){
     const [isLoginOverlayOpen, setIsLoginOverlayOpen] = React.useState(false);
@@ -63,13 +64,6 @@ function Header (){
 
     const handleManageAccount = () =>{
         console.log("Visualizza profilo")
-        if(auth) {
-            // TODO MATTEO URGENTE
-            // se è autenticato mi serve l'username per chiamare la pagina successiva
-            // navigate("/manageAccount/${username}")
-        }
-        else
-            console.log("Errore") // in teoria non si dovrebbe mai capitare qui
     }
 
     return (
@@ -96,13 +90,12 @@ function Header (){
                         {
                             auth ?
                                 <div className="logout">
-                                    <button className="manageAccountBtn"
-                                            onClick={handleManageAccount}>Profilo
-                                    </button>
                                     <button className="logoutBtn"
                                             onClick={handleLogout}>Logout
                                     </button>
-
+                                    <button className="manageAccountBtn"
+                                            onClick={handleManageAccount}>Profilo
+                                    </button>
                                 </div>
                                 :
                                 <div className="login-subscribe buttons">
