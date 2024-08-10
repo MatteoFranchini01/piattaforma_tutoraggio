@@ -4,6 +4,7 @@ import React from "react";
 import img from "../../images/teacher_logo.png"
 import SelectDaysTable from "../mainLayout/template/SelectDaysTable";
 import { useParams } from "react-router-dom";
+import {response} from "express";
 
 
 export default function SettingTeacherProfile() {
@@ -139,13 +140,61 @@ export default function SettingTeacherProfile() {
             });
     }
 
+    function add_tutor_materia(id_tutor, id_materia, prezzo) {
+        const tutor_to_add = {id_tutor, id_materia, prezzo};
+        fetch('http://localhost:3000/add_tutor_materia', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tutor_to_add),
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
+
+    function add_compLing(id_tutor, id_comp) {
+        const tutor_compLing = {id_comp, id_tutor};
+        fetch('http://localhost:3000/add_compLing', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tutor_compLing),
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
+
+    function add_istr(id_tutor, id_istr) {
+        const tutor_istr = [id_tutor, id_istr];
+        fetch('http://localhost:3000/add_istr', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tutor_istr),
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
+
     //TODO: una volta memorizzate le info chiamare
     // reindirizzare ("/registrationConfirmed")
 
     // TODO MATTEO PER FINIRE LA PAGINA
-    // Inserire nella tabella tutor materie la tripletta id del tutor, id della materia e prezzo
-    // Inserire nella tabella competenze_linguistiche la coppia id del tutor, id della lingua
-    // Inserire nella tabella competenze_istr la coppia id del tutor, id della competenza
+    // CONTROLLARE SE VA -> Inserire nella tabella tutor materie la tripletta id del tutor, id della materia e prezzo
+    // CONTROLLARE SE VA -> Inserire nella tabella competenze_linguistiche la coppia id del tutor, id della lingua
+    // CONTROLLARE SE VA -> Inserire nella tabella competenze_istr la coppia id del tutor, id della competenza
     // Inserire nella tabella tutor la biografia
     // Inserire le disponibilità
 
@@ -165,19 +214,25 @@ export default function SettingTeacherProfile() {
                 console.log("Prima materia: " + selectedSubjectOne + ", prezzo: " + priceOne);
 
                 // qui posso andare a inserire tutti i parametri precedenti
+                //TODO assicurarsi che selectedSubjectOne sia l'ID e non altro
+                add_tutor_materia(username, selectedSubjectOne, priceOne);
+                //TODO assicurarsi che selectedLanguage sia un ID
+                add_compLing(username, selectedLanguage);
+                //TODO assicurarsi che selectedCompetence sia un ID
+                add_istr(username, selectedCompetence);
 
                 if(selectedSubjectTwo !== "-1" && priceTwo)
                 {
                     console.log("Seconda materia " + selectedSubjectTwo + ", prezzo: " + priceTwo);
                     // qui posso inserire la seconda materia
-
+                    add_tutor_materia(username, selectedSubjectTwo, priceTwo);
                     if(selectedSubjectThree !== "-1"){
                         console.log("Terza materia " + selectedSubjectThree + ", prezzo: " + priceThree);
                         //qui posso inserire la terza materia
-
+                        add_tutor_materia(username, selectedSubjectThree, priceThree);
                     }
-
                 }
+
             }
         }
         else{
