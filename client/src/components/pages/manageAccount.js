@@ -7,15 +7,16 @@ import {useParams} from "react-router-dom";
 // + controllare il livello di privilegio per renderizzare cose diverse
 
 export default function ManageAccount() {
+
+    const params = useParams();
     const [username, setUsername] = useState("");
     const [email, setEmail] = React.useState("");
     const [emailError, setEmailError] = useState("");
-    const [auth, setAuth] = useState(false); //POI DA TORNARE A FALSE
-    const [privilegio, setPrivilegio] = useState(-1); //POI DA TORNARE A FALSE
+    const [auth, setAuth] = useState(true); //POI DA TORNARE A FALSE
 
     useEffect(() => {
+        setUsername(params.username);
         checkAuthStatus()
-        check_privilegio()
     }, []);
 
     const checkAuthStatus = () => {
@@ -26,10 +27,8 @@ export default function ManageAccount() {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                if(data.Status === "Success") {
+                if(data.Status === "Success")
                     setAuth(true)
-                    setUsername(data.Username)
-                }
                 else {
                     setAuth(false);
                     console.log(data.Message)
@@ -77,12 +76,6 @@ export default function ManageAccount() {
         console.log("Cancellare lezione")
     };
 
-    //da implementare
-    const check_privilegio = () =>{
-        console.log(username)
-        // capire privilegio dato username
-    }
-
     // da sostituire con lettura db
     // consiglio: farsi tornare l'id della tabella cosi si sa quale eliminare
     const lezioniPrenotate =  [
@@ -99,7 +92,6 @@ export default function ManageAccount() {
                     <>
                         <div className="main-container-manageAccount">
                             <div className="booked-lessons">
-                                <h2 className="title-manage">Benvenuto, {username}!</h2>
                                 <h3 className="title-manage">Lezioni prenotate</h3>
                                 <div className="lessons">
                                     <table className="table" style={{textAlign: "center"}}>

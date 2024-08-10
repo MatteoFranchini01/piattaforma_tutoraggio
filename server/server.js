@@ -332,7 +332,7 @@ function verifyUser(t, callback){
                 callback(null, {Message: "Authentication Error"});
             }
             else{
-                callback(null, {Status: "Success", Username: decoded.username});
+                callback(null, {Status: "Success"});
                 //req.n = decoded.username
                 //next();
             }

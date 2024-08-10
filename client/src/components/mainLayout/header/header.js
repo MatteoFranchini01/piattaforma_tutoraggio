@@ -11,7 +11,6 @@ function Header (){
     const [isSubscribeOverlayOpen, setIsSubscribeOverlayOpen] = React.useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    const [username, setUsername] = useState("");
 
     const [auth, setAuth] = useState(false);
 
@@ -27,10 +26,8 @@ function Header (){
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
-                    if(data.Status === "Success") {
+                    if(data.Status === "Success")
                         setAuth(true)
-                        setUsername(data.Username)
-                    }
                     else {
                         setAuth(false);
                         console.log(data.Message)
@@ -61,15 +58,15 @@ function Header (){
                 console.error(error);
             });
         checkAuthStatus();
-        navigate("/");
         window.location.reload();
-
     }
 
     const handleManageAccount = () =>{
+        console.log("Visualizza profilo")
         if(auth) {
-            if(username)
-                navigate(`/manageAccount/${username}`)
+            // TODO MATTEO URGENTE
+            // se è autenticato mi serve l'username per chiamare la pagina successiva
+            // navigate("/manageAccount/${username}")
         }
         else
             console.log("Errore") // in teoria non si dovrebbe mai capitare qui
