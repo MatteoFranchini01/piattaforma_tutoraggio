@@ -83,17 +83,24 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
                         setUsername("");
                         setPassword("");
 
-                        if(selectedType === "student"){
-                            alert("Registrazione avvenuta con successo!")
+                        if(data === "User added to db")
+                        {
                             onClose(true)
+                            if(selectedType === "student"){
+                                /*alert("Registrazione avvenuta con successo!")*/
+                                navigate("/registrationConfirmed");
+                            }
+                            else{
+                                navigate(`/settingTeacherProfile/${username}`)
+                            }
                         }
                         else{
-                            navigate(`/settingTeacherProfile/${username}`)
+                            alert("Registrazione non avvenuta!")
                         }
+
                     })
                     .catch(error => console.log(error))
 
-                console.log('Subscribe credentials: ', selectedType, name, surname, username, email, password);
             }
         }
     }

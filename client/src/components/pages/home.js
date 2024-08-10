@@ -14,29 +14,6 @@ export default function Home() {
 
     const [subjectNames, setSubjectNames] = useState([]);
 
-    const [username, setUsername] = useState("");
-
-    //TODO: questa funzione va copiata in ogni pagina e bisogna capire come gestire tutti i casi
-    //axios.defaults.withCredentials = true;
-
-    /*
-    useEffect(() => {
-        fetch('http://localhost/check_login_session')
-            .then(response => response.json())
-            .then(data => {
-                if (data.valid) {
-                    setUsername(data.username);
-                    console.log("Welcome:", username);
-                } else {
-                    console.log("not valid");
-                    //TODO: gestire il caso in cui la sessione non sia valida
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }, []);*/
-
     // Chiamata API per il conteggio degli studenti
     useEffect(() => {
         console.log('Starting API call count students');

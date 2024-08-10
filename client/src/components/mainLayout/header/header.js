@@ -62,6 +62,10 @@ function Header (){
         window.location.reload();
     }
 
+    const handleManageAccount = () =>{
+        console.log("Visualizza profilo")
+    }
+
     return (
             <nav className="navbar fixed-top navbar-expand-lg">
                 <div className="container-fluid">
@@ -88,6 +92,9 @@ function Header (){
                                 <div className="logout">
                                     <button className="logoutBtn"
                                             onClick={handleLogout}>Logout
+                                    </button>
+                                    <button className="manageAccountBtn"
+                                            onClick={handleManageAccount}>Profilo
                                     </button>
                                 </div>
                                 :

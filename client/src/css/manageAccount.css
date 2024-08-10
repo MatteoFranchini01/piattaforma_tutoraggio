@@ -1,0 +1,70 @@
+.main-container-manageAccount{
+    height: auto;
+    padding: 8% 50px 0;
+}
+
+.booked-lessons{
+    height: auto;
+}
+
+.manage-account{
+    height: 500px;
+}
+
+.title-manage{
+    padding-left: 10%;
+    padding-top: 50px;
+    color: rgb(50,50,100);
+}
+
+.centered-hr{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.dangerBtn{
+    margin-left: 10%;
+
+}
+
+.changeEmail{
+    padding-top: 20px;
+    margin-left: 10%;
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.miniboxemail{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.email{
+    max-width: 400px;
+}
+
+.paragraph-manage{
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+.delete-div{
+    padding-top: 20px;
+}
+
+.error-paragraph-manage{
+    color: red;
+}
+
+.lessons{
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 80%;
+    border-radius: 2%;
+    margin-left: 10%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}

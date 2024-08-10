@@ -81,6 +81,8 @@ async function add_user(utente) {
     }
     console.log("Auth: ", auth);
 
+    console.log(utente)
+
     try {
         // inserimento nella tabella utenti
         const queryStringUtenti = 'INSERT INTO UTENTI (USERNAME, PASSWORD, PRIVILEGI) VALUES ($1, $2, $3) RETURNING id_utente';
@@ -98,8 +100,8 @@ async function add_user(utente) {
             await pool.query(queryStringDiscente, valuesDiscente);
             console.log("Studente inserted successfully");
         } else if (auth === 2) {
-            const queryStringTutor = 'INSERT INTO TUTOR (FK_TUTOR, NOME, COGNOME, MAIL) VALUES ($1, $2, $3, $4)';
-            const valuesTutor = [userId, utente.nome, utente.surname, utente.email];
+            const queryStringTutor = 'INSERT INTO TUTOR (FK_UTENTE, NOME, COGNOME, MAIL) VALUES ($1, $2, $3, $4)';
+            const valuesTutor = [userId, utente.name, utente.surname, utente.email];
             await pool.query(queryStringTutor, valuesTutor);
             console.log("Tutor inserted successfully");
         }
@@ -482,7 +484,7 @@ app.post('/add_user', (req, res) => {
     let user = req.body;
     console.log(user);
     add_user(user);
-    res.send("User added to db");
+    res.json("User added to db");
 });
 
 app.post('/find_user', (req, res) => {

@@ -10,7 +10,7 @@ export default function SettingTeacherProfile() {
 
     //username del tutor di cui andrò a memorizzare le info aggiuntive
     const {username} = useParams();
-    const [validUsername, setValidUsername] = useState(true)
+    const [validUsername, setValidUsername] = useState(false)
     // id del tutor
     const [id, setId] = useState("-1")
 

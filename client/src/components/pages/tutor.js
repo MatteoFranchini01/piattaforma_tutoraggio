@@ -109,7 +109,6 @@ export default function Tutor() {
                         <div className="tutor-reservation-table">
                             <Table schedule={availability} bookedUp={bookedUp}
                                    onBookButtonClicked={handleBookButtonClicked}/>
-                            />
                         </div>
                     </div>
                 </div>

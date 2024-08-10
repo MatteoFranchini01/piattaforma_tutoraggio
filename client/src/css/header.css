@@ -34,6 +34,18 @@
     margin-left: 10px;
 }
 
+.manageAccountBtn{
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid rgb(50, 50, 100);
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(50, 50, 100);
+    background-color: transparent;
+}
+
 .logoutBtn{
     display: inline-block;
     padding: 5px 10px;
