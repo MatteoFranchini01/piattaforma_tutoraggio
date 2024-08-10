@@ -22,7 +22,7 @@ function App(){
                     <Route path="/teachers/:subject_name/:tutor_id" element={<Tutor/>}/>
                     <Route path="/settingTeacherProfile/:username" element={<SettingTeacherProfile/>}/>
                     <Route path="/registrationConfirmed" element={<RegistrationConfirmed/>}/>
-                    <Route path="/manageAccount/:username" element={<ManageAccount/>}/>
+                    <Route path="/manageAccount" element={<ManageAccount/>}/>
                 </Routes>
             </MainTemplate>
         </BrowserRouter>

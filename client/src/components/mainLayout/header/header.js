@@ -59,11 +59,16 @@ function Header (){
                 console.error(error);
             });
         checkAuthStatus();
+        navigate("/");
         window.location.reload();
     }
 
     const handleManageAccount = () =>{
-        console.log("Visualizza profilo")
+        if(auth) {
+            navigate(`/manageAccount/`)
+        }
+        else
+            console.log("Errore") // in teoria non si dovrebbe mai capitare qui
     }
 
     return (
@@ -90,11 +95,11 @@ function Header (){
                         {
                             auth ?
                                 <div className="logout">
-                                    <button className="logoutBtn"
-                                            onClick={handleLogout}>Logout
-                                    </button>
                                     <button className="manageAccountBtn"
                                             onClick={handleManageAccount}>Profilo
+                                    </button>
+                                    <button className="logoutBtn"
+                                            onClick={handleLogout}>Logout
                                     </button>
                                 </div>
                                 :

@@ -74,7 +74,7 @@ function add_comptenzaLing_tutor (tutor_compLing) {
     const values = [tutor_compLing.id_comp, tutor_compLing.id_tutor];
     pool.query(queryString, values, (err, result) => {
         if (err) throw err;
-        console.log("Result: ", result);
+        //console.log("Result: ", result);
     })
 }
 
@@ -83,7 +83,7 @@ function add_istr_tutor (tutor_istr) {
     const values = [tutor_istr.id_tutor, tutor_istr.id_istr];
     pool.query(queryString, values, (err, result) => {
         if (err) throw err;
-        console.log("Result: ", result);
+        //console.log("Result: ", result);
     })
 }
 
@@ -332,8 +332,7 @@ function verifyUser(t, callback){
                 callback(null, {Message: "Authentication Error"});
             }
             else{
-                callback(null, {Status: "Success"});
-                //req.n = decoded.username
+                callback(null, {Status: "Success", Username: decoded.username});
                 //next();
             }
         })
@@ -514,27 +513,6 @@ app.post('/add_user', (req, res) => {
     res.json("User added to db");
 });
 
-app.post('/add_tutor_materia', (req, res) => {
-    let tutor_materia = req.body;
-    console.log(tutor_materia);
-    add_materia_tutor(tutor_materia);
-    res.json("Tutor per materia added");
-})
-
-app.post('/add_compLing', (req, res) => {
-    let tutor_compLing = req.body;
-    console.log(tutor_compLing);
-    add_comptenzaLing_tutor(tutor_compLing);
-    res.json("Competenza linguistica aggiunta")
-})
-
-app.post('/add_istr', (req, res) => {
-    let tutor_istr = req.body;
-    console.log(tutor_istr);
-    add_istr_tutor(tutor_istr);
-    res.json('Istruzione aggiunta')
-})
-
 app.post('/find_user', (req, res) => {
     let user_to_find = req.body;
     find_user(user_to_find, user => {
@@ -602,6 +580,27 @@ app.get('/find_id/:username', (req, res) => {
         res.json(result);
     })
 });
+
+app.post('/add_tutor_materia', (req, res) => {
+    let tutor_materia = req.body;
+    console.log(tutor_materia);
+    add_materia_tutor(tutor_materia);
+    res.json("Tutor per materia added");
+})
+
+app.post('/add_compLing', (req, res) => {
+    let tutor_compLing = req.body;
+    console.log(tutor_compLing);
+    add_comptenzaLing_tutor(tutor_compLing);
+    res.json("Competenza linguistica aggiunta")
+})
+
+app.post('/add_istr', (req, res) => {
+    let tutor_istr = req.body;
+    console.log(tutor_istr);
+    add_istr_tutor(tutor_istr);
+    res.json('Istruzione aggiunta')
+})
 
 // Avvio del server
 app.listen(port, () => {
