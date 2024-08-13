@@ -404,7 +404,6 @@ export default function SettingTeacherProfile() {
                                     </div>
 
 
-                                    {/*TODO Matteo: aggiungere campo 'descrizione' alla tabella dei tutor MAX 500 caratteri!!!*/}
                                     <p className="paragraph-label">Includi una breve descrizione di te o qualunque cosa
                                         possa
                                         aiutare i tuoi futuri studenti!</p>

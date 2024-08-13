@@ -8,7 +8,7 @@
 }
 
 .manage-account{
-    height: 500px;
+    height: auto;
 }
 
 .title-manage{
@@ -35,6 +35,11 @@
     gap: 10px
 }
 
+.changeBio-div{
+    margin-left: 10%;
+    padding-top: 20px;
+}
+
 .miniboxemail{
     display: inline-block;
     vertical-align: top;
@@ -49,7 +54,7 @@
     margin-top: 20px;
 }
 
-.delete-div{
+.delete-div, .changeBio-div{
     padding-top: 20px;
 }
 

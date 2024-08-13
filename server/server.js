@@ -306,11 +306,11 @@ function verify_login(given_username, given_password, callback) {
     pool.query(q, [given_username], (err, r) => {
         if (err) throw err;
 
-        console.log(r.rows.length)
         if(r.rows.length > 0){
             if(r.rows[0].password === given_password){
                 const n = r.rows[0].username;
-                callback(null, {Status: "Success", Username: n})
+                const p = r.rows[0].privilegi;
+                callback(null, {Status: "Success", Username: n, Privilegio: p})
             }
             else
                 callback(null, {Status: "Failed"});
@@ -332,7 +332,7 @@ function verifyUser(t, callback){
                 callback(null, {Message: "Authentication Error"});
             }
             else{
-                callback(null, {Status: "Success", Username: decoded.username});
+                callback(null, {Status: "Success", Username: decoded.username, Privilegio: decoded.privilegio});
                 //next();
             }
         })
@@ -525,7 +525,7 @@ app.post("/verify_login", (req, res) =>{
         verify_login(req.body.user, req.body.pwd, (err, result) => {
             if(result.Status === "Success"){
                 console.log("Valid auth")
-                const token = jwt.sign({username: result.Username}, "our-jsonwebtoken-secret-key", {expiresIn: '1h'});
+                const token = jwt.sign({username: result.Username, privilegio: result.Privilegio}, "our-jsonwebtoken-secret-key", {expiresIn: '1h'});
                 res.cookie('token', token);
             }
             else
@@ -601,6 +601,13 @@ app.post('/add_istr', (req, res) => {
     add_istr_tutor(tutor_istr);
     res.json('Istruzione aggiunta')
 })
+
+app.get('/languages', (req, res) => {
+    select_languages((err, result) => {
+        res.json(result);
+    })
+});
+
 
 // Avvio del server
 app.listen(port, () => {
