@@ -108,14 +108,13 @@ async function change_availability (tutor_change_lesson) {
         let queryString = 'DELETE FROM LEZIONI WHERE FK_TUTOR = $1';
         await pool.query(queryString, [tutor_change_lesson.id_tutor]);
         console.log("Lezioni cancellate")
-
-        for (const item of tutor_change_lesson.lesson) {
-
+        for (const item of tutor_change_lesson.selectedDays) {
             queryString = 'SELECT ID_FASCIA_ORARIA AS id FROM FASCE_ORARIE WHERE FASCIA_ORARIA = $1 AND GIORNO = $2';
 
             const result = await pool.query(queryString, [item.time, item.day]);
 
             queryString = 'INSERT INTO LEZIONI (FK_TUTOR, FK_FASCIA_ORARIA) VALUES ($1, $2)';
+            console.log(result.rows);
             await pool.query(queryString, [parseInt(tutor_change_lesson.id_tutor), result.rows[0].id]);
             console.log("Lezioni aggiornate");
         }
@@ -615,7 +614,6 @@ app.post('/add_bio', (req, res) => {
 
 app.post('/change_availability', async (req, res) => {
     let tutor_change = req.body;
-    console.log(tutor_change);
     try {
         await change_availability(tutor_change);  // Await the async function
         res.json("Tutor availability changed");

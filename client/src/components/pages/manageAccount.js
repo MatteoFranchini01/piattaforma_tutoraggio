@@ -83,6 +83,7 @@ export default function ManageAccount() {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
+                    alert("Modifiche effettuate!")
                 })
         }
         else{
@@ -134,6 +135,7 @@ export default function ManageAccount() {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
+                    alert("Modifiche effettuate!")
                 })
         }
         else{
@@ -175,10 +177,12 @@ export default function ManageAccount() {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                alert("Modifiche effettuate!")
             })
     }
 
     //TODO: questa funzione esiste solo per il tutor o bisogna fare una qualche veririca?
+    // esiste solo per il tutor, lo studente non la visualizza
     const handleConfirmSelectedDays = () => {
         if (selectedDays.length > 0) {
             add_availability(id, selectedDays);
