@@ -80,7 +80,27 @@ export default function Tutor() {
         if(auth && privilegio === 3){ // si puo prenotare solo se si è studenti
             if(window.confirm("Vuoi prenotare la lezione per "+day+" alle ore "+time+"?")){
                 console.log("Prenotare");
-                //TODO Matteo -> da gestire la prenotazione
+                const lesson_info = {
+                    fascia_oraria: time,
+                    giorno: day,
+                    username: username,
+                    id_tutor: tutor_id,
+                    //TODO: inserire almeno il nome della materia
+                    materia:
+                }
+                fetch('http://localhost:3000/book_lesson', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(lesson_info),
+                    credentials: 'include'
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        alert("Modifiche effettuate!")
+                    })
             }
             else
                 console.log("Non prenotare");
