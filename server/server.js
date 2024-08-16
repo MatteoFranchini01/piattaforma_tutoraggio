@@ -115,11 +115,11 @@ async function change_availability (tutor_change_lesson) {
 
             const result = await pool.query(queryString, values);
 
-            console.log("TUTOR ID", parseInt(tutor_change_lesson.id));
-            console.log("FASCIA ORARIA", parseInt(result.id));
+            console.log("TUTOR ID", parseInt(tutor_change_lesson.id_tutor));
+            console.log("FASCIA ORARIA", parseInt(result.rows[0].id));
 
             queryString = 'INSERT INTO LEZIONI (FK_TUTOR, FK_FASCIA_ORARIA) VALUES ($1, $2)';
-            await pool.query(queryString, [parseInt(tutor_change_lesson.id), parseInt(result.id)]);
+            await pool.query(queryString, [parseInt(tutor_change_lesson.id_tutor), parseInt(result.rows[0].id)]);
             console.log("Lezioni agggiornate");
         }
     } catch (err) {
