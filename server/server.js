@@ -97,7 +97,7 @@ function add_istr_bio (tutor_bio) {
 
 function change_email (tutor_email_change) {
     let queryString = 'UPDATE TUTOR SET MAIL=$1 WHERE ID_TUTOR=$2';
-    const values = [tutor_email_change.mail, tutor_email_change.id_tutor];
+    const values = [tutor_email_change.email, tutor_email_change.id_tutor];
     pool.query(queryString, values, (err) => {
         if (err) throw err;
     })
@@ -114,6 +114,9 @@ async function change_availability (tutor_change_lesson) {
             queryString = 'SELECT ID_FASCIA_ORARIA AS "ID" FROM FASCE_ORARIE WHERE FASCIA_ORARIA = $1 AND GIORNO = $2';
 
             const result = await pool.query(queryString, values);
+
+            console.log("TUTOR ID", tutor_change_lesson.id);
+            console.log("FASCIA ORARIA", result.id);
 
             queryString = 'INSERT INTO LEZIONI (FK_TUTOR, FK_FASCIA_ORARIA) VALUES ($1, $2)';
             await pool.query(queryString, [tutor_change_lesson.id, result.id]);
