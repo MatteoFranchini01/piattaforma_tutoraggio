@@ -88,7 +88,7 @@ function add_istr_tutor (tutor_istr) {
 }
 
 function add_istr_bio (tutor_bio) {
-    let queryString = 'UPDATE TUTOR SET BIO=$1 WHERE ID_TUTOR=$2';
+    let queryString = 'UPDATE TUTOR SET INFO=$1 WHERE ID_TUTOR=$2';
     const values = [tutor_bio.bio, tutor_bio.id_tutor];
     pool.query(queryString, values, (err) => {
         if (err) throw err;
@@ -582,6 +582,18 @@ app.post('/add_bio', (req, res) => {
     } catch (err) {
         console.error("Error updating tutor bio:", err);
         res.status(500).json({error: "Failed to update tutor bio"});
+    }
+});
+
+app.post('/change_availability', (req, res) => {
+    let tutor_change = req.body;
+    console.log(tutor_change);
+    try {
+        change_availability(tutor_change);
+        res.json("Tutor availability changed");
+    } catch (err) {
+        console.error("Error changing availability:", err);
+        res.status(500).json({error: "Failed to change availability"});
     }
 });
 
