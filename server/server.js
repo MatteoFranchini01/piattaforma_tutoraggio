@@ -191,18 +191,39 @@ function find_user(user_to_find, callback) {
     });
 }
 
-/*
+
 function get_booked(user_info, callback) {
     let queryString;
     if (user_info.privilegio === 2) {
         console.log("SERVER: tutor");
-        queryString = 'SELECT '
+        queryString = 'SELECT D.NOME AS NOME, D.COGNOME AS COGNOME, M.NOME_MATERIA AS NOME_MATERIA, FO.FASCIA_ORARIA AS FASCIA_ORARIA, FO.GIORNO AS GIORNO FROM LEZIONI AS L JOIN FASCE_ORARIE AS FO ON L.FK_FASCIA_ORARIA = FO.ID_FASCIA_ORARIA JOIN DISCENTE AS D ON L.FK_DISCENTE = D.ID_DISCENTE WHERE L.FK_TUTOR = $1';
+        pool.query(queryString, [user_info.id], (err, result) => {
+            if (err) throw err;
+            const details = {
+                tutor: '',
+                studente: result.nome + ' ' + result.cognome,
+                nome_materia: result.nome_materia,
+                fascia_oraria: result.fascia_oraria,
+                giorno: result.giorno
+            }
+            callback(details);
+        });
     } else if (user_info.privilegio === 3) {
         console.log("SERVER: studente")
-    } else {
-        console.log("SERVER: non trovato")
+        queryString = 'SELECT T.NOME AS NOME, T.COGNOME AS COGNOME, M.NOME_MATERIA AS NOME_MATERIA, FO.FASCIA_ORARIA AS FASCIA_ORARIA, FO.GIORNO AS GIORNO FROM LEZIONI AS L JOIN FASCE_ORARIE AS FO ON L.FK_FASCIA_ORARIA = FO.ID_FASCIA_ORARIA JOIN TUTOR AS T ON L.FK_TUTOR = T.ID_TUTOR WHERE L.FK_DISCENTE = $1';
+        pool.query(queryString, [user_info.id], (err, result) => {
+            if (err) throw err;
+            const details = {
+                tutor: result.nome + ' ' + result.cognome,
+                studente: ' ',
+                nome_materia: result.nome_materia,
+                fascia_oraria: result.fascia_oraria,
+                giorno: result.giorno
+            }
+            callback(details);
+        })
     }
-}*/
+}
 
 // Funzione per contare i tutor
 function count_tutor() {
@@ -464,6 +485,14 @@ function check_id_from_username(user, callback) {
 }
 
 // Rotte
+app.get('/booked/:id/:privilegio', (req, res) => {
+    let id = req.params.id;
+    let privilegio = req.params.privilegio;
+
+    get_booked(id, privilegio, (err, result) => {
+        res.json(result);
+    })
+});
 
 app.get('/teachers/:subject/:id', (req, res) => {
     let nome_materia = req.params.subject;
