@@ -2,6 +2,7 @@ import react, {useEffect, useState} from "react";
 import "../../css/manageAccount.css"
 import React from "react";
 import {useParams} from "react-router-dom";
+import SelectDaysTable from "../mainLayout/template/SelectDaysTable";
 
 export default function ManageAccount() {
     const [username, setUsername] = useState("");
@@ -11,9 +12,11 @@ export default function ManageAccount() {
     const [privilegio, setPrivilegio] = useState(-1);
     const [newBio, setNewBio] = useState("");
     const [newBioError, setNewBioError] = useState("");
+    const [id, setId] = useState(-1)
 
     useEffect(() => {
         checkAuthStatus();
+        checkUsername();
     }, []);
 
 
@@ -37,6 +40,21 @@ export default function ManageAccount() {
             .catch((error) => {
                 console.error(error);
             });
+    }
+
+    function checkUsername(){
+        // controllo se l'username è stato correttamente inserito nel db, altrimenti non posso fare nulla
+        fetch(`http://localhost:3000/find_id/${username}`)
+            .then(response => response.json())
+            .then(data => {
+                if(data.id !== -1){
+                    setId(data.id);
+                }
+                else
+                    setId(-1)
+
+            })
+            .catch(error => console.log(error))
     }
 
     const handleEmailChange = () => {
@@ -80,7 +98,7 @@ export default function ManageAccount() {
     const handleBioChange = () =>{
         if(newBio !== ""){
             setNewBioError("")
-            //TODO MATTEO: gestire l'update della bio
+            //TODO MATTEO: gestire update della bio
         }
         else{
             setNewBioError("Se vuoi cambiare la tua bio, scrivi qualcosa!")
@@ -99,6 +117,18 @@ export default function ManageAccount() {
         { studente:'elena', insegnante:'pallino',  materia: 'matematica', giorno: 'mar', orario: '06:00-17:00' },
         { studente:'elena', insegnante:'elena',  materia: 'fisica', giorno: 'ven', orario: '09:00-10:00' },
     ];
+
+    let selectedDays = []
+    const handleSelectedDaysChange = (selectedCells) =>{
+        selectedDays = selectedCells;
+        console.log(selectedDays);
+    }
+
+    const handleConfirmSelectedDays = () => {
+        //TODO Matteo: i nuovi orari vanno inseriti all'interno del database
+        // prima controllare che selectedDays non sia vuoto
+        console.log("Cambio disponibilità")
+    }
 
 
     return(
@@ -156,7 +186,6 @@ export default function ManageAccount() {
                             </div>
 
                             <hr className="centered-hr"/>
-                            {/* COMUNE A TUTTI GLI ACCOUNT */}
                             <div className="manage-account">
                                 <h3 className="title-manage">Gestione Account</h3>
                                 <p className="paragraph-manage">Vuoi cambiare la tua
@@ -172,30 +201,48 @@ export default function ManageAccount() {
                                             onClick={handleEmailChange}
                                     >Modifica email
                                     </button>
+                                    {emailError && <p className="error-paragraph-manage">{emailError}</p>}
                                 </div>
-                                {emailError && <p className="error-paragraph-manage">{emailError}</p>}
 
+
+                                {
+                                    privilegio === 2 ?
+                                        <>
+                                            <div className="changeDays-div">
+                                                <p className="paragraph-label">
+                                                    Vuoi cambiare i giorni in cui sei disponibile per le lezioni?
+                                                </p>
+                                                <SelectDaysTable onSelectedDaysChange={handleSelectedDaysChange}/>
+                                                <button type="button" className="btn btn-warning"
+                                                        onClick={handleConfirmSelectedDays}
+                                                >Modifica disponibilità
+                                                </button>
+                                            </div>
+                                        </> : null
+                                }
                                 {
 
                                     privilegio === 2 ?
-                                    <>
-                                        <div className="changeBio-div">
-                                        <textarea
-                                            className="form-control text-area"
-                                            id="exampleFormControlTextarea1"
-                                            rows="3"
-                                            value={newBio}
-                                            maxLength="500"
-                                            onChange={(e) => setNewBio(e.target.value)}
-                                        ></textarea>
+                                        <>
+                                            <div className="changeBio-div">
+                                                <p className="paragraph-manage-bio">Vuoi modificare la tua biografia?</p>
+                                                <textarea
+                                                    className="form-control text-area"
+                                                    id="exampleFormControlTextarea1"
+                                                    rows="3"
+                                                    value={newBio}
+                                                    maxLength="500"
+                                                    style={{marginBottom: '20px'}}
+                                                    onChange={(e) => setNewBio(e.target.value)}
+                                                ></textarea>
 
-                                            <button type="button" className="btn btn-warning"
-                                                    onClick={handleBioChange}
-                                            >Modifica la tua biografia
-                                            </button>
-                                        </div>
-                                        {newBioError && <p className="error-paragraph-manage">{newBioError}</p>}
-                                    </>
+                                                <button type="button" className="btn btn-warning"
+                                                        onClick={handleBioChange}
+                                                >Modifica la tua biografia
+                                                </button>
+                                                {newBioError && <p className="error-paragraph-manage">{newBioError}</p>}
+                                            </div>
+                                        </>
                                         : null
 
                                 }

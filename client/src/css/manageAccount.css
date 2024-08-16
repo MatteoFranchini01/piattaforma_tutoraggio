@@ -35,9 +35,18 @@
     gap: 10px
 }
 
-.changeBio-div{
+.changeBio-div, .changeDays-div{
     margin-left: 10%;
     padding-top: 20px;
+}
+
+.changeBio-div, .changeDays-div, .changeEmail, .delete-div{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.changeDays-div{
+    width: 80%;
 }
 
 .miniboxemail{
@@ -67,7 +76,6 @@
     padding-top: 10px;
     padding-bottom: 10px;
     width: 80%;
-    border-radius: 2%;
     margin-left: 10%;
     margin-top: 50px;
     margin-bottom: 50px;
