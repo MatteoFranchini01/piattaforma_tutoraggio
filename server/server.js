@@ -191,6 +191,10 @@ function find_user(user_to_find, callback) {
     });
 }
 
+function get_booked(user_info, callback) {
+    const values
+}
+
 // Funzione per contare i tutor
 function count_tutor() {
     let queryString = 'SELECT COUNT(*) FROM TUTOR';
@@ -298,8 +302,6 @@ function check_booked(id_tutor, callback) {
         callback(null, fasce_orarie);
     })
 }
-
-function get_booked(id_tutor, id_studente)
 
 // funzione per selezionare i tutor per una materia specifica
 function tutor_per_materia(nome_materia, callback) {

@@ -25,7 +25,6 @@ export default function Tutor() {
     */
     React.useEffect(() => {
         getInfoTutor();
-        getBio();
     }, []); // Usa [] per eseguire solo al montaggio
 
     function getInfoTutor() {
