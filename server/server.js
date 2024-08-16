@@ -318,7 +318,7 @@ function tutor_per_materia(nome_materia, callback) {
 }
 
 function get_bio(id_tutor, callback) {
-    let queryString = 'SELECT INFO FROM TUTOR WHERE ID_TUTOR = $1';
+    let queryString = 'SELECT INFO AS "BIO" FROM TUTOR WHERE ID_TUTOR = $1';
     pool.query(queryString, [id_tutor], (err, result) => {
         if (err) throw err;
         console.log("Executed query: ", result.rows);
