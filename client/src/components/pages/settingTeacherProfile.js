@@ -143,7 +143,7 @@ export default function SettingTeacherProfile() {
     function add_availability(id_tutor, selectedDays) {
         const tutor_add_ava = {
             id_tutor: id_tutor,
-            selectedDays: selectedDays
+            lesson: selectedDays
         };
         fetch('http://localhost:3000/change_availability', {
             method: 'POST',
