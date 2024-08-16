@@ -51,7 +51,7 @@ export default function Tutor() {
     }
 
     function getBio() {
-        const url = `http://localhost:3000/bio/${tutor_id}`;
+        const url = `http://localhost:3000/get_bio/${tutor_id}`;
         console.log("Fetching from URL:", url);
         fetch(url)
             .then(response => response.json())
