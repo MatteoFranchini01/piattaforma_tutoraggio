@@ -141,8 +141,13 @@ export default function ManageAccount() {
     }
 
     function get_availability() {
-        if (auth === 2) { // tutor
+        if (privilegio === 2) { // tutor
+            console.log("Tutor");
 
+        } else if (privilegio === 3) { // studente
+            console.log("Studente");
+        } else {
+            console.log("Privilegio non riconosciuto")
         }
     }
     //TODO Matteo: leggere il db per riempire l'array e visualizzare le prenotazioni relativa allo studente o al tutor
