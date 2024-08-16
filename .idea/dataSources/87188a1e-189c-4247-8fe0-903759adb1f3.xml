@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.52">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>2092</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2486</IntrospectionStateNumber>
       <ServerVersion>16.3</ServerVersion>
-      <StartupTime>1723322355</StartupTime>
+      <StartupTime>1723823266</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1400,7 +1400,7 @@ true posixrules
 13212||10|C|G
 13212||-9223372036854775808|U|G
 13212||10|U|G</Grants>
-      <IntrospectionStateNumber>2092</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2486</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4819,177 +4819,177 @@ true posixrules
     <schema id="263" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>2092</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-08-10.20:39:59</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>2486</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-08-16.15:49:21</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
     <sequence id="264" parent="263" name="competenze_istr_id_competenze_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16957</ObjectId>
+      <ObjectId>17113</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1787</StateNumber>
+      <StateNumber>2181</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="265" parent="263" name="competenze_linguistiche_id_competenze_linguistiche_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16933</ObjectId>
+      <ObjectId>17089</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1785</StateNumber>
+      <StateNumber>2179</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="266" parent="263" name="discente_id_discente_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16874</ObjectId>
+      <ObjectId>17030</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1780</StateNumber>
+      <StateNumber>2174</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="267" parent="263" name="fasce_orarie_id_fascia_oraria_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16974</ObjectId>
+      <ObjectId>17130</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1788</StateNumber>
+      <StateNumber>2182</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="268" parent="263" name="istruzione_id_istruzione_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16950</ObjectId>
+      <ObjectId>17106</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1786</StateNumber>
+      <StateNumber>2180</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="269" parent="263" name="lezioni_id_lezione_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16983</ObjectId>
+      <ObjectId>17139</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1789</StateNumber>
+      <StateNumber>2183</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="270" parent="263" name="lingue_id_lingua_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16926</ObjectId>
+      <ObjectId>17082</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1784</StateNumber>
+      <StateNumber>2178</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="271" parent="263" name="materie_id_materia_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16902</ObjectId>
+      <ObjectId>17058</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1782</StateNumber>
+      <StateNumber>2176</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="272" parent="263" name="ruoli_id_ruolo_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16855</ObjectId>
+      <ObjectId>17011</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1777</StateNumber>
+      <StateNumber>2171</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="273" parent="263" name="tutor_id_tutor_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16888</ObjectId>
+      <ObjectId>17044</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1781</StateNumber>
+      <StateNumber>2175</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="274" parent="263" name="tutor_materie_id_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16909</ObjectId>
+      <ObjectId>17065</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1783</StateNumber>
+      <StateNumber>2177</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="275" parent="263" name="utenti_id_utente_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>16862</ObjectId>
+      <ObjectId>17018</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1779</StateNumber>
+      <StateNumber>2173</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <table id="276" parent="263" name="competenze_istr">
-      <ObjectId>16958</ObjectId>
-      <StateNumber>1787</StateNumber>
+      <ObjectId>17114</ObjectId>
+      <StateNumber>2181</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="277" parent="263" name="competenze_linguistiche">
-      <ObjectId>16934</ObjectId>
-      <StateNumber>1785</StateNumber>
+      <ObjectId>17090</ObjectId>
+      <StateNumber>2179</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="278" parent="263" name="discente">
-      <ObjectId>16875</ObjectId>
-      <StateNumber>1780</StateNumber>
+      <ObjectId>17031</ObjectId>
+      <StateNumber>2174</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="279" parent="263" name="fasce_orarie">
-      <ObjectId>16975</ObjectId>
-      <StateNumber>1789</StateNumber>
+      <ObjectId>17131</ObjectId>
+      <StateNumber>2183</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="280" parent="263" name="istruzione">
-      <ObjectId>16951</ObjectId>
-      <StateNumber>1787</StateNumber>
+      <ObjectId>17107</ObjectId>
+      <StateNumber>2181</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="281" parent="263" name="lezioni">
-      <ObjectId>16984</ObjectId>
-      <StateNumber>1789</StateNumber>
+      <ObjectId>17140</ObjectId>
+      <StateNumber>2183</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="282" parent="263" name="lingue">
-      <ObjectId>16927</ObjectId>
-      <StateNumber>1785</StateNumber>
+      <ObjectId>17083</ObjectId>
+      <StateNumber>2179</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="283" parent="263" name="materie">
-      <ObjectId>16903</ObjectId>
-      <StateNumber>1783</StateNumber>
+      <ObjectId>17059</ObjectId>
+      <StateNumber>2177</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="284" parent="263" name="ruoli">
-      <ObjectId>16856</ObjectId>
-      <StateNumber>1779</StateNumber>
+      <ObjectId>17012</ObjectId>
+      <StateNumber>2173</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="285" parent="263" name="tutor">
-      <ObjectId>16889</ObjectId>
-      <StateNumber>1781</StateNumber>
+      <ObjectId>17045</ObjectId>
+      <StateNumber>2175</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="286" parent="263" name="tutor_materie">
-      <ObjectId>16910</ObjectId>
-      <StateNumber>1783</StateNumber>
+      <ObjectId>17066</ObjectId>
+      <StateNumber>2177</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="287" parent="263" name="utenti">
-      <ObjectId>16863</ObjectId>
-      <StateNumber>1779</StateNumber>
+      <ObjectId>17019</ObjectId>
+      <StateNumber>2173</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -4998,594 +4998,594 @@ true posixrules
       <DefaultExpression>nextval(&apos;competenze_istr_id_competenze_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1787</StateNumber>
-      <SequenceId>16957</SequenceId>
+      <StateNumber>2181</StateNumber>
+      <SequenceId>17113</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="289" parent="276" name="fk_tutor">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1787</StateNumber>
+      <StateNumber>2181</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="290" parent="276" name="fk_istruzione">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>1787</StateNumber>
+      <StateNumber>2181</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="291" parent="276" name="competenze_istr_fk_tutor_fkey">
       <ColNames>fk_tutor</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16964</ObjectId>
-      <StateNumber>1787</StateNumber>
+      <ObjectId>17120</ObjectId>
+      <StateNumber>2181</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16889</RefTableId>
+      <RefTableId>17045</RefTableId>
     </foreign-key>
     <foreign-key id="292" parent="276" name="competenze_istr_fk_istruzione_fkey">
       <ColNames>fk_istruzione</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16969</ObjectId>
-      <StateNumber>1787</StateNumber>
+      <ObjectId>17125</ObjectId>
+      <StateNumber>2181</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16951</RefTableId>
+      <RefTableId>17107</RefTableId>
     </foreign-key>
     <index id="293" parent="276" name="competenze_istr_pkey">
       <ColNames>id_competenze</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16962</ObjectId>
+      <ObjectId>17118</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1787</StateNumber>
+      <StateNumber>2181</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="294" parent="276" name="competenze_istr_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16963</ObjectId>
+      <ObjectId>17119</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1787</StateNumber>
-      <UnderlyingIndexId>16962</UnderlyingIndexId>
+      <StateNumber>2181</StateNumber>
+      <UnderlyingIndexId>17118</UnderlyingIndexId>
     </key>
     <column id="295" parent="277" name="id_competenze_linguistiche">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;competenze_linguistiche_id_competenze_linguistiche_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1785</StateNumber>
-      <SequenceId>16933</SequenceId>
+      <StateNumber>2179</StateNumber>
+      <SequenceId>17089</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="296" parent="277" name="fk_lingua">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1785</StateNumber>
+      <StateNumber>2179</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="297" parent="277" name="fk_tutor">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>1785</StateNumber>
+      <StateNumber>2179</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="298" parent="277" name="competenze_linguistiche_fk_lingua_fkey">
       <ColNames>fk_lingua</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16940</ObjectId>
-      <StateNumber>1785</StateNumber>
+      <ObjectId>17096</ObjectId>
+      <StateNumber>2179</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16927</RefTableId>
+      <RefTableId>17083</RefTableId>
     </foreign-key>
     <foreign-key id="299" parent="277" name="competenze_linguistiche_fk_tutor_fkey">
       <ColNames>fk_tutor</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16945</ObjectId>
-      <StateNumber>1785</StateNumber>
+      <ObjectId>17101</ObjectId>
+      <StateNumber>2179</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16889</RefTableId>
+      <RefTableId>17045</RefTableId>
     </foreign-key>
     <index id="300" parent="277" name="competenze_linguistiche_pkey">
       <ColNames>id_competenze_linguistiche</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16938</ObjectId>
+      <ObjectId>17094</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1785</StateNumber>
+      <StateNumber>2179</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="301" parent="277" name="competenze_linguistiche_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16939</ObjectId>
+      <ObjectId>17095</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1785</StateNumber>
-      <UnderlyingIndexId>16938</UnderlyingIndexId>
+      <StateNumber>2179</StateNumber>
+      <UnderlyingIndexId>17094</UnderlyingIndexId>
     </key>
     <column id="302" parent="278" name="id_discente">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;discente_id_discente_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1780</StateNumber>
-      <SequenceId>16874</SequenceId>
+      <StateNumber>2174</StateNumber>
+      <SequenceId>17030</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="303" parent="278" name="nome">
       <DasType>varchar(200)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1780</StateNumber>
+      <StateNumber>2174</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="304" parent="278" name="cognome">
       <DasType>varchar(200)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>1780</StateNumber>
+      <StateNumber>2174</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="305" parent="278" name="mail">
       <DasType>varchar(200)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>1780</StateNumber>
+      <StateNumber>2174</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="306" parent="278" name="fk_utente">
       <DasType>integer|0s</DasType>
       <Position>5</Position>
-      <StateNumber>1780</StateNumber>
+      <StateNumber>2174</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="307" parent="278" name="discente_fk_utente_fkey">
       <ColNames>fk_utente</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16883</ObjectId>
-      <StateNumber>1780</StateNumber>
+      <ObjectId>17039</ObjectId>
+      <StateNumber>2174</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16863</RefTableId>
+      <RefTableId>17019</RefTableId>
     </foreign-key>
     <index id="308" parent="278" name="discente_pkey">
       <ColNames>id_discente</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16881</ObjectId>
+      <ObjectId>17037</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1780</StateNumber>
+      <StateNumber>2174</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="309" parent="278" name="discente_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16882</ObjectId>
+      <ObjectId>17038</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1780</StateNumber>
-      <UnderlyingIndexId>16881</UnderlyingIndexId>
+      <StateNumber>2174</StateNumber>
+      <UnderlyingIndexId>17037</UnderlyingIndexId>
     </key>
     <column id="310" parent="279" name="id_fascia_oraria">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;fasce_orarie_id_fascia_oraria_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1788</StateNumber>
-      <SequenceId>16974</SequenceId>
+      <StateNumber>2182</StateNumber>
+      <SequenceId>17130</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="311" parent="279" name="fascia_oraria">
       <DasType>varchar|0s</DasType>
       <Position>2</Position>
-      <StateNumber>1788</StateNumber>
+      <StateNumber>2182</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="312" parent="279" name="giorno">
       <DasType>varchar|0s</DasType>
       <Position>3</Position>
-      <StateNumber>1788</StateNumber>
+      <StateNumber>2182</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="313" parent="279" name="fasce_orarie_pkey">
       <ColNames>id_fascia_oraria</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16981</ObjectId>
+      <ObjectId>17137</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1788</StateNumber>
+      <StateNumber>2182</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="314" parent="279" name="fasce_orarie_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16982</ObjectId>
+      <ObjectId>17138</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1788</StateNumber>
-      <UnderlyingIndexId>16981</UnderlyingIndexId>
+      <StateNumber>2182</StateNumber>
+      <UnderlyingIndexId>17137</UnderlyingIndexId>
     </key>
     <column id="315" parent="280" name="id_istruzione">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;istruzione_id_istruzione_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1786</StateNumber>
-      <SequenceId>16950</SequenceId>
+      <StateNumber>2180</StateNumber>
+      <SequenceId>17106</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="316" parent="280" name="livello_istruzione">
       <DasType>varchar(100)|0s</DasType>
       <Position>2</Position>
-      <StateNumber>1786</StateNumber>
+      <StateNumber>2180</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="317" parent="280" name="istruzione_pkey">
       <ColNames>id_istruzione</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16955</ObjectId>
+      <ObjectId>17111</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1786</StateNumber>
+      <StateNumber>2180</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="318" parent="280" name="istruzione_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16956</ObjectId>
+      <ObjectId>17112</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1786</StateNumber>
-      <UnderlyingIndexId>16955</UnderlyingIndexId>
+      <StateNumber>2180</StateNumber>
+      <UnderlyingIndexId>17111</UnderlyingIndexId>
     </key>
     <column id="319" parent="281" name="id_lezione">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;lezioni_id_lezione_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1789</StateNumber>
-      <SequenceId>16983</SequenceId>
+      <StateNumber>2183</StateNumber>
+      <SequenceId>17139</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="320" parent="281" name="fk_tutor">
       <DasType>integer|0s</DasType>
       <Position>2</Position>
-      <StateNumber>1789</StateNumber>
+      <StateNumber>2183</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="321" parent="281" name="fk_discente">
       <DasType>integer|0s</DasType>
       <Position>3</Position>
-      <StateNumber>1789</StateNumber>
+      <StateNumber>2183</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="322" parent="281" name="fk_materia">
       <DasType>integer|0s</DasType>
       <Position>4</Position>
-      <StateNumber>1789</StateNumber>
+      <StateNumber>2183</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="323" parent="281" name="fk_fascia_oraria">
       <DasType>integer|0s</DasType>
       <Position>5</Position>
-      <StateNumber>1789</StateNumber>
+      <StateNumber>2183</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="324" parent="281" name="lezioni_fk_tutor_fkey">
       <ColNames>fk_tutor</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16990</ObjectId>
-      <StateNumber>1789</StateNumber>
+      <ObjectId>17146</ObjectId>
+      <StateNumber>2183</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16889</RefTableId>
+      <RefTableId>17045</RefTableId>
     </foreign-key>
     <foreign-key id="325" parent="281" name="lezioni_fk_discente_fkey">
       <ColNames>fk_discente</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16995</ObjectId>
-      <StateNumber>1789</StateNumber>
+      <ObjectId>17151</ObjectId>
+      <StateNumber>2183</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16875</RefTableId>
+      <RefTableId>17031</RefTableId>
     </foreign-key>
     <foreign-key id="326" parent="281" name="lezioni_fk_materia_fkey">
       <ColNames>fk_materia</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17000</ObjectId>
-      <StateNumber>1789</StateNumber>
+      <ObjectId>17156</ObjectId>
+      <StateNumber>2183</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16903</RefTableId>
+      <RefTableId>17059</RefTableId>
     </foreign-key>
     <foreign-key id="327" parent="281" name="lezioni_fk_fascia_oraria_fkey">
       <ColNames>fk_fascia_oraria</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17005</ObjectId>
-      <StateNumber>1789</StateNumber>
+      <ObjectId>17161</ObjectId>
+      <StateNumber>2183</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16975</RefTableId>
+      <RefTableId>17131</RefTableId>
     </foreign-key>
     <index id="328" parent="281" name="lezioni_pkey">
       <ColNames>id_lezione</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16988</ObjectId>
+      <ObjectId>17144</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1789</StateNumber>
+      <StateNumber>2183</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="329" parent="281" name="lezioni_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16989</ObjectId>
+      <ObjectId>17145</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1789</StateNumber>
-      <UnderlyingIndexId>16988</UnderlyingIndexId>
+      <StateNumber>2183</StateNumber>
+      <UnderlyingIndexId>17144</UnderlyingIndexId>
     </key>
     <column id="330" parent="282" name="id_lingua">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;lingue_id_lingua_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1784</StateNumber>
-      <SequenceId>16926</SequenceId>
+      <StateNumber>2178</StateNumber>
+      <SequenceId>17082</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="331" parent="282" name="nome_lingua">
       <DasType>varchar(100)|0s</DasType>
       <Position>2</Position>
-      <StateNumber>1784</StateNumber>
+      <StateNumber>2178</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="332" parent="282" name="lingue_pkey">
       <ColNames>id_lingua</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16931</ObjectId>
+      <ObjectId>17087</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1784</StateNumber>
+      <StateNumber>2178</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="333" parent="282" name="lingue_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16932</ObjectId>
+      <ObjectId>17088</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1784</StateNumber>
-      <UnderlyingIndexId>16931</UnderlyingIndexId>
+      <StateNumber>2178</StateNumber>
+      <UnderlyingIndexId>17087</UnderlyingIndexId>
     </key>
     <column id="334" parent="283" name="id_materia">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;materie_id_materia_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1782</StateNumber>
-      <SequenceId>16902</SequenceId>
+      <StateNumber>2176</StateNumber>
+      <SequenceId>17058</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="335" parent="283" name="nome_materia">
       <DasType>varchar(200)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1782</StateNumber>
+      <StateNumber>2176</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="336" parent="283" name="materie_pkey">
       <ColNames>id_materia</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16907</ObjectId>
+      <ObjectId>17063</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1782</StateNumber>
+      <StateNumber>2176</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="337" parent="283" name="materie_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16908</ObjectId>
+      <ObjectId>17064</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1782</StateNumber>
-      <UnderlyingIndexId>16907</UnderlyingIndexId>
+      <StateNumber>2176</StateNumber>
+      <UnderlyingIndexId>17063</UnderlyingIndexId>
     </key>
     <column id="338" parent="284" name="id_ruolo">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;ruoli_id_ruolo_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1777</StateNumber>
-      <SequenceId>16855</SequenceId>
+      <StateNumber>2171</StateNumber>
+      <SequenceId>17011</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="339" parent="284" name="ruolo_desc">
       <DasType>varchar(200)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1777</StateNumber>
+      <StateNumber>2171</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="340" parent="284" name="ruoli_pkey">
       <ColNames>id_ruolo</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16860</ObjectId>
+      <ObjectId>17016</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1777</StateNumber>
+      <StateNumber>2171</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="341" parent="284" name="ruoli_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16861</ObjectId>
+      <ObjectId>17017</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1777</StateNumber>
-      <UnderlyingIndexId>16860</UnderlyingIndexId>
+      <StateNumber>2171</StateNumber>
+      <UnderlyingIndexId>17016</UnderlyingIndexId>
     </key>
     <column id="342" parent="285" name="id_tutor">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;tutor_id_tutor_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1781</StateNumber>
-      <SequenceId>16888</SequenceId>
+      <StateNumber>2175</StateNumber>
+      <SequenceId>17044</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="343" parent="285" name="fk_utente">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1781</StateNumber>
+      <StateNumber>2175</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="344" parent="285" name="nome">
       <DasType>varchar(200)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>1781</StateNumber>
+      <StateNumber>2175</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="345" parent="285" name="cognome">
       <DasType>varchar(200)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>1781</StateNumber>
+      <StateNumber>2175</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="346" parent="285" name="mail">
       <DasType>varchar(200)|0s</DasType>
       <Position>5</Position>
-      <StateNumber>1781</StateNumber>
+      <StateNumber>2175</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="347" parent="285" name="info">
       <DasType>varchar(600)|0s</DasType>
       <Position>6</Position>
-      <StateNumber>1781</StateNumber>
+      <StateNumber>2175</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <foreign-key id="348" parent="285" name="tutor_fk_utente_fkey">
       <ColNames>fk_utente</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16897</ObjectId>
-      <StateNumber>1781</StateNumber>
+      <ObjectId>17053</ObjectId>
+      <StateNumber>2175</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16863</RefTableId>
+      <RefTableId>17019</RefTableId>
     </foreign-key>
     <index id="349" parent="285" name="tutor_pkey">
       <ColNames>id_tutor</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16895</ObjectId>
+      <ObjectId>17051</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1781</StateNumber>
+      <StateNumber>2175</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="350" parent="285" name="tutor_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16896</ObjectId>
+      <ObjectId>17052</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1781</StateNumber>
-      <UnderlyingIndexId>16895</UnderlyingIndexId>
+      <StateNumber>2175</StateNumber>
+      <UnderlyingIndexId>17051</UnderlyingIndexId>
     </key>
     <column id="351" parent="286" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;tutor_materie_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1783</StateNumber>
-      <SequenceId>16909</SequenceId>
+      <StateNumber>2177</StateNumber>
+      <SequenceId>17065</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="352" parent="286" name="fk_tutor">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1783</StateNumber>
+      <StateNumber>2177</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="353" parent="286" name="fk_materia">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>1783</StateNumber>
+      <StateNumber>2177</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="354" parent="286" name="prezzo">
       <DasType>integer|0s</DasType>
       <Position>4</Position>
-      <StateNumber>1783</StateNumber>
+      <StateNumber>2177</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="355" parent="286" name="tutor_materie_fk_tutor_fkey">
       <ColNames>fk_tutor</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16916</ObjectId>
-      <StateNumber>1783</StateNumber>
+      <ObjectId>17072</ObjectId>
+      <StateNumber>2177</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16889</RefTableId>
+      <RefTableId>17045</RefTableId>
     </foreign-key>
     <foreign-key id="356" parent="286" name="tutor_materie_fk_materia_fkey">
       <ColNames>fk_materia</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16921</ObjectId>
-      <StateNumber>1783</StateNumber>
+      <ObjectId>17077</ObjectId>
+      <StateNumber>2177</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16903</RefTableId>
+      <RefTableId>17059</RefTableId>
     </foreign-key>
     <index id="357" parent="286" name="tutor_materie_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16914</ObjectId>
+      <ObjectId>17070</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1783</StateNumber>
+      <StateNumber>2177</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="358" parent="286" name="tutor_materie_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16915</ObjectId>
+      <ObjectId>17071</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1783</StateNumber>
-      <UnderlyingIndexId>16914</UnderlyingIndexId>
+      <StateNumber>2177</StateNumber>
+      <UnderlyingIndexId>17070</UnderlyingIndexId>
     </key>
     <column id="359" parent="287" name="id_utente">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;utenti_id_utente_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1779</StateNumber>
-      <SequenceId>16862</SequenceId>
+      <StateNumber>2173</StateNumber>
+      <SequenceId>17018</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="360" parent="287" name="username">
       <DasType>varchar(200)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1779</StateNumber>
+      <StateNumber>2173</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="361" parent="287" name="password">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
-      <StateNumber>1779</StateNumber>
+      <StateNumber>2173</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="362" parent="287" name="privilegi">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>1779</StateNumber>
+      <StateNumber>2173</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="363" parent="287" name="utenti_privilegi_fkey">
       <ColNames>privilegi</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16869</ObjectId>
-      <StateNumber>1779</StateNumber>
+      <ObjectId>17025</ObjectId>
+      <StateNumber>2173</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16856</RefTableId>
+      <RefTableId>17012</RefTableId>
     </foreign-key>
     <index id="364" parent="287" name="utenti_pkey">
       <ColNames>id_utente</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16867</ObjectId>
+      <ObjectId>17023</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1779</StateNumber>
+      <StateNumber>2173</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="365" parent="287" name="utenti_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16868</ObjectId>
+      <ObjectId>17024</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1779</StateNumber>
-      <UnderlyingIndexId>16867</UnderlyingIndexId>
+      <StateNumber>2173</StateNumber>
+      <UnderlyingIndexId>17023</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

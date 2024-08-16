@@ -69,7 +69,7 @@ function add_materia_tutor(tutor_materia) {
     })
 }
 
-function add_comptenzaLing_tutor (tutor_compLing) {
+function add_competenzaLing_tutor (tutor_compLing) {
     let queryString = 'INSERT INTO COMPETENZE_LINGUISTICHE (FK_LINGUA, FK_TUTOR) VALUES ($1, $2)';
     const values = [tutor_compLing.id_comp, tutor_compLing.id_tutor];
     pool.query(queryString, values, (err, result) => {
@@ -110,17 +110,14 @@ async function change_availability (tutor_change_lesson) {
         console.log("Lezioni cancellate")
 
         for (const item of tutor_change_lesson.lesson) {
-            const values = [item.time, item.day];
-            queryString = 'SELECT ID_FASCIA_ORARIA AS "ID" FROM FASCE_ORARIE WHERE FASCIA_ORARIA = $1 AND GIORNO = $2';
 
-            const result = await pool.query(queryString, values);
+            queryString = 'SELECT ID_FASCIA_ORARIA AS id FROM FASCE_ORARIE WHERE FASCIA_ORARIA = $1 AND GIORNO = $2';
 
-            console.log("TUTOR ID", parseInt(tutor_change_lesson.id_tutor));
-            console.log("FASCIA ORARIA", result.rows[0].id);
+            const result = await pool.query(queryString, [item.time, item.day]);
 
             queryString = 'INSERT INTO LEZIONI (FK_TUTOR, FK_FASCIA_ORARIA) VALUES ($1, $2)';
             await pool.query(queryString, [parseInt(tutor_change_lesson.id_tutor), result.rows[0].id]);
-            console.log("Lezioni agggiornate");
+            console.log("Lezioni aggiornate");
         }
     } catch (err) {
         console.error("Errore durante l'esecuzione della query:", err);
@@ -314,25 +311,26 @@ function check_res(id_tutor, callback) {
             res.push({
                 fascia: row.fascia,
                 giorno: row.giorno,
-            })
-        })
-    })
+            });
+        });
+        callback(res)
+    });
 }
 
 // funzione per controllare se una lezione è stata prenotata
 function check_booked(id_tutor, callback) {
     let queryString = 'SELECT FASCIA_ORARIA as "fascia", GIORNO FROM LEZIONI JOIN FASCE_ORARIE ON ID_FASCIA_ORARIA = FK_FASCIA_ORARIA WHERE FK_TUTOR = $1 AND FK_DISCENTE IS NOT NULL'
-    const fasce_orarie = [];
+    const prenotate = [];
     pool.query(queryString, [id_tutor], (err, result) => {
         if (err) throw err;
         console.log("Executed query: ", result.rows);
         result.rows.forEach(row => {
-            fasce_orarie.push({
+            prenotate.push({
                 fascia: row.fascia,
                 giorno: row.giorno,
             });
         });
-        callback(null, fasce_orarie);
+        callback(prenotate);
     })
 }
 
@@ -513,14 +511,14 @@ app.get('/teachers/:subject', (req, res) => {
     })
 });
 
-app.get('/teachers/:id/lezioni', (req, res) => {
+app.get('/lezioni/:id', (req, res) => {
     let id_tutor = req.params.id;
     check_res(id_tutor, lezioni => {
         res.json(lezioni);
     })
 });
 
-app.get('/teachers/:id/prenotate', (req, res) => {
+app.get('/prenotate/:id', (req, res) => {
     let id_tutor = req.params.id;
     check_booked(id_tutor, lezioni => {
         res.json(lezioni);
@@ -717,7 +715,7 @@ app.post('/add_tutor_materia', (req, res) => {
 app.post('/add_compLing', (req, res) => {
     let tutor_compLing = req.body;
     console.log(tutor_compLing);
-    add_comptenzaLing_tutor(tutor_compLing);
+    add_competenzaLing_tutor(tutor_compLing);
     res.json("Competenza linguistica aggiunta")
 })
 

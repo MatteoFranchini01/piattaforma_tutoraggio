@@ -3,7 +3,7 @@ import React, {useCallback, useState} from "react";
 function SelectDaysTable({ onSelectedDaysChange }) {
     const [selectedDays, setSelectedDays] = useState([]); // Use useState to store the selected days
 
-    const days = ['lun', 'mar', 'mer', 'gio', 'ven', 'sab'];
+    const days = ['lun', 'mar', 'mer', 'gio', 'ven'];
     const times = ['08:00', '09:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
 
     function getCellClass(time, day) {

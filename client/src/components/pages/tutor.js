@@ -18,6 +18,8 @@ export default function Tutor() {
 
     React.useEffect(() => {
         getInfoTutor();
+        getLezioniByTutor()
+        getPrenotazioniByTutor()
     }, []);
 
     function getInfoTutor() {
@@ -48,6 +50,42 @@ export default function Tutor() {
         setSelectedTime(time);
         setSelectedDay(day);
     };
+
+    function getLezioniByTutor() {
+
+        console.log("Tutor id: "+tutor_id)
+        const url = `http://localhost:3000/lezioni/${tutor_id}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const availabilityData = data.map(item => ({
+                    time: item.fascia,
+                    day: item.giorno
+                }));
+                setAvailability(availabilityData);
+                console.log(availabilityData);
+            })
+            .catch(error => {
+                console.error('Error fetching data', error);
+            });
+    }
+
+    function getPrenotazioniByTutor() {
+        const url = `http://localhost:3000/prenotate/${tutor_id}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const bookedUpData = data.map(item => ({
+                    time: item.fascia,
+                    day: item.giorno
+                }));
+                setBookedUp(bookedUpData);
+                console.log(bookedUpData);
+            })
+            .catch(error => {
+                console.error('Error fetching data', error);
+            });
+    }
 
     const hasTutorInfo = tutorInfo.length > 0;
 
