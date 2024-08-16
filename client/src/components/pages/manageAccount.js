@@ -61,8 +61,22 @@ export default function ManageAccount() {
         // controllo validità mail
         if(validateEmail(email)) {
             console.log("Controllo email andato a buon fine")
-            //TODO Matteo: update email nella tabella
-
+            const tutor_email_change = {
+                email: email,
+                id_tutor: id
+            };
+            fetch('http://localhost:3000/change_email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(tutor_email_change),
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
         }
         else{
             console.log("Controllo email non andato a buon fine")
@@ -98,7 +112,22 @@ export default function ManageAccount() {
     const handleBioChange = () =>{
         if(newBio !== ""){
             setNewBioError("")
-            //TODO MATTEO: gestire update della bio
+            const tutor_to_add = {
+                id_tutor: id,
+                bio: newBio
+            };
+            fetch('http://localhost:3000/add_bio', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(tutor_to_add),
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
         }
         else{
             setNewBioError("Se vuoi cambiare la tua bio, scrivi qualcosa!")
@@ -125,9 +154,13 @@ export default function ManageAccount() {
     }
 
     const handleConfirmSelectedDays = () => {
-        //TODO Matteo: i nuovi orari vanno inseriti all'interno del database
-        // prima controllare che selectedDays non sia vuoto
-        console.log("Cambio disponibilità")
+        if (selectedDays.length > 0) {
+            console.log("Cambio disponibilità");
+
+
+        } else {
+            //TODO debby: settare un errore in questo caso
+        }
     }
 
 

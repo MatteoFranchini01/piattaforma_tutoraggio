@@ -12,18 +12,20 @@ export default function Tutor() {
     const [availability, setAvailability] = React.useState([]);
     const [bookedUp, setBookedUp] = React.useState([]);
     const [tutorInfo, setTutorInfo] = React.useState([]);
+    const [bio, setBio] = React.useState('');
 
     const tutorRating = 4;
     const numberOfReviews = 27
 
-    const bio= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+    /*const bio= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
         "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
         "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. " +
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. " +
         "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
+    */
     React.useEffect(() => {
         getInfoTutor();
+        getBio();
     }, []); // Usa [] per eseguire solo al montaggio
 
     function getInfoTutor() {
@@ -46,6 +48,20 @@ export default function Tutor() {
             .catch(error => {
                 console.error('Error fetching data', error);
             });
+    }
+
+    function getBio() {
+        const url = `http://localhost:3000/bio/${tutor_id}`;
+        console.log("Fetching from URL:", url);
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Data fetched:", data.bio);
+                setBio(data.bio);
+            })
+            .catch(error => {
+                console.error('Error fetching data', error);
+            })
     }
 
     const handleBookButtonClicked = (time, day) => {

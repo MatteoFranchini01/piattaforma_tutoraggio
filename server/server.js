@@ -87,6 +87,44 @@ function add_istr_tutor (tutor_istr) {
     })
 }
 
+function add_istr_bio (tutor_bio) {
+    let queryString = 'UPDATE TUTOR SET BIO=$1 WHERE ID_TUTOR=$2';
+    const values = [tutor_bio.bio, tutor_bio.id_tutor];
+    pool.query(queryString, values, (err) => {
+        if (err) throw err;
+    })
+}
+
+function change_email (tutor_email_change) {
+    let queryString = 'UPDATE TUTOR SET MAIL=$1 WHERE ID_TUTOR=$2';
+    const values = [tutor_email_change.mail, tutor_email_change.id_tutor];
+    pool.query(queryString, values, (err) => {
+        if (err) throw err;
+    })
+}
+
+async function change_availability (tutor_change_lesson) {
+    try {
+        let queryString = 'DELETE FROM LEZIONI WHERE FK_TUTOR = $1';
+        await pool.query(queryString, [tutor_change_lesson.id_tutor]);
+        console.log("Lezioni cancellate")
+
+        for (const item of tutor_change_lesson.lesson) {
+            const values = [item.time, item.day];
+            queryString = 'SELECT ID_FASCIA_ORARIA AS "ID" FROM FASCE_ORARIE WHERE FASCIA_ORARIA = $1 AND GIORNO = $2';
+
+            const result = await pool.query(queryString, values);
+
+            queryString = 'INSERT INTO LEZIONI (FK_TUTOR, FK_FASCIA_ORARIA) VALUES ($1, $2)';
+            await pool.query(queryString, [tutor_change_lesson.id, result.id]);
+            console.log("Lezioni agggiornate");
+        }
+    } catch (err) {
+        console.error("Errore durante l'esecuzione della query:", err);
+        throw err;
+    }
+}
+
 // Funzione per aggiungere una materia al db
 function add_materia(materia) {
     let queryString = 'INSERT INTO MATERIE (NOME_MATERIA) VALUES ($1)';
@@ -279,6 +317,16 @@ function tutor_per_materia(nome_materia, callback) {
     })
 }
 
+function get_bio(id_tutor, callback) {
+    let queryString = 'SELECT INFO FROM TUTOR WHERE ID = $1';
+    pool.query(queryString, [id_tutor], (err, result) => {
+        if (err) throw err;
+        console.log("Executed query: ", result.rows);
+        const bio = result.bio;
+        callback(null, bio);
+    })
+}
+
 // funzione per ottenere le informazioni dei tutor
 function info_tutor(id_tutor, nome_materia, callback) {
     let queryString = 'SELECT NOME, COGNOME, NOME_LINGUA, LIVELLO_ISTRUZIONE AS "livello", PREZZO FROM TUTOR AS T JOIN COMPETENZE_LINGUISTICHE AS CL ON T.ID_TUTOR=CL.FK_TUTOR JOIN LINGUE AS L ON CL.FK_LINGUA=L.ID_LINGUA JOIN COMPETENZE_ISTR AS CI ON T.ID_TUTOR=CI.FK_TUTOR JOIN ISTRUZIONE AS I ON I.ID_ISTRUZIONE=CI.FK_ISTRUZIONE JOIN TUTOR_MATERIE AS TM ON T.ID_TUTOR=TM.FK_TUTOR JOIN MATERIE AS M ON TM.FK_MATERIA=M.ID_MATERIA WHERE T.ID_TUTOR=$1 AND M.NOME_MATERIA=$2';
@@ -299,6 +347,7 @@ function info_tutor(id_tutor, nome_materia, callback) {
         callback(null, info)
     })
 }
+
 
 // Funzione per verificare l'autenticazione
 function verify_login(given_username, given_password, callback) {
@@ -406,11 +455,17 @@ function check_id_from_username(user, callback) {
         }
         else
             callback(null, {id: -1});
-
     });
 }
 
 // Rotte
+app.get('/get_bio/:id', (req, res) => {
+    let id_tutor = req.params.id;
+
+    get_bio(id_tutor, (err, result) => {
+        res.json(result);
+    })
+})
 
 app.get('/teachers/:subject/:id', (req, res) => {
     let nome_materia = req.params.subject;
@@ -509,9 +564,38 @@ app.post('/add_materia', (req, res) => {
 app.post('/add_user', (req, res) => {
     let user = req.body;
     console.log(user);
-    add_user(user);
-    res.json("User added to db");
+    try {
+        add_user(user);
+        res.json("User added to db");
+    } catch {
+        console.error("Error adding user");
+        res.status(500).json({error: "Failed to upload user"});
+    }
 });
+
+app.post('/add_bio', (req, res) => {
+    let tutor_bio = req.body;
+    console.log(tutor_bio);
+    try {
+        add_istr_bio(tutor_bio);
+        res.json("Tutor bio update successfully");
+    } catch (err) {
+        console.error("Error updating tutor bio:", err);
+        res.status(500).json({error: "Failed to update tutor bio"});
+    }
+});
+
+app.post('/change_email', (req, res) => {
+    let tutor_change_email = req.body;
+    console.log(tutor_change_email);
+    try {
+        change_email(tutor_change_email);
+        res.json("Tutor email changed");
+    } catch (err) {
+        console.error("Error changing email", err);
+        res.status(500).json({error: "Failed to change email"});
+    }
+})
 
 app.post('/find_user', (req, res) => {
     let user_to_find = req.body;

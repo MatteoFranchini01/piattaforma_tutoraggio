@@ -141,8 +141,26 @@ export default function SettingTeacherProfile() {
     }
 
     // TODO MATTEO PER FINIRE LA PAGINA
-    // Inserire nella tabella tutor la biografia
     // Inserire le disponibilità
+
+    function add_bio(id_tutor, bio) {
+        const tutor_to_add = {
+            id_tutor: id_tutor,
+            bio: bio
+        };
+        fetch('http://localhost:3000/add_bio', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tutor_to_add),
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
 
     function add_tutor_materia(id_tutor, id_materia, prezzo) {
         const tutor_to_add = {id_tutor, id_materia, prezzo};
@@ -220,6 +238,7 @@ export default function SettingTeacherProfile() {
                 add_tutor_materia(id, parseInt(selectedSubjectOne), parseInt(priceOne));
                 add_compLing(id, parseInt(selectedLanguage));
                 add_istr(id, parseInt(selectedCompetence));
+                add_bio(id, description);
 
                 if(selectedSubjectTwo !== "-1" && priceTwo)
                 {
