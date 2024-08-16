@@ -191,9 +191,18 @@ function find_user(user_to_find, callback) {
     });
 }
 
+/*
 function get_booked(user_info, callback) {
-    const values
-}
+    let queryString;
+    if (user_info.privilegio === 2) {
+        console.log("SERVER: tutor");
+        queryString = 'SELECT '
+    } else if (user_info.privilegio === 3) {
+        console.log("SERVER: studente")
+    } else {
+        console.log("SERVER: non trovato")
+    }
+}*/
 
 // Funzione per contare i tutor
 function count_tutor() {
