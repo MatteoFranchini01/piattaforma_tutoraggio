@@ -13,9 +13,11 @@ export default function ManageAccount() {
     const [newBio, setNewBio] = useState("");
     const [newBioError, setNewBioError] = useState("");
     const [id, setId] = useState(-1)
+    const [lezioniPrenotate, setLezioniPrenotate] = useState([]);
 
     useEffect(() => {
         checkAuthStatus();
+        get_availability();
     }, []);
 
     useEffect(() => {
@@ -140,27 +142,14 @@ export default function ManageAccount() {
 
     }
 
+    //TODO controllare questa funzione
     function get_availability() {
-        if (privilegio === 2) { // tutor
-            console.log("Tutor");
-
-        } else if (privilegio === 3) { // studente
-            console.log("Studente");
-        } else {
-            console.log("Privilegio non riconosciuto")
-        }
+        fetch(`http://localhost:3000/booked/${id}/${privilegio}`)
+            .then(response => response.json())
+            .then(data => {
+                setLezioniPrenotate(data);
+            })
     }
-    //TODO Matteo: leggere il db per riempire l'array e visualizzare le prenotazioni relativa allo studente o al tutor
-    // il privilegio lo trovi già nella variabile privilegio
-
-    // da sostituire con lettura db
-    // consiglio: farsi tornare l'id della tabella cosi si sa quale eliminare
-    // da inserire anche i contatti di studente e professore, quindi le mail di entrambi
-    const lezioniPrenotate =  [
-        { studente:'elena', insegnante:'pinco', materia: 'chimica', giorno: 'lun', orario: '09:00-10:00' },
-        { studente:'elena', insegnante:'pallino',  materia: 'matematica', giorno: 'mar', orario: '06:00-17:00' },
-        { studente:'elena', insegnante:'elena',  materia: 'fisica', giorno: 'ven', orario: '09:00-10:00' },
-    ];
 
     let selectedDays = []
     const handleSelectedDaysChange = (selectedCells) =>{
@@ -168,11 +157,32 @@ export default function ManageAccount() {
         console.log(selectedDays);
     }
 
+    //TODO: se questa funzione dà errore nella delete bisogna farne due, una per la modifica
+    // e una per l'aggiunta
+    function add_availability(id_tutor, selectedDays) {
+        const tutor_add_ava = {
+            id_tutor: id_tutor,
+            selectedDays: selectedDays
+        };
+        fetch('http://localhost:3000/change_availability', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tutor_add_ava),
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
+
+    //TODO: questa funzione esiste solo per il tutor o bisogna fare una qualche veririca?
     const handleConfirmSelectedDays = () => {
         if (selectedDays.length > 0) {
+            add_availability(id, selectedDays);
             console.log("Cambio disponibilità");
-
-
         } else {
             //TODO debby: settare un errore in questo caso
         }
