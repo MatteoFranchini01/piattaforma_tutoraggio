@@ -139,8 +139,7 @@ export default function SettingTeacherProfile() {
                 console.error('Error fetching data', error);
             });
     }
-
-    // TODO MATTEO PER FINIRE LA PAGINA
+    
     function add_availability(id_tutor, selectedDays) {
         const tutor_add_ava = {
             id_tutor: id_tutor,
@@ -155,7 +154,9 @@ export default function SettingTeacherProfile() {
             credentials: 'include'
         })
             .then(response => response.json())
-            .then
+            .then(data => {
+                console.log(data);
+            })
     }
 
     function add_bio(id_tutor, bio) {
@@ -254,6 +255,7 @@ export default function SettingTeacherProfile() {
                 add_compLing(id, parseInt(selectedLanguage));
                 add_istr(id, parseInt(selectedCompetence));
                 add_bio(id, description);
+                add_availability(id, selectedDays);
 
                 if(selectedSubjectTwo !== "-1" && priceTwo)
                 {
