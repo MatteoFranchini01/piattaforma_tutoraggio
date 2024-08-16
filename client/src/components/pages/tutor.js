@@ -38,30 +38,18 @@ export default function Tutor() {
                 const temp = data.map(item => ({
                     nome: item.nome,
                     cognome: item.cognome,
+                    bio: item.bio,
                     prezzo: item.prezzo,
                     lingua: item.lingua,
                     livello_istruzione: item.livello,
                 }));
                 console.log("Mapped data:", temp);
                 setTutorInfo(temp);
+                setBio(temp.bio);
             })
             .catch(error => {
                 console.error('Error fetching data', error);
             });
-    }
-
-    function getBio() {
-        const url = `http://localhost:3000/get_bio/${tutor_id}`;
-        console.log("Fetching from URL:", url);
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log("Data fetched:", data.bio);
-                setBio(data.bio);
-            })
-            .catch(error => {
-                console.error('Error fetching data', error);
-            })
     }
 
     const handleBookButtonClicked = (time, day) => {

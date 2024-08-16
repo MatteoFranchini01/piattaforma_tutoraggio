@@ -299,6 +299,8 @@ function check_booked(id_tutor, callback) {
     })
 }
 
+function get_booked(id_tutor, id_studente)
+
 // funzione per selezionare i tutor per una materia specifica
 function tutor_per_materia(nome_materia, callback) {
     let queryString = 'SELECT TUTOR.ID_TUTOR, TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN TUTOR_MATERIE ON TUTOR.ID_TUTOR=TUTOR_MATERIE.FK_TUTOR JOIN MATERIE ON TUTOR_MATERIE.FK_MATERIA=MATERIE.ID_MATERIA WHERE NOME_MATERIA=$1';
@@ -317,19 +319,10 @@ function tutor_per_materia(nome_materia, callback) {
     })
 }
 
-function get_bio(id_tutor, callback) {
-    let queryString = 'SELECT INFO AS "BIO" FROM TUTOR WHERE ID_TUTOR = $1';
-    pool.query(queryString, [id_tutor], (err, result) => {
-        if (err) throw err;
-        console.log("Executed query: ", result.rows);
-        const bio = result.bio;
-        callback(null, bio);
-    })
-}
 
 // funzione per ottenere le informazioni dei tutor
 function info_tutor(id_tutor, nome_materia, callback) {
-    let queryString = 'SELECT NOME, COGNOME, NOME_LINGUA, LIVELLO_ISTRUZIONE AS "livello", PREZZO FROM TUTOR AS T JOIN COMPETENZE_LINGUISTICHE AS CL ON T.ID_TUTOR=CL.FK_TUTOR JOIN LINGUE AS L ON CL.FK_LINGUA=L.ID_LINGUA JOIN COMPETENZE_ISTR AS CI ON T.ID_TUTOR=CI.FK_TUTOR JOIN ISTRUZIONE AS I ON I.ID_ISTRUZIONE=CI.FK_ISTRUZIONE JOIN TUTOR_MATERIE AS TM ON T.ID_TUTOR=TM.FK_TUTOR JOIN MATERIE AS M ON TM.FK_MATERIA=M.ID_MATERIA WHERE T.ID_TUTOR=$1 AND M.NOME_MATERIA=$2';
+    let queryString = 'SELECT NOME, COGNOME, INFO, NOME_LINGUA, LIVELLO_ISTRUZIONE AS "livello", PREZZO FROM TUTOR AS T JOIN COMPETENZE_LINGUISTICHE AS CL ON T.ID_TUTOR=CL.FK_TUTOR JOIN LINGUE AS L ON CL.FK_LINGUA=L.ID_LINGUA JOIN COMPETENZE_ISTR AS CI ON T.ID_TUTOR=CI.FK_TUTOR JOIN ISTRUZIONE AS I ON I.ID_ISTRUZIONE=CI.FK_ISTRUZIONE JOIN TUTOR_MATERIE AS TM ON T.ID_TUTOR=TM.FK_TUTOR JOIN MATERIE AS M ON TM.FK_MATERIA=M.ID_MATERIA WHERE T.ID_TUTOR=$1 AND M.NOME_MATERIA=$2';
     const info = [];
     pool.query(queryString, [id_tutor, nome_materia], (err, result) => {
         if (err) throw err;
@@ -337,6 +330,7 @@ function info_tutor(id_tutor, nome_materia, callback) {
         result.rows.forEach(row => {
             info.push({
                 nome: row.nome,
+                bio: row.info,
                 cognome: row.cognome,
                 prezzo: row.prezzo,
                 //rating: row.rating,
@@ -459,13 +453,6 @@ function check_id_from_username(user, callback) {
 }
 
 // Rotte
-app.get('/get_bio/:id', (req, res) => {
-    let id_tutor = req.params.id;
-
-    get_bio(id_tutor, (err, result) => {
-        res.json(result);
-    })
-})
 
 app.get('/teachers/:subject/:id', (req, res) => {
     let nome_materia = req.params.subject;
