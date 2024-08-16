@@ -1,5 +1,5 @@
 import "../../css/tutor.css";
-import React from "react";
+import React, {useState} from "react";
 import Img from "./1.jpg";
 import Table from "../mainLayout/template/table";
 import { useParams } from "react-router-dom";
@@ -13,6 +13,10 @@ export default function Tutor() {
     const [bookedUp, setBookedUp] = React.useState([]);
     const [tutorInfo, setTutorInfo] = React.useState([]);
 
+    const [username, setUsername] = useState("");
+    const [auth, setAuth] = useState(false);
+    const [privilegio, setPrivilegio] = useState(-1);
+
     const tutorRating = 4;
     const numberOfReviews = 27
 
@@ -20,7 +24,30 @@ export default function Tutor() {
         getInfoTutor();
         getLezioniByTutor()
         getPrenotazioniByTutor()
+        checkAuthStatus()
     }, []);
+
+    const checkAuthStatus = () => {
+        fetch("http://localhost:3000/", {
+            method: "GET",
+            credentials: "include",
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if(data.Status === "Success") {
+                    setAuth(true)
+                    setUsername(data.Username)
+                    setPrivilegio(data.Privilegio);
+                }
+                else {
+                    setAuth(false);
+                    console.log(data.Message)
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
 
     function getInfoTutor() {
         const url = `http://localhost:3000/teachers/${subject_name}/${tutor_id}`;
@@ -46,14 +73,24 @@ export default function Tutor() {
     }
 
     const handleBookButtonClicked = (time, day) => {
-        setIsConfirmPrenotationOverlayOpen(!isConfirmPrenotationOverlayOpen);
         setSelectedTime(time);
         setSelectedDay(day);
+        console.log("Giorno: "+ day + " ora: "+time);
+
+        if(auth && privilegio === 3){ // si puo prenotare solo se si è studenti
+            if(window.confirm("Vuoi prenotare la lezione per "+day+" alle ore "+time+"?")){
+                console.log("Prenotare");
+                //TODO Matteo -> da gestire la prenotazione
+            }
+            else
+                console.log("Non prenotare");
+        }
+
+
+
     };
 
     function getLezioniByTutor() {
-
-        console.log("Tutor id: "+tutor_id)
         const url = `http://localhost:3000/lezioni/${tutor_id}`;
         fetch(url)
             .then(response => response.json())
