@@ -139,7 +139,7 @@ export default function SettingTeacherProfile() {
                 console.error('Error fetching data', error);
             });
     }
-    
+
     function add_availability(id_tutor, selectedDays) {
         const tutor_add_ava = {
             id_tutor: id_tutor,
