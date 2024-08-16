@@ -15,14 +15,12 @@ export default function ManageAccount() {
     const [id, setId] = useState(-1)
 
     useEffect(() => {
-        checkAuthStatus().then(() => {
-            checkUsername();
-        });
+        checkAuthStatus();
     }, []);
 
 
     const checkAuthStatus = () => {
-        return fetch("http://localhost:3000/", {
+        fetch("http://localhost:3000/", {
             method: "GET",
             credentials: "include",
         })
@@ -31,6 +29,7 @@ export default function ManageAccount() {
                 if(data.Status === "Success") {
                     setAuth(true)
                     setUsername(data.Username)
+                    checkUsername();
                     setPrivilegio(data.Privilegio);
                 }
                 else {
