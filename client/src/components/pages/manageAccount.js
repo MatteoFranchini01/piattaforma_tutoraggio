@@ -15,13 +15,14 @@ export default function ManageAccount() {
     const [id, setId] = useState(-1)
 
     useEffect(() => {
-        checkAuthStatus();
-        checkUsername();
+        checkAuthStatus().then(() => {
+            checkUsername();
+        });
     }, []);
 
 
     const checkAuthStatus = () => {
-        fetch("http://localhost:3000/", {
+        return fetch("http://localhost:3000/", {
             method: "GET",
             credentials: "include",
         })

@@ -585,11 +585,11 @@ app.post('/add_bio', (req, res) => {
     }
 });
 
-app.post('/change_availability', (req, res) => {
+app.post('/change_availability', async (req, res) => {
     let tutor_change = req.body;
     console.log(tutor_change);
     try {
-        change_availability(tutor_change);
+        await change_availability(tutor_change);  // Await the async function
         res.json("Tutor availability changed");
     } catch (err) {
         console.error("Error changing availability:", err);
