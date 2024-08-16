@@ -18,6 +18,12 @@ export default function ManageAccount() {
         checkAuthStatus();
     }, []);
 
+    useEffect(() => {
+        if (username) {
+            checkUsername();
+        }
+    }, [username]);
+
 
     const checkAuthStatus = () => {
         fetch("http://localhost:3000/", {
@@ -29,7 +35,6 @@ export default function ManageAccount() {
                 if(data.Status === "Success") {
                     setAuth(true)
                     setUsername(data.Username)
-                    checkUsername();
                     setPrivilegio(data.Privilegio);
                 }
                 else {

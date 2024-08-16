@@ -141,7 +141,22 @@ export default function SettingTeacherProfile() {
     }
 
     // TODO MATTEO PER FINIRE LA PAGINA
-    // Inserire le disponibilità
+    function add_availability(id_tutor, selectedDays) {
+        const tutor_add_ava = {
+            id_tutor: id_tutor,
+            selectedDays: selectedDays
+        };
+        fetch('http://localhost:3000/change_availability', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tutor_add_ava),
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then
+    }
 
     function add_bio(id_tutor, bio) {
         const tutor_to_add = {
