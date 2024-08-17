@@ -14,6 +14,7 @@ export default function ManageAccount() {
     const [newBioError, setNewBioError] = useState("");
     const [id, setId] = useState(-1)
     const [lezioniPrenotate, setLezioniPrenotate] = useState([]);
+    const [infoStudent, setInfoStudent] = useState("");
 
     useEffect(() => {
         checkAuthStatus();
@@ -25,6 +26,7 @@ export default function ManageAccount() {
         }
         else if(username && privilegio === 3) {
             checkUsernameStudent()
+            info_student()
         }
     }, [username]);
 
@@ -152,9 +154,18 @@ export default function ManageAccount() {
             console.log("Non cancellare");
     }
 
-    const handleDelete = (index) => {
+    const handleDelete = (index, id_lezione) => {
         console.log("Cancellare lezione")
-        // TODO Matteo: cancellare lezione dal db
+        const url = `http://localhost:3000/delete/${id_lezione}`
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if(data.Status === "Success"){
+                    alert("Cancellazione effettuata correttamente")
+                    window.location.reload();
+                }
+            })
     };
 
     const handleBioChange = () =>{
@@ -184,12 +195,12 @@ export default function ManageAccount() {
 
     }
 
-    //TODO controllare questa funzione
     function get_availability() {
         const url = `http://localhost:3000/booked/${id}/${privilegio}`
         fetch(url)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 setLezioniPrenotate(data);
             })
     }
@@ -221,8 +232,6 @@ export default function ManageAccount() {
             .catch(error => console.log(error))
     }
 
-    //TODO: questa funzione esiste solo per il tutor o bisogna fare una qualche verifica?
-    // esiste solo per il tutor, lo studente non la visualizza
     const handleConfirmSelectedDays = () => {
         if (selectedDays.length > 0) {
             console.log("Cambio disponibilità");
@@ -233,6 +242,16 @@ export default function ManageAccount() {
         }
     }
 
+    function info_student() {
+        const url = `http://localhost:3000/info_studente/${id}`
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                setInfoStudent(data)
+            })
+    }
+
 
     return(
         <>
@@ -240,8 +259,15 @@ export default function ManageAccount() {
                 auth ?
                     <>
                         <div className="main-container-manageAccount">
+                            <h2 className="title-manage">Benvenuto, {username}!</h2>
+                            <div className="info-generale">
+                                <h3 className="title-manage">Info generali</h3>
+                                <p>Nome: {infoStudent.nome}</p>
+                                <p>Cognome: {infoStudent.cognome}</p>
+                                <p>Username: {infoStudent.username}</p>
+                            </div>
+                            <hr className="centered-hr"/>
                             <div className="booked-lessons">
-                                <h2 className="title-manage">Benvenuto, {username}!</h2>
                                 <h3 className="title-manage">Lezioni prenotate</h3>
                                 <div className="lessons">
                                     <table className="table" style={{textAlign: "center"}}>
@@ -251,8 +277,8 @@ export default function ManageAccount() {
                                             {
                                                 privilegio === 1 ?
                                                     <th scope="col">Insegnante</th>
-                                                :
-                                                <th scope="col">Studente</th>
+                                                    :
+                                                    <th scope="col">Studente</th>
                                             }
                                             <th scope="col">Materia</th>
                                             <th scope="col">Giorno</th>
@@ -265,18 +291,18 @@ export default function ManageAccount() {
                                             <tr key={index}>
                                                 <th scope="row">{index + 1}</th>
                                                 {
-                                                    privilegio === 1 ?
-                                                        <td scope="col">{lezione.insegnante}</td>
+                                                    privilegio === 3 ?
+                                                        <td scope="col">{lezione.tutor}</td>
                                                         :
                                                         <td scope="col">{lezione.studente}</td>
                                                 }
-                                                <td>{lezione.materia}</td>
+                                                <td>{lezione.nome_materia}</td>
                                                 <td>{lezione.giorno}</td>
-                                                <td>{lezione.orario}</td>
+                                                <td>{lezione.fascia_oraria}</td>
                                                 <td>
                                                     <button
                                                         className="btn btn-danger"
-                                                        onClick={() => handleDelete(index)}
+                                                        onClick={() => handleDelete(index, lezione.id_lezione)}
                                                     >
                                                         Cancella
                                                     </button>
@@ -328,7 +354,8 @@ export default function ManageAccount() {
                                     privilegio === 2 ?
                                         <>
                                             <div className="changeBio-div">
-                                                <p className="paragraph-manage-bio">Vuoi modificare la tua biografia?</p>
+                                                <p className="paragraph-manage-bio">Vuoi modificare la tua
+                                                    biografia?</p>
                                                 <textarea
                                                     className="form-control text-area"
                                                     id="exampleFormControlTextarea1"

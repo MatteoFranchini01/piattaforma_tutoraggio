@@ -135,7 +135,6 @@ async function change_availability (tutor_change_lesson) {
 
 async function book_lesson (lesson_info) {
     try {
-        console.log(lesson_info)
         let queryString = 'SELECT ID_FASCIA_ORARIA AS id FROM FASCE_ORARIE WHERE FASCIA_ORARIA = $1 AND GIORNO = $2';
         let result = await pool.query(queryString, [lesson_info.fascia_oraria, lesson_info.giorno]);
 
@@ -228,35 +227,47 @@ function find_user(user_to_find, callback) {
 function get_booked(user_info, callback) {
     let queryString;
 
-    console.log("User info: "+user_info)
+    const id = parseInt(user_info.id)
+    const privilegio = parseInt(user_info.privilegio)
 
-    if (user_info.privilegio === 2) {
+    const risposta = []
+
+    if (privilegio=== 2) {
         console.log("SERVER: tutor");
-        queryString = 'SELECT D.NOME AS NOME, D.COGNOME AS COGNOME, M.NOME_MATERIA AS NOME_MATERIA, FO.FASCIA_ORARIA AS FASCIA_ORARIA, FO.GIORNO AS GIORNO FROM LEZIONI AS L JOIN FASCE_ORARIE AS FO ON L.FK_FASCIA_ORARIA = FO.ID_FASCIA_ORARIA JOIN DISCENTE AS D ON L.FK_DISCENTE = D.ID_DISCENTE WHERE L.FK_TUTOR = $1';
-        pool.query(queryString, [user_info.id], (err, result) => {
+        queryString = 'SELECT  ID_LEZIONE, NOME, COGNOME, FASCIA_ORARIA, NOME_MATERIA, GIORNO FROM DISCENTE JOIN LEZIONI ON DISCENTE.id_discente = LEZIONI.fk_discente JOIN MATERIE ON LEZIONI.fk_materia = MATERIE.id_materia JOIN FASCE_ORARIE ON LEZIONI.fk_fascia_oraria = FASCE_ORARIE.id_fascia_oraria WHERE LEZIONI.FK_TUTOR = $1'
+        pool.query(queryString, [id], (err, result) => {
             if (err) throw err;
-            const details = {
-                tutor: '',
-                studente: result.nome + ' ' + result.cognome,
-                nome_materia: result.nome_materia,
-                fascia_oraria: result.fascia_oraria,
-                giorno: result.giorno
-            }
-            callback(details);
+
+            result.rows.forEach(row => {
+                risposta.push({
+                    id_lezione: row.id_lezione,
+                    tutor: '',
+                    studente: row.nome + ' ' + row.cognome,
+                    nome_materia: row.nome_materia,
+                    fascia_oraria: row.fascia_oraria,
+                    giorno: row.giorno
+                });
+            });
+            callback(null, risposta);
+
         });
-    } else if (user_info.privilegio === 3) {
+    } else if (privilegio === 3) {
         console.log("SERVER: studente")
-        queryString = 'SELECT T.NOME AS NOME, T.COGNOME AS COGNOME, M.NOME_MATERIA AS NOME_MATERIA, FO.FASCIA_ORARIA AS FASCIA_ORARIA, FO.GIORNO AS GIORNO FROM LEZIONI AS L JOIN FASCE_ORARIE AS FO ON L.FK_FASCIA_ORARIA = FO.ID_FASCIA_ORARIA JOIN TUTOR AS T ON L.FK_TUTOR = T.ID_TUTOR WHERE L.FK_DISCENTE = $1';
-        pool.query(queryString, [user_info.id], (err, result) => {
+        queryString = 'SELECT ID_LEZIONE, NOME, COGNOME, FASCIA_ORARIA, NOME_MATERIA, GIORNO FROM TUTOR JOIN LEZIONI ON TUTOR.id_tutor = LEZIONI.fk_tutor JOIN MATERIE ON LEZIONI.fk_materia = MATERIE.id_materia JOIN FASCE_ORARIE ON LEZIONI.fk_fascia_oraria = FASCE_ORARIE.id_fascia_oraria WHERE LEZIONI.FK_DISCENTE = $1'
+        pool.query(queryString, [id], (err, result) => {
             if (err) throw err;
-            const details = {
-                tutor: result.nome + ' ' + result.cognome,
-                studente: ' ',
-                nome_materia: result.nome_materia,
-                fascia_oraria: result.fascia_oraria,
-                giorno: result.giorno
-            }
-            callback(details);
+
+            result.rows.forEach(row => {
+                risposta.push({
+                    id_lezione: row.id_lezione,
+                    tutor: row.nome + ' ' + row.cognome,
+                    studente: '',
+                    nome_materia: row.nome_materia,
+                    fascia_oraria: row.fascia_oraria,
+                    giorno: row.giorno
+                });
+            });
+            callback(null, risposta);
         })
     }
 }
@@ -538,13 +549,26 @@ function check_id_from_username_studente(user, callback) {
     });
 }
 
+// Funzione per cancellare una lezione
+function delete_lessons(id_lezione, callback){
+    let queryString = 'UPDATE LEZIONI SET FK_DISCENTE=null, FK_MATERIA=null WHERE ID_LEZIONE=$1'
+    pool.query(queryString, [id_lezione], (err, result) => {
+       if (err) throw err;
+       callback(null, {Status: "Success"});
+    });
+}
+
+// Funzione per i dettagli dello studente
+function info_student(id_studente, callback){
+    let queryString = 'SELECT NOME, COGNOME, MAIL, USERNAME FROM DISCENTE JOIN UTENTI ON id_utente = fk_utente WHERE ID_DISCENTE=$1'
+    pool.query(queryString, [id_studente], (err, result) => {
+        if (err) throw err;
+        callback(err, result.rows[0])
+    })
+}
+
 // Rotte
 app.get('/booked/:id/:privilegio', (req, res) => {
-    let id = req.params.id;
-    let privilegio = req.params.privilegio;
-
-    console.log(req.params)
-
     get_booked(req.params, (err, result) => {
         res.json(result);
     })
@@ -815,6 +839,18 @@ app.get('/languages', (req, res) => {
     })
 });
 
+app.get('/delete/:id_lezione', (req, res) =>{
+    delete_lessons(req.params.id_lezione, (err, result) => {
+        res.json(result)
+    })
+})
+
+app.get('/info_studente/:id_studente', (req, res) =>{
+    const id_studente = req.params.id_studente;
+    info_student(id_studente, (err, result) => {
+        res.json(result)
+    })
+})
 
 // Avvio del server
 app.listen(port, () => {
