@@ -17,7 +17,6 @@ export default function ManageAccount() {
 
     useEffect(() => {
         checkAuthStatus();
-        get_availability();
     }, []);
 
     useEffect(() => {
@@ -28,6 +27,10 @@ export default function ManageAccount() {
             checkUsernameStudent()
         }
     }, [username]);
+
+    useEffect(() => {
+        get_availability()
+    }, [id]);
 
     const checkAuthStatus = () => {
         fetch("http://localhost:3000/", {
@@ -183,7 +186,8 @@ export default function ManageAccount() {
 
     //TODO controllare questa funzione
     function get_availability() {
-        fetch(`http://localhost:3000/booked/${id}/${privilegio}`)
+        const url = `http://localhost:3000/booked/${id}/${privilegio}`
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 setLezioniPrenotate(data);
@@ -196,8 +200,6 @@ export default function ManageAccount() {
         console.log(selectedDays);
     }
 
-    //TODO: se questa funzione dà errore nella delete bisogna farne due, una per la modifica
-    // e una per l'aggiunta
     function add_availability(id_tutor, selectedDays) {
         const tutor_add_ava = {
             id_tutor: id_tutor,
@@ -219,7 +221,7 @@ export default function ManageAccount() {
             .catch(error => console.log(error))
     }
 
-    //TODO: questa funzione esiste solo per il tutor o bisogna fare una qualche veririca?
+    //TODO: questa funzione esiste solo per il tutor o bisogna fare una qualche verifica?
     // esiste solo per il tutor, lo studente non la visualizza
     const handleConfirmSelectedDays = () => {
         if (selectedDays.length > 0) {

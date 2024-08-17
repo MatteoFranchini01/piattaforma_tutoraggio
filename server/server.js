@@ -227,6 +227,9 @@ function find_user(user_to_find, callback) {
 
 function get_booked(user_info, callback) {
     let queryString;
+
+    console.log("User info: "+user_info)
+
     if (user_info.privilegio === 2) {
         console.log("SERVER: tutor");
         queryString = 'SELECT D.NOME AS NOME, D.COGNOME AS COGNOME, M.NOME_MATERIA AS NOME_MATERIA, FO.FASCIA_ORARIA AS FASCIA_ORARIA, FO.GIORNO AS GIORNO FROM LEZIONI AS L JOIN FASCE_ORARIE AS FO ON L.FK_FASCIA_ORARIA = FO.ID_FASCIA_ORARIA JOIN DISCENTE AS D ON L.FK_DISCENTE = D.ID_DISCENTE WHERE L.FK_TUTOR = $1';
@@ -540,7 +543,9 @@ app.get('/booked/:id/:privilegio', (req, res) => {
     let id = req.params.id;
     let privilegio = req.params.privilegio;
 
-    get_booked(id, privilegio, (err, result) => {
+    console.log(req.params)
+
+    get_booked(req.params, (err, result) => {
         res.json(result);
     })
 });
