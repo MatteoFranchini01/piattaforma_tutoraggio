@@ -5,6 +5,17 @@ import img from "../../images/teacher_logo.png"
 import SelectDaysTable from "../mainLayout/template/SelectDaysTable";
 import {useNavigate, useParams} from "react-router-dom";
 
+import imgteach1 from "../../images/Avatars/1.jpg"
+import imgteach2 from "../../images/Avatars/2.jpg"
+import imgteach3 from "../../images/Avatars/3.jpg"
+import imgteach4 from "../../images/Avatars/4.jpg"
+//import imgteach5 from "../../images/Avatars/5.jpg"
+import imgteach6 from "../../images/Avatars/6.jpg"
+import imgteach7 from "../../images/Avatars/7.jpg"
+import imgteach8 from "../../images/Avatars/8.jpg"
+import imgteach9 from "../../images/Avatars/9.jpg"
+import imgteach10 from "../../images/Avatars/10.jpg"
+
 
 export default function SettingTeacherProfile() {
     const {username} = useParams();
@@ -37,6 +48,12 @@ export default function SettingTeacherProfile() {
     // id della terza materia e rispettivo prezzo
     const [selectedSubjectThree, setSelectedSubjectThree] = useState("-1");
     const [priceThree, setPriceThree] = useState("");
+
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const handleRadioChange = (event) => {
+        setSelectedImage(event.target.value);
+    };
 
     useEffect(() => {
         getSubjects()
@@ -138,7 +155,7 @@ export default function SettingTeacherProfile() {
     function add_availability(id_tutor, selectedDays) {
         const tutor_add_ava = {
             id_tutor: id_tutor,
-            lesson: selectedDays
+            selectedDays: selectedDays
         };
         fetch('http://localhost:3000/change_availability', {
             method: 'POST',
@@ -152,6 +169,7 @@ export default function SettingTeacherProfile() {
             .then(data => {
                 console.log(data);
             })
+            .catch(error => console.log(error))
     }
 
     function add_bio(id_tutor, bio) {
@@ -221,16 +239,28 @@ export default function SettingTeacherProfile() {
             })
     }
 
+    function add_path_photo(id){
+        if(selectedImage){
+            const tutor_info = {
+                id_tutor: id,
+                photo: selectedImage
+            };
+            fetch('http://localhost:3000/add_photo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(tutor_info),
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+        }
+    }
 
     const handleSubmit = () =>{
-        // campi necessari tutti validi
-
-        console.log("username: "+validUsername);
-        console.log("competenza: "+selectedCompetence);
-        console.log("lingua: "+selectedLanguage);
-        console.log("materia 1: "+selectedSubjectOne);
-        console.log("prezzo materia 1: "+priceOne);
-
 
         if(validUsername && selectedCompetence !== "-1" && selectedLanguage !== "-1" && selectedSubjectOne !== "-1" && priceOne){
 
@@ -240,10 +270,6 @@ export default function SettingTeacherProfile() {
             else{
                 // qui sono validi username, livello di istruzione, prima materia e lingua
                 setDescriptionError("")
-                console.log("Username: " + username + " - id: "+id);
-                console.log("Livello di istruzione: " + selectedCompetence);
-                console.log("Lingua selezionata: " + selectedLanguage);
-                console.log("Prima materia: " + selectedSubjectOne + ", prezzo: " + priceOne);
 
                 // qui posso andare a inserire tutti i parametri precedenti
                 add_tutor_materia(id, parseInt(selectedSubjectOne), parseInt(priceOne));
@@ -251,6 +277,8 @@ export default function SettingTeacherProfile() {
                 add_istr(id, parseInt(selectedCompetence));
                 add_bio(id, description);
                 add_availability(id, selectedDays);
+
+                add_path_photo(id)
 
                 if(selectedSubjectTwo !== "-1" && priceTwo)
                 {
@@ -426,12 +454,138 @@ export default function SettingTeacherProfile() {
                                             </option>
                                         ))}
                                     </select>
-                                    <p className="paragraph-label">Inserisci una tua foto, la imposteremo come immagine
+
+                                    <p className="paragraph-label">Scegli una foto, la imposteremo come immagine
                                         del
                                         profilo!</p>
-                                    <div className="input-group select-image">
-                                        <input type="file" className="form-control" id="inputGroupFile04"
-                                               aria-describedby="inputGroupFileAddon04" aria-label="Upload"/>
+
+                                    <div className="input-group select-image" style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center'
+                                    }}>
+                                        <div className="img-select-img" style={{display: 'flex', alignItems: 'center'}}>
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="flexRadioDefault"
+                                                id="flexRadioDefault1"
+                                                value="../../images/Avatars/foto1.jpg"
+                                                onChange={handleRadioChange}
+                                            />
+                                            <img src={imgteach1} className="img-thumbnail" alt="foto 1"
+                                                 style={{height: '100px', width: '100px', marginLeft: '10px'}}/>
+                                        </div>
+                                        <div className="img-select-img" style={{display: 'flex', alignItems: 'center'}}>
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="flexRadioDefault"
+                                                id="flexRadioDefault1"
+                                                value="../../images/Avatars/2.jpg"
+                                                onChange={handleRadioChange}
+                                            />
+                                            <img src={imgteach2} className="img-thumbnail" alt="foto 1"
+                                                 style={{height: '100px', width: '100px', marginLeft: '10px'}}/>
+                                        </div>
+                                        <div className="img-select-img" style={{display: 'flex', alignItems: 'center'}}>
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="flexRadioDefault"
+                                                id="flexRadioDefault1"
+                                                value="../../images/Avatars/3.jpg"
+                                                onChange={handleRadioChange}
+                                            />
+                                            <img src={imgteach3} className="img-thumbnail" alt="foto 1"
+                                                 style={{height: '100px', width: '100px', marginLeft: '10px'}}/>
+                                        </div>
+                                    </div>
+
+                                    <div className="input-group select-image" style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center'
+                                    }}>
+                                        <div className="img-select-img" style={{display: 'flex', alignItems: 'center'}}>
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="flexRadioDefault"
+                                                id="flexRadioDefault1"
+                                                value="../../images/Avatars/4.jpg"
+                                                onChange={handleRadioChange}
+                                            />
+                                            <img src={imgteach4} className="img-thumbnail" alt="foto 1"
+                                                 style={{height: '100px', width: '100px', marginLeft: '10px'}}/>
+                                        </div>
+                                        <div className="img-select-img" style={{display: 'flex', alignItems: 'center'}}>
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="flexRadioDefault"
+                                                id="flexRadioDefault1"
+                                                value="../../images/Avatars/6.jpg"
+                                                onChange={handleRadioChange}
+                                            />
+                                            <img src={imgteach6} className="img-thumbnail" alt="foto 1"
+                                                 style={{height: '100px', width: '100px', marginLeft: '10px'}}/>
+                                        </div>
+                                        <div className="img-select-img" style={{display: 'flex', alignItems: 'center'}}>
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="flexRadioDefault"
+                                                id="flexRadioDefault1"
+                                                value="../../images/Avatars/7.jpg"
+                                                onChange={handleRadioChange}
+                                            />
+                                            <img src={imgteach7} className="img-thumbnail" alt="foto 1"
+                                                 style={{height: '100px', width: '100px', marginLeft: '10px'}}/>
+                                        </div>
+                                    </div>
+
+                                    <div className="input-group select-image" style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center'
+                                    }}>
+                                        <div className="img-select-img" style={{display: 'flex', alignItems: 'center'}}>
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="flexRadioDefault"
+                                                id="flexRadioDefault1"
+                                                value="../../images/Avatars/8.jpg"
+                                                onChange={handleRadioChange}
+                                            />
+                                            <img src={imgteach8} className="img-thumbnail" alt="foto 1"
+                                                 style={{height: '100px', width: '100px', marginLeft: '10px'}}/>
+                                        </div>
+                                        <div className="img-select-img" style={{display: 'flex', alignItems: 'center'}}>
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="flexRadioDefault"
+                                                id="flexRadioDefault1"
+                                                value="../../images/Avatars/9.jpg"
+                                                onChange={handleRadioChange}
+                                            />
+                                            <img src={imgteach9} className="img-thumbnail" alt="foto 1"
+                                                 style={{height: '100px', width: '100px', marginLeft: '10px'}}/>
+                                        </div>
+                                        <div className="img-select-img" style={{display: 'flex', alignItems: 'center'}}>
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="flexRadioDefault"
+                                                id="flexRadioDefault1"
+                                                value="../../images/Avatars/10.jpg"
+                                                onChange={handleRadioChange}
+                                            />
+                                            <img src={imgteach10} className="img-thumbnail" alt="foto 1"
+                                                 style={{height: '100px', width: '100px', marginLeft: '10px'}}/>
+                                        </div>
                                     </div>
 
 
@@ -475,6 +629,5 @@ export default function SettingTeacherProfile() {
                 </div>
             </div>
         </>
-    )
-        ;
+    );
 }

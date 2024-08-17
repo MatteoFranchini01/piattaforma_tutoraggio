@@ -1,8 +1,18 @@
 import "../../css/tutor.css";
-import React, {useState} from "react";
-import Img from "./1.jpg";
+import React, {useEffect, useState} from "react";
 import Table from "../mainLayout/template/table";
 import { useParams } from "react-router-dom";
+
+import imgteach1 from "../../images/Avatars/1.jpg"
+import imgteach2 from "../../images/Avatars/2.jpg"
+import imgteach3 from "../../images/Avatars/3.jpg"
+import imgteach4 from "../../images/Avatars/4.jpg"
+//import imgteach5 from "../../images/Avatars/5.jpg"
+import imgteach6 from "../../images/Avatars/6.jpg"
+import imgteach7 from "../../images/Avatars/7.jpg"
+import imgteach8 from "../../images/Avatars/8.jpg"
+import imgteach9 from "../../images/Avatars/9.jpg"
+import imgteach10 from "../../images/Avatars/10.jpg"
 
 export default function Tutor() {
     const { tutor_id, subject_name } = useParams();
@@ -25,6 +35,11 @@ export default function Tutor() {
         getPrenotazioniByTutor()
         checkAuthStatus()
     }, []);
+
+    useEffect(() => {
+
+
+    }, [tutorInfo]);
 
     const checkAuthStatus = () => {
         fetch("http://localhost:3000/", {
@@ -50,7 +65,6 @@ export default function Tutor() {
 
     function getInfoTutor() {
         const url = `http://localhost:3000/teachers/${subject_name}/${tutor_id}`;
-        console.log("Fetching from URL:", url);
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -62,8 +76,10 @@ export default function Tutor() {
                     prezzo: item.prezzo,
                     lingua: item.lingua,
                     livello_istruzione: item.livello,
+                    foto: item.foto,
                 }));
                 console.log("Mapped data:", temp);
+
                 setTutorInfo(temp);
             })
             .catch(error => {
@@ -151,7 +167,17 @@ export default function Tutor() {
                     <div className="tutor-details">
                         {hasTutorInfo ? (
                             <>
-                                <img src={Img} alt="Tutor" className="tutor-img"/>
+                                <img src={
+                                    tutorInfo[0].foto === "../../images/Avatars/1.jpg" ? imgteach1 :
+                                        tutorInfo[0].foto === "../../images/Avatars/2.jpg" ? imgteach2 :
+                                            tutorInfo[0].foto === "../../images/Avatars/3.jpg" ? imgteach3 :
+                                                tutorInfo[0].foto === "../../images/Avatars/4.jpg" ? imgteach4 :
+                                                        tutorInfo[0].foto === "../../images/Avatars/6.jpg" ? imgteach6 :
+                                                            tutorInfo[0].foto === "../../images/Avatars/7.jpg" ? imgteach7 :
+                                                                tutorInfo[0].foto === "../../images/Avatars/8.jpg" ? imgteach8 :
+                                                                    tutorInfo[0].foto === "../../images/Avatars/9.jpg" ? imgteach9 :
+                                                                        tutorInfo[0].foto === "../../images/Avatars/10.jpg" ? imgteach10 : null
+                                } alt="Tutor" className="tutor-img"/>
                                 <h5 className="tutor-name">{tutorInfo[0].nome}</h5>
                                 <p className="tutor-surname">{tutorInfo[0].cognome}</p>
                                 <div className="justify-content-between align-items-center tutor-rating">

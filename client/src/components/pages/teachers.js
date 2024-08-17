@@ -22,6 +22,7 @@ export default function Teachers() {
                     tutor_id: item.id,
                     tutor_nome: item.nome,
                     tutor_cognome: item.cognome,
+                    img: item.img,
                 }));
                 setArrayTutor(temp);
             })
@@ -45,7 +46,7 @@ export default function Teachers() {
                 <div className="vr vr-teach"></div>
                 <div className="teach-box row teachers-information">
                     {arrayTutor.map((teacher, index) => (
-                        <TeachersCard key={index} id={teacher.tutor_id} teacherName={teacher.tutor_nome + " " + teacher.tutor_cognome} subjectName={subject_name} rating={0} />
+                        <TeachersCard key={index} id={teacher.tutor_id} teacherName={teacher.tutor_nome + " " + teacher.tutor_cognome} subjectName={subject_name} rating={0} foto={teacher.img}/>
                     ))}
                 </div>
             </div>

@@ -96,6 +96,15 @@ function add_istr_bio (tutor_bio) {
     })
 }
 
+// Funzione per aggiornare la immagine di un tutor
+function add_photo (tutor_info) {
+    let queryString = 'UPDATE TUTOR SET PATH_IMG=$1 WHERE ID_TUTOR=$2';
+    const values = [tutor_info.photo, tutor_info.id_tutor];
+    pool.query(queryString, values, (err) => {
+        if (err) throw err;
+    })
+}
+
 // Funzione per cambiare la mail del tutor
 function change_email (tutor_email_change) {
     let queryString = 'UPDATE TUTOR SET MAIL=$1 WHERE ID_TUTOR=$2';
@@ -387,7 +396,7 @@ function check_booked(id_tutor, callback) {
 
 // funzione per selezionare i tutor per una materia specifica
 function tutor_per_materia(nome_materia, callback) {
-    let queryString = 'SELECT TUTOR.ID_TUTOR, TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN TUTOR_MATERIE ON TUTOR.ID_TUTOR=TUTOR_MATERIE.FK_TUTOR JOIN MATERIE ON TUTOR_MATERIE.FK_MATERIA=MATERIE.ID_MATERIA WHERE NOME_MATERIA=$1';
+    let queryString = 'SELECT TUTOR.PATH_IMG AS img, TUTOR.ID_TUTOR, TUTOR.NOME, TUTOR.COGNOME FROM TUTOR JOIN TUTOR_MATERIE ON TUTOR.ID_TUTOR=TUTOR_MATERIE.FK_TUTOR JOIN MATERIE ON TUTOR_MATERIE.FK_MATERIA=MATERIE.ID_MATERIA WHERE NOME_MATERIA=$1';
     const tutor = [];
     pool.query(queryString, [nome_materia], (err, result) => {
         if (err) throw err;
@@ -397,6 +406,7 @@ function tutor_per_materia(nome_materia, callback) {
                 id: row.id_tutor,
                 nome: row.nome,
                 cognome: row.cognome,
+                img:row.img,
             });
         });
         callback(null, tutor);
@@ -405,7 +415,7 @@ function tutor_per_materia(nome_materia, callback) {
 
 // funzione per ottenere le informazioni dei tutor
 function info_tutor(id_tutor, nome_materia, callback) {
-    let queryString = 'SELECT NOME, COGNOME, INFO, NOME_LINGUA, LIVELLO_ISTRUZIONE AS "livello", PREZZO FROM TUTOR AS T JOIN COMPETENZE_LINGUISTICHE AS CL ON T.ID_TUTOR=CL.FK_TUTOR JOIN LINGUE AS L ON CL.FK_LINGUA=L.ID_LINGUA JOIN COMPETENZE_ISTR AS CI ON T.ID_TUTOR=CI.FK_TUTOR JOIN ISTRUZIONE AS I ON I.ID_ISTRUZIONE=CI.FK_ISTRUZIONE JOIN TUTOR_MATERIE AS TM ON T.ID_TUTOR=TM.FK_TUTOR JOIN MATERIE AS M ON TM.FK_MATERIA=M.ID_MATERIA WHERE T.ID_TUTOR=$1 AND M.NOME_MATERIA=$2';
+    let queryString = 'SELECT NOME, COGNOME, INFO, PATH_IMG AS img, NOME_LINGUA, LIVELLO_ISTRUZIONE AS "livello", PREZZO FROM TUTOR AS T JOIN COMPETENZE_LINGUISTICHE AS CL ON T.ID_TUTOR=CL.FK_TUTOR JOIN LINGUE AS L ON CL.FK_LINGUA=L.ID_LINGUA JOIN COMPETENZE_ISTR AS CI ON T.ID_TUTOR=CI.FK_TUTOR JOIN ISTRUZIONE AS I ON I.ID_ISTRUZIONE=CI.FK_ISTRUZIONE JOIN TUTOR_MATERIE AS TM ON T.ID_TUTOR=TM.FK_TUTOR JOIN MATERIE AS M ON TM.FK_MATERIA=M.ID_MATERIA WHERE T.ID_TUTOR=$1 AND M.NOME_MATERIA=$2';
     const info = [];
     pool.query(queryString, [id_tutor, nome_materia], (err, result) => {
         if (err) throw err;
@@ -419,6 +429,7 @@ function info_tutor(id_tutor, nome_materia, callback) {
                 //rating: row.rating,
                 lingua: row.nome_lingua,
                 livello: row.livello,
+                foto: row.img,
             })
         });
         callback(null, info)
@@ -781,6 +792,11 @@ app.post('/add_bio', (req, res) => {
         console.error("Error updating tutor bio:", err);
         res.status(500).json({error: "Failed to update tutor bio"});
     }
+});
+
+app.post('/add_photo', (req, res) => {
+    let tutor_info = req.body;
+    add_photo(req.body)
 });
 
 app.post('/book_lesson', async (req, res) => {
