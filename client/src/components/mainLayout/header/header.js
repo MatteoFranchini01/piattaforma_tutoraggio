@@ -5,7 +5,6 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 
 import Login from "../../pages/login";
 import Subscribe from "../../pages/subscribe";
-import axios from "axios";
 
 function Header (){
     const [isLoginOverlayOpen, setIsLoginOverlayOpen] = React.useState(false);

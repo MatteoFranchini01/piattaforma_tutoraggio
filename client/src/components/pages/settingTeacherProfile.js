@@ -459,7 +459,6 @@ export default function SettingTeacherProfile() {
                                     <img className="sub-img" src={img} alt="subscribe img"/>
                                 </div>
 
-                                {/*TODO Matteo: una volta premuto questo bottone, è possibile memorizzare il tutor */}
                                 <div className="divWithBtn">
                                     <button type="button" className="btn btn-primary" onClick={handleSubmit}>Iscriviti
                                     </button>

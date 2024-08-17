@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import testImg from "./1.jpg"
 import {Link} from "react-router-dom";
 
-//TODO devo passare informazioni sull'insegnante
 export default class TeachersCard extends Component {
     constructor(props) {
         super(props);

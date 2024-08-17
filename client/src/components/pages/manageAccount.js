@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import "../../css/manageAccount.css"
 import React from "react";
 import SelectDaysTable from "../mainLayout/template/SelectDaysTable";
+import {useNavigate} from "react-router-dom";
 
 export default function ManageAccount() {
     const [username, setUsername] = useState("");
@@ -14,6 +15,8 @@ export default function ManageAccount() {
     const [id, setId] = useState(-1)
     const [lezioniPrenotate, setLezioniPrenotate] = useState([]);
     const [infoUser, setInfoUser] = useState("");
+    const navigate = useNavigate()
+
 
     useEffect(() => {
         checkAuthStatus();
@@ -149,10 +152,22 @@ export default function ManageAccount() {
     }
 
     const handleDeleteAccount = () =>{
-        //TODO Matteo; prima va tolta dalla tabella tutor (o discente) e poi da utente -> l'ordine inverso non va
         if(window.confirm("Sei sicuro di voler cancellare l'account?")){
-            console.log("Cancellare");
-            //TODO gestire cancellazione
+            const url = `http://localhost:3000/deleteaccount/${username}/${privilegio}`
+            console.log(url)
+            fetch(url,{
+                method: "GET",
+                credentials: "include",
+            })
+                .then(response => response.json())
+                .then(data =>{
+                    if(data.Status === "Success"){
+                        alert("Cancellazione dell'account effettuata correttamente");
+                        navigate("/");
+                        window.location.reload();
+                    }
+                })
+
         }
         else
             console.log("Non cancellare");

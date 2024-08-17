@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 
 const { Pool } = require('pg');
 const cors = require('cors');
+const {callback} = require("pg/lib/native/query");
 
 // creazione istanza applicazione Express
 const app = express();
@@ -56,6 +57,7 @@ function create_cards(callback) {
     });
 }
 
+// Funzione per associare una materia a un tutor
 function add_materia_tutor(tutor_materia) {
     let queryString = 'INSERT INTO TUTOR_MATERIE (FK_TUTOR, FK_MATERIA, PREZZO) VALUES ($1, $2, $3)';
     const values = [tutor_materia.id_tutor, tutor_materia.id_materia, tutor_materia.prezzo];
@@ -65,6 +67,7 @@ function add_materia_tutor(tutor_materia) {
     })
 }
 
+// Funzione per associare una competenza linguistica a un tutor
 function add_competenzaLing_tutor (tutor_compLing) {
     let queryString = 'INSERT INTO COMPETENZE_LINGUISTICHE (FK_LINGUA, FK_TUTOR) VALUES ($1, $2)';
     const values = [tutor_compLing.id_comp, tutor_compLing.id_tutor];
@@ -74,6 +77,7 @@ function add_competenzaLing_tutor (tutor_compLing) {
     })
 }
 
+// Funzione per associare un livello di istruzione a un tutor
 function add_istr_tutor (tutor_istr) {
     let queryString = 'INSERT INTO COMPETENZE_ISTR (FK_TUTOR, FK_ISTRUZIONE) VALUES ($1, $2)';
     const values = [tutor_istr.id_tutor, tutor_istr.id_istr];
@@ -83,6 +87,7 @@ function add_istr_tutor (tutor_istr) {
     })
 }
 
+// Funzione per aggiornare la bio di un tutor
 function add_istr_bio (tutor_bio) {
     let queryString = 'UPDATE TUTOR SET INFO=$1 WHERE ID_TUTOR=$2';
     const values = [tutor_bio.bio, tutor_bio.id_tutor];
@@ -100,6 +105,7 @@ function change_email (tutor_email_change) {
     })
 }
 
+// Funzione per cambiare la mail dello studente
 function change_email_studente (studente_email_change) {
     let queryString = 'UPDATE DISCENTE SET MAIL=$1 WHERE ID_DISCENTE=$2';
     const values = [studente_email_change.email, studente_email_change.id_discente];
@@ -108,6 +114,7 @@ function change_email_studente (studente_email_change) {
     })
 }
 
+// Funzione per cambiare la disponibilità dell'insegnante
 async function change_availability (tutor_change_lesson) {
     try {
         let queryString = 'DELETE FROM LEZIONI WHERE FK_TUTOR = $1';
@@ -129,6 +136,7 @@ async function change_availability (tutor_change_lesson) {
         }
 }
 
+// Funzione per prenotare una lezione
 async function book_lesson (lesson_info) {
     try {
         let queryString = 'SELECT ID_FASCIA_ORARIA AS id FROM FASCE_ORARIE WHERE FASCIA_ORARIA = $1 AND GIORNO = $2';
@@ -563,12 +571,91 @@ function info_student(id_studente, callback){
     })
 }
 
+// Funzione per ottenere i dettagli di un tutor
 function info_tutor_general(id_studente, callback){
     let queryString = 'SELECT NOME, COGNOME, MAIL, USERNAME FROM TUTOR JOIN UTENTI ON ID_UTENTE = FK_UTENTE WHERE ID_TUTOR=$1'
     pool.query(queryString, [id_studente], (err, result) => {
         if (err) throw err;
         callback(null, result.rows[0])
     })
+}
+
+// Funzione per eliminare un utente e ciò a lui correlato
+async function delete_definitely(username, privilegio, callback){
+    if(privilegio===3){ //eliminazione nel caso sia uno studente
+
+        let queryString = 'SELECT ID_DISCENTE FROM DISCENTE JOIN UTENTI ON ID_UTENTE=FK_UTENTE WHERE USERNAME = $1';
+        const result = await pool.query(queryString, [username]);
+        const id_studente = result.rows[0].id_discente;
+
+        let queryString2 = 'SELECT ID_UTENTE FROM UTENTI WHERE USERNAME = $1';
+        const result2 = await pool.query(queryString2, [username]);
+        const id_utente = result2.rows[0].id_utente;
+
+        try {
+            // lezioni
+            let queryString3 = 'UPDATE LEZIONI SET FK_DISCENTE=null, FK_MATERIA=null WHERE FK_DISCENTE=$1'
+            await pool.query(queryString3, [id_studente]);
+
+            // discente
+            let queryString4 = 'DELETE FROM DISCENTE WHERE ID_DISCENTE=$1'
+            await pool.query(queryString4, [id_studente]);
+
+            // utenti
+            let queryString5 = 'DELETE FROM UTENTI WHERE ID_UTENTE=$1'
+            await pool.query(queryString5, [id_utente]);
+
+            callback(null, {Status: "Success"})
+        }
+        catch (err) {
+            console.error("Errore durante l'esecuzione della query:", err);
+            throw err;
+        }
+    }
+    else if(privilegio === 2){
+
+        let queryString = 'SELECT ID_TUTOR FROM TUTOR JOIN UTENTI ON ID_UTENTE=FK_UTENTE WHERE USERNAME = $1';
+        const result = await pool.query(queryString, [username]);
+        const id_tutor = result.rows[0].id_tutor;
+
+        let queryString2 = 'SELECT ID_UTENTE FROM UTENTI WHERE USERNAME = $1';
+        const result2 = await pool.query(queryString2, [username]);
+        const id_utente = result2.rows[0].id_utente;
+
+        try {
+            // lezioni
+            let queryString3 = 'DELETE FROM LEZIONI WHERE FK_TUTOR=$1'
+            await pool.query(queryString3, [id_tutor]);
+
+            // Tutor-materie
+            let queryString6 = 'DELETE FROM TUTOR_MATERIE WHERE FK_TUTOR=$1'
+            await pool.query(queryString6, [id_tutor]);
+
+            // Competenze Linguistiche
+            let queryString7 = 'DELETE FROM COMPETENZE_LINGUISTICHE WHERE FK_TUTOR=$1'
+            await pool.query(queryString7, [id_tutor]);
+
+            // Competenze Istruzione
+            let queryString8 = 'DELETE FROM COMPETENZE_ISTR WHERE FK_TUTOR=$1'
+            await pool.query(queryString8, [id_tutor]);
+
+            // tutor
+            let queryString4 = 'DELETE FROM TUTOR WHERE ID_TUTOR=$1'
+            await pool.query(queryString4, [id_tutor]);
+
+            // utenti
+            let queryString5 = 'DELETE FROM UTENTI WHERE ID_UTENTE=$1'
+            await pool.query(queryString5, [id_utente]);
+
+            callback(null, {Status: "Success"})
+        }
+        catch (err) {
+            console.error("Errore durante l'esecuzione della query:", err);
+            throw err;
+        }
+
+    }
+
 }
 
 // Rotte
@@ -859,6 +946,16 @@ app.get('/info_studente/:id_studente', (req, res) =>{
 app.get('/info_tutor/:id_tutor', (req, res) =>{
     const id_tutor = parseInt(req.params.id_tutor);
     info_tutor_general(id_tutor, (err, result) => {
+        res.json(result)
+    })
+})
+
+app.get('/deleteaccount/:username/:privilegio', (req, res) => {
+    const username = req.params.username;
+    const privilegio = parseInt(req.params.privilegio);
+    res.clearCookie("token");
+
+    delete_definitely(username, privilegio, (err, result) => {
         res.json(result)
     })
 })

@@ -76,7 +76,7 @@ export default function Tutor() {
         setSelectedDay(day);
 
         if(auth && privilegio === 3){ // si puo prenotare solo se si è studenti
-            if(window.confirm("Vuoi prenotare la lezione per "+selectedDay+" alle ore "+selectedTime+"?")){
+            if(window.confirm("Vuoi prenotare la lezione per "+day+" alle ore "+time+"?")){
                 console.log("Prenotare");
                 const lesson_info = {
                     fascia_oraria: time,
