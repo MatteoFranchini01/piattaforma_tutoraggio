@@ -8,7 +8,6 @@ export default function Teachers() {
     const [subjectSelected, setSubjectSelected] = useState("Materia selezionata");
     const [arrayTutor, setArrayTutor] = React.useState([]);
 
-
     useEffect(() => {
         setSubjectSelected(subject_name)
         getTutorPerMateria();
@@ -20,7 +19,6 @@ export default function Teachers() {
             .then(response => response.json())
             .then(data => {
                 const temp = data.map(item => ({
-                    //rating: item.rating,
                     tutor_id: item.id,
                     tutor_nome: item.nome,
                     tutor_cognome: item.cognome,

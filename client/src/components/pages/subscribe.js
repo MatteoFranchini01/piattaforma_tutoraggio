@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from "react";
 import "../../css/subscribe.css";
-import button from "bootstrap/js/src/button";
 import {useNavigate} from "react-router-dom";
 
 import hash from 'hash.js';
 
-//TODO controllare che qui funzioni tutto
 export default function SubscribeOverlay ({isOpen, onClose}) {
     const navigate = useNavigate()
 
@@ -48,7 +46,7 @@ export default function SubscribeOverlay ({isOpen, onClose}) {
         return multiple_user_check;
     }
 
-    const onClickHandler = async (event) => {
+    const onClickHandler = async () => {
         const multiple_user_check = await checkUsername(username);
 
         console.log("Multiple user ", multiple_user_check);
