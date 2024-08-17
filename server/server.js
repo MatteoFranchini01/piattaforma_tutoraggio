@@ -137,20 +137,22 @@ async function book_lesson (lesson_info) {
     try {
         console.log(lesson_info)
         let queryString = 'SELECT ID_FASCIA_ORARIA AS id FROM FASCE_ORARIE WHERE FASCIA_ORARIA = $1 AND GIORNO = $2';
-        /*let result = await pool.query(queryString, [lesson_info.fascia_oraria, lesson_info.giorno]);
+        let result = await pool.query(queryString, [lesson_info.fascia_oraria, lesson_info.giorno]);
 
         const id_fascia = result.rows[0].id;
 
         queryString = 'SELECT ID_MATERIA AS id FROM MATERIE WHERE NOME_MATERIA = $1';
-        const id_materia = await pool.query(queryString, [lesson_info.materia]);
+        const result2 = await pool.query(queryString, [lesson_info.materia]);
+        const id_materia = result2.rows[0].id;
 
         queryString = 'SELECT D.ID_DISCENTE AS id FROM DISCENTE as D JOIN UTENTI as U ON U.ID_UTENTE = D.FK_UTENTE WHERE U.USERNAME = $1';
-        result = await pool.query(queryString, [lesson_info.username]);
+        const result3 = await pool.query(queryString, [lesson_info.username]);
+        const id_discente = result3.rows[0].id;
 
         queryString = 'UPDATE LEZIONI SET FK_DISCENTE=$1, FK_MATERIA=$4 WHERE FK_TUTOR=$2 AND FK_FASCIA_ORARIA=$3';
-        const values = [result.rows[0].id, parseInt(lesson_info.id_tutor), parseInt(id_fascia), parseInt(id_materia)];
+        const values = [id_discente, parseInt(lesson_info.id_tutor), parseInt(id_fascia), parseInt(id_materia)];
         await pool.query(queryString, values);
-        console.log("Lezione prenotata");*/
+        console.log("Lezione prenotata");
     } catch (err) {
         console.error("Errore durante l'esecuzione della query:", err);
         throw err;

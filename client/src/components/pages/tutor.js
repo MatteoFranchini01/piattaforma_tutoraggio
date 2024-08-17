@@ -85,7 +85,6 @@ export default function Tutor() {
                     giorno: day,
                     username: username,
                     id_tutor: tutor_id,
-                    //TODO: inserire almeno il nome della materia
                     materia: subject_name
                 }
                 fetch('http://localhost:3000/book_lesson', {
@@ -99,6 +98,8 @@ export default function Tutor() {
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
+                        alert("Lezione prenotata!")
+                        window.location.reload();
                     })
             }
             else
