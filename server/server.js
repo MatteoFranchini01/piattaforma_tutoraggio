@@ -2,14 +2,10 @@
 
 const jwt = require("jsonwebtoken")
 const express = require('express');
-const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const req = require('express/lib/request');
 
 const { Pool } = require('pg');
-const bodyParser = require('body-parser');
 const cors = require('cors');
-const crypto = require('crypto');
 
 // creazione istanza applicazione Express
 const app = express();
@@ -563,7 +559,15 @@ function info_student(id_studente, callback){
     let queryString = 'SELECT NOME, COGNOME, MAIL, USERNAME FROM DISCENTE JOIN UTENTI ON id_utente = fk_utente WHERE ID_DISCENTE=$1'
     pool.query(queryString, [id_studente], (err, result) => {
         if (err) throw err;
-        callback(err, result.rows[0])
+        callback(null, result.rows[0])
+    })
+}
+
+function info_tutor_general(id_studente, callback){
+    let queryString = 'SELECT NOME, COGNOME, MAIL, USERNAME FROM TUTOR JOIN UTENTI ON ID_UTENTE = FK_UTENTE WHERE ID_TUTOR=$1'
+    pool.query(queryString, [id_studente], (err, result) => {
+        if (err) throw err;
+        callback(null, result.rows[0])
     })
 }
 
@@ -846,8 +850,15 @@ app.get('/delete/:id_lezione', (req, res) =>{
 })
 
 app.get('/info_studente/:id_studente', (req, res) =>{
-    const id_studente = req.params.id_studente;
+    const id_studente = parseInt(req.params.id_studente);
     info_student(id_studente, (err, result) => {
+        res.json(result)
+    })
+})
+
+app.get('/info_tutor/:id_tutor', (req, res) =>{
+    const id_tutor = parseInt(req.params.id_tutor);
+    info_tutor_general(id_tutor, (err, result) => {
         res.json(result)
     })
 })

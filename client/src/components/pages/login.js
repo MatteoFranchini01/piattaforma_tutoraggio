@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import "../../css/login.css";
-import {useLocation, useNavigate} from "react-router-dom";
 import hash from 'hash.js';
 
 export default function LoginOverlay ({isOpen, onClose}) {
@@ -9,7 +8,6 @@ export default function LoginOverlay ({isOpen, onClose}) {
     const [usernameError, setUsernameError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [loginError, setLoginError] = useState("");
-    const location = useLocation();
 
     function hashPassword(password) {
         return hash.sha256().update(password).digest('hex');

@@ -4,7 +4,6 @@ import Card from "../mainLayout/template/card"
 import mainImg from "../../images/home.png"
 import HowToStartCard from "../mainLayout/template/howToStartCard";
 import Accordion from "../mainLayout/template/accordion";
-import axios from "axios";
 
 export default function Home() {
 

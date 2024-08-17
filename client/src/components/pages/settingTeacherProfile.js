@@ -7,11 +7,8 @@ import {useNavigate, useParams} from "react-router-dom";
 
 
 export default function SettingTeacherProfile() {
-
-    //username del tutor di cui andrò a memorizzare le info aggiuntive
     const {username} = useParams();
     const [validUsername, setValidUsername] = useState(false)
-    // id del tutor
     const [id, setId] = useState("-1")
 
     const [isChecked1, setIsChecked1] = useState(false);
@@ -19,7 +16,6 @@ export default function SettingTeacherProfile() {
 
     const navigate = useNavigate();
 
-    //contiene gli orari attualmente selezionati
     let selectedDays = []
 
     const [arrayLang, setArrayLang] = React.useState([]);
@@ -64,7 +60,6 @@ export default function SettingTeacherProfile() {
     }, [isChecked2]);
 
     function checkUsername(){
-        // controllo se l'username è stato correttamente inserito nel db, altrimenti non posso fare nulla
         fetch(`http://localhost:3000/find_id/${username}`)
             .then(response => response.json())
             .then(data => {
@@ -298,7 +293,7 @@ export default function SettingTeacherProfile() {
                                                 <option value="-1" disabled>
                                                     Seleziona una materia
                                                 </option>
-                                                {arraySubjects.map((sub, index) => (
+                                                {arraySubjects.map((sub) => (
                                                     <option key={sub.id_materia} value={sub.id_materia}>
                                                         {sub.nome_materia}
                                                     </option>
@@ -335,7 +330,7 @@ export default function SettingTeacherProfile() {
                                                 <option value="-1" disabled>
                                                     Seleziona una materia
                                                 </option>
-                                                {arraySubjects.map((sub, index) => (
+                                                {arraySubjects.map((sub) => (
                                                     <option key={sub.id_materia} value={sub.id_materia}>
                                                         {sub.nome_materia}
                                                     </option>
@@ -408,7 +403,7 @@ export default function SettingTeacherProfile() {
                                         <option value="-1" disabled>
                                         Seleziona il livello
                                         </option>
-                                        {arrayCompetences.map((is, index) => (
+                                        {arrayCompetences.map((is) => (
                                             <option key={is.id_istruzione} value={is.id_istruzione}>
                                                 {is.livello_istruzione}
                                             </option>
@@ -425,7 +420,7 @@ export default function SettingTeacherProfile() {
                                         <option value="-1" disabled>
                                             Seleziona una lingua
                                         </option>
-                                        {arrayLang.map((lang, index) => (
+                                        {arrayLang.map((lang) => (
                                             <option key={lang.id_lingua} value={lang.id_lingua}>
                                                 {lang.nome_lingua}
                                             </option>

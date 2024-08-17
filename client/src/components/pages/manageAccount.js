@@ -1,7 +1,6 @@
-import react, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import "../../css/manageAccount.css"
 import React from "react";
-import {useParams} from "react-router-dom";
 import SelectDaysTable from "../mainLayout/template/SelectDaysTable";
 
 export default function ManageAccount() {
@@ -14,7 +13,7 @@ export default function ManageAccount() {
     const [newBioError, setNewBioError] = useState("");
     const [id, setId] = useState(-1)
     const [lezioniPrenotate, setLezioniPrenotate] = useState([]);
-    const [infoStudent, setInfoStudent] = useState("");
+    const [infoUser, setInfoUser] = useState("");
 
     useEffect(() => {
         checkAuthStatus();
@@ -26,12 +25,17 @@ export default function ManageAccount() {
         }
         else if(username && privilegio === 3) {
             checkUsernameStudent()
-            info_student()
         }
     }, [username]);
 
     useEffect(() => {
         get_availability()
+        if(privilegio === 3){
+            info_student()
+        }
+        else if(privilegio === 2){
+            info_tutor()
+        }
     }, [id]);
 
     const checkAuthStatus = () => {
@@ -200,7 +204,6 @@ export default function ManageAccount() {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 setLezioniPrenotate(data);
             })
     }
@@ -243,15 +246,23 @@ export default function ManageAccount() {
     }
 
     function info_student() {
-        const url = `http://localhost:3000/info_studente/${id}`
+        const url = `http://localhost:3000/info_studente/${id}`;
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
-                setInfoStudent(data)
+                setInfoUser(data)
             })
     }
 
+    function info_tutor() {
+        const url = `http://localhost:3000/info_tutor/${id}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setInfoUser(data);
+            })
+    }
 
     return(
         <>
@@ -262,9 +273,10 @@ export default function ManageAccount() {
                             <h2 className="title-manage">Benvenuto, {username}!</h2>
                             <div className="info-generale">
                                 <h3 className="title-manage">Info generali</h3>
-                                <p>Nome: {infoStudent.nome}</p>
-                                <p>Cognome: {infoStudent.cognome}</p>
-                                <p>Username: {infoStudent.username}</p>
+                                <p className="paragraph-info" style={{marginTop: '20px'}}><b>Nome:</b> {infoUser.nome}</p>
+                                <p className="paragraph-info"><b>Cognome</b> {infoUser.cognome}</p>
+                                <p className="paragraph-info"><b>Username:</b> {infoUser.username}</p>
+                                <p className="paragraph-info" style={{marginBottom: '20px'}}><b>E-mail:</b> {infoUser.mail}</p>
                             </div>
                             <hr className="centered-hr"/>
                             <div className="booked-lessons">

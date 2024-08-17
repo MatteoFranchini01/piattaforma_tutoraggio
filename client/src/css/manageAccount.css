@@ -9,7 +9,10 @@
 
 .info-generale{
     height: auto;
+}
 
+.paragraph-info{
+    margin-left: 10%;
 }
 
 .manage-account{

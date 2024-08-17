@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "../../css/requirements.css"
 import teacherImg from "../../images/teacher_logo.png"
 import CollapseParagraph from "../mainLayout/template/collapseParagraph";
