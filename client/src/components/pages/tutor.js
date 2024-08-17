@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 
 export default function Tutor() {
     const { tutor_id, subject_name } = useParams();
-    const [isConfirmPrenotationOverlayOpen, setIsConfirmPrenotationOverlayOpen] = React.useState(false);
     const [selectedTime, setSelectedTime] = React.useState('');
     const [selectedDay, setSelectedDay] = React.useState('');
     const [availability, setAvailability] = React.useState([]);
