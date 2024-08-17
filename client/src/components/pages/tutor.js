@@ -86,7 +86,7 @@ export default function Tutor() {
                     username: username,
                     id_tutor: tutor_id,
                     //TODO: inserire almeno il nome della materia
-                    materia:
+                    materia: subject_name
                 }
                 fetch('http://localhost:3000/book_lesson', {
                     method: 'POST',
@@ -99,7 +99,6 @@ export default function Tutor() {
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
-                        alert("Modifiche effettuate!")
                     })
             }
             else

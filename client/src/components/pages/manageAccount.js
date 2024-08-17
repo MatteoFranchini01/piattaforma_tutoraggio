@@ -21,11 +21,13 @@ export default function ManageAccount() {
     }, []);
 
     useEffect(() => {
-        if (username) {
+        if (username && privilegio === 2) {
             checkUsername();
         }
+        else if(username && privilegio === 3) {
+            checkUsernameStudent()
+        }
     }, [username]);
-
 
     const checkAuthStatus = () => {
         fetch("http://localhost:3000/", {
@@ -50,8 +52,21 @@ export default function ManageAccount() {
     }
 
     function checkUsername(){
-        // controllo se l'username è stato correttamente inserito nel db, altrimenti non posso fare nulla
         fetch(`http://localhost:3000/find_id/${username}`)
+            .then(response => response.json())
+            .then(data => {
+                if(data.id !== -1){
+                    setId(data.id);
+                }
+                else
+                    setId(-1)
+
+            })
+            .catch(error => console.log(error))
+    }
+
+    function checkUsernameStudent(){
+        fetch(`http://localhost:3000/find_id_student/${username}`)
             .then(response => response.json())
             .then(data => {
                 if(data.id !== -1){
@@ -68,23 +83,45 @@ export default function ManageAccount() {
         // controllo validità mail
         if(validateEmail(email)) {
             console.log("Controllo email andato a buon fine")
-            const tutor_email_change = {
-                email: email,
-                id_tutor: id
-            };
-            fetch('http://localhost:3000/change_email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(tutor_email_change),
-                credentials: 'include'
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    alert("Modifiche effettuate!")
+            if (privilegio === 2){
+                const tutor_email_change = {
+                    email: email,
+                    id_tutor: id
+                };
+                fetch('http://localhost:3000/change_email_tutor', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(tutor_email_change),
+                    credentials: 'include'
                 })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        alert("Modifiche effettuate!")
+                    })
+            }
+            else if(privilegio === 3){
+                const tutor_email_change = {
+                    email: email,
+                    id_discente: id
+                };
+                fetch('http://localhost:3000/change_email_studente', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(tutor_email_change),
+                    credentials: 'include'
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        alert("Modifiche effettuate!")
+                    })
+            }
+
         }
         else{
             console.log("Controllo email non andato a buon fine")
@@ -179,16 +216,18 @@ export default function ManageAccount() {
                 console.log(data);
                 alert("Modifiche effettuate!")
             })
+            .catch(error => console.log(error))
     }
 
     //TODO: questa funzione esiste solo per il tutor o bisogna fare una qualche veririca?
     // esiste solo per il tutor, lo studente non la visualizza
     const handleConfirmSelectedDays = () => {
         if (selectedDays.length > 0) {
-            add_availability(id, selectedDays);
             console.log("Cambio disponibilità");
+            add_availability(id, selectedDays);
+
         } else {
-            //TODO debby: settare un errore in questo caso
+            alert("Non hai selezionato nessun giorno in cui sei disponibile!");
         }
     }
 

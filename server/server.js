@@ -95,9 +95,18 @@ function add_istr_bio (tutor_bio) {
     })
 }
 
+// Funzione per cambiare la mail del tutor
 function change_email (tutor_email_change) {
     let queryString = 'UPDATE TUTOR SET MAIL=$1 WHERE ID_TUTOR=$2';
     const values = [tutor_email_change.email, tutor_email_change.id_tutor];
+    pool.query(queryString, values, (err) => {
+        if (err) throw err;
+    })
+}
+
+function change_email_studente (studente_email_change) {
+    let queryString = 'UPDATE DISCENTE SET MAIL=$1 WHERE ID_DISCENTE=$2';
+    const values = [studente_email_change.email, studente_email_change.id_discente];
     pool.query(queryString, values, (err) => {
         if (err) throw err;
     })
@@ -126,8 +135,9 @@ async function change_availability (tutor_change_lesson) {
 
 async function book_lesson (lesson_info) {
     try {
+        console.log(lesson_info)
         let queryString = 'SELECT ID_FASCIA_ORARIA AS id FROM FASCE_ORARIE WHERE FASCIA_ORARIA = $1 AND GIORNO = $2';
-        let result = await pool.query(queryString, [lesson_info.fascia_oraria, lesson_info.giorno]);
+        /*let result = await pool.query(queryString, [lesson_info.fascia_oraria, lesson_info.giorno]);
 
         const id_fascia = result.rows[0].id;
 
@@ -140,7 +150,7 @@ async function book_lesson (lesson_info) {
         queryString = 'UPDATE LEZIONI SET FK_DISCENTE=$1, FK_MATERIA=$4 WHERE FK_TUTOR=$2 AND FK_FASCIA_ORARIA=$3';
         const values = [result.rows[0].id, parseInt(lesson_info.id_tutor), parseInt(id_fascia), parseInt(id_materia)];
         await pool.query(queryString, values);
-        console.log("Lezione prenotata");
+        console.log("Lezione prenotata");*/
     } catch (err) {
         console.error("Errore durante l'esecuzione della query:", err);
         throw err;
@@ -212,7 +222,6 @@ function find_user(user_to_find, callback) {
         callback(user);
     });
 }
-
 
 function get_booked(user_info, callback) {
     let queryString;
@@ -374,7 +383,6 @@ function tutor_per_materia(nome_materia, callback) {
     })
 }
 
-
 // funzione per ottenere le informazioni dei tutor
 function info_tutor(id_tutor, nome_materia, callback) {
     let queryString = 'SELECT NOME, COGNOME, INFO, NOME_LINGUA, LIVELLO_ISTRUZIONE AS "livello", PREZZO FROM TUTOR AS T JOIN COMPETENZE_LINGUISTICHE AS CL ON T.ID_TUTOR=CL.FK_TUTOR JOIN LINGUE AS L ON CL.FK_LINGUA=L.ID_LINGUA JOIN COMPETENZE_ISTR AS CI ON T.ID_TUTOR=CI.FK_TUTOR JOIN ISTRUZIONE AS I ON I.ID_ISTRUZIONE=CI.FK_ISTRUZIONE JOIN TUTOR_MATERIE AS TM ON T.ID_TUTOR=TM.FK_TUTOR JOIN MATERIE AS M ON TM.FK_MATERIA=M.ID_MATERIA WHERE T.ID_TUTOR=$1 AND M.NOME_MATERIA=$2';
@@ -396,7 +404,6 @@ function info_tutor(id_tutor, nome_materia, callback) {
         callback(null, info)
     })
 }
-
 
 // Funzione per verificare l'autenticazione
 function verify_login(given_username, given_password, callback) {
@@ -488,7 +495,7 @@ function select_subject(callback) {
     })
 }
 
-// Funzione per cercare un id dato l'username
+// Funzione per cercare un id dato l'username di un tutor
 function check_id_from_username(user, callback) {
     let queryString = 'SELECT ID_TUTOR FROM TUTOR JOIN UTENTI ON ID_UTENTE=FK_UTENTE WHERE USERNAME = $1';
 
@@ -500,6 +507,25 @@ function check_id_from_username(user, callback) {
         if(result.rows.length !== 0)
         {
             const id = result.rows[0].id_tutor;
+            callback(null, {id: id});
+        }
+        else
+            callback(null, {id: -1});
+    });
+}
+
+// Funzione per cercare un id dato l'username di uno studente
+function check_id_from_username_studente(user, callback) {
+    let queryString = 'SELECT ID_DISCENTE FROM DISCENTE JOIN UTENTI ON ID_UTENTE=FK_UTENTE WHERE USERNAME = $1';
+
+    pool.query(queryString, [user], (err, result) => {
+        if (err) throw err;
+
+        console.log("Executed query: ", result.rows);
+        console.log("Executed query length: ", result.rows.length);
+        if(result.rows.length !== 0)
+        {
+            const id = result.rows[0].id_discente;
             callback(null, {id: id});
         }
         else
@@ -657,11 +683,23 @@ app.post('/change_availability', async (req, res) => {
     }
 });
 
-app.post('/change_email', (req, res) => {
+app.post('/change_email_tutor', (req, res) => {
     let tutor_change_email = req.body;
     console.log(tutor_change_email);
     try {
         change_email(tutor_change_email);
+        res.json("Tutor email changed");
+    } catch (err) {
+        console.error("Error changing email", err);
+        res.status(500).json({error: "Failed to change email"});
+    }
+})
+
+app.post('/change_email_studente', (req, res) => {
+    let discente_change_email = req.body;
+    console.log(discente_change_email);
+    try {
+        change_email_studente(discente_change_email);
         res.json("Tutor email changed");
     } catch (err) {
         console.error("Error changing email", err);
@@ -733,6 +771,12 @@ app.get('/subjects', (req, res) => {
 
 app.get('/find_id/:username', (req, res) => {
     check_id_from_username(req.params.username,(err, result) => {
+        res.json(result);
+    })
+});
+
+app.get('/find_id_student/:username', (req, res) => {
+    check_id_from_username_studente(req.params.username,(err, result) => {
         res.json(result);
     })
 });
