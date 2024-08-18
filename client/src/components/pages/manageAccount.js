@@ -302,11 +302,12 @@ export default function ManageAccount() {
                                         <tr>
                                             <th scope="col">#</th>
                                             {
-                                                privilegio === 1 ?
+                                                privilegio === 3 ?
                                                     <th scope="col">Insegnante</th>
                                                     :
                                                     <th scope="col">Studente</th>
                                             }
+                                            <th scope="col">Recapito</th>
                                             <th scope="col">Materia</th>
                                             <th scope="col">Giorno</th>
                                             <th scope="col">Orario</th>
@@ -323,6 +324,7 @@ export default function ManageAccount() {
                                                         :
                                                         <td scope="col">{lezione.studente}</td>
                                                 }
+                                                <td>{lezione.mail}</td>
                                                 <td>{lezione.nome_materia}</td>
                                                 <td>{lezione.giorno}</td>
                                                 <td>{lezione.fascia_oraria}</td>

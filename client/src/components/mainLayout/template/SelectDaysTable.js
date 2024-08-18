@@ -46,7 +46,7 @@ function SelectDaysTable({ onSelectedDaysChange }) {
             <tbody>
             {times.map((time, rowIndex) => (
                 <tr key={rowIndex}>
-                    <th scope="row">{time}</th>
+                    <th scope="row" style={{textAlign: 'center'}}>{time}</th>
                     {days.map((day, dayIndex) => {
                         const { style } = getCellClass(time, day);
                         return (

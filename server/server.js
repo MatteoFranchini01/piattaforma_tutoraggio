@@ -247,7 +247,7 @@ function get_booked(user_info, callback) {
 
     if (privilegio=== 2) {
         console.log("SERVER: tutor");
-        queryString = 'SELECT  ID_LEZIONE, NOME, COGNOME, FASCIA_ORARIA, NOME_MATERIA, GIORNO FROM DISCENTE JOIN LEZIONI ON DISCENTE.id_discente = LEZIONI.fk_discente JOIN MATERIE ON LEZIONI.fk_materia = MATERIE.id_materia JOIN FASCE_ORARIE ON LEZIONI.fk_fascia_oraria = FASCE_ORARIE.id_fascia_oraria WHERE LEZIONI.FK_TUTOR = $1'
+        queryString = 'SELECT  ID_LEZIONE,MAIL, NOME, COGNOME, FASCIA_ORARIA, NOME_MATERIA, GIORNO FROM DISCENTE JOIN LEZIONI ON DISCENTE.id_discente = LEZIONI.fk_discente JOIN MATERIE ON LEZIONI.fk_materia = MATERIE.id_materia JOIN FASCE_ORARIE ON LEZIONI.fk_fascia_oraria = FASCE_ORARIE.id_fascia_oraria WHERE LEZIONI.FK_TUTOR = $1'
         pool.query(queryString, [id], (err, result) => {
             if (err) throw err;
 
@@ -258,7 +258,8 @@ function get_booked(user_info, callback) {
                     studente: row.nome + ' ' + row.cognome,
                     nome_materia: row.nome_materia,
                     fascia_oraria: row.fascia_oraria,
-                    giorno: row.giorno
+                    giorno: row.giorno,
+                    mail: row.mail,
                 });
             });
             callback(null, risposta);
@@ -266,7 +267,7 @@ function get_booked(user_info, callback) {
         });
     } else if (privilegio === 3) {
         console.log("SERVER: studente")
-        queryString = 'SELECT ID_LEZIONE, NOME, COGNOME, FASCIA_ORARIA, NOME_MATERIA, GIORNO FROM TUTOR JOIN LEZIONI ON TUTOR.id_tutor = LEZIONI.fk_tutor JOIN MATERIE ON LEZIONI.fk_materia = MATERIE.id_materia JOIN FASCE_ORARIE ON LEZIONI.fk_fascia_oraria = FASCE_ORARIE.id_fascia_oraria WHERE LEZIONI.FK_DISCENTE = $1'
+        queryString = 'SELECT MAIL, ID_LEZIONE, NOME, COGNOME, FASCIA_ORARIA, NOME_MATERIA, GIORNO FROM TUTOR JOIN LEZIONI ON TUTOR.id_tutor = LEZIONI.fk_tutor JOIN MATERIE ON LEZIONI.fk_materia = MATERIE.id_materia JOIN FASCE_ORARIE ON LEZIONI.fk_fascia_oraria = FASCE_ORARIE.id_fascia_oraria WHERE LEZIONI.FK_DISCENTE = $1'
         pool.query(queryString, [id], (err, result) => {
             if (err) throw err;
 
@@ -277,7 +278,8 @@ function get_booked(user_info, callback) {
                     studente: '',
                     nome_materia: row.nome_materia,
                     fascia_oraria: row.fascia_oraria,
-                    giorno: row.giorno
+                    giorno: row.giorno,
+                    mail: row.mail,
                 });
             });
             callback(null, risposta);
@@ -415,7 +417,7 @@ function tutor_per_materia(nome_materia, callback) {
 
 // funzione per ottenere le informazioni dei tutor
 function info_tutor(id_tutor, nome_materia, callback) {
-    let queryString = 'SELECT NOME, COGNOME, INFO, PATH_IMG AS img, NOME_LINGUA, LIVELLO_ISTRUZIONE AS "livello", PREZZO FROM TUTOR AS T JOIN COMPETENZE_LINGUISTICHE AS CL ON T.ID_TUTOR=CL.FK_TUTOR JOIN LINGUE AS L ON CL.FK_LINGUA=L.ID_LINGUA JOIN COMPETENZE_ISTR AS CI ON T.ID_TUTOR=CI.FK_TUTOR JOIN ISTRUZIONE AS I ON I.ID_ISTRUZIONE=CI.FK_ISTRUZIONE JOIN TUTOR_MATERIE AS TM ON T.ID_TUTOR=TM.FK_TUTOR JOIN MATERIE AS M ON TM.FK_MATERIA=M.ID_MATERIA WHERE T.ID_TUTOR=$1 AND M.NOME_MATERIA=$2';
+    let queryString = 'SELECT NOME, COGNOME, INFO, MAIL, PATH_IMG AS img, NOME_LINGUA, LIVELLO_ISTRUZIONE AS "livello", PREZZO FROM TUTOR AS T JOIN COMPETENZE_LINGUISTICHE AS CL ON T.ID_TUTOR=CL.FK_TUTOR JOIN LINGUE AS L ON CL.FK_LINGUA=L.ID_LINGUA JOIN COMPETENZE_ISTR AS CI ON T.ID_TUTOR=CI.FK_TUTOR JOIN ISTRUZIONE AS I ON I.ID_ISTRUZIONE=CI.FK_ISTRUZIONE JOIN TUTOR_MATERIE AS TM ON T.ID_TUTOR=TM.FK_TUTOR JOIN MATERIE AS M ON TM.FK_MATERIA=M.ID_MATERIA WHERE T.ID_TUTOR=$1 AND M.NOME_MATERIA=$2';
     const info = [];
     pool.query(queryString, [id_tutor, nome_materia], (err, result) => {
         if (err) throw err;
@@ -426,10 +428,10 @@ function info_tutor(id_tutor, nome_materia, callback) {
                 bio: row.info,
                 cognome: row.cognome,
                 prezzo: row.prezzo,
-                //rating: row.rating,
                 lingua: row.nome_lingua,
                 livello: row.livello,
                 foto: row.img,
+                mail: row.mail,
             })
         });
         callback(null, info)

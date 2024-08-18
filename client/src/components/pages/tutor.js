@@ -77,6 +77,7 @@ export default function Tutor() {
                     lingua: item.lingua,
                     livello_istruzione: item.livello,
                     foto: item.foto,
+                    mail: item.mail,
                 }));
                 console.log("Mapped data:", temp);
 
@@ -179,7 +180,7 @@ export default function Tutor() {
                                                                         tutorInfo[0].foto === "../../images/Avatars/10.jpg" ? imgteach10 : null
                                 } alt="Tutor" className="tutor-img"/>
                                 <h5 className="tutor-name">{tutorInfo[0].nome}</h5>
-                                <p className="tutor-surname">{tutorInfo[0].cognome}</p>
+                                <p className="tutor-surname">{tutorInfo[0].cognome} <br/> {tutorInfo[0].mail} </p>
                                 <div className="justify-content-between align-items-center tutor-rating">
                                     <div className="ratings">
                                         {Array.from({ length: 5 }, (_, i) => (
